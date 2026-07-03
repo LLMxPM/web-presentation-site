@@ -1,0 +1,10 @@
+node_modules/
+.source/
+dist/
+
+site/.generated/
+site/.vitepress/.temp/
+site/.vitepress/cache/
+site/.vitepress/dist/
+
+*.log

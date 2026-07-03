@@ -1,0 +1,112 @@
+/**
+ * 文件功能：定义 web-presentation-site 首页、品牌色和文档阅读体验样式。
+ */
+:root {
+  --vp-c-brand-1: #0f766e;
+  --vp-c-brand-2: #0d9488;
+  --vp-c-brand-3: #14b8a6;
+  --vp-c-brand-soft: rgba(20, 184, 166, 0.14);
+  --vp-home-hero-name-color: #0f766e;
+  --vp-button-brand-bg: #0f766e;
+  --vp-button-brand-hover-bg: #115e59;
+}
+
+.dark {
+  --vp-c-brand-1: #5eead4;
+  --vp-c-brand-2: #2dd4bf;
+  --vp-c-brand-3: #14b8a6;
+  --vp-c-brand-soft: rgba(45, 212, 191, 0.16);
+}
+
+.VPHome .main {
+  padding-bottom: 24px;
+}
+
+.home-visual {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(320px, 1.05fr);
+  gap: 28px;
+  align-items: center;
+  margin: 24px auto 0;
+  max-width: 1120px;
+  padding: 28px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  background: var(--vp-c-bg-soft);
+}
+
+.home-visual h2 {
+  margin: 0 0 12px;
+  font-size: 28px;
+  line-height: 1.25;
+  letter-spacing: 0;
+}
+
+.home-visual p {
+  margin: 0;
+  color: var(--vp-c-text-2);
+  line-height: 1.8;
+}
+
+.home-visual img {
+  width: 100%;
+  max-height: 420px;
+  object-fit: contain;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  background: var(--vp-c-bg);
+}
+
+.home-eyebrow {
+  margin-bottom: 8px !important;
+  color: var(--vp-c-brand-1) !important;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.home-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.home-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 0 12px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 6px;
+  color: var(--vp-c-text-1);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  background: var(--vp-c-bg);
+}
+
+.home-links a:hover {
+  border-color: var(--vp-c-brand-2);
+  color: var(--vp-c-brand-1);
+}
+
+.home-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 18px auto 0;
+  max-width: 1120px;
+  color: var(--vp-c-text-3);
+  font-size: 13px;
+}
+
+@media (max-width: 860px) {
+  .home-visual {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+
+  .home-visual h2 {
+    font-size: 23px;
+  }
+}

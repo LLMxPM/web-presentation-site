@@ -1,0 +1,80 @@
+name: pages
+
+on:
+  workflow_dispatch:
+  schedule:
+    # 每天 03:00（Asia/Shanghai）拉取源仓文档并重建站点。
+    - cron: '0 19 * * *'
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+env:
+  SOURCE_REPO: ${{ vars.SOURCE_REPO || 'LLMxPM/web-presentation' }}
+  SOURCE_REF: ${{ vars.SOURCE_REF || 'main' }}
+  SOURCE_REPO_PATH: .source/web-presentation
+  SITE_BASE: ${{ vars.SITE_BASE || '/web-presentation-site/' }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout site
+        uses: actions/checkout@v4
+
+      - name: Checkout source docs
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ env.SOURCE_REPO }}
+          ref: ${{ env.SOURCE_REF }}
+          path: ${{ env.SOURCE_REPO_PATH }}
+          submodules: recursive
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.30.3
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Sync docs
+        run: pnpm run sync:docs
+
+      - name: Check links
+        run: pnpm run check:links
+        continue-on-error: true
+
+      - name: Build site
+        run: pnpm run build
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site/.vitepress/dist
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,19 @@
+{
+  "name": "web-presentation-site",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "packageManager": "pnpm@10.30.3",
+  "scripts": {
+    "dev": "pnpm run sync:docs && vitepress dev site --host 0.0.0.0",
+    "build": "pnpm run sync:docs && vitepress build site",
+    "preview": "vitepress preview site --host 0.0.0.0",
+    "sync:docs": "node scripts/sync-docs.mjs",
+    "check:links": "node scripts/check-links.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "26.1.0",
+    "typescript": "6.0.3",
+    "vitepress": "1.6.4"
+  }
+}
