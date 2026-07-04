@@ -1,13 +1,13 @@
-<!-- 文件功能：渲染成果展示列表页。 -->
+<!-- 文件功能：渲染案例展示列表页。 -->
 <template>
-  <main class="site-page showcase-page" aria-label="成果展示">
-    <section class="showcase-page-hero" aria-label="成果列表概览">
+  <main class="site-page showcase-page" aria-label="案例展示">
+    <section class="showcase-page-hero" aria-label="案例列表概览">
       <div class="showcase-page-heading">
         <p class="home-eyebrow">Showcase library</p>
-        <h1>成果列表</h1>
-        <p>展示 Web-Presentation 平台生成的真实演示项目。每个成果都包含封面截图、页面规模、主题信息和可导入的模板包。</p>
+        <h1>案例列表</h1>
+        <p>展示 Web-Presentation 平台生成的真实演示项目。每个案例都包含封面截图、页面规模、主题信息和可导入的模板包。</p>
       </div>
-      <div class="showcase-stat-grid" aria-label="成果统计">
+      <div class="showcase-stat-grid" aria-label="案例统计">
         <article v-for="stat in statCards" :key="stat.label" class="showcase-stat">
           <strong>{{ stat.value }}</strong>
           <span>{{ stat.label }}</span>
@@ -20,7 +20,7 @@
     </div>
     <div v-else class="showcase-empty">
       <h3>还没有可展示的项目模板包</h3>
-      <p>将 <code>.wptemplate.zip</code> 放入 <code>site/showcases/</code> 后，构建脚本会自动生成成果卡片、封面和下载链接。</p>
+      <p>将 <code>.wptemplate.zip</code> 放入 <code>site/showcases/</code> 后，构建脚本会自动生成案例卡片、封面和下载链接。</p>
     </div>
   </main>
 </template>
@@ -30,7 +30,7 @@ import { computed } from 'vue';
 import { showcaseSummaries } from '../../../.generated/showcase-summaries';
 import ShowcaseCard from './ShowcaseCard.vue';
 
-/** 汇总成果页顶部的规模指标，输入来自生成脚本产出的成果摘要。 */
+/** 汇总案例页顶部的规模指标，输入来自生成脚本产出的案例摘要。 */
 const statCards = computed(() => {
   const pageTotal = showcaseSummaries.reduce((total, showcase) => total + showcase.pageCount, 0);
 

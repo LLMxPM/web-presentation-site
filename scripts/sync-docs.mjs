@@ -231,23 +231,23 @@ function escapeXml(value) {
     .replace(/"/g, '&quot;');
 }
 
-/** 生成 VitePress 首页，首页突出产品能力和精选成果。 */
+/** 生成 VitePress 首页，首页突出产品能力和精选案例。 */
 async function writeHomePage(showcases) {
   await fs.writeFile(path.join(generatedRoot, 'index.md'), renderHomePage(showcases), 'utf8');
 }
 
-/** 生成成果展示页，内容来自 site/showcases 下的项目模板包。 */
+/** 生成案例展示页，内容来自 site/showcases 下的项目模板包。 */
 async function writeShowcasesPage(showcases) {
   await fs.writeFile(path.join(generatedRoot, 'showcases.md'), renderShowcasesPage(showcases), 'utf8');
 }
 
-/** 生成成果组件静态数据，供首页、列表页和详情页复用。 */
+/** 生成案例组件静态数据，供首页、列表页和详情页复用。 */
 async function writeShowcasesData(showcases) {
   await fs.writeFile(path.join(generatedRoot, 'showcase-summaries.ts'), renderShowcaseSummariesData(showcases), 'utf8');
   await fs.writeFile(path.join(generatedRoot, 'showcases-data.ts'), renderShowcasesData(showcases), 'utf8');
 }
 
-/** 生成每个成果的详情页，承载截图轮播、配置详情和下载入口。 */
+/** 生成每个案例的详情页，承载截图轮播、配置详情和下载入口。 */
 async function writeShowcaseDetailPages(showcases) {
   for (const showcase of showcases) {
     const detailPath = path.join(generatedRoot, 'showcases', `${showcase.slug}.md`);
@@ -301,7 +301,7 @@ async function writeVitePressData(docs) {
   const data = {
     nav: [
       { text: '首页', link: '/' },
-      { text: '成果展示', link: '/showcases.html' },
+      { text: '案例展示', link: '/showcases.html' },
       { text: '用户文档', link: firstUserDoc?.route || '/docs/' },
       { text: '开发文档', link: firstDeveloperDoc?.route || '/docs/' },
       { text: '文档中心', link: '/docs/' },
@@ -347,7 +347,7 @@ async function main() {
   await writeShowcaseDetailPages(showcases);
   await writeVitePressData(docs);
 
-  console.log(`已同步 ${docs.length} 篇文档、${showcases.length} 个成果：${toPosix(path.relative(siteRoot, generatedRoot))}`);
+  console.log(`已同步 ${docs.length} 篇文档、${showcases.length} 个案例：${toPosix(path.relative(siteRoot, generatedRoot))}`);
 }
 
 main().catch((error) => {

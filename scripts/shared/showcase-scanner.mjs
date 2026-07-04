@@ -1,5 +1,5 @@
 /**
- * 文件功能：扫描 Web-Presentation 项目模板包目录，读取 ZIP 项目数据并生成成果展示数据。
+ * 文件功能：扫描 Web-Presentation 项目模板包目录，读取 ZIP 项目数据并生成案例展示数据。
  */
 import fs from 'node:fs/promises';
 import path from 'node:path';
@@ -23,7 +23,7 @@ const templateRoutesPath = 'project/routes.json';
 const expectedPackageType = 'web-presentation-project-template';
 const expectedSchemaVersion = '1';
 
-/** 扫描成果目录，读取扁平放置的 .wptemplate.zip 并输出排序后的成果数据。 */
+/** 扫描案例目录，读取扁平放置的 .wptemplate.zip 并输出排序后的案例数据。 */
 export async function scanShowcases() {
   if (!(await pathExists(showcaseRoot))) {
     return [];
@@ -41,7 +41,7 @@ export async function scanShowcases() {
     const packagePath = path.join(showcaseRoot, entry.name);
 
     if (seenSlugs.has(slug)) {
-      throw new Error(`成果 slug ${slug} 重复：${seenSlugs.get(slug)} 与 ${relativeSitePath(packagePath)}。`);
+      throw new Error(`案例 slug ${slug} 重复：${seenSlugs.get(slug)} 与 ${relativeSitePath(packagePath)}。`);
     }
     seenSlugs.set(slug, relativeSitePath(packagePath));
 
@@ -199,7 +199,7 @@ function normalizeShowcase({ slug, packageFileName, coverFileName, slides, manif
   };
 }
 
-/** 输出成果封面；优先使用 screenshots.cover，缺失时使用路由排序后的第一张截图。 */
+/** 输出案例封面；优先使用 screenshots.cover，缺失时使用路由排序后的第一张截图。 */
 async function writeShowcaseCover({ zip, screenshots, fallbackItem, publicDir, assetDir, packagePath }) {
   const coverPath = normalizeText(screenshots?.cover?.path) || normalizeText(fallbackItem?.path);
   if (!coverPath) {
@@ -359,7 +359,7 @@ function buildSupplementPath(packageFileName) {
   return path.join(showcaseRoot, `${stripTemplateExtension(packageFileName)}.showcase.json`);
 }
 
-/** 对成果列表排序：显式顺序优先，其次按更新时间或创建时间倒序。 */
+/** 对案例列表排序：显式顺序优先，其次按更新时间或创建时间倒序。 */
 function sortShowcases(showcases) {
   return [...showcases].sort((left, right) => {
     const leftOrder = Number.isFinite(left.sortOrder) ? left.sortOrder : Number.MAX_SAFE_INTEGER;
@@ -397,7 +397,7 @@ function buildSlugFromPackageFileName(packageFileName) {
     .replace(/^[-.]+|[-.]+$/g, '');
 
   if (!slug) {
-    throw new Error(`${packageFileName} 无法生成有效成果 slug。`);
+    throw new Error(`${packageFileName} 无法生成有效案例 slug。`);
   }
   return slug;
 }

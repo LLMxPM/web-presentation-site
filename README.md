@@ -18,9 +18,9 @@ pnpm run preview
 pnpm run dev
 ```
 
-## 成果模板包链路
+## 案例模板包链路
 
-成果模板包直接放在 `site/showcases/<name>.wptemplate.zip`，文件需要进入 Git；`site/.generated/` 和 `site/.vitepress/dist/` 是构建输出，不提交。
+案例模板包直接放在 `site/showcases/<name>.wptemplate.zip`，文件需要进入 Git；`site/.generated/` 和 `site/.vitepress/dist/` 是构建输出，不提交。
 
 本地开发链路：
 
@@ -30,14 +30,14 @@ pnpm run dev
 pnpm run build
 ```
 
-`pnpm run sync:docs` 会解析 `site/showcases/*.wptemplate.zip`，生成成果列表、详情页、截图资源和下载文件到 `site/.generated/`。成果 URL 的 slug 来自 ZIP 文件名去掉 `.wptemplate.zip` 后的安全路径名。
+`pnpm run sync:docs` 会解析 `site/showcases/*.wptemplate.zip`，生成案例列表、详情页、截图资源和下载文件到 `site/.generated/`。案例 URL 的 slug 来自 ZIP 文件名去掉 `.wptemplate.zip` 后的安全路径名。
 
 解析规则：
 
-- `project/project.json` 是成果展示主数据源，读取 `name`、`page_width`、`page_height`、`base_font_size`、`style_spec_markdown`，并辅助读取 `description`、`theme_key`、`menu_mode`。
+- `project/project.json` 是案例展示主数据源，读取 `name`、`page_width`、`page_height`、`base_font_size`、`style_spec_markdown`，并辅助读取 `description`、`theme_key`、`menu_mode`。
 - `project/routes.json` 提供页面顺序，脚本递归展开 `routes`，只取 `route_type === "page"` 且存在 `source_page_code` 的路由。
 - `metadata/screenshots.json` 只提供截图路径、标题和尺寸；截图按路由顺序匹配，路由引用页面缺截图会同步失败，路由外截图放到末尾。
-- `manifest.json` 校验包类型、schema、必要路径字段和计数字段，并读取 `themes[].name` 用于成果详情展示。
+- `manifest.json` 校验包类型、schema、必要路径字段和计数字段，并读取 `themes[].name` 用于案例详情展示。
 - `metadata/template.json` 只校验存在且为对象，不作为主要展示数据源。
 
 Git 提交时提交 `site/showcases/*.wptemplate.zip`、解析脚本和页面样式改动；不要提交 `site/.generated/` 或 `site/.vitepress/dist/`。

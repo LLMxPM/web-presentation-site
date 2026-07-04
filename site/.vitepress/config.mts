@@ -22,6 +22,11 @@ export default defineConfig({
   ignoreDeadLinks: true,
   lastUpdated: true,
   cleanUrls: false,
+  markdown: {
+    languageAlias: {
+      env: 'dotenv',
+    },
+  },
   themeConfig: {
     nav: generatedNav,
     sidebar: generatedSidebar,

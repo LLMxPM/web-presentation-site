@@ -1,18 +1,18 @@
-<!-- 文件功能：渲染单个成果详情页，包括配置摘要、样式规范、截图轮播和下载入口。 -->
+<!-- 文件功能：渲染单个案例详情页，包括配置摘要、样式规范、截图轮播和下载入口。 -->
 <template>
-  <main class="site-page showcase-detail-page" :aria-label="showcase ? `${showcase.title} 详情` : '成果详情'">
-    <a class="showcase-back-link" :href="siteUrl('/showcases.html')" aria-label="返回成果列表">
+  <main class="site-page showcase-detail-page" :aria-label="showcase ? `${showcase.title} 详情` : '案例详情'">
+    <a class="showcase-back-link" :href="siteUrl('/showcases.html')" aria-label="返回案例列表">
       <span aria-hidden="true">←</span>
-      返回成果列表
+      返回案例列表
     </a>
 
     <section v-if="showcase" class="showcase-detail-content">
-      <section class="showcase-detail-hero" aria-label="成果概览">
+      <section class="showcase-detail-hero" aria-label="案例概览">
         <div class="showcase-detail-copy">
           <p class="home-eyebrow">{{ showcase.category }}</p>
           <h1>{{ showcase.title }}</h1>
           <p class="showcase-detail-summary">{{ formatDetailSummary(showcase.summary) }}</p>
-          <div v-if="visibleTags.length > 0" class="showcase-tags showcase-detail-tags" aria-label="成果标签">
+          <div v-if="visibleTags.length > 0" class="showcase-tags showcase-detail-tags" aria-label="案例标签">
             <span v-for="tag in visibleTags" :key="tag">{{ tag }}</span>
           </div>
           <div class="showcase-actions">
@@ -43,7 +43,7 @@
           </div>
         </div>
 
-        <aside class="showcase-detail-cover-panel" aria-label="成果封面">
+        <aside class="showcase-detail-cover-panel" aria-label="案例封面">
           <img :src="siteUrl(showcase.coverPath)" :alt="`${showcase.title} 封面`">
         </aside>
       </section>
@@ -169,8 +169,8 @@
     </section>
 
     <section v-else class="showcase-empty">
-      <h3>未找到成果详情</h3>
-      <p>当前路由引用的成果 slug 为 <code>{{ slug }}</code>，但生成数据中没有对应项目。</p>
+      <h3>未找到案例详情</h3>
+      <p>当前路由引用的案例 slug 为 <code>{{ slug }}</code>，但生成数据中没有对应项目。</p>
     </section>
   </main>
 </template>
@@ -191,12 +191,12 @@ const presentationDialog = ref<HTMLElement | null>(null);
 const styleSpecCopyState = ref<'idle' | 'copied' | 'failed'>('idle');
 let styleSpecCopyTimer: ReturnType<typeof window.setTimeout> | undefined;
 
-/** 根据路由占位页传入的 slug 查找成果详情数据。 */
+/** 根据路由占位页传入的 slug 查找案例详情数据。 */
 const showcase = computed<ShowcaseDetail | undefined>(() => (
   showcases.find((item) => item.slug === props.slug)
 ));
 
-/** 当前展示的截图，切换成果时会自动回到第一张。 */
+/** 当前展示的截图，切换案例时会自动回到第一张。 */
 const activeSlide = computed<ShowcaseSlide | undefined>(() => (
   showcase.value?.slides[activeSlideIndex.value]
 ));
@@ -347,9 +347,9 @@ function showNextSlide(): void {
   activeSlideIndex.value = (activeSlideIndex.value + 1) % showcase.value.slides.length;
 }
 
-/** 格式化成果简介，缺失时给出详情页可读的兜底文案。 */
+/** 格式化案例简介，缺失时给出详情页可读的兜底文案。 */
 function formatDetailSummary(value: string): string {
-  return value || '该成果由 Web-Presentation 项目模板包生成，包含可复用页面、主题配置、截图资源和下载产物。';
+  return value || '该案例由 Web-Presentation 项目模板包生成，包含可复用页面、主题配置、截图资源和下载产物。';
 }
 
 /** 格式化项目页面尺寸和宽高比。 */

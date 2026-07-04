@@ -1,5 +1,5 @@
 /**
- * 文件功能：渲染 Web-Presentation-site 的页面入口、成果详情页和组件数据模块。
+ * 文件功能：渲染 Web-Presentation-site 的页面入口、案例详情页和组件数据模块。
  */
 import { sourceRef, sourceRepo } from './site-utils.mjs';
 
@@ -16,11 +16,11 @@ lastUpdated: false
 `;
 }
 
-/** 渲染成果展示路由入口；主体布局由 VitePress 主题中的 ShowcasesPage 组件负责。 */
+/** 渲染案例展示路由入口；主体布局由 VitePress 主题中的 ShowcasesPage 组件负责。 */
 export function renderShowcasesPage() {
   return `---
 layout: home
-title: 成果展示
+title: 案例展示
 editLink: false
 lastUpdated: false
 ---
@@ -29,10 +29,10 @@ lastUpdated: false
 `;
 }
 
-/** 渲染成果列表数据模块，供 Vue 组件直接消费。 */
+/** 渲染案例列表数据模块，供 Vue 组件直接消费。 */
 export function renderShowcasesData(showcases) {
   return `/**
- * 文件功能：由 sync-docs 自动生成的成果展示组件数据。
+ * 文件功能：由 sync-docs 自动生成的案例展示组件数据。
  */
 export interface ShowcaseDetail {
   slug: string;
@@ -85,10 +85,10 @@ export const sourceMeta: SourceMeta = ${JSON.stringify({
 `;
 }
 
-/** 渲染轻量成果摘要数据模块，供首页和成果列表使用。 */
+/** 渲染轻量案例摘要数据模块，供首页和案例列表使用。 */
 export function renderShowcaseSummariesData(showcases) {
   return `/**
- * 文件功能：由 sync-docs 自动生成的成果展示摘要数据。
+ * 文件功能：由 sync-docs 自动生成的案例展示摘要数据。
  */
 export interface ShowcaseSummary {
   slug: string;
@@ -128,7 +128,7 @@ export const sourceMeta: SourceMeta = ${JSON.stringify({
 `;
 }
 
-/** 渲染单个成果详情页。 */
+/** 渲染单个案例详情页。 */
 export function renderShowcaseDetailPage(showcase) {
   return `---
 layout: home
@@ -141,7 +141,7 @@ lastUpdated: false
 `;
 }
 
-/** 序列化详情页需要的完整成果数据。 */
+/** 序列化详情页需要的完整案例数据。 */
 function serializeShowcaseDetail(showcase) {
   return {
     slug: showcase.slug,
@@ -177,7 +177,7 @@ function serializeShowcaseDetail(showcase) {
   };
 }
 
-/** 序列化首页和列表页需要的轻量成果摘要。 */
+/** 序列化首页和列表页需要的轻量案例摘要。 */
 function serializeShowcaseSummary(showcase) {
   return {
     slug: showcase.slug,
@@ -217,12 +217,12 @@ function escapeAttribute(value) {
   return escapeHtml(value).replace(/`/g, '&#96;');
 }
 
-/** 构建成果详情页根路径，运行时由 withBase 补站点 base。 */
+/** 构建案例详情页根路径，运行时由 withBase 补站点 base。 */
 function buildShowcaseDetailPath(showcase) {
   return `/showcases/${encodePathSegment(showcase.slug)}.html`;
 }
 
-/** 构建 public 目录中的成果资源路径，运行时由 withBase 补站点 base。 */
+/** 构建 public 目录中的案例资源路径，运行时由 withBase 补站点 base。 */
 function buildPublicAssetPath(showcase, fileName) {
   return `/showcases/${encodePathSegment(showcase.slug)}/${encodePathSegment(fileName)}`;
 }

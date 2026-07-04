@@ -1,4 +1,4 @@
-<!-- 文件功能：渲染 Web-Presentation 站点首页的产品介绍和精选成果。 -->
+<!-- 文件功能：渲染 Web-Presentation 站点首页的产品介绍和精选案例。 -->
 <template>
   <main class="site-page home-page" aria-label="Web-Presentation 首页">
     <section class="home-hero" aria-label="平台宣传">
@@ -11,7 +11,7 @@
         </p>
         <div class="home-hero-actions" aria-label="首页操作">
           <a class="home-hero-action home-hero-action-primary" :href="siteUrl('/docs/user/demo-guide.html')">在线 Demo</a>
-          <a class="home-hero-action" :href="siteUrl('/showcases.html')">查看成果</a>
+          <a class="home-hero-action" :href="siteUrl('/showcases.html')">查看案例</a>
           <a class="home-hero-action" :href="githubUrl" target="_blank" rel="noreferrer">GitHub</a>
         </div>
         <div class="home-hero-badges" aria-label="平台亮点">
@@ -75,20 +75,20 @@
       </div>
     </section>
 
-    <section class="home-section home-showcase-section" aria-label="精选成果">
+    <section class="home-section home-showcase-section" aria-label="精选案例">
       <div class="home-section-heading home-section-heading-inline">
         <div>
           <p class="home-eyebrow">Showcases</p>
           <h2>平台真实生成的模板案例</h2>
         </div>
-        <a class="home-section-link" :href="siteUrl('/showcases.html')">查看全部成果</a>
+        <a class="home-section-link" :href="siteUrl('/showcases.html')">查看全部案例</a>
       </div>
       <div v-if="featuredShowcases.length > 0" class="home-showcase-grid">
         <ShowcaseCard v-for="showcase in featuredShowcases" :key="showcase.slug" :showcase="showcase" />
       </div>
       <div v-else class="showcase-empty">
         <h3>还没有可展示的项目模板包</h3>
-        <p>将 <code>.wptemplate.zip</code> 放入 <code>site/showcases/</code> 后，同步脚本会自动生成成果卡片、封面和下载链接。</p>
+        <p>将 <code>.wptemplate.zip</code> 放入 <code>site/showcases/</code> 后，同步脚本会自动生成案例卡片、封面和下载链接。</p>
       </div>
     </section>
 
@@ -182,7 +182,7 @@ const developerLinks = [
   { title: '部署指南', summary: '了解自有环境部署方式', href: siteUrl('/docs/developer/deployment-guide.html') },
 ];
 
-/** 首页精选成果优先取 featured，缺省时按生成脚本排序取前三个。 */
+/** 首页精选案例优先取 featured，缺省时按生成脚本排序取前三个。 */
 const featuredShowcases = computed(() => {
   const featured = showcaseSummaries.filter((showcase) => showcase.featured);
   return (featured.length > 0 ? featured : showcaseSummaries).slice(0, showcasedCount);
