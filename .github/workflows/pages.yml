@@ -10,6 +10,7 @@ on:
     - cron: '0 19 * * *'
 
 permissions:
+  actions: read
   contents: read
   pages: write
   id-token: write
@@ -29,10 +30,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout site
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Checkout source docs
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: ${{ env.SOURCE_REPO }}
           ref: ${{ env.SOURCE_REF }}
@@ -40,12 +41,12 @@ jobs:
           submodules: recursive
 
       - name: Setup pnpm
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v6
         with:
           version: 10.30.3
 
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: 22
           cache: pnpm
@@ -64,10 +65,10 @@ jobs:
         run: pnpm run build
 
       - name: Configure Pages
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@v6
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: site/.vitepress/dist
 
@@ -80,4 +81,4 @@ jobs:
     steps:
       - name: Deploy Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
