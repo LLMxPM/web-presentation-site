@@ -1,5 +1,5 @@
 /**
- * 文件功能：配置 web-presentation-site 的 VitePress 构建、导航、搜索和 GitHub Pages base。
+ * 文件功能：配置 Web-Presentation-site 的 VitePress 构建、导航、搜索和 GitHub Pages base。
  */
 import { defineConfig } from 'vitepress';
 import { generatedNav, generatedSidebar } from '../.generated/vitepress-data';
@@ -14,7 +14,7 @@ const siteBase = normalizeBase(process.env.SITE_BASE || '/web-presentation-site/
 
 export default defineConfig({
   lang: 'zh-CN',
-  title: 'web-presentation',
+  title: 'Web-Presentation',
   description: 'AI 演示文稿创作平台项目主页与文档中心',
   base: siteBase,
   srcDir: '.generated',
@@ -28,20 +28,24 @@ export default defineConfig({
       provider: 'local',
     },
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/LLMxPM/web-presentation' },
+      { icon: 'github', link: 'https://github.com/LLMxPM/Web-Presentation' },
     ],
     editLink: {
       pattern: ({ filePath }) => {
-        const sourcePath = filePath === 'index.md' || filePath === 'project-readme.md'
-          ? 'README.md'
-          : filePath;
-        return `https://github.com/LLMxPM/web-presentation/edit/main/${sourcePath}`;
+        let sourcePath = filePath;
+        if (filePath === 'index.md' || filePath === 'project-readme.md') {
+          sourcePath = 'README.md';
+        } else if (filePath === 'docs/index.md') {
+          sourcePath = 'docs/README.md';
+        } else if (filePath.startsWith('docs/') && filePath.endsWith('/index.md')) {
+          sourcePath = `${filePath.slice(0, -'index.md'.length)}README.md`;
+        }
+        return `https://github.com/LLMxPM/Web-Presentation/edit/main/${sourcePath}`;
       },
       text: '在 GitHub 上编辑此页',
     },
     footer: {
-      message: '由 web-presentation 源文档自动生成',
-      copyright: 'Copyright © LLMxPM',
+      copyright: '© 2026 LLMxPM · Web-Presentation',
     },
   },
 });

@@ -1,6 +1,9 @@
 name: pages
 
 on:
+  push:
+    branches:
+      - master
   workflow_dispatch:
   schedule:
     # 每天 03:00（Asia/Shanghai）拉取源仓文档并重建站点。
@@ -16,9 +19,9 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  SOURCE_REPO: ${{ vars.SOURCE_REPO || 'LLMxPM/web-presentation' }}
+  SOURCE_REPO: ${{ vars.SOURCE_REPO || 'LLMxPM/Web-Presentation' }}
   SOURCE_REF: ${{ vars.SOURCE_REF || 'main' }}
-  SOURCE_REPO_PATH: .source/web-presentation
+  SOURCE_REPO_PATH: .source/Web-Presentation
   SITE_BASE: ${{ vars.SITE_BASE || '/web-presentation-site/' }}
 
 jobs:
