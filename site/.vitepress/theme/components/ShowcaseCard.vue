@@ -1,4 +1,4 @@
-<!-- 文件功能：渲染首页和成果展示页复用的成果卡片。 -->
+<!-- 文件功能：渲染首页和案例展示页复用的案例卡片。 -->
 <template>
   <article class="showcase-card" :class="{ 'showcase-card-featured': showcase.featured }">
     <a class="showcase-card-link" :href="siteUrl(showcase.detailPath)">
@@ -12,7 +12,7 @@
           <span v-if="showcase.featured">精选</span>
         </span>
         <span class="showcase-card-summary">{{ formatSummary(showcase.summary) }}</span>
-        <span class="showcase-card-meta" aria-label="成果关键数据">
+        <span class="showcase-card-meta" aria-label="案例关键数据">
           <span>
             <strong>{{ showcase.pageCount || '未标注' }}</strong>
             <small>页面</small>
