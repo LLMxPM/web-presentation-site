@@ -18,6 +18,7 @@ export default defineConfig({
   description: 'AI 演示文稿创作平台项目主页与文档中心',
   base: siteBase,
   srcDir: '.generated',
+  head: [['link', { rel: 'icon', type: 'image/svg+xml', href: `${siteBase}favicon.svg` }]],
   ignoreDeadLinks: true,
   lastUpdated: true,
   cleanUrls: false,
