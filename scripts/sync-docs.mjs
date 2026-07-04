@@ -1,8 +1,16 @@
 /**
- * 文件功能：从 web-presentation 同步 Markdown 文档和资源，并生成 VitePress 导航数据。
+ * 文件功能：从 Web-Presentation 同步 Markdown 文档和资源，并生成 VitePress 导航数据。
  */
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import {
+  renderHomePage,
+  renderShowcaseSummariesData,
+  renderShowcaseDetailPage,
+  renderShowcasesData,
+  renderShowcasesPage,
+} from './shared/page-renderers.mjs';
+import { scanShowcases } from './shared/showcase-scanner.mjs';
 import {
   collectMarkdownLinks,
   generatedRelativeForSource,
@@ -17,8 +25,6 @@ import {
   safeDecodePathname,
   siteRoot,
   sortDocsByReadmeOrder,
-  sourceRef,
-  sourceRepo,
   splitHref,
   titleFromFile,
   toPosix,
@@ -83,6 +89,16 @@ async function syncAssets(sourceRoot) {
 
   await fs.mkdir(generatedAssets, { recursive: true });
   await fs.mkdir(publicAssets, { recursive: true });
+}
+
+/** 同步站点自有 public 资源，避免 srcDir 指向 .generated 后丢失静态文件。 */
+async function syncSitePublicAssets() {
+  const sitePublic = path.join(siteRoot, 'public');
+  const generatedPublic = path.join(generatedRoot, 'public');
+
+  if (await pathExists(sitePublic)) {
+    await fs.cp(sitePublic, generatedPublic, { recursive: true, force: true });
+  }
 }
 
 /** 生成缺失资源的临时占位文件，避免源仓历史断链阻断 VitePress 构建。 */
@@ -177,7 +193,7 @@ async function writeMissingMarkdownPlaceholders(sourceRoot) {
 function renderMissingMarkdown(sourceRelative) {
   return `# 文档暂缺
 
-源文档 \`${sourceRelative}\` 在当前 \`web-presentation\` 源仓中不存在。
+源文档 \`${sourceRelative}\` 在当前 \`Web-Presentation\` 源仓中不存在。
 
 该页面由站点同步脚本临时生成，用于避免发布后的文档链接返回 404。请在源仓补齐文档后重新同步站点。
 `;
@@ -215,63 +231,29 @@ function escapeXml(value) {
     .replace(/"/g, '&quot;');
 }
 
-/** 生成 VitePress 首页，首页聚合项目定位、关键入口和源 README 摘要。 */
-async function writeHomePage(sourceRoot) {
-  const sourceReadme = await fs.readFile(path.join(sourceRoot, 'README.md'), 'utf8');
-  const summary = sourceReadme
-    .split(/\r?\n/)
-    .find((line) => line.trim() && !line.startsWith('#'))
-    ?.trim() || '面向 AI 演示文稿创作的平台集成仓库。';
+/** 生成 VitePress 首页，首页突出产品能力和精选成果。 */
+async function writeHomePage(showcases) {
+  await fs.writeFile(path.join(generatedRoot, 'index.md'), renderHomePage(showcases), 'utf8');
+}
 
-  const home = `---
-layout: home
-hero:
-  name: web-presentation
-  text: AI 演示文稿创作平台
-  tagline: ${JSON.stringify(summary)}
-  actions:
-    - theme: brand
-      text: 用户快速上手
-      link: /docs/user/getting-started.html
-    - theme: alt
-      text: 平台架构
-      link: /docs/developer/platform-architecture.html
-    - theme: alt
-      text: GitHub
-      link: https://github.com/${sourceRepo}
-features:
-  - title: 平台控制面
-    details: 管理用户、工作空间、项目、页面、资源、组件、主题、样式、AI Agent 和构建产物。
-  - title: 创作工作台
-    details: 面向演示文稿创作，串联页面编辑、资产引用、AI 侧边栏、预览和构建入口。
-  - title: Runtime 能力
-    details: 基于 Vue/Vite 提供页面预览、组件预览、截图、诊断和构建执行链路。
-  - title: 文档自动同步
-    details: 站点构建时扫描源仓文档，自动生成导航、侧边栏和项目主页。
----
+/** 生成成果展示页，内容来自 site/showcases 下的项目模板包。 */
+async function writeShowcasesPage(showcases) {
+  await fs.writeFile(path.join(generatedRoot, 'showcases.md'), renderShowcasesPage(showcases), 'utf8');
+}
 
-<section class="home-visual" aria-label="平台总览">
-  <div>
-    <p class="home-eyebrow">项目文档入口</p>
-    <h2>从产品理解到部署运维的统一入口</h2>
-    <p>用户文档、开发文档和部署说明均来自 <code>web-presentation</code> 源仓，站点只负责解析、组织和发布。</p>
-    <div class="home-links">
-      <a href="./docs/">文档中心</a>
-      <a href="./docs/user/project-status.html">当前状态与路线</a>
-      <a href="./docs/developer/deployment-guide.html">生产部署指南</a>
-      <a href="./project-readme.html">源仓 README</a>
-    </div>
-  </div>
-  <img src="./docs/assets/平台总览.png" alt="web-presentation 平台总览图">
-</section>
+/** 生成成果组件静态数据，供首页、列表页和详情页复用。 */
+async function writeShowcasesData(showcases) {
+  await fs.writeFile(path.join(generatedRoot, 'showcase-summaries.ts'), renderShowcaseSummariesData(showcases), 'utf8');
+  await fs.writeFile(path.join(generatedRoot, 'showcases-data.ts'), renderShowcasesData(showcases), 'utf8');
+}
 
-<section class="home-meta">
-  <span>文档源：${sourceRepo}@${sourceRef}</span>
-  <span>构建目录：site/.generated</span>
-</section>
-`;
-
-  await fs.writeFile(path.join(generatedRoot, 'index.md'), home, 'utf8');
+/** 生成每个成果的详情页，承载截图轮播、配置详情和下载入口。 */
+async function writeShowcaseDetailPages(showcases) {
+  for (const showcase of showcases) {
+    const detailPath = path.join(generatedRoot, 'showcases', `${showcase.slug}.md`);
+    await fs.mkdir(path.dirname(detailPath), { recursive: true });
+    await fs.writeFile(detailPath, renderShowcaseDetailPage(showcase), 'utf8');
+  }
 }
 
 /** 构建单个文档分区的侧边栏，按目录自动生成二级分组。 */
@@ -319,10 +301,10 @@ async function writeVitePressData(docs) {
   const data = {
     nav: [
       { text: '首页', link: '/' },
+      { text: '成果展示', link: '/showcases.html' },
       { text: '用户文档', link: firstUserDoc?.route || '/docs/' },
       { text: '开发文档', link: firstDeveloperDoc?.route || '/docs/' },
       { text: '文档中心', link: '/docs/' },
-      { text: 'GitHub', link: `https://github.com/${sourceRepo}` },
     ],
     sidebar: {
       '/docs/user/': buildSectionSidebar(docs, 'docs/user/', '用户文档'),
@@ -354,13 +336,18 @@ async function main() {
   await fs.rm(generatedRoot, { recursive: true, force: true });
   await fs.mkdir(generatedRoot, { recursive: true });
   await syncAssets(sourceRoot);
+  await syncSitePublicAssets();
+  const showcases = await scanShowcases();
+  await writeShowcasesData(showcases);
   await writeMissingAssetPlaceholders(sourceRoot);
   const docs = await syncMarkdownFiles(sourceRoot);
   await writeMissingMarkdownPlaceholders(sourceRoot);
-  await writeHomePage(sourceRoot);
+  await writeHomePage(showcases);
+  await writeShowcasesPage(showcases);
+  await writeShowcaseDetailPages(showcases);
   await writeVitePressData(docs);
 
-  console.log(`已同步 ${docs.length} 篇文档：${toPosix(path.relative(siteRoot, generatedRoot))}`);
+  console.log(`已同步 ${docs.length} 篇文档、${showcases.length} 个成果：${toPosix(path.relative(siteRoot, generatedRoot))}`);
 }
 
 main().catch((error) => {

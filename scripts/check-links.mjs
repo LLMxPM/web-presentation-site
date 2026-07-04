@@ -1,5 +1,5 @@
 /**
- * 文件功能：检查 web-presentation 源文档中的本地 Markdown 链接和资源引用。
+ * 文件功能：检查 Web-Presentation 源文档中的本地 Markdown 链接和资源引用。
  */
 import fs from 'node:fs/promises';
 import path from 'node:path';

@@ -10,7 +10,7 @@ const currentFile = fileURLToPath(import.meta.url);
 export const projectRoot = path.resolve(path.dirname(currentFile), '..', '..');
 export const siteRoot = path.join(projectRoot, 'site');
 export const generatedRoot = path.join(siteRoot, '.generated');
-export const sourceRepo = process.env.SOURCE_REPO || 'LLMxPM/web-presentation';
+export const sourceRepo = process.env.SOURCE_REPO || 'LLMxPM/Web-Presentation';
 export const sourceRef = process.env.SOURCE_REF || 'main';
 
 /** 将系统路径统一为 URL 和 VitePress 配置使用的 POSIX 路径。 */
@@ -28,13 +28,13 @@ export async function pathExists(targetPath) {
   }
 }
 
-/** 解析源项目目录；本地默认读取同级 web-presentation，CI 可显式传入路径。 */
+/** 解析源项目目录；本地默认读取同级 Web-Presentation，CI 可显式传入路径。 */
 export function resolveSourceRoot() {
   if (process.env.SOURCE_REPO_PATH) {
     return path.resolve(projectRoot, process.env.SOURCE_REPO_PATH);
   }
 
-  return path.resolve(projectRoot, '..', 'web-presentation');
+  return path.resolve(projectRoot, '..', 'Web-Presentation');
 }
 
 /** 递归列出目录中的全部文件；输入目录不存在时返回空数组。 */
@@ -118,7 +118,16 @@ export function routeForSourceMarkdown(sourceRelativePath) {
 /** 将源仓 Markdown 相对路径映射为生成目录内的文件路径。 */
 export function generatedRelativeForSource(sourceRelativePath) {
   const sourcePath = toPosix(sourceRelativePath);
-  return sourcePath === 'README.md' ? 'project-readme.md' : sourcePath;
+
+  if (sourcePath === 'README.md') {
+    return 'project-readme.md';
+  }
+
+  if (sourcePath.startsWith('docs/') && sourcePath.endsWith('/README.md')) {
+    return `${sourcePath.slice(0, -'README.md'.length)}index.md`;
+  }
+
+  return sourcePath;
 }
 
 /** 生成指向源仓文件的 GitHub URL，用于无法纳入站点路由的内部链接。 */
