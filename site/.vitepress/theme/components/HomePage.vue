@@ -79,7 +79,7 @@
       <div class="home-section-heading home-section-heading-inline">
         <div>
           <p class="home-eyebrow">Showcases</p>
-          <h2>平台真实生成的模板案例</h2>
+          <h2>平台真实案例</h2>
         </div>
         <a class="home-section-link" :href="siteUrl('/showcases.html')">查看全部案例</a>
       </div>

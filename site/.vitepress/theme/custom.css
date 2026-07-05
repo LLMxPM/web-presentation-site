@@ -9,6 +9,12 @@
   --vp-home-hero-name-color: #0f766e;
   --vp-button-brand-bg: #0f766e;
   --vp-button-brand-hover-bg: #115e59;
+  --site-home-content-width: 1120px;
+  --site-home-hero-width: 1180px;
+  --site-home-section-gap: 34px;
+  --site-showcase-content-width: 1180px;
+  --site-page-padding-top: 48px;
+  --site-page-padding-bottom: 48px;
 }
 
 .dark {
@@ -16,6 +22,10 @@
   --vp-c-brand-2: #2dd4bf;
   --vp-c-brand-3: #14b8a6;
   --vp-c-brand-soft: rgba(45, 212, 191, 0.16);
+}
+
+.VPHome.VPHome {
+  margin-bottom: 0;
 }
 
 .VPHome .main {
@@ -35,7 +45,7 @@
 }
 
 .home-page {
-  padding: 44px 24px 72px;
+  padding: var(--site-page-padding-top) 0 var(--site-page-padding-bottom);
 }
 
 .home-hero {
@@ -48,7 +58,7 @@
   display: flex;
   align-items: center;
   min-height: 460px;
-  max-width: 1180px;
+  max-width: var(--site-home-hero-width);
   margin: 0 auto;
   overflow: hidden;
   padding: 56px 64px;
@@ -270,8 +280,8 @@
   grid-template-columns: minmax(0, 0.92fr) minmax(320px, 1.08fr);
   gap: 32px;
   align-items: center;
-  margin: 34px auto 0;
-  max-width: 1120px;
+  max-width: var(--site-home-content-width);
+  margin: var(--site-home-section-gap) auto 0;
   padding: 32px;
   border: 1px solid var(--vp-c-divider);
   border-radius: 8px;
@@ -356,9 +366,8 @@
 }
 
 .home-section {
-  margin: 34px auto 0;
-  max-width: 1120px;
-  padding: 0 8px;
+  max-width: var(--site-home-content-width);
+  margin: var(--site-home-section-gap) auto 0;
 }
 
 .home-section-heading {
@@ -378,9 +387,15 @@
   align-items: end;
 }
 
+.home-section-heading-inline > div {
+  min-width: 0;
+}
+
 .home-section-link {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
   min-height: 36px;
   padding: 0 13px;
   border: 1px solid var(--vp-c-divider);
@@ -391,6 +406,9 @@
   text-decoration: none;
   background: var(--vp-c-bg);
   white-space: nowrap;
+  word-break: keep-all;
+  overflow-wrap: normal;
+  margin-bottom: 10px;
 }
 
 .home-section-link:hover {
@@ -495,8 +513,8 @@
   grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1.1fr);
   gap: 24px;
   align-items: start;
-  max-width: 1120px;
-  margin: 34px auto 0;
+  max-width: var(--site-home-content-width);
+  margin: var(--site-home-section-gap) auto 0;
   padding: 24px;
   border: 1px solid var(--vp-c-divider);
   border-radius: 8px;
@@ -760,9 +778,9 @@
 }
 
 .showcase-page {
-  max-width: 1120px;
+  max-width: var(--site-showcase-content-width);
   margin: 0 auto;
-  padding: 54px 24px 72px;
+  padding: var(--site-page-padding-top) 0 var(--site-page-padding-bottom);
 }
 
 .showcase-page-heading {
@@ -780,9 +798,9 @@
 }
 
 .showcase-detail-page {
-  max-width: 1120px;
+  max-width: var(--site-showcase-content-width);
   margin: 0 auto;
-  padding: 44px 24px 72px;
+  padding: var(--site-page-padding-top) 0 var(--site-page-padding-bottom);
 }
 
 .showcase-back-link {
@@ -1171,8 +1189,15 @@
 }
 
 @media (max-width: 860px) {
-  .home-page {
-    padding: 32px 18px 56px;
+  :root {
+    --site-home-section-gap: 28px;
+    --site-page-padding-top: 34px;
+    --site-page-padding-bottom: 32px;
+  }
+
+  .home-section {
+    padding-right: 0;
+    padding-left: 0;
   }
 
   .home-hero-copy h1 {
@@ -1238,12 +1263,8 @@
   }
 
   .home-section-heading-inline {
-    align-items: start;
-    flex-direction: column;
-  }
-
-  .showcase-page {
-    padding: 38px 18px 56px;
+    align-items: end;
+    gap: 12px;
   }
 
   .showcase-page-heading p {
@@ -1253,10 +1274,6 @@
   .showcase-page-heading h1,
   .showcase-detail-hero h1 {
     font-size: 32px;
-  }
-
-  .showcase-detail-page {
-    padding: 34px 18px 56px;
   }
 
   .showcase-carousel-wrap {
@@ -1282,9 +1299,15 @@
 }
 
 @media (max-width: 520px) {
+  :root {
+    --site-home-section-gap: 24px;
+    --site-page-padding-top: 26px;
+    --site-page-padding-bottom: 18px;
+  }
+
   .home-hero {
     min-height: 0;
-    padding: 28px 22px;
+    padding: 26px 18px;
   }
 
   .home-hero::before {
@@ -1339,7 +1362,7 @@
 
   .home-product-band {
     margin-top: 20px;
-    padding: 18px;
+    padding: 16px;
   }
 
   .home-scenario-grid {

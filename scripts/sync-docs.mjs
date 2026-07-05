@@ -319,7 +319,6 @@ async function writeVitePressData(docs, readmeOrders) {
       { text: '案例展示', link: '/showcases.html' },
       { text: '用户文档', link: firstUserDoc?.route || '/docs/' },
       { text: '开发文档', link: firstDeveloperDoc?.route || '/docs/' },
-      { text: '文档中心', link: '/docs/' },
     ],
     sidebar: {
       '/docs/user/': buildSectionSidebar(docs, 'docs/user/', '用户文档', readmeOrders),
