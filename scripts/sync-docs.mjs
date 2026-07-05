@@ -12,11 +12,13 @@ import {
 } from './shared/page-renderers.mjs';
 import { scanShowcases } from './shared/showcase-scanner.mjs';
 import {
+  collectReadmeOrders,
   collectMarkdownLinks,
   generatedRelativeForSource,
   generatedRoot,
   getMarkdownTitle,
   isExternalHref,
+  isReadmeMarkdown,
   listFiles,
   pathExists,
   resolveSourceRoot,
@@ -24,6 +26,7 @@ import {
   routeForSourceMarkdown,
   safeDecodePathname,
   siteRoot,
+  sortDocsByDirectoryReadme,
   sortDocsByReadmeOrder,
   splitHref,
   titleFromFile,
@@ -46,7 +49,6 @@ async function syncMarkdownFiles(sourceRoot) {
   const markdownFiles = sourceFiles.filter((filePath) => filePath.toLowerCase().endsWith('.md'));
   const rootReadmePath = path.join(sourceRoot, 'README.md');
   const allMarkdownFiles = [rootReadmePath, ...markdownFiles];
-  const docsReadmeContent = await fs.readFile(path.join(sourceRoot, 'docs', 'README.md'), 'utf8');
   const docs = [];
 
   for (const sourceFilePath of allMarkdownFiles) {
@@ -68,7 +70,12 @@ async function syncMarkdownFiles(sourceRoot) {
     }
   }
 
-  return sortDocsByReadmeOrder(docs, docsReadmeContent, sourceRoot);
+  const readmeOrders = await collectReadmeOrders(docs, sourceRoot);
+
+  return {
+    docs: sortDocsByReadmeOrder(docs, readmeOrders),
+    readmeOrders,
+  };
 }
 
 /** 复制文档资源目录；资源不存在时创建空目录，保证相对路径稳定。 */
@@ -257,9 +264,9 @@ async function writeShowcaseDetailPages(showcases) {
 }
 
 /** 构建单个文档分区的侧边栏，按目录自动生成二级分组。 */
-function buildSectionSidebar(docs, basePrefix, sectionTitle) {
+function buildSectionSidebar(docs, basePrefix, sectionTitle, readmeOrders) {
   const sectionDocs = docs.filter((doc) => doc.sourceRelative.startsWith(basePrefix));
-  const topItems = [];
+  const topDocs = [];
   const nestedGroups = new Map();
 
   for (const doc of sectionDocs) {
@@ -267,7 +274,7 @@ function buildSectionSidebar(docs, basePrefix, sectionTitle) {
     const parts = rest.split('/');
 
     if (parts.length === 1) {
-      topItems.push({ text: doc.title, link: doc.route });
+      topDocs.push(doc);
       continue;
     }
 
@@ -278,10 +285,18 @@ function buildSectionSidebar(docs, basePrefix, sectionTitle) {
     nestedGroups.get(groupName).push(doc);
   }
 
+  const baseDirectory = basePrefix.replace(/\/$/, '');
+  const topItems = sortDocsByDirectoryReadme(topDocs, baseDirectory, readmeOrders)
+    .map((doc) => ({ text: doc.title, link: doc.route }));
+
   const groupItems = [...nestedGroups.entries()].map(([groupName, groupDocs]) => {
-    const readme = groupDocs.find((doc) => doc.sourceRelative.endsWith('/README.md'));
-    const children = groupDocs
-      .filter((doc) => doc !== readme)
+    const readme = groupDocs.find((doc) => isReadmeMarkdown(doc.sourceRelative));
+    const groupDirectory = `${basePrefix}${groupName}`;
+    const children = sortDocsByDirectoryReadme(
+      groupDocs.filter((doc) => doc !== readme),
+      groupDirectory,
+      readmeOrders,
+    )
       .map((doc) => ({ text: doc.title, link: doc.route }));
 
     return {
@@ -295,7 +310,7 @@ function buildSectionSidebar(docs, basePrefix, sectionTitle) {
 }
 
 /** 生成导航与侧边栏配置模块，供 VitePress config 直接导入。 */
-async function writeVitePressData(docs) {
+async function writeVitePressData(docs, readmeOrders) {
   const firstUserDoc = docs.find((doc) => doc.sourceRelative.startsWith('docs/user/'));
   const firstDeveloperDoc = docs.find((doc) => doc.sourceRelative.startsWith('docs/developer/'));
   const data = {
@@ -307,11 +322,11 @@ async function writeVitePressData(docs) {
       { text: '文档中心', link: '/docs/' },
     ],
     sidebar: {
-      '/docs/user/': buildSectionSidebar(docs, 'docs/user/', '用户文档'),
-      '/docs/developer/': buildSectionSidebar(docs, 'docs/developer/', '开发文档'),
+      '/docs/user/': buildSectionSidebar(docs, 'docs/user/', '用户文档', readmeOrders),
+      '/docs/developer/': buildSectionSidebar(docs, 'docs/developer/', '开发文档', readmeOrders),
       '/docs/': [
-        ...buildSectionSidebar(docs, 'docs/user/', '用户文档'),
-        ...buildSectionSidebar(docs, 'docs/developer/', '开发文档'),
+        ...buildSectionSidebar(docs, 'docs/user/', '用户文档', readmeOrders),
+        ...buildSectionSidebar(docs, 'docs/developer/', '开发文档', readmeOrders),
       ],
     },
   };
@@ -340,12 +355,12 @@ async function main() {
   const showcases = await scanShowcases();
   await writeShowcasesData(showcases);
   await writeMissingAssetPlaceholders(sourceRoot);
-  const docs = await syncMarkdownFiles(sourceRoot);
+  const { docs, readmeOrders } = await syncMarkdownFiles(sourceRoot);
   await writeMissingMarkdownPlaceholders(sourceRoot);
   await writeHomePage(showcases);
   await writeShowcasesPage(showcases);
   await writeShowcaseDetailPages(showcases);
-  await writeVitePressData(docs);
+  await writeVitePressData(docs, readmeOrders);
 
   console.log(`已同步 ${docs.length} 篇文档、${showcases.length} 个案例：${toPosix(path.relative(siteRoot, generatedRoot))}`);
 }

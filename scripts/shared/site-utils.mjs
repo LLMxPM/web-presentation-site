@@ -69,6 +69,16 @@ export function titleFromFile(filePath) {
     .replace(/\b\w/g, (char) => char.toUpperCase());
 }
 
+/** 判断 Markdown 是否为目录入口 README，大小写不敏感。 */
+export function isReadmeMarkdown(sourceRelativePath) {
+  return path.posix.basename(toPosix(sourceRelativePath)).toLowerCase() === 'readme.md';
+}
+
+/** 获取 POSIX 相对路径的目录部分，避免 Windows 分隔符影响站点路径判断。 */
+function dirnamePosix(sourceRelativePath) {
+  return path.posix.dirname(toPosix(sourceRelativePath));
+}
+
 /** 判断链接是否为站外协议链接，避免误处理 http、mailto、data 等 URL。 */
 export function isExternalHref(href) {
   return /^[a-z][a-z0-9+.-]*:/i.test(href) || href.startsWith('//');
@@ -104,12 +114,12 @@ export function safeDecodePathname(pathname) {
 export function routeForSourceMarkdown(sourceRelativePath) {
   const sourcePath = toPosix(sourceRelativePath);
 
-  if (sourcePath === 'README.md') {
+  if (sourcePath.toLowerCase() === 'readme.md') {
     return '/project-readme.html';
   }
 
-  if (sourcePath.endsWith('/README.md')) {
-    return `/${sourcePath.slice(0, -'README.md'.length)}`;
+  if (isReadmeMarkdown(sourcePath)) {
+    return `/${sourcePath.slice(0, sourcePath.lastIndexOf('/') + 1)}`;
   }
 
   return `/${sourcePath.replace(/\.md$/i, '.html')}`;
@@ -119,12 +129,12 @@ export function routeForSourceMarkdown(sourceRelativePath) {
 export function generatedRelativeForSource(sourceRelativePath) {
   const sourcePath = toPosix(sourceRelativePath);
 
-  if (sourcePath === 'README.md') {
+  if (sourcePath.toLowerCase() === 'readme.md') {
     return 'project-readme.md';
   }
 
-  if (sourcePath.startsWith('docs/') && sourcePath.endsWith('/README.md')) {
-    return `${sourcePath.slice(0, -'README.md'.length)}index.md`;
+  if (sourcePath.startsWith('docs/') && isReadmeMarkdown(sourcePath)) {
+    return `${sourcePath.slice(0, sourcePath.lastIndexOf('/') + 1)}index.md`;
   }
 
   return sourcePath;
@@ -177,12 +187,17 @@ export function rewriteMarkdownLinks(content, sourceFilePath, sourceRoot) {
   });
 }
 
-/** 按文档中心中的链接顺序排序；没有显式出现的文档按路径排序。 */
-export function sortDocsByReadmeOrder(docs, docsReadmeContent, sourceRoot) {
+/** 解析 README 内的 Markdown 链接顺序，输出以源仓相对路径为 key 的排序表。 */
+async function readReadmeOrder({ readmeDoc, sourceRoot, canonicalPathByLower }) {
+  const readmePath = path.join(sourceRoot, readmeDoc.sourceRelative);
+  const readmeContent = await fs.readFile(readmePath, 'utf8');
   const order = new Map();
-  const readmePath = path.join(sourceRoot, 'docs', 'README.md');
 
-  collectMarkdownLinks(docsReadmeContent).forEach(({ href }, index) => {
+  collectMarkdownLinks(readmeContent).forEach(({ href }, index) => {
+    if (href.startsWith('#') || isExternalHref(href)) {
+      return;
+    }
+
     const { pathname } = splitHref(href);
     if (!pathname.toLowerCase().endsWith('.md')) {
       return;
@@ -190,12 +205,36 @@ export function sortDocsByReadmeOrder(docs, docsReadmeContent, sourceRoot) {
 
     const absolutePath = path.resolve(path.dirname(readmePath), safeDecodePathname(pathname));
     const sourceRelative = toPosix(path.relative(sourceRoot, absolutePath));
-    order.set(sourceRelative, index);
+    const canonicalPath = canonicalPathByLower.get(sourceRelative.toLowerCase()) || sourceRelative;
+
+    order.set(canonicalPath, index);
   });
 
+  return order;
+}
+
+/** 读取所有目录 README 的本地 Markdown 链接顺序，供全局和分组侧边栏复用。 */
+export async function collectReadmeOrders(docs, sourceRoot) {
+  const canonicalPathByLower = new Map(docs.map((doc) => [doc.sourceRelative.toLowerCase(), doc.sourceRelative]));
+  const readmeOrders = new Map();
+
+  for (const doc of docs) {
+    if (!isReadmeMarkdown(doc.sourceRelative)) {
+      continue;
+    }
+
+    const directory = dirnamePosix(doc.sourceRelative);
+    readmeOrders.set(directory, await readReadmeOrder({ readmeDoc: doc, sourceRoot, canonicalPathByLower }));
+  }
+
+  return readmeOrders;
+}
+
+/** 按给定 README 链接顺序排序；没有显式出现的文档按路径排序。 */
+function sortDocsByOrder(docs, order) {
   return [...docs].sort((left, right) => {
-    const leftOrder = order.has(left.sourceRelative) ? order.get(left.sourceRelative) : Number.MAX_SAFE_INTEGER;
-    const rightOrder = order.has(right.sourceRelative) ? order.get(right.sourceRelative) : Number.MAX_SAFE_INTEGER;
+    const leftOrder = order?.has(left.sourceRelative) ? order.get(left.sourceRelative) : Number.MAX_SAFE_INTEGER;
+    const rightOrder = order?.has(right.sourceRelative) ? order.get(right.sourceRelative) : Number.MAX_SAFE_INTEGER;
 
     if (leftOrder !== rightOrder) {
       return leftOrder - rightOrder;
@@ -203,4 +242,14 @@ export function sortDocsByReadmeOrder(docs, docsReadmeContent, sourceRoot) {
 
     return left.sourceRelative.localeCompare(right.sourceRelative, 'zh-CN');
   });
+}
+
+/** 按文档中心 README 链接顺序排序；没有显式出现的文档按路径排序。 */
+export function sortDocsByReadmeOrder(docs, readmeOrders) {
+  return sortDocsByOrder(docs, readmeOrders.get('docs'));
+}
+
+/** 按指定目录 README 链接顺序排序；用于控制侧边栏目录内部子项顺序。 */
+export function sortDocsByDirectoryReadme(docs, directory, readmeOrders) {
+  return sortDocsByOrder(docs, readmeOrders.get(directory));
 }
