@@ -1,6 +1,11 @@
 <!-- 文件功能：渲染案例展示列表页。 -->
 <template>
   <main class="site-page showcase-page" aria-label="案例展示">
+    <a class="showcase-back-link" :href="siteUrl('/')" aria-label="返回首页">
+      <span aria-hidden="true">←</span>
+      返回首页
+    </a>
+
     <section class="showcase-page-hero" aria-label="案例列表概览">
       <div class="showcase-page-heading">
         <p class="home-eyebrow">Showcase library</p>
@@ -27,6 +32,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
+import { withBase } from 'vitepress';
 import { showcaseSummaries } from '../../../.generated/showcase-summaries';
 import ShowcaseCard from './ShowcaseCard.vue';
 
@@ -39,4 +45,9 @@ const statCards = computed(() => {
     { label: '页面总数', value: String(pageTotal) },
   ];
 });
+
+/** 将站内 public 路径转换为带 VitePress base 的可访问 URL。 */
+function siteUrl(path: string): string {
+  return withBase(path);
+}
 </script>

@@ -237,7 +237,7 @@ const styleSpecCopyText = computed(() => {
     return '复制失败';
   }
 
-  return '复制文本';
+  return '复制';
 });
 
 watch(() => props.slug, () => {
