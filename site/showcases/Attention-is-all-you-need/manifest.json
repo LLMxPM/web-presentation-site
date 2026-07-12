@@ -1,77 +1,77 @@
 {
   "package_type": "web-presentation-project-template",
   "schema_version": 1,
-  "exported_at": "2026-07-04T06:17:52.331489+00:00",
+  "exported_at": "2026-07-12T11:04:24.822136+00:00",
   "runtime_kit_manifest_version": "1.0.0",
   "template_path": "metadata/template.json",
   "screenshots_path": "metadata/screenshots.json",
   "project_path": "project/project.json",
   "routes_path": "project/routes.json",
   "page_count": 11,
-  "component_count": 4,
-  "asset_count": 18,
+  "component_count": 5,
+  "asset_count": 33,
   "theme_count": 1,
   "font_count": 0,
   "pages": [
     {
-      "source_page_code": "PG20260630044",
+      "source_page_code": "PG20260709001",
       "title": "Slide 1 · 论文背景与一句话贡献",
       "file_type": "vue"
     },
     {
-      "source_page_code": "PG20260630045",
+      "source_page_code": "PG20260709002",
       "title": "Slide 2 · 为什么要摆脱 RNN/CNN",
       "file_type": "vue"
     },
     {
-      "source_page_code": "PG20260630046",
+      "source_page_code": "PG20260709003",
       "title": "Slide 3 · Transformer 总体结构",
       "file_type": "vue"
     },
     {
-      "source_page_code": "PG20260630047",
+      "source_page_code": "PG20260709004",
       "title": "Slide 4 · Scaled Dot-Product Attention",
       "file_type": "vue"
     },
     {
-      "source_page_code": "PG20260630048",
+      "source_page_code": "PG20260709005",
       "title": "Slide 5 · Multi-Head Attention",
       "file_type": "vue"
     },
     {
-      "source_page_code": "PG20260630049",
+      "source_page_code": "PG20260709006",
       "title": "Slide 6 · 位置编码与位置前馈网络",
       "file_type": "vue"
     },
     {
-      "source_page_code": "PG20260630050",
+      "source_page_code": "PG20260709007",
       "title": "Slide 7 · 为什么 Self-Attention 有效",
       "file_type": "vue"
     },
     {
-      "source_page_code": "PG20260630051",
+      "source_page_code": "PG20260709008",
       "title": "Slide 8 · 训练设置与工程细节",
       "file_type": "vue"
     },
     {
-      "source_page_code": "PG20260630052",
+      "source_page_code": "PG20260709009",
       "title": "Slide 9 · 实验结果与消融分析",
       "file_type": "vue"
     },
     {
-      "source_page_code": "PG20260630053",
+      "source_page_code": "PG20260709010",
       "title": "Slide 10 · 总结、局限与讨论",
       "file_type": "vue"
     },
     {
-      "source_page_code": "PG20260630054",
+      "source_page_code": "PG20260709011",
       "title": "封底 · 感谢聆听",
       "file_type": "vue"
     }
   ],
   "components": [
     {
-      "source_component_code": "CMP20260630001",
+      "source_component_code": "CMP20260709001",
       "source_version_no": 1,
       "name": "学术封面页",
       "import_name": "AcademicCoverPage",
@@ -79,7 +79,7 @@
       "fingerprint_schema_version": 1
     },
     {
-      "source_component_code": "CMP20260630003",
+      "source_component_code": "CMP20260709002",
       "source_version_no": 1,
       "name": "学术内容页模板",
       "import_name": "AcademicContentPage",
@@ -87,7 +87,7 @@
       "fingerprint_schema_version": 1
     },
     {
-      "source_component_code": "CMP20260630002",
+      "source_component_code": "CMP20260709003",
       "source_version_no": 1,
       "name": "三线表",
       "import_name": "ThreeLineTable",
@@ -95,7 +95,15 @@
       "fingerprint_schema_version": 1
     },
     {
-      "source_component_code": "CMP20260630005",
+      "source_component_code": "CMP20260709003",
+      "source_version_no": 2,
+      "name": "三线表",
+      "import_name": "ThreeLineTable",
+      "component_fingerprint": "3678af9c32ac18fa83f4cc49df5eb4d9b01db903339245922b5ff2ccddda76f2",
+      "fingerprint_schema_version": 1
+    },
+    {
+      "source_component_code": "CMP20260709004",
       "source_version_no": 1,
       "name": "学术封底页",
       "import_name": "AcademicBackCoverPage",
@@ -141,6 +149,30 @@
       "file_hash": "6d40a44e2ec3f0cdab207c768a9085b6b908bbefa82c5af6613dc8233bee6a42"
     },
     {
+      "name": "key",
+      "original_name": "key.svg",
+      "asset_type": "icon",
+      "file_hash": "5a81267781bd03dc804b9555b33c7503905150c3ea14d1bc876bc47ea0d1c300"
+    },
+    {
+      "name": "package",
+      "original_name": "package.svg",
+      "asset_type": "icon",
+      "file_hash": "b9bb382838656c713726a48c068e35d6bfd6d68473983c107ec68576e87d3475"
+    },
+    {
+      "name": "search",
+      "original_name": "search.svg",
+      "asset_type": "icon",
+      "file_hash": "fa04e00cf5906c690c25fc97c21a58907170ddf3f3a7752a436518ebb3c19455"
+    },
+    {
+      "name": "warning",
+      "original_name": "warning.svg",
+      "asset_type": "icon",
+      "file_hash": "40ecf68eb2ca7c991d1c219278f6f8c3afa23b56b3dd4184fd0afb925ec7b12c"
+    },
+    {
       "name": "02_multi_head_attention",
       "original_name": "02_multi_head_attention.tex",
       "asset_type": "formula",
@@ -151,6 +183,12 @@
       "original_name": "03_paper_figure_2b_multi_head_attention.png",
       "asset_type": "image",
       "file_hash": "ba8a3ede5d40183ce8c18de249be60bec692646d53db108a3df51797a3c8634a"
+    },
+    {
+      "name": "bar-chart",
+      "original_name": "bar-chart.svg",
+      "asset_type": "icon",
+      "file_hash": "d1108eeaf9b005a951015e31157f33b3b731cf5235fae837fdeac774dbbe9240"
     },
     {
       "name": "03_transformer_block_components",
@@ -165,6 +203,12 @@
       "file_hash": "b6713b33692fc282e879c6f155eb4901dc16f795bca4adc160a8422123ccaa75"
     },
     {
+      "name": "check",
+      "original_name": "check.svg",
+      "asset_type": "icon",
+      "file_hash": "a009753975ebbe6ce2453cf9d3fa21cbec77e22c2c6b25c6c78f89ba582772a9"
+    },
+    {
       "name": "07_appendix_attention_long_distance_dependencies",
       "original_name": "07_appendix_attention_long_distance_dependencies.png",
       "asset_type": "image",
@@ -177,10 +221,64 @@
       "file_hash": "a152a3aa78664c6f46f499052b57a1b4276c4871f89ff7cd3e977950c6570deb"
     },
     {
+      "name": "monitor",
+      "original_name": "monitor.svg",
+      "asset_type": "icon",
+      "file_hash": "416b4ef8a20683dc619fcffe04e06463212d6f2f91c63c6720d197de296fd7ed"
+    },
+    {
+      "name": "pin",
+      "original_name": "pin.svg",
+      "asset_type": "icon",
+      "file_hash": "b7ef9b31f921a2db28023ab62796b3e4004d10f97d7e71b1b5dfaf7e186b45e2"
+    },
+    {
+      "name": "shield",
+      "original_name": "shield.svg",
+      "asset_type": "icon",
+      "file_hash": "d4ea4aadde723fd7780248a533d0e430e2af6cafaf99cd827d72485deee3348b"
+    },
+    {
+      "name": "clipboard",
+      "original_name": "clipboard.svg",
+      "asset_type": "icon",
+      "file_hash": "a8a4f59f519f77034a7f68714acec4098c1559e8e99a40686efa41ec6430a024"
+    },
+    {
+      "name": "trophy",
+      "original_name": "trophy.svg",
+      "asset_type": "icon",
+      "file_hash": "08be1ccbc90edf91f1cd2065c6237412fdc518816b6187d2447b3026684d7ae2"
+    },
+    {
       "name": "10_appendix_attention_sentence_structure_head_a",
       "original_name": "10_appendix_attention_sentence_structure_head_a.png",
       "asset_type": "image",
       "file_hash": "c2f7638704a03618a03c5a66e3d3ec58b80dd0737d30db72c09ac31ec29d03d6"
+    },
+    {
+      "name": "globe",
+      "original_name": "globe.svg",
+      "asset_type": "icon",
+      "file_hash": "032ec1ca640cbb4141ac141f4f738ff6b3cb36c663b6bcb8242ae24948703a06"
+    },
+    {
+      "name": "lightbulb",
+      "original_name": "lightbulb.svg",
+      "asset_type": "icon",
+      "file_hash": "fe69397fe5eb4564f9c5072b2db73cf42dc5ef6ecda0ac665439d4f85180a42c"
+    },
+    {
+      "name": "message-circle",
+      "original_name": "message-circle.svg",
+      "asset_type": "icon",
+      "file_hash": "75d0bbdcec1906d58617f7e05d4c29b4cfe18bdf509416e61cb9a788a027e111"
+    },
+    {
+      "name": "target",
+      "original_name": "target.svg",
+      "asset_type": "icon",
+      "file_hash": "5cb4e2929aeaae0fc79fe213e4c68e4d8f4908f5154c8c89d6c9497315e74424"
     },
     {
       "name": "04_source_component_sequence_attention",

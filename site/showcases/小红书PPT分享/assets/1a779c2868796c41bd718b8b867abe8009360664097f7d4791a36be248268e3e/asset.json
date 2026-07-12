@@ -1,0 +1,18 @@
+{
+  "name": "nuaa_logo",
+  "original_name": "nuaa_logo.png",
+  "asset_type": "image",
+  "content_type": "image/png",
+  "file_size": 15129,
+  "file_hash": "1a779c2868796c41bd718b8b867abe8009360664097f7d4791a36be248268e3e",
+  "description": null,
+  "tags": [],
+  "analysis_metadata": null,
+  "render_metadata": {
+    "schema_version": 1,
+    "kind": "asset_render_hint",
+    "aspect_ratio": "165:46",
+    "aspect_ratio_value": 3.587,
+    "aspect_ratio_source": "auto"
+  }
+}

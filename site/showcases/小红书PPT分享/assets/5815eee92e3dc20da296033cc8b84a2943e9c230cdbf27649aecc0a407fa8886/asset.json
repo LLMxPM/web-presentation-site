@@ -1,0 +1,32 @@
+{
+  "name": "nuaa_logo_c",
+  "original_name": "nuaa_logo_c.png",
+  "asset_type": "icon",
+  "content_type": "image/png",
+  "file_size": 9327,
+  "file_hash": "5815eee92e3dc20da296033cc8b84a2943e9c230cdbf27649aecc0a407fa8886",
+  "description": null,
+  "tags": [],
+  "analysis_metadata": {
+    "schema_version": 1,
+    "kind": "icon",
+    "icon": {
+      "format": "image",
+      "render_mode": "image",
+      "style": "unknown",
+      "inline_safe": false,
+      "stroke_width_editable": false,
+      "analysis_status": "unsupported",
+      "reasons": [
+        "资产不是 SVG，Runtime 将按图片模式渲染。"
+      ]
+    }
+  },
+  "render_metadata": {
+    "schema_version": 1,
+    "kind": "asset_render_hint",
+    "aspect_ratio": "1:1",
+    "aspect_ratio_value": 1.0,
+    "aspect_ratio_source": "auto"
+  }
+}

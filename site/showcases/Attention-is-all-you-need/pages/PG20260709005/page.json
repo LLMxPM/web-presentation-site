@@ -1,0 +1,7 @@
+{
+  "source_page_code": "PG20260709005",
+  "title": "Slide 5 · Multi-Head Attention",
+  "summary": "解释 Multi-Head Attention 的设计动机、base 模型配置和三种使用方式。",
+  "speaker_notes": "单头 attention 会把不同关系平均到一个空间中，多头让模型在不同子空间、不同位置关系上并行关注。\n论文 base 模型：h=8，d_model=512，每头 d_k=d_v=64。\n三种使用方式：encoder self-attention、decoder masked self-attention、encoder-decoder cross-attention。\n多头不是简单扩大算力；由于每头维度降低，总计算量与单头全维度 attention 接近。\n讨论提示：表 3 显示单头比最佳设置低约 0.9 BLEU；过多头也会变差，说明\"头数\"与\"每头维度\"需要平衡。",
+  "file_type": "vue"
+}

@@ -1,7 +1,0 @@
-{
-  "source_page_code": "PG20260630045",
-  "title": "Slide 2 · 为什么要摆脱 RNN/CNN",
-  "summary": "对比 RNN/CNN/Self-Attention 的复杂度、顺序操作数和最大路径长度，解释 Transformer 动机。",
-  "speaker_notes": "RNN 的问题：按时间步递推，训练样本内部难并行，长序列时吞吐受限。\nCNN 的问题：可以并行，但远距离位置交互需要堆叠多层或扩大感受野。\n目标：降低序列计算的顺序依赖，同时缩短任意两个 token 之间的信息路径。\nTransformer 的答案：每层 self-attention 让所有位置直接交互，最大路径长度为常数级。\n变量说明：n：序列长度。d：表示维度。k：卷积核大小。r：restricted self-attention 的局部邻域大小。\n可讲问题：短序列机器翻译中通常 n < d_model，因此 self-attention 的 O(n² d) 可接受；长序列则会成为后续研究的主要瓶颈。",
-  "file_type": "vue"
-}

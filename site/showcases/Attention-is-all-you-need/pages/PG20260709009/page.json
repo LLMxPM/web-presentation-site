@@ -1,0 +1,7 @@
+{
+  "source_page_code": "PG20260709009",
+  "title": "Slide 9 · 实验结果与消融分析",
+  "summary": "展示机器翻译 SOTA 结果和消融实验，强调「更并行、更低成本、质量不降反升」。",
+  "speaker_notes": "WMT 2014 EN-DE：Transformer big 达到 28.4 BLEU，超过当时已报道的最佳模型和 ensemble。\nWMT 2014 EN-FR：Transformer big 为 41.8 BLEU。\n训练成本：Transformer base/big 的 FLOPs 明显低于许多对比系统。\n消融结论：单头性能下降；太多头也可能下降；更大模型通常更好；dropout 对避免过拟合重要；learned positional embedding 与 sinusoidal positional encoding 结果接近。\n泛化实验：4 层 Transformer 在 WSJ constituency parsing 上也有竞争力。\n讲述重点：这页建议不要只报最高 BLEU；更重要的是强调「更并行、更低训练成本、质量不降反升」。",
+  "file_type": "vue"
+}

@@ -1,0 +1,69 @@
+{
+  "props": {
+    "topImage": {
+      "type": "string",
+      "label": "上方截图资源名",
+      "default": "",
+      "placeholder": "输入工作空间图片资源逻辑名"
+    },
+    "bottomImage": {
+      "type": "string",
+      "label": "下方截图资源名",
+      "default": "",
+      "placeholder": "输入工作空间图片资源逻辑名"
+    },
+    "title": {
+      "type": "string",
+      "label": "页面标题",
+      "default": "案例展示",
+      "placeholder": "案例展示"
+    },
+    "topLabel": {
+      "type": "string",
+      "label": "上方截图说明",
+      "default": "",
+      "placeholder": "例如：改版前"
+    },
+    "bottomLabel": {
+      "type": "string",
+      "label": "下方截图说明",
+      "default": "",
+      "placeholder": "例如：改版后"
+    }
+  },
+  "presets": [
+    {
+      "key": "default",
+      "label": "默认展示",
+      "props": {
+        "title": "案例展示",
+        "topImage": "",
+        "bottomImage": "",
+        "topLabel": "方案 A：首页改版",
+        "bottomLabel": "方案 B：详情页优化"
+      }
+    },
+    {
+      "key": "no-title",
+      "label": "无页面标题",
+      "props": {
+        "title": "",
+        "topImage": "",
+        "bottomImage": "",
+        "topLabel": "方案 A",
+        "bottomLabel": "方案 B"
+      }
+    },
+    {
+      "key": "compare",
+      "label": "对比模式",
+      "props": {
+        "title": "效果对比",
+        "topImage": "",
+        "bottomImage": "",
+        "topLabel": "优化前 · 转化率 +12%",
+        "bottomLabel": "优化后 · 转化率 +28%"
+      }
+    }
+  ]
+}

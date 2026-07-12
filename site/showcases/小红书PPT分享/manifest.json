@@ -1,0 +1,184 @@
+{
+  "package_type": "web-presentation-project-template",
+  "schema_version": 1,
+  "exported_at": "2026-07-12T11:02:07.048823+00:00",
+  "runtime_kit_manifest_version": "1.0.0",
+  "template_path": "metadata/template.json",
+  "screenshots_path": "metadata/screenshots.json",
+  "project_path": "project/project.json",
+  "routes_path": "project/routes.json",
+  "page_count": 6,
+  "component_count": 1,
+  "asset_count": 19,
+  "theme_count": 1,
+  "font_count": 0,
+  "pages": [
+    {
+      "source_page_code": "PG20260712006",
+      "title": "封面 · AI生成学术PPT案例展示",
+      "file_type": "vue"
+    },
+    {
+      "source_page_code": "PG20260712007",
+      "title": "展示一",
+      "file_type": "vue"
+    },
+    {
+      "source_page_code": "PG20260712008",
+      "title": "展示二",
+      "file_type": "vue"
+    },
+    {
+      "source_page_code": "PG20260712009",
+      "title": "展示三",
+      "file_type": "vue"
+    },
+    {
+      "source_page_code": "PG20260712010",
+      "title": "展示四",
+      "file_type": "vue"
+    },
+    {
+      "source_page_code": "PG20260712011",
+      "title": "展示五",
+      "file_type": "vue"
+    }
+  ],
+  "components": [
+    {
+      "source_component_code": "CMP20260712001",
+      "source_version_no": 1,
+      "name": "PPT案例展示",
+      "import_name": "PptCaseShowcase",
+      "component_fingerprint": "a2836aa6f18ed89c9f6f64c479c03ef7f8d551a21b062e4eb27d272698d2e192",
+      "fingerprint_schema_version": 1
+    }
+  ],
+  "assets": [
+    {
+      "name": "nuaa_logo_b",
+      "original_name": "nuaa_logo_b.png",
+      "asset_type": "image",
+      "file_hash": "24cabc3b7cc9a61e566555942f8378bb6d9f7c2c8c8731915167faab053ff848"
+    },
+    {
+      "name": "nuaa_logo",
+      "original_name": "nuaa_logo.png",
+      "asset_type": "image",
+      "file_hash": "1a779c2868796c41bd718b8b867abe8009360664097f7d4791a36be248268e3e"
+    },
+    {
+      "name": "nuaa_logo_c",
+      "original_name": "nuaa_logo_c.png",
+      "asset_type": "icon",
+      "file_hash": "5815eee92e3dc20da296033cc8b84a2943e9c230cdbf27649aecc0a407fa8886"
+    },
+    {
+      "name": "01-Slide-1-·-论文背景与一句话贡献-v1",
+      "original_name": "01-Slide-1-·-论文背景与一句话贡献-v1.png",
+      "asset_type": "image",
+      "file_hash": "13f8cf9f8ce5efa450357284d0d9611ba6356c702e5df8d4f36cbd8c6a8ae720"
+    },
+    {
+      "name": "icon-blocks",
+      "original_name": "icon-blocks.svg",
+      "asset_type": "icon",
+      "file_hash": "b9de879c85dccee2ebc363723029f6229a697728bd38c776bea978850e1672a9"
+    },
+    {
+      "name": "icon-doc",
+      "original_name": "icon-doc.svg",
+      "asset_type": "icon",
+      "file_hash": "e4581a8ba470ddccd7972902c22ce4b09eeede1c1a36ed40d7c3304c7bda7190"
+    },
+    {
+      "name": "icon-hat",
+      "original_name": "icon-hat.svg",
+      "asset_type": "icon",
+      "file_hash": "da329374f030cff34b84a2e563826b5704db3c4efe61f081ebce4003eb69ec14"
+    },
+    {
+      "name": "icon-sparkle",
+      "original_name": "icon-sparkle.svg",
+      "asset_type": "icon",
+      "file_hash": "3f1b5ad2b1a9c753cb8dfe4c3952aa91fa151ea4fa226422fefbd75370d93982"
+    },
+    {
+      "name": "icon-tag",
+      "original_name": "icon-tag.svg",
+      "asset_type": "icon",
+      "file_hash": "f20f1f7bbf9a91aca727981468466c38f7331241b719f44fb8e4cf909b8b0deb"
+    },
+    {
+      "name": "02-Slide-2-·-为什么要摆脱-RNN-CNN-v2",
+      "original_name": "02-Slide-2-·-为什么要摆脱-RNN-CNN-v2.png",
+      "asset_type": "image",
+      "file_hash": "ec965bf7d831f6d150486749eefd933bf3445979092a653e334bdd5a08198979"
+    },
+    {
+      "name": "03-Slide-3-·-Transformer-总体结构-v1",
+      "original_name": "03-Slide-3-·-Transformer-总体结构-v1.png",
+      "asset_type": "image",
+      "file_hash": "8af03d39fddf760652dc5122c057f06a2262411269fe3bb504afba6200f24ec9"
+    },
+    {
+      "name": "05-Slide-5-·-Multi-Head-Attention-v2",
+      "original_name": "05-Slide-5-·-Multi-Head-Attention-v2.png",
+      "asset_type": "image",
+      "file_hash": "8c9438cec3fed8b29c3cc39f4643931841b16c2159fe4dab38b510d6950bf916"
+    },
+    {
+      "name": "04-Slide-4-·-Scaled-Dot-Product-Attention-v2",
+      "original_name": "04-Slide-4-·-Scaled-Dot-Product-Attention-v2.png",
+      "asset_type": "image",
+      "file_hash": "5ba6e9623a82afde2aae20529bf46bc46933fc62639a8c77dc8ccab9cfe784ea"
+    },
+    {
+      "name": "06-Slide-6-·-位置编码与位置前馈网络-v2",
+      "original_name": "06-Slide-6-·-位置编码与位置前馈网络-v2.png",
+      "asset_type": "image",
+      "file_hash": "4f763190070ce556f6f4f164bd0800a0ff4c21ffca35362c3b6d6db34629af19"
+    },
+    {
+      "name": "09-Slide-9-·-实验结果与消融分析-v3",
+      "original_name": "09-Slide-9-·-实验结果与消融分析-v3.png",
+      "asset_type": "image",
+      "file_hash": "70560e580b52ccbbe3440a931b8a09089c7a10737d6e486dede592ecb5374c41"
+    },
+    {
+      "name": "07-Slide-7-·-为什么-Self-Attention-有效-v1",
+      "original_name": "07-Slide-7-·-为什么-Self-Attention-有效-v1.png",
+      "asset_type": "image",
+      "file_hash": "d3f6dd07c220da1689a14453ab09d55c0d3b768987930968870761cfdc2277c8"
+    },
+    {
+      "name": "08-Slide-8-·-训练设置与工程细节-v2",
+      "original_name": "08-Slide-8-·-训练设置与工程细节-v2.png",
+      "asset_type": "image",
+      "file_hash": "13f17835bac0a77320c1b22e5038b3660fd1283c7cb4f2359cf21082259721ff"
+    },
+    {
+      "name": "10-Slide-10-·-总结、局限与讨论-v2",
+      "original_name": "10-Slide-10-·-总结、局限与讨论-v2.png",
+      "asset_type": "image",
+      "file_hash": "884a51f43fcaef808d10c912bb15aeafdd6c5105ae349761fe23fd5a08916c49"
+    },
+    {
+      "name": "11-封底-·-感谢聆听-v1",
+      "original_name": "11-封底-·-感谢聆听-v1.png",
+      "asset_type": "image",
+      "file_hash": "5230ffb379047eef715beb7a79b711b86430cd1280e3b054c4c1212717d2b17b"
+    }
+  ],
+  "themes": [
+    {
+      "key": "university_nuaa",
+      "name": "南航主题色"
+    }
+  ],
+  "fonts": [],
+  "warnings": [
+    "组件存在动态资源引用，离线包不会自动包含运行时传入的资源：PPT案例展示。",
+    "PPT案例展示"
+  ]
+}

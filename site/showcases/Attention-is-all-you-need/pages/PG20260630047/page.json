@@ -1,7 +1,0 @@
-{
-  "source_page_code": "PG20260630047",
-  "title": "Slide 4 · Scaled Dot-Product Attention",
-  "summary": "详解 Scaled Dot-Product Attention 公式、缩放原因和 Q/K/V 直观含义。",
-  "speaker_notes": "输入为 Query、Key、Value；输出是对 Value 的加权和。\n权重来自 QKᵀ 的相似度，经 sqrt(d_k) 缩放后做 softmax。\n缩放的原因：当 d_k 较大时，点积方差变大，softmax 可能进入梯度很小的区域。\nDecoder 中通过 mask 把非法未来位置设为 -∞，保证自回归。\n可讲例子：Query 像\"当前 token 想找什么信息\"，Key 像\"每个 token 能被匹配的索引\"，Value 像\"真正要汇总的内容\"。",
-  "file_type": "vue"
-}

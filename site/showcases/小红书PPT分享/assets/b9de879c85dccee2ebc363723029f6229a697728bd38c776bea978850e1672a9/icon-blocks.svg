@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <!-- 下方方块 -->
+  <rect x="10" y="24" width="20" height="16" rx="3" stroke="#3F624C" stroke-width="2"/>
+  <!-- 上方方块（偏移堆叠） -->
+  <rect x="18" y="10" width="20" height="16" rx="3" stroke="#3F624C" stroke-width="2"/>
+  <!-- 连接标记 -->
+  <circle cx="19" cy="30" r="2" fill="#3F624C" opacity="0.4"/>
+  <circle cx="28" cy="18" r="2" fill="#3F624C" opacity="0.4"/>
+</svg>
