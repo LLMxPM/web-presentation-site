@@ -1,0 +1,18 @@
+{
+  "name": "06_source_component_multi_head_split_variant",
+  "original_name": "06_source_component_multi_head_split_variant.png",
+  "asset_type": "image",
+  "content_type": "image/png",
+  "file_size": 51685,
+  "file_hash": "f9e73fa67da314706a08fb9ac9470ed719ecbba60fbc6a283515054bd4e992ff",
+  "description": null,
+  "tags": [],
+  "analysis_metadata": null,
+  "render_metadata": {
+    "schema_version": 1,
+    "kind": "asset_render_hint",
+    "aspect_ratio": "66:89",
+    "aspect_ratio_value": 0.7416,
+    "aspect_ratio_source": "auto"
+  }
+}

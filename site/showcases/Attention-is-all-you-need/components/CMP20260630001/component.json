@@ -1,0 +1,16 @@
+{
+  "source_component_code": "CMP20260630001",
+  "source_version_no": 1,
+  "name": "学术封面页",
+  "import_name": "AcademicCoverPage",
+  "component_type": "页面组件",
+  "summary": "学术风格的封面页模板，适用于组会报告、论文答辩、学术讲座等场景。简洁朴素，包含主题 Logo、标题、副标题、作者和日期信息。",
+  "file_type": "vue",
+  "dependencies": [],
+  "asset_names": [],
+  "font_asset_names": [],
+  "content_hash": "ce96ea3713b1ba1a4a616501d042c953af7583ca90abbbdb7e0ea27a35b44bb4",
+  "preview_schema_hash": "f0c25915e0009bb7cd07acf7ffae352853eb73349708f8e8934cb4d6294d32a1",
+  "component_fingerprint": "030b1b68ae7ca7fa4ec8c6a8d1f0c90da73f03a43923da53357ff95f1a0e2476",
+  "fingerprint_schema_version": 1
+}

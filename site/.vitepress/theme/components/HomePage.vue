@@ -88,7 +88,7 @@
       </div>
       <div v-else class="showcase-empty">
         <h3>还没有可展示的项目模板包</h3>
-        <p>将 <code>.wptemplate.zip</code> 放入 <code>site/showcases/</code> 后，同步脚本会自动生成案例卡片、封面和下载链接。</p>
+        <p>将解压后的模板目录放入 <code>site/showcases/</code> 后，同步脚本会自动生成案例卡片、封面和下载包。</p>
       </div>
     </section>
 

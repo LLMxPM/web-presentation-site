@@ -1,0 +1,18 @@
+{
+  "name": "05_source_component_positionwise_ffn",
+  "original_name": "05_source_component_positionwise_ffn.png",
+  "asset_type": "image",
+  "content_type": "image/png",
+  "file_size": 10260,
+  "file_hash": "b6713b33692fc282e879c6f155eb4901dc16f795bca4adc160a8422123ccaa75",
+  "description": null,
+  "tags": [],
+  "analysis_metadata": null,
+  "render_metadata": {
+    "schema_version": 1,
+    "kind": "asset_render_hint",
+    "aspect_ratio": "67:81",
+    "aspect_ratio_value": 0.8274,
+    "aspect_ratio_source": "auto"
+  }
+}

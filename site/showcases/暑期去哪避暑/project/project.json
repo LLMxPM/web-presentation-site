@@ -1,0 +1,27 @@
+{
+  "source_project_code": "PRJ20260629001",
+  "name": "暑期去哪避暑",
+  "description": "小红书3:4风格，deepseek v4 pro模型，基于公众号内容一次生成，模型调用成本0.4元",
+  "page_width": 1080,
+  "page_height": 1440,
+  "base_font_size": "28px",
+  "icon_default_stroke_width": 2,
+  "show_pdf_export_button": true,
+  "menu_mode": "preview",
+  "theme_key": "lightblue",
+  "theme_config_yaml": "themes:\n  lightblue:\n    name: 白底蓝色\n    description: 白底蓝色主题，简约经典\n    palette:\n      text:\n        primary: '#0D286A'\n        secondary: '#1D5297'\n        invert: '#ffffff'\n      background:\n        default: '#ffffff'\n        invert: '#0D286A'\n      border:\n        default: '#e5e7eb'\n        subtle: '#d1d5db'\n      link:\n        default: '#3b82f6'\n        hover: '#2563eb'\n        visited: '#7c3aed'\n      accent:\n      - '#0D286A'\n      - '#260E6D'\n      - '#9E8403'\n      - '#9E6B03'\n      - '#A110AB'\n      - '#C5003C'\n    typography:\n      headingfont: system-ui\n      bodyfont: system-ui\n      codefont: monospace\ndefault:\n  theme: lightblue\n",
+  "style_spec_markdown": "## 项目定位\n\n- 本项目是 1080x1440 小红书竖版图文项目，面向手机端快速阅读和收藏。\n- 整套页面应形成连续图文系列，而不是单张海报集合。\n- 页面表达要短句化、结构化、强标题化，避免大段正文。\n\n## 全局版式规则\n\n- 页面四周保留 64px 到 80px 安全边距。\n- 所有页面保持统一标题位置、标签样式、卡片圆角、间距和页码方式。\n- 页面主体优先使用纵向结构，适合手机从上到下阅读。\n- 重要信息应放在页面上半部或中部，不依赖底部小字表达核心内容。\n- 每页只讲一个知识点、一个步骤组或一个清单主题。\n\n## 字号规范\n\n- 封面主标题使用 text-6xl 到 text-8xl。\n- 普通页标题使用 text-5xl 到 text-6xl。\n- 模块标题、步骤标题使用 text-3xl 到 text-4xl。\n- 正文说明使用 text-xl 到 text-2xl。\n- 标签、注释、页码使用 text-base 到 text-xl。\n- 不使用过小字号承载核心内容。\n\n## 页面类型库\n\n- 封面页：大标题 + 结果收益 + 适用人群，形成强点击理由。\n- 目录页：展示本组图文包含的 3 到 6 个知识点。\n- 步骤页：纵向 3 到 5 个步骤，每步包含编号、标题和短说明。\n- 清单页：展示 4 到 6 个检查项，每项包含名称和一句解释。\n- 对比页：左右或上下对比“错误做法 / 正确做法”“前 / 后”。\n- 总结页：收束 3 到 5 个关键记忆点，可加入行动建议或收藏提示。\n\n## 内容密度\n\n- 单页最多 5 个主要条目。\n- 每个条目最多 1 个标题和 2 行说明。\n- 正文优先使用短句、编号、标签和关键词高亮。\n- 内容过长时拆成多页连续卡片，不压缩字号。",
+  "build_extra_assets_json": {
+    "asset_names": []
+  },
+  "suggested_reference_asset_names": [
+    "蓬莱峰天梯",
+    "潜山站航拍夜景",
+    "山谷流泉文化园实景",
+    "天柱山奇峰云海",
+    "天柱山日出云海",
+    "天柱山云海风光",
+    "天柱山云海奇石"
+  ],
+  "suggested_components": []
+}

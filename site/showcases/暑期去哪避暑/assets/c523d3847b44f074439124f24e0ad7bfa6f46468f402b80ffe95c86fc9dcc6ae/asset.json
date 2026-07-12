@@ -1,0 +1,18 @@
+{
+  "name": "天柱山云海奇石",
+  "original_name": "天柱山云海奇石.png",
+  "asset_type": "image",
+  "content_type": "image/png",
+  "file_size": 1235093,
+  "file_hash": "c523d3847b44f074439124f24e0ad7bfa6f46468f402b80ffe95c86fc9dcc6ae",
+  "description": null,
+  "tags": [],
+  "analysis_metadata": null,
+  "render_metadata": {
+    "schema_version": 1,
+    "kind": "asset_render_hint",
+    "aspect_ratio": "4:3",
+    "aspect_ratio_value": 1.3333,
+    "aspect_ratio_source": "auto"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "name": "潜山站航拍夜景",
+  "original_name": "潜山站航拍夜景.jpg",
+  "asset_type": "image",
+  "content_type": "image/jpeg",
+  "file_size": 62246,
+  "file_hash": "b4026f56823183ae96ab04918a9a4469fa8ef157d5dc3089de71230bdbab7f90",
+  "description": null,
+  "tags": [],
+  "analysis_metadata": null,
+  "render_metadata": {
+    "schema_version": 1,
+    "kind": "asset_render_hint",
+    "aspect_ratio": "4:3",
+    "aspect_ratio_value": 1.335,
+    "aspect_ratio_source": "auto"
+  }
+}

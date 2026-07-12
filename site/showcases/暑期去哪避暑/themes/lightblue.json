@@ -1,0 +1,45 @@
+{
+  "key": "lightblue",
+  "name": "白底蓝色",
+  "description": "白底蓝色主题，简约经典",
+  "logo_asset_name": null,
+  "invert_logo_asset_name": null,
+  "project_icon_asset_name": null,
+  "logo_path": null,
+  "invert_logo_path": null,
+  "project_icon_name": null,
+  "heading_font_asset_name": null,
+  "body_font_asset_name": null,
+  "code_font_asset_name": null,
+  "heading_font_label": "system-ui",
+  "body_font_label": "system-ui",
+  "code_font_label": "monospace",
+  "palette": {
+    "text": {
+      "primary": "#0D286A",
+      "secondary": "#1D5297",
+      "invert": "#ffffff"
+    },
+    "background": {
+      "default": "#ffffff",
+      "invert": "#0D286A"
+    },
+    "border": {
+      "default": "#e5e7eb",
+      "subtle": "#d1d5db"
+    },
+    "link": {
+      "default": "#3b82f6",
+      "hover": "#2563eb",
+      "visited": "#7c3aed"
+    },
+    "accent": [
+      "#0D286A",
+      "#260E6D",
+      "#9E8403",
+      "#9E6B03",
+      "#A110AB",
+      "#C5003C"
+    ]
+  }
+}

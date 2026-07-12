@@ -1,0 +1,35 @@
+{
+  "name": "icon-ruler",
+  "original_name": "icon-ruler.svg",
+  "asset_type": "icon",
+  "content_type": "image/svg+xml",
+  "file_size": 741,
+  "file_hash": "1d98980fe3166d2a2e462859d0f8309cf8ab022887be2b403d4b48ad47054cbb",
+  "description": "样式规范/尺规 — 三角尺直角尺图标",
+  "tags": [
+    "语义图标",
+    "深绿主题"
+  ],
+  "analysis_metadata": {
+    "schema_version": 1,
+    "kind": "icon",
+    "icon": {
+      "format": "svg",
+      "render_mode": "inline_svg",
+      "style": "stroke",
+      "inline_safe": true,
+      "stroke_width_editable": true,
+      "analysis_status": "analyzed",
+      "reasons": [
+        "检测到纯描边 SVG，可安全应用描边宽度。"
+      ]
+    }
+  },
+  "render_metadata": {
+    "schema_version": 1,
+    "kind": "asset_render_hint",
+    "aspect_ratio": "1:1",
+    "aspect_ratio_value": 1.0,
+    "aspect_ratio_source": "agent"
+  }
+}

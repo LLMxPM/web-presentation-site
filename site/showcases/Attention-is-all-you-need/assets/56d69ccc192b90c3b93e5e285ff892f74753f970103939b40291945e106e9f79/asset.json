@@ -1,0 +1,18 @@
+{
+  "name": "01_paper_figure_1_transformer_architecture",
+  "original_name": "01_paper_figure_1_transformer_architecture.png",
+  "asset_type": "image",
+  "content_type": "image/png",
+  "file_size": 159152,
+  "file_hash": "56d69ccc192b90c3b93e5e285ff892f74753f970103939b40291945e106e9f79",
+  "description": null,
+  "tags": [],
+  "analysis_metadata": null,
+  "render_metadata": {
+    "schema_version": 1,
+    "kind": "asset_render_hint",
+    "aspect_ratio": "55:81",
+    "aspect_ratio_value": 0.6789,
+    "aspect_ratio_source": "auto"
+  }
+}

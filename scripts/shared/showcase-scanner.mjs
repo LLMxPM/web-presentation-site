@@ -1,20 +1,17 @@
 /**
- * 文件功能：扫描 Web-Presentation 项目模板包目录，读取 ZIP 项目数据并生成案例展示数据。
+ * 文件功能：扫描 Web-Presentation 案例源码目录，生成案例展示数据和可下载模板包。
  */
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { generatedRoot, pathExists, siteRoot, toPosix } from './site-utils.mjs';
-import {
-  extractZipEntry,
-  getZipEntry,
-  readZipArchive,
-  readZipObjectJson,
-} from './template-zip-reader.mjs';
+import { readDirectoryFile, readDirectoryObjectJson } from './template-directory-reader.mjs';
+import { writeTemplateZip } from './template-zip-writer.mjs';
 
 const showcaseRoot = path.join(siteRoot, 'showcases');
 const generatedShowcaseRoot = path.join(generatedRoot, 'public', 'showcases');
 const generatedShowcaseAssetRoot = path.join(generatedRoot, 'showcases');
 const templatePackageExtension = '.wptemplate.zip';
+const supplementFileName = 'showcase.json';
 const templateManifestPath = 'manifest.json';
 const templateMetadataPath = 'metadata/template.json';
 const templateScreenshotsPath = 'metadata/screenshots.json';
@@ -23,7 +20,7 @@ const templateRoutesPath = 'project/routes.json';
 const expectedPackageType = 'web-presentation-project-template';
 const expectedSchemaVersion = '1';
 
-/** 扫描案例目录，读取扁平放置的 .wptemplate.zip 并输出排序后的案例数据。 */
+/** 扫描案例子目录并输出排序后的案例数据；目录名同时作为稳定 URL slug 来源。 */
 export async function scanShowcases() {
   if (!(await pathExists(showcaseRoot))) {
     return [];
@@ -31,14 +28,15 @@ export async function scanShowcases() {
 
   const entries = await fs.readdir(showcaseRoot, { withFileTypes: true });
   const packages = entries
-    .filter((entry) => entry.isFile() && entry.name.toLowerCase().endsWith(templatePackageExtension))
+    .filter((entry) => entry.isDirectory())
     .sort((left, right) => left.name.localeCompare(right.name, 'zh-CN'));
   const seenSlugs = new Map();
   const showcases = [];
 
   for (const entry of packages) {
-    const slug = buildSlugFromPackageFileName(entry.name);
+    const slug = buildSlugFromDirectoryName(entry.name);
     const packagePath = path.join(showcaseRoot, entry.name);
+    const packageFileName = `${entry.name}${templatePackageExtension}`;
 
     if (seenSlugs.has(slug)) {
       throw new Error(`案例 slug ${slug} 重复：${seenSlugs.get(slug)} 与 ${relativeSitePath(packagePath)}。`);
@@ -47,7 +45,7 @@ export async function scanShowcases() {
 
     showcases.push(await readShowcasePackage({
       slug,
-      packageFileName: entry.name,
+      packageFileName,
       packagePath,
     }));
   }
@@ -57,14 +55,13 @@ export async function scanShowcases() {
 
 /** 读取单个模板包；展示主数据来自 project/project.json，manifest 和 template 只承担校验。 */
 async function readShowcasePackage({ slug, packageFileName, packagePath }) {
-  const zip = await readZipArchive(packagePath);
-  const manifest = readZipObjectJson(zip, templateManifestPath, packagePath);
+  const manifest = await readDirectoryObjectJson(packagePath, templateManifestPath);
   validateManifest(manifest, packagePath);
-  readZipObjectJson(zip, templateMetadataPath, packagePath);
-  const projectPayload = readZipObjectJson(zip, templateProjectPath, packagePath);
-  const routesPayload = readZipObjectJson(zip, templateRoutesPath, packagePath);
-  const screenshots = readZipObjectJson(zip, templateScreenshotsPath, packagePath);
-  const supplement = await readShowcaseSupplement(buildSupplementPath(packageFileName));
+  await readDirectoryObjectJson(packagePath, templateMetadataPath);
+  const projectPayload = await readDirectoryObjectJson(packagePath, templateProjectPath);
+  const routesPayload = await readDirectoryObjectJson(packagePath, templateRoutesPath);
+  const screenshots = await readDirectoryObjectJson(packagePath, templateScreenshotsPath);
+  const supplement = await readShowcaseSupplement(path.join(packagePath, supplementFileName));
   const publicDir = path.join(generatedShowcaseRoot, slug);
   const assetDir = path.join(generatedShowcaseAssetRoot, slug);
   const screenshotItems = sortScreenshotItemsByRoutes({
@@ -75,10 +72,9 @@ async function readShowcasePackage({ slug, packageFileName, packagePath }) {
 
   await fs.mkdir(publicDir, { recursive: true });
   await fs.mkdir(assetDir, { recursive: true });
-  await fs.copyFile(packagePath, path.join(publicDir, packageFileName));
+  await writeTemplateZip(packagePath, path.join(publicDir, packageFileName), { excludeNames: [supplementFileName] });
 
   const coverFileName = await writeShowcaseCover({
-    zip,
     screenshots,
     fallbackItem: screenshotItems[0],
     publicDir,
@@ -86,7 +82,6 @@ async function readShowcasePackage({ slug, packageFileName, packagePath }) {
     packagePath,
   });
   const slides = await writeShowcaseScreenshots({
-    zip,
     imageItems: screenshotItems,
     publicDir,
     assetDir,
@@ -200,37 +195,27 @@ function normalizeShowcase({ slug, packageFileName, coverFileName, slides, manif
 }
 
 /** 输出案例封面；优先使用 screenshots.cover，缺失时使用路由排序后的第一张截图。 */
-async function writeShowcaseCover({ zip, screenshots, fallbackItem, publicDir, assetDir, packagePath }) {
+async function writeShowcaseCover({ screenshots, fallbackItem, publicDir, assetDir, packagePath }) {
   const coverPath = normalizeText(screenshots?.cover?.path) || normalizeText(fallbackItem?.path);
   if (!coverPath) {
     throw new Error(`${relativeSitePath(packagePath)} 缺少可用封面截图。`);
   }
 
-  const coverEntry = getZipEntry(zip, coverPath);
-  if (!coverEntry) {
-    throw new Error(`${relativeSitePath(packagePath)} 缺少封面截图 ${coverPath}。`);
-  }
-
   const coverFileName = `cover${normalizeImageExtension(coverPath)}`;
-  const coverContent = extractZipEntry(zip, coverEntry, packagePath);
+  const coverContent = await readDirectoryFile(packagePath, coverPath);
   await fs.writeFile(path.join(publicDir, coverFileName), coverContent);
   await fs.writeFile(path.join(assetDir, coverFileName), coverContent);
   return coverFileName;
 }
 
 /** 输出模板包内页面截图，文件名按最终路由顺序生成 slide-01、slide-02 等。 */
-async function writeShowcaseScreenshots({ zip, imageItems, publicDir, assetDir, packagePath }) {
+async function writeShowcaseScreenshots({ imageItems, publicDir, assetDir, packagePath }) {
   const slides = [];
 
   for (const [index, item] of imageItems.entries()) {
-    const entry = getZipEntry(zip, item.path);
-    if (!entry) {
-      throw new Error(`${relativeSitePath(packagePath)} 缺少截图 ${item.path}。`);
-    }
-
     const order = index + 1;
     const fileName = `slide-${String(order).padStart(2, '0')}${normalizeImageExtension(item.path)}`;
-    const content = extractZipEntry(zip, entry, packagePath);
+    const content = await readDirectoryFile(packagePath, item.path);
 
     await fs.writeFile(path.join(publicDir, fileName), content);
     await fs.writeFile(path.join(assetDir, fileName), content);
@@ -354,11 +339,6 @@ async function readShowcaseSupplement(filePath) {
   return value;
 }
 
-/** 生成同名站点补充配置路径，例如 foo.wptemplate.zip 对应 foo.showcase.json。 */
-function buildSupplementPath(packageFileName) {
-  return path.join(showcaseRoot, `${stripTemplateExtension(packageFileName)}.showcase.json`);
-}
-
 /** 对案例列表排序：显式顺序优先，其次按更新时间或创建时间倒序。 */
 function sortShowcases(showcases) {
   return [...showcases].sort((left, right) => {
@@ -385,10 +365,9 @@ function sortByScreenshotOrder(left, right) {
   return leftOrder - rightOrder || left.title.localeCompare(right.title, 'zh-CN') || left.path.localeCompare(right.path);
 }
 
-/** 从模板包文件名生成安全 URL slug。 */
-function buildSlugFromPackageFileName(packageFileName) {
-  const baseName = stripTemplateExtension(packageFileName);
-  const slug = baseName
+/** 从案例目录名生成安全 URL slug。 */
+function buildSlugFromDirectoryName(directoryName) {
+  const slug = directoryName
     .normalize('NFKC')
     .trim()
     .replace(/\s+/g, '-')
@@ -397,17 +376,9 @@ function buildSlugFromPackageFileName(packageFileName) {
     .replace(/^[-.]+|[-.]+$/g, '');
 
   if (!slug) {
-    throw new Error(`${packageFileName} 无法生成有效案例 slug。`);
+    throw new Error(`${directoryName} 无法生成有效案例 slug。`);
   }
   return slug;
-}
-
-/** 去掉 .wptemplate.zip 后缀，保留原始大小写作为下载文件名来源。 */
-function stripTemplateExtension(packageFileName) {
-  if (!packageFileName.toLowerCase().endsWith(templatePackageExtension)) {
-    return packageFileName;
-  }
-  return packageFileName.slice(0, -templatePackageExtension.length);
 }
 
 /** 从 manifest.themes 提取主题名称。 */

@@ -1,0 +1,7 @@
+{
+  "source_page_code": "PG20260630046",
+  "title": "Slide 3 · Transformer 总体结构",
+  "summary": "展示 Transformer encoder-decoder 总体架构图，解释 6 层堆叠、残差连接和层归一化设计。",
+  "speaker_notes": "仍然采用 encoder-decoder 框架：encoder 把输入序列映射为连续表征，decoder 自回归生成输出序列。\nEncoder：N=6 层，每层包含 multi-head self-attention 和 position-wise FFN。\nDecoder：N=6 层，每层多一个 encoder-decoder attention；decoder self-attention 使用 mask 避免看到未来 token。\n每个子层外都有 residual connection + layer normalization。\n把 Transformer 看成两个重复堆叠的 block：全局混合 token 信息的 attention，以及逐位置非线性变换的 FFN。",
+  "file_type": "vue"
+}

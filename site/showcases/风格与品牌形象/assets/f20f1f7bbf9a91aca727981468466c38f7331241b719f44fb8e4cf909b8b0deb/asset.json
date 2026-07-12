@@ -1,0 +1,35 @@
+{
+  "name": "icon-tag",
+  "original_name": "icon-tag.svg",
+  "asset_type": "icon",
+  "content_type": "image/svg+xml",
+  "file_size": 302,
+  "file_hash": "f20f1f7bbf9a91aca727981468466c38f7331241b719f44fb8e4cf909b8b0deb",
+  "description": "品牌标识/标签 — 价格标签形状图标",
+  "tags": [
+    "语义图标",
+    "深绿主题"
+  ],
+  "analysis_metadata": {
+    "schema_version": 1,
+    "kind": "icon",
+    "icon": {
+      "format": "svg",
+      "render_mode": "inline_svg",
+      "style": "stroke",
+      "inline_safe": true,
+      "stroke_width_editable": true,
+      "analysis_status": "analyzed",
+      "reasons": [
+        "检测到纯描边 SVG，可安全应用描边宽度。"
+      ]
+    }
+  },
+  "render_metadata": {
+    "schema_version": 1,
+    "kind": "asset_render_hint",
+    "aspect_ratio": "1:1",
+    "aspect_ratio_value": 1.0,
+    "aspect_ratio_source": "agent"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "name": "icon-palette",
+  "original_name": "icon-palette.svg",
+  "asset_type": "icon",
+  "content_type": "image/svg+xml",
+  "file_size": 755,
+  "file_hash": "dd07a34f6878cbb7c0eba1eb5fcbe074455b4eb3d568f8119e025631f89d8882",
+  "description": "主题切换/调色板 — 调色板带画笔图标",
+  "tags": [
+    "语义图标",
+    "深绿主题"
+  ],
+  "analysis_metadata": {
+    "schema_version": 1,
+    "kind": "icon",
+    "icon": {
+      "format": "svg",
+      "render_mode": "inline_svg",
+      "style": "mixed",
+      "inline_safe": true,
+      "stroke_width_editable": false,
+      "analysis_status": "unsupported",
+      "reasons": [
+        "检测到 fill / stroke 混合图标，不启用描边宽度调整。"
+      ]
+    }
+  },
+  "render_metadata": {
+    "schema_version": 1,
+    "kind": "asset_render_hint",
+    "aspect_ratio": "1:1",
+    "aspect_ratio_value": 1.0,
+    "aspect_ratio_source": "agent"
+  }
+}

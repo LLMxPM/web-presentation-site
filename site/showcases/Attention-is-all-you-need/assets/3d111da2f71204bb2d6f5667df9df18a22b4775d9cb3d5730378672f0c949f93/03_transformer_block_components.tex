@@ -1,0 +1,38 @@
+% 子层结构：每个 attention 或 FFN 子层外使用 residual connection 和 layer normalization。
+\[
+\operatorname{Output}
+=
+\operatorname{LayerNorm}\left(x+\operatorname{Sublayer}(x)\right)
+\]
+
+% Position-wise Feed-Forward Network：对每个位置独立应用同一组两层前馈参数。
+\[
+\operatorname{FFN}(x)
+=
+\max(0,xW_1+b_1)W_2+b_2
+\]
+
+\[
+d_{\text{model}}=512,\qquad
+d_{\text{ff}}=2048
+\]
+
+% Sinusoidal Positional Encoding：偶数维用 sin，奇数维用 cos。
+\[
+PE_{(pos,2i)}
+=
+\sin\left(\frac{pos}{10000^{2i/d_{\text{model}}}}\right)
+\]
+
+\[
+PE_{(pos,2i+1)}
+=
+\cos\left(\frac{pos}{10000^{2i/d_{\text{model}}}}\right)
+\]
+
+% Embedding 缩放：论文在 embedding 层将权重乘以 sqrt(d_model)。
+\[
+x_{\text{input}}
+=
+\sqrt{d_{\text{model}}}\operatorname{Embedding}(token)+PE_{pos}
+\]

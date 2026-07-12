@@ -1,0 +1,60 @@
+{
+  "cover": {
+    "path": "screenshots/cover.png",
+    "width": 1080,
+    "height": 1440,
+    "source_page_code": "PG20260629001",
+    "title": "天柱骄子月 · 封面",
+    "order": 1
+  },
+  "pages": [
+    {
+      "path": "screenshots/pages/PG20260629001.png",
+      "width": 1080,
+      "height": 1440,
+      "source_page_code": "PG20260629001",
+      "title": "天柱骄子月 · 封面",
+      "order": 1
+    },
+    {
+      "path": "screenshots/pages/PG20260629002.png",
+      "width": 1080,
+      "height": 1440,
+      "source_page_code": "PG20260629002",
+      "title": "天柱骄子月 · 01 免票范围",
+      "order": 2
+    },
+    {
+      "path": "screenshots/pages/PG20260629003.png",
+      "width": 1080,
+      "height": 1440,
+      "source_page_code": "PG20260629003",
+      "title": "天柱骄子月 · 02 免票人群",
+      "order": 3
+    },
+    {
+      "path": "screenshots/pages/PG20260629004.png",
+      "width": 1080,
+      "height": 1440,
+      "source_page_code": "PG20260629004",
+      "title": "天柱骄子月 · 03 入园指南",
+      "order": 4
+    },
+    {
+      "path": "screenshots/pages/PG20260629005.png",
+      "width": 1080,
+      "height": 1440,
+      "source_page_code": "PG20260629005",
+      "title": "天柱骄子月 · 04 交通出行",
+      "order": 5
+    },
+    {
+      "path": "screenshots/pages/PG20260629006.png",
+      "width": 1080,
+      "height": 1440,
+      "source_page_code": "PG20260629006",
+      "title": "天柱骄子月 · 05 奔赴天柱山",
+      "order": 6
+    }
+  ]
+}

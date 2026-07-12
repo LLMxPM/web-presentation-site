@@ -1,0 +1,18 @@
+{
+  "name": "02_paper_figure_2a_scaled_dot_product_attention",
+  "original_name": "02_paper_figure_2a_scaled_dot_product_attention.png",
+  "asset_type": "image",
+  "content_type": "image/png",
+  "file_size": 26323,
+  "file_hash": "6d40a44e2ec3f0cdab207c768a9085b6b908bbefa82c5af6613dc8233bee6a42",
+  "description": null,
+  "tags": [],
+  "analysis_metadata": null,
+  "render_metadata": {
+    "schema_version": 1,
+    "kind": "asset_render_hint",
+    "aspect_ratio": "50:99",
+    "aspect_ratio_value": 0.5034,
+    "aspect_ratio_source": "auto"
+  }
+}

@@ -1,0 +1,36 @@
+% Adam 配置。
+\[
+\beta_1=0.9,\qquad
+\beta_2=0.98,\qquad
+\epsilon=10^{-9}
+\]
+
+% Transformer 学习率调度：先 warmup 线性升高，再按 step_num^{-0.5} 衰减。
+\[
+\operatorname{lrate}
+=
+d_{\text{model}}^{-0.5}
+\cdot
+\min\left(
+\operatorname{step\_num}^{-0.5},
+\operatorname{step\_num}\cdot \operatorname{warmup\_steps}^{-1.5}
+\right)
+\]
+
+\[
+\operatorname{warmup\_steps}=4000
+\]
+
+% 训练规模。
+\[
+\text{base: }100000\text{ steps}\approx 12\text{ hours on 8 P100}
+\]
+
+\[
+\text{big: }300000\text{ steps}\approx 3.5\text{ days on 8 P100}
+\]
+
+% Label smoothing。
+\[
+\epsilon_{\text{ls}}=0.1
+\]

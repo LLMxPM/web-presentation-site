@@ -1,0 +1,137 @@
+{
+  "package_type": "web-presentation-project-template",
+  "schema_version": 1,
+  "exported_at": "2026-07-12T02:36:57.422436+00:00",
+  "runtime_kit_manifest_version": "1.0.0",
+  "template_path": "metadata/template.json",
+  "screenshots_path": "metadata/screenshots.json",
+  "project_path": "project/project.json",
+  "routes_path": "project/routes.json",
+  "page_count": 5,
+  "component_count": 0,
+  "asset_count": 14,
+  "theme_count": 1,
+  "font_count": 0,
+  "pages": [
+    {
+      "source_page_code": "PG20260712001",
+      "title": "封面：企业风格不该靠反复提醒AI来维持",
+      "file_type": "vue"
+    },
+    {
+      "source_page_code": "PG20260712002",
+      "title": "痛点：AI做PPT的三大风格翻车现场",
+      "file_type": "vue"
+    },
+    {
+      "source_page_code": "PG20260712003",
+      "title": "方案：把品牌变成可复用的平台资产",
+      "file_type": "vue"
+    },
+    {
+      "source_page_code": "PG20260712004",
+      "title": "对比：套模板 vs 品牌约束驱动",
+      "file_type": "vue"
+    },
+    {
+      "source_page_code": "PG20260712005",
+      "title": "总结：让品牌在约束中自由生长",
+      "file_type": "vue"
+    }
+  ],
+  "components": [],
+  "assets": [
+    {
+      "name": "runtime_icon",
+      "original_name": "runtime_icon.svg",
+      "asset_type": "image",
+      "file_hash": "5c1add7d570de71de7febd09afb603a16f8f81e5c61a0a2d8b96f4aa9f0a6d1f"
+    },
+    {
+      "name": "runtime_icon_white",
+      "original_name": "runtime_icon_white.svg",
+      "asset_type": "image",
+      "file_hash": "6cecefbaa54f5bf70542dabd63024e087fc85541e4a6bb8f9e15af87bdbe50d1"
+    },
+    {
+      "name": "icon-loop",
+      "original_name": "icon-loop.svg",
+      "asset_type": "icon",
+      "file_hash": "7ce61075e0afa5fa61d4c3c495e5be809640839e5e1c9dc341d5316d829546de"
+    },
+    {
+      "name": "icon-mask",
+      "original_name": "icon-mask.svg",
+      "asset_type": "icon",
+      "file_hash": "67fb880f9710ba33c399c6c33aa8a2c9c5e140e84d780c6bf8040fadcce717cc"
+    },
+    {
+      "name": "icon-puzzle",
+      "original_name": "icon-puzzle.svg",
+      "asset_type": "icon",
+      "file_hash": "194ebc09835f057aa877fb02bd5df0b5c18409dde15276a9fdab1fdbc2ee082b"
+    },
+    {
+      "name": "icon-blocks",
+      "original_name": "icon-blocks.svg",
+      "asset_type": "icon",
+      "file_hash": "b9de879c85dccee2ebc363723029f6229a697728bd38c776bea978850e1672a9"
+    },
+    {
+      "name": "icon-palette",
+      "original_name": "icon-palette.svg",
+      "asset_type": "icon",
+      "file_hash": "dd07a34f6878cbb7c0eba1eb5fcbe074455b4eb3d568f8119e025631f89d8882"
+    },
+    {
+      "name": "icon-ruler",
+      "original_name": "icon-ruler.svg",
+      "asset_type": "icon",
+      "file_hash": "1d98980fe3166d2a2e462859d0f8309cf8ab022887be2b403d4b48ad47054cbb"
+    },
+    {
+      "name": "icon-tag",
+      "original_name": "icon-tag.svg",
+      "asset_type": "icon",
+      "file_hash": "f20f1f7bbf9a91aca727981468466c38f7331241b719f44fb8e4cf909b8b0deb"
+    },
+    {
+      "name": "icon-clipboard",
+      "original_name": "icon-clipboard.svg",
+      "asset_type": "icon",
+      "file_hash": "2de0f5b8d712d96304857d629784282df24e9729f011316930e7e7e4a6fba758"
+    },
+    {
+      "name": "icon-sparkle",
+      "original_name": "icon-sparkle.svg",
+      "asset_type": "icon",
+      "file_hash": "3f1b5ad2b1a9c753cb8dfe4c3952aa91fa151ea4fa226422fefbd75370d93982"
+    },
+    {
+      "name": "icon-chart",
+      "original_name": "icon-chart.svg",
+      "asset_type": "icon",
+      "file_hash": "646a8723b90d6e215570b3a43b8a6f3170d2eb348d408a656f04282b7e07a953"
+    },
+    {
+      "name": "icon-doc",
+      "original_name": "icon-doc.svg",
+      "asset_type": "icon",
+      "file_hash": "e4581a8ba470ddccd7972902c22ce4b09eeede1c1a36ed40d7c3304c7bda7190"
+    },
+    {
+      "name": "icon-hat",
+      "original_name": "icon-hat.svg",
+      "asset_type": "icon",
+      "file_hash": "da329374f030cff34b84a2e563826b5704db3c4efe61f081ebce4003eb69ec14"
+    }
+  ],
+  "themes": [
+    {
+      "key": "xhsmatchaoat",
+      "name": "抹茶燕麦"
+    }
+  ],
+  "fonts": [],
+  "warnings": []
+}

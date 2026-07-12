@@ -1,0 +1,7 @@
+{
+  "source_page_code": "PG20260630053",
+  "title": "Slide 10 · 总结、局限与讨论",
+  "summary": "总结核心结论、影响与局限，提出 4 个讨论问题，展示注意力可视化。",
+  "speaker_notes": "核心结论：序列建模不一定必须依赖循环或卷积，attention 可以独立支撑强大的 encoder-decoder 架构。\n影响：Transformer 成为后续 BERT、GPT、T5、Vision Transformer 等模型的基础组件。\n局限：原始 self-attention 对长度二次复杂度；原始位置编码和全局 attention 对超长上下文、流式推理并不天然友好。\n对今天的启发：现代大模型很多改动仍围绕 Transformer 的三个轴线展开：注意力效率、位置建模、训练稳定性和规模化。\n建议讨论问题：1. 如果序列很长，self-attention 的优势和代价如何变化？2. 多头 attention 学到的「不同关系」是否一定可解释？3. 原始 Transformer 的 encoder-decoder 结构和现在 decoder-only LLM 的关键差异是什么？4. 哪些结论属于架构创新，哪些结论依赖训练 recipe 和硬件并行？",
+  "file_type": "vue"
+}

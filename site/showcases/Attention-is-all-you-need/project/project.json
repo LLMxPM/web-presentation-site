@@ -1,0 +1,60 @@
+{
+  "source_project_code": "PRJ20260630005",
+  "name": "Attention is all you need",
+  "description": "学术风格，使用三线表等组件，模型：Deepseek V4 pro；成本：0.95元。",
+  "page_width": 1920,
+  "page_height": 1080,
+  "base_font_size": "20px",
+  "icon_default_stroke_width": 2,
+  "show_pdf_export_button": true,
+  "menu_mode": "bottom-preview",
+  "theme_key": "university_nuaa",
+  "theme_config_yaml": "themes:\n  university_nuaa:\n    name: 南航主题色\n    description: 南航主题色\n    palette:\n      text:\n        primary: '#333333'\n        secondary: '#666666'\n        invert: '#FFFFFF'\n      background:\n        default: '#FFFFFF'\n        invert: '#1D2088'\n      border:\n        default: '#D0D0D0'\n        subtle: '#EEEEEE'\n      link:\n        default: '#1D2088'\n        hover: '#FF8C47'\n        visited: '#3C4DB1'\n      accent:\n      - '#1D2088'\n      - '#044A93'\n      - '#1B2EA3'\n      - '#FF8C47'\n      - '#FCC740'\n      - '#467D32'\n    typography:\n      headingfont: system-ui\n      bodyfont: system-ui\n      codefont: monospace\n    logo: nuaa_logo_b\n    invertLogo: nuaa_logo\n    app:\n      icon: nuaa_logo_c\ndefault:\n  theme: university_nuaa\n",
+  "style_spec_markdown": "## 项目定位\n\n- 本项目是 1920x1080 学术组会演示文稿，适用于论文精读、课题进展、实验汇报和阶段性讨论。\n- 页面按投屏阅读和口头讲解设计，不按网页或论文正文密度排版。\n- 整套页面应保持理性、清晰、克制，优先表达研究问题、方法逻辑、实验结论和讨论点。\n- 单页只承担一个学术表达目标；内容过多时拆页，不缩小字号硬塞。\n\n## 全局版式规则\n\n- 页面四周保留 88px 到 120px 安全边距。\n- 标题区位置保持稳定，优先放在顶部左侧。\n- 主体内容优先使用 1 栏、2 栏或“左图右文”结构。\n- 图、表、公式、代码之间必须留出足够间距，避免互相挤压。\n- 页面应明确区分“事实信息”“作者观点”“本次汇报者解读”。\n\n## 字号规范\n\n- 封面标题使用 text-6xl 到 text-7xl。\n- 普通页标题使用 text-5xl 到 text-6xl。\n- 小节标题、模块标题使用 text-3xl 到 text-4xl。\n- 正文解释使用 text-xl 到 text-2xl。\n- 图表标题、公式说明、代码注释使用 text-base 到 text-xl。\n- 论文来源、引用、页码、备注使用 text-sm 到 text-base。\n- 不使用 text-xs、text-sm 承载主要学术内容。\n\n## 页面类型库\n\n- 封面页：汇报题目、论文/课题名称、汇报人、日期、单位或课题组信息。\n- 目录页：展示 3 到 6 个部分，例如背景、问题、方法、实验、分析、讨论。\n- 论文信息页：展示标题、作者、会议/期刊、年份、代码/数据集信息和一句话贡献。\n- 背景页：解释研究领域、任务定义、已有方法和核心挑战。\n- 问题定义页：明确输入、输出、目标函数、约束条件或评价标准。\n- 方法总览页：用流程图、模块图或架构图解释方法主线。\n- 方法细节页：每页只展开一个模块、一个公式或一个关键机制。\n- 实验设置页：说明数据集、baseline、指标、训练设置和对比维度。\n- 结果页：突出主要实验结论，表格或图表必须配一句可读结论。\n- 消融分析页：解释组件有效性，每页聚焦一个变量或一个结论。\n- 可视化案例页：展示样例、失败案例、注意力图、生成结果或误差分析。\n- 讨论页：列出优点、局限、可复现性风险和对本课题的启发。\n- 后续计划页：展示下一步实验、待验证假设、时间安排和需要讨论的问题。\n\n## 学术内容表达\n\n- 每页标题尽量写成结论式标题，而不是泛泛的主题名。\n- 公式只保留讲解所需的核心形式，避免整页堆满推导。\n- 复杂公式应配变量解释，变量解释不超过 4 到 6 项。\n- 代码片段只展示关键逻辑，单页不超过 20 行。\n- 表格只保留关键列，最多 6 列、8 行；复杂表格应拆页或高亮重点行列。\n- 图表必须标明指标含义、比较对象和结论方向。\n- 引用论文时保留作者、年份、会议/期刊即可，不在页面中堆完整 bibtex。\n\n## 图表与实验页约束\n\n- 单页最多 1 个复杂主图或 1 个主表。\n- 多图对比时最多 4 个子图，必须保持统一尺寸和标注。\n- 结果表格应高亮 best、second best 或本方法关键提升。\n- 指标提升要写清楚绝对提升或相对提升，避免只写“更好”。\n- 失败案例页必须给出可能原因，不只展示失败现象。\n\n## 讨论导向\n\n- 组会页面应方便讨论，不追求商业发布感。\n- 关键页可在底部保留“讨论点”或“待确认问题”区域。\n- 对论文汇报，应明确区分原文结论和汇报者自己的判断。\n- 对课题进展，应明确当前已完成、正在验证、下一步计划。\n- 结尾页应留下 2 到 4 个可讨论问题，便于导师或组员反馈。",
+  "build_extra_assets_json": {
+    "asset_names": []
+  },
+  "suggested_reference_asset_names": [
+    "01_paper_figure_1_transformer_architecture",
+    "02_paper_figure_2a_scaled_dot_product_attention",
+    "03_paper_figure_2b_multi_head_attention",
+    "04_source_component_sequence_attention",
+    "05_source_component_positionwise_ffn",
+    "06_source_component_multi_head_split_variant",
+    "07_appendix_attention_long_distance_dependencies",
+    "08_appendix_attention_anaphora_full_head5",
+    "09_appendix_attention_anaphora_its_heads5_6",
+    "10_appendix_attention_sentence_structure_head_a",
+    "11_appendix_attention_sentence_structure_head_b",
+    "01_scaled_dot_product_attention",
+    "02_multi_head_attention",
+    "03_transformer_block_components",
+    "04_training_schedule"
+  ],
+  "suggested_components": [
+    {
+      "source_component_code": "CMP20260630001",
+      "source_version_no": 1,
+      "name": "学术封面页",
+      "import_name": "AcademicCoverPage"
+    },
+    {
+      "source_component_code": "CMP20260630002",
+      "source_version_no": 1,
+      "name": "三线表",
+      "import_name": "ThreeLineTable"
+    },
+    {
+      "source_component_code": "CMP20260630003",
+      "source_version_no": 1,
+      "name": "学术内容页模板",
+      "import_name": "AcademicContentPage"
+    },
+    {
+      "source_component_code": "CMP20260630005",
+      "source_version_no": 1,
+      "name": "学术封底页",
+      "import_name": "AcademicBackCoverPage"
+    }
+  ]
+}

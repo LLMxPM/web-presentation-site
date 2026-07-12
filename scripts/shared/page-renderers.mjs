@@ -80,7 +80,7 @@ export const showcases: ShowcaseDetail[] = ${JSON.stringify(showcases.map(serial
 export const sourceMeta: SourceMeta = ${JSON.stringify({
     sourceRepo,
     sourceRef,
-    showcaseDirectory: 'site/showcases/*.wptemplate.zip',
+    showcaseDirectory: 'site/showcases/<案例目录>/',
   }, null, 2)};
 `;
 }
@@ -123,7 +123,7 @@ export const showcaseSummaries: ShowcaseSummary[] = ${JSON.stringify(showcases.m
 export const sourceMeta: SourceMeta = ${JSON.stringify({
     sourceRepo,
     sourceRef,
-    showcaseDirectory: 'site/showcases/*.wptemplate.zip',
+    showcaseDirectory: 'site/showcases/<案例目录>/',
   }, null, 2)};
 `;
 }

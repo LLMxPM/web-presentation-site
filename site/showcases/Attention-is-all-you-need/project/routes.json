@@ -1,0 +1,103 @@
+{
+  "routes": [
+    {
+      "route_type": "page",
+      "route": "slide-01",
+      "order": 1,
+      "hidden": false,
+      "group_title": null,
+      "source_page_code": "PG20260630044",
+      "children": []
+    },
+    {
+      "route_type": "page",
+      "route": "slide-02",
+      "order": 2,
+      "hidden": false,
+      "group_title": null,
+      "source_page_code": "PG20260630045",
+      "children": []
+    },
+    {
+      "route_type": "page",
+      "route": "slide-03",
+      "order": 3,
+      "hidden": false,
+      "group_title": null,
+      "source_page_code": "PG20260630046",
+      "children": []
+    },
+    {
+      "route_type": "page",
+      "route": "slide-04",
+      "order": 4,
+      "hidden": false,
+      "group_title": null,
+      "source_page_code": "PG20260630047",
+      "children": []
+    },
+    {
+      "route_type": "page",
+      "route": "slide-05",
+      "order": 5,
+      "hidden": false,
+      "group_title": null,
+      "source_page_code": "PG20260630048",
+      "children": []
+    },
+    {
+      "route_type": "page",
+      "route": "slide-06",
+      "order": 6,
+      "hidden": false,
+      "group_title": null,
+      "source_page_code": "PG20260630049",
+      "children": []
+    },
+    {
+      "route_type": "page",
+      "route": "slide-07",
+      "order": 7,
+      "hidden": false,
+      "group_title": null,
+      "source_page_code": "PG20260630050",
+      "children": []
+    },
+    {
+      "route_type": "page",
+      "route": "slide-08",
+      "order": 8,
+      "hidden": false,
+      "group_title": null,
+      "source_page_code": "PG20260630051",
+      "children": []
+    },
+    {
+      "route_type": "page",
+      "route": "slide-09",
+      "order": 9,
+      "hidden": false,
+      "group_title": null,
+      "source_page_code": "PG20260630052",
+      "children": []
+    },
+    {
+      "route_type": "page",
+      "route": "slide-10",
+      "order": 10,
+      "hidden": false,
+      "group_title": null,
+      "source_page_code": "PG20260630053",
+      "children": []
+    },
+    {
+      "route_type": "page",
+      "route": "back-cover",
+      "order": 11,
+      "hidden": false,
+      "group_title": null,
+      "source_page_code": "PG20260630054",
+      "children": []
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "name": "02_multi_head_attention",
+  "original_name": "02_multi_head_attention.tex",
+  "asset_type": "formula",
+  "content_type": "application/octet-stream",
+  "file_size": 637,
+  "file_hash": "44f273323f53addc7c7d477a5c7e0bfb05e50a6fc2e344e428bba4ac4e03bddd",
+  "description": null,
+  "tags": [],
+  "analysis_metadata": null,
+  "render_metadata": {
+    "schema_version": 1,
+    "kind": "asset_render_hint",
+    "aspect_ratio": "107:16",
+    "aspect_ratio_value": 6.6876,
+    "aspect_ratio_source": "auto"
+  }
+}
