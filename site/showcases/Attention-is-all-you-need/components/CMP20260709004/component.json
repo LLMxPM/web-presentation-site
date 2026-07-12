@@ -1,0 +1,16 @@
+{
+  "source_component_code": "CMP20260709004",
+  "source_version_no": 1,
+  "name": "学术封底页",
+  "import_name": "AcademicBackCoverPage",
+  "component_type": "页面组件",
+  "summary": "学术风格的封底页面模板，用于报告结束致谢。简洁朴素，包含主题 Logo 和感谢信息。",
+  "file_type": "vue",
+  "dependencies": [],
+  "asset_names": [],
+  "font_asset_names": [],
+  "content_hash": "c7c1faffd766c51ff275fd1096bb53feb54fa7540b32371d24cd9aaaa42f4f63",
+  "preview_schema_hash": "e6eb7c04c4cfe698789f9e855f27d206596812d9d1a76a898f7912020b6a4f76",
+  "component_fingerprint": "54ef3c59c509eff0af752dc794e49793df0edc2c287724882cef07361cd4da0d",
+  "fingerprint_schema_version": 1
+}

@@ -1,0 +1,35 @@
+{
+  "name": "monitor",
+  "original_name": "monitor.svg",
+  "asset_type": "icon",
+  "content_type": "image/svg+xml",
+  "file_size": 297,
+  "file_hash": "416b4ef8a20683dc619fcffe04e06463212d6f2f91c63c6720d197de296fd7ed",
+  "description": null,
+  "tags": [
+    "PPT",
+    "常用"
+  ],
+  "analysis_metadata": {
+    "schema_version": 1,
+    "kind": "icon",
+    "icon": {
+      "format": "svg",
+      "render_mode": "inline_svg",
+      "style": "stroke",
+      "inline_safe": true,
+      "stroke_width_editable": true,
+      "analysis_status": "analyzed",
+      "reasons": [
+        "检测到纯描边 SVG，可安全应用描边宽度。"
+      ]
+    }
+  },
+  "render_metadata": {
+    "schema_version": 1,
+    "kind": "asset_render_hint",
+    "aspect_ratio": "1:1",
+    "aspect_ratio_value": 1.0,
+    "aspect_ratio_source": "auto"
+  }
+}

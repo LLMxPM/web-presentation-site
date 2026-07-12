@@ -3,96 +3,96 @@
     "path": "screenshots/cover.png",
     "width": 1920,
     "height": 1080,
-    "source_page_code": "PG20260630044",
+    "source_page_code": "PG20260709001",
     "title": "Slide 1 · 论文背景与一句话贡献",
     "order": 1
   },
   "pages": [
     {
-      "path": "screenshots/pages/PG20260630044.png",
+      "path": "screenshots/pages/PG20260709001.png",
       "width": 1920,
       "height": 1080,
-      "source_page_code": "PG20260630044",
+      "source_page_code": "PG20260709001",
       "title": "Slide 1 · 论文背景与一句话贡献",
       "order": 1
     },
     {
-      "path": "screenshots/pages/PG20260630045.png",
+      "path": "screenshots/pages/PG20260709002.png",
       "width": 1920,
       "height": 1080,
-      "source_page_code": "PG20260630045",
+      "source_page_code": "PG20260709002",
       "title": "Slide 2 · 为什么要摆脱 RNN/CNN",
       "order": 2
     },
     {
-      "path": "screenshots/pages/PG20260630046.png",
+      "path": "screenshots/pages/PG20260709003.png",
       "width": 1920,
       "height": 1080,
-      "source_page_code": "PG20260630046",
+      "source_page_code": "PG20260709003",
       "title": "Slide 3 · Transformer 总体结构",
       "order": 3
     },
     {
-      "path": "screenshots/pages/PG20260630047.png",
+      "path": "screenshots/pages/PG20260709004.png",
       "width": 1920,
       "height": 1080,
-      "source_page_code": "PG20260630047",
+      "source_page_code": "PG20260709004",
       "title": "Slide 4 · Scaled Dot-Product Attention",
       "order": 4
     },
     {
-      "path": "screenshots/pages/PG20260630048.png",
+      "path": "screenshots/pages/PG20260709005.png",
       "width": 1920,
       "height": 1080,
-      "source_page_code": "PG20260630048",
+      "source_page_code": "PG20260709005",
       "title": "Slide 5 · Multi-Head Attention",
       "order": 5
     },
     {
-      "path": "screenshots/pages/PG20260630049.png",
+      "path": "screenshots/pages/PG20260709006.png",
       "width": 1920,
       "height": 1080,
-      "source_page_code": "PG20260630049",
+      "source_page_code": "PG20260709006",
       "title": "Slide 6 · 位置编码与位置前馈网络",
       "order": 6
     },
     {
-      "path": "screenshots/pages/PG20260630050.png",
+      "path": "screenshots/pages/PG20260709007.png",
       "width": 1920,
       "height": 1080,
-      "source_page_code": "PG20260630050",
+      "source_page_code": "PG20260709007",
       "title": "Slide 7 · 为什么 Self-Attention 有效",
       "order": 7
     },
     {
-      "path": "screenshots/pages/PG20260630051.png",
+      "path": "screenshots/pages/PG20260709008.png",
       "width": 1920,
       "height": 1080,
-      "source_page_code": "PG20260630051",
+      "source_page_code": "PG20260709008",
       "title": "Slide 8 · 训练设置与工程细节",
       "order": 8
     },
     {
-      "path": "screenshots/pages/PG20260630052.png",
+      "path": "screenshots/pages/PG20260709009.png",
       "width": 1920,
       "height": 1080,
-      "source_page_code": "PG20260630052",
+      "source_page_code": "PG20260709009",
       "title": "Slide 9 · 实验结果与消融分析",
       "order": 9
     },
     {
-      "path": "screenshots/pages/PG20260630053.png",
+      "path": "screenshots/pages/PG20260709010.png",
       "width": 1920,
       "height": 1080,
-      "source_page_code": "PG20260630053",
+      "source_page_code": "PG20260709010",
       "title": "Slide 10 · 总结、局限与讨论",
       "order": 10
     },
     {
-      "path": "screenshots/pages/PG20260630054.png",
+      "path": "screenshots/pages/PG20260709011.png",
       "width": 1920,
       "height": 1080,
-      "source_page_code": "PG20260630054",
+      "source_page_code": "PG20260709011",
       "title": "封底 · 感谢聆听",
       "order": 11
     }

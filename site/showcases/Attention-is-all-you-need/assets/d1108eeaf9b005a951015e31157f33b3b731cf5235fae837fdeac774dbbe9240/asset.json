@@ -1,0 +1,35 @@
+{
+  "name": "bar-chart",
+  "original_name": "bar-chart.svg",
+  "asset_type": "icon",
+  "content_type": "image/svg+xml",
+  "file_size": 278,
+  "file_hash": "d1108eeaf9b005a951015e31157f33b3b731cf5235fae837fdeac774dbbe9240",
+  "description": null,
+  "tags": [
+    "PPT",
+    "常用"
+  ],
+  "analysis_metadata": {
+    "schema_version": 1,
+    "kind": "icon",
+    "icon": {
+      "format": "svg",
+      "render_mode": "inline_svg",
+      "style": "stroke",
+      "inline_safe": true,
+      "stroke_width_editable": true,
+      "analysis_status": "analyzed",
+      "reasons": [
+        "检测到纯描边 SVG，可安全应用描边宽度。"
+      ]
+    }
+  },
+  "render_metadata": {
+    "schema_version": 1,
+    "kind": "asset_render_hint",
+    "aspect_ratio": "1:1",
+    "aspect_ratio_value": 1.0,
+    "aspect_ratio_source": "auto"
+  }
+}

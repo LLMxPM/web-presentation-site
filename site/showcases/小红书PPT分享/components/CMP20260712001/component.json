@@ -1,0 +1,16 @@
+{
+  "source_component_code": "CMP20260712001",
+  "source_version_no": 1,
+  "name": "PPT案例展示",
+  "import_name": "PptCaseShowcase",
+  "component_type": "页面组件",
+  "summary": "PPT案例展示页面组件，适用于1080×1440（3:4）分享页，上下排列展示两张16:9的PPT截图，支持标题和截图标签。",
+  "file_type": "vue",
+  "dependencies": [],
+  "asset_names": [],
+  "font_asset_names": [],
+  "content_hash": "5f27f7fa0413896da52116063db53d9fcabb1d98402726628aca27ed04291acf",
+  "preview_schema_hash": "70b44ca46a7200f748f560773f8c2db8c5e7bf175a54457620f01a2af8f16e20",
+  "component_fingerprint": "a2836aa6f18ed89c9f6f64c479c03ef7f8d551a21b062e4eb27d272698d2e192",
+  "fingerprint_schema_version": 1
+}

@@ -1,0 +1,16 @@
+{
+  "source_component_code": "CMP20260709003",
+  "source_version_no": 2,
+  "name": "三线表",
+  "import_name": "ThreeLineTable",
+  "component_type": "内容组件",
+  "summary": "三线表组件，采用学术三线表样式（顶线、表头底线加粗，底线加粗），支持自动均分列宽或按需固定列宽，适用于展示结构化数据",
+  "file_type": "vue",
+  "dependencies": [],
+  "asset_names": [],
+  "font_asset_names": [],
+  "content_hash": "4a00784a6ba0a33acf3cddf180ee8b99a5ea758365984ee810432d887895adfa",
+  "preview_schema_hash": "d6fdbf238ea60490ddb80f030d3023f545bccab365fa5f13b1c99f4cfcc0c71a",
+  "component_fingerprint": "3678af9c32ac18fa83f4cc49df5eb4d9b01db903339245922b5ff2ccddda76f2",
+  "fingerprint_schema_version": 1
+}

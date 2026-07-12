@@ -1,0 +1,60 @@
+{
+  "cover": {
+    "path": "screenshots/cover.png",
+    "width": 1080,
+    "height": 1440,
+    "source_page_code": "PG20260712006",
+    "title": "封面 · AI生成学术PPT案例展示",
+    "order": 1
+  },
+  "pages": [
+    {
+      "path": "screenshots/pages/PG20260712006.png",
+      "width": 1080,
+      "height": 1440,
+      "source_page_code": "PG20260712006",
+      "title": "封面 · AI生成学术PPT案例展示",
+      "order": 1
+    },
+    {
+      "path": "screenshots/pages/PG20260712007.png",
+      "width": 1080,
+      "height": 1440,
+      "source_page_code": "PG20260712007",
+      "title": "展示一",
+      "order": 2
+    },
+    {
+      "path": "screenshots/pages/PG20260712008.png",
+      "width": 1080,
+      "height": 1440,
+      "source_page_code": "PG20260712008",
+      "title": "展示二",
+      "order": 3
+    },
+    {
+      "path": "screenshots/pages/PG20260712009.png",
+      "width": 1080,
+      "height": 1440,
+      "source_page_code": "PG20260712009",
+      "title": "展示三",
+      "order": 4
+    },
+    {
+      "path": "screenshots/pages/PG20260712010.png",
+      "width": 1080,
+      "height": 1440,
+      "source_page_code": "PG20260712010",
+      "title": "展示四",
+      "order": 5
+    },
+    {
+      "path": "screenshots/pages/PG20260712011.png",
+      "width": 1080,
+      "height": 1440,
+      "source_page_code": "PG20260712011",
+      "title": "展示五",
+      "order": 6
+    }
+  ]
+}

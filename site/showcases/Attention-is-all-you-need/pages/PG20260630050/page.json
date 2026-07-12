@@ -1,7 +1,0 @@
-{
-  "source_page_code": "PG20260630050",
-  "title": "Slide 7 · 为什么 Self-Attention 有效",
-  "summary": "从三个评价维度分析 self-attention 有效性，量化对比 RNN/CNN，讨论 O(n²) 代价与后续改进方向。",
-  "speaker_notes": "三个评价维度：单层复杂度、最少顺序操作数、最大路径长度。\nSelf-attention：顺序操作 O(1)，最大路径长度 O(1)，适合学习长距离依赖。\nRNN：复杂度 O(n d²)，顺序操作 O(n)，最大路径长度 O(n)。\nCNN：可并行但需要多层连接远距离位置。\n代价：self-attention 单层复杂度含 O(n² d)，长上下文会显著增加内存和计算。\n后续 Longformer、Performer、FlashAttention、稀疏注意力等工作，可以看成围绕 O(n²) 代价展开的工程和算法改进。",
-  "file_type": "vue"
-}

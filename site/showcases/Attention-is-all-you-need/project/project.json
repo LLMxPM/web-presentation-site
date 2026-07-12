@@ -1,5 +1,5 @@
 {
-  "source_project_code": "PRJ20260630005",
+  "source_project_code": "PRJ20260709002",
   "name": "Attention is all you need",
   "description": "学术风格，使用三线表等组件，模型：Deepseek V4 pro；成本：0.95元。",
   "page_width": 1920,
@@ -33,25 +33,25 @@
   ],
   "suggested_components": [
     {
-      "source_component_code": "CMP20260630001",
+      "source_component_code": "CMP20260709001",
       "source_version_no": 1,
       "name": "学术封面页",
       "import_name": "AcademicCoverPage"
     },
     {
-      "source_component_code": "CMP20260630002",
-      "source_version_no": 1,
+      "source_component_code": "CMP20260709003",
+      "source_version_no": 2,
       "name": "三线表",
       "import_name": "ThreeLineTable"
     },
     {
-      "source_component_code": "CMP20260630003",
+      "source_component_code": "CMP20260709002",
       "source_version_no": 1,
       "name": "学术内容页模板",
       "import_name": "AcademicContentPage"
     },
     {
-      "source_component_code": "CMP20260630005",
+      "source_component_code": "CMP20260709004",
       "source_version_no": 1,
       "name": "学术封底页",
       "import_name": "AcademicBackCoverPage"

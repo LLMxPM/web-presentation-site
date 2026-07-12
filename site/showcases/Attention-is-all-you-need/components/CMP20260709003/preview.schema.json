@@ -1,0 +1,271 @@
+{
+  "props": {
+    "columns": {
+      "type": "json",
+      "label": "表头列配置",
+      "default": [
+        {
+          "key": "name",
+          "title": "姓名",
+          "align": "left"
+        },
+        {
+          "key": "age",
+          "title": "年龄",
+          "align": "center"
+        },
+        {
+          "key": "city",
+          "title": "城市",
+          "align": "left"
+        },
+        {
+          "key": "score",
+          "title": "分数",
+          "align": "right"
+        }
+      ],
+      "description": "width 不设时列宽自动均分填满容器；设置后按指定宽度渲染"
+    },
+    "rows": {
+      "type": "json",
+      "label": "数据行",
+      "default": [
+        {
+          "name": "张三",
+          "age": 28,
+          "city": "北京",
+          "score": 95
+        },
+        {
+          "name": "李四",
+          "age": 32,
+          "city": "上海",
+          "score": 88
+        },
+        {
+          "name": "王五",
+          "age": 25,
+          "city": "广州",
+          "score": 92
+        },
+        {
+          "name": "赵六",
+          "age": 30,
+          "city": "深圳",
+          "score": 85
+        }
+      ]
+    },
+    "caption": {
+      "type": "string",
+      "label": "表格标题",
+      "default": "员工信息表"
+    },
+    "fontSize": {
+      "type": "select",
+      "label": "字号",
+      "default": "2xl",
+      "description": "控制文字大小，行高自动适配",
+      "options": [
+        {
+          "label": "xs",
+          "value": "xs"
+        },
+        {
+          "label": "sm",
+          "value": "sm"
+        },
+        {
+          "label": "base",
+          "value": "base"
+        },
+        {
+          "label": "lg",
+          "value": "lg"
+        },
+        {
+          "label": "xl",
+          "value": "xl"
+        },
+        {
+          "label": "2xl",
+          "value": "2xl"
+        },
+        {
+          "label": "3xl",
+          "value": "3xl"
+        },
+        {
+          "label": "4xl",
+          "value": "4xl"
+        }
+      ]
+    },
+    "width": {
+      "type": "string",
+      "label": "整体宽度",
+      "default": "100%"
+    },
+    "height": {
+      "type": "string",
+      "label": "整体高度",
+      "default": "",
+      "description": "设置后行高自动均分以填满容器，留空则按内容自然撑高"
+    }
+  },
+  "slots": {},
+  "mocks": {},
+  "presets": [
+    {
+      "key": "auto-width",
+      "label": "自动列宽",
+      "props": {
+        "caption": "员工信息表",
+        "fontSize": "2xl"
+      }
+    },
+    {
+      "key": "wide-fixed",
+      "label": "宽列固定",
+      "props": {
+        "caption": "季度经营数据",
+        "fontSize": "2xl",
+        "columns": [
+          {
+            "key": "product",
+            "title": "产品线",
+            "width": "200px",
+            "align": "left"
+          },
+          {
+            "key": "revenue",
+            "title": "营收（万元）",
+            "width": "180px",
+            "align": "right"
+          },
+          {
+            "key": "growth",
+            "title": "同比增长",
+            "width": "140px",
+            "align": "right"
+          },
+          {
+            "key": "status",
+            "title": "状态",
+            "width": "120px",
+            "align": "center"
+          }
+        ],
+        "rows": [
+          {
+            "product": "云计算服务",
+            "revenue": "8,520",
+            "growth": "+23.5%",
+            "status": "良好"
+          },
+          {
+            "product": "数据分析平台",
+            "revenue": "4,280",
+            "growth": "+15.8%",
+            "status": "良好"
+          },
+          {
+            "product": "安全解决方案",
+            "revenue": "2,150",
+            "growth": "-3.2%",
+            "status": "关注"
+          },
+          {
+            "product": "物联网设备",
+            "revenue": "1,860",
+            "growth": "+42.1%",
+            "status": "优秀"
+          }
+        ]
+      }
+    },
+    {
+      "key": "compact",
+      "label": "紧凑两列",
+      "props": {
+        "caption": "关键指标",
+        "fontSize": "2xl",
+        "columns": [
+          {
+            "key": "name",
+            "title": "指标名称",
+            "align": "left"
+          },
+          {
+            "key": "value",
+            "title": "数值",
+            "align": "right"
+          }
+        ],
+        "rows": [
+          {
+            "name": "总用户数",
+            "value": "12,580"
+          },
+          {
+            "name": "活跃用户",
+            "value": "8,430"
+          },
+          {
+            "name": "转化率",
+            "value": "67.2%"
+          }
+        ]
+      }
+    },
+    {
+      "key": "fixed-height",
+      "label": "固定高度均分",
+      "props": {
+        "caption": "固定高度表格",
+        "fontSize": "2xl",
+        "height": "240px",
+        "columns": [
+          {
+            "key": "metric",
+            "title": "指标",
+            "align": "left"
+          },
+          {
+            "key": "value",
+            "title": "数值",
+            "align": "right"
+          },
+          {
+            "key": "trend",
+            "title": "趋势",
+            "align": "center"
+          }
+        ],
+        "rows": [
+          {
+            "name": "月活跃用户",
+            "value": "1,250,000",
+            "trend": "↑ 15%"
+          },
+          {
+            "name": "日均收入",
+            "value": "¥850,000",
+            "trend": "↑ 8%"
+          },
+          {
+            "name": "转化率",
+            "value": "67.2%",
+            "trend": "稳定"
+          },
+          {
+            "name": "客单价",
+            "value": "¥328",
+            "trend": "↑ 3%"
+          }
+        ]
+      }
+    }
+  ]
+}
