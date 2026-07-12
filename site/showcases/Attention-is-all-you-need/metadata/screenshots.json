@@ -1,0 +1,100 @@
+{
+  "cover": {
+    "path": "screenshots/cover.png",
+    "width": 1920,
+    "height": 1080,
+    "source_page_code": "PG20260630044",
+    "title": "Slide 1 · 论文背景与一句话贡献",
+    "order": 1
+  },
+  "pages": [
+    {
+      "path": "screenshots/pages/PG20260630044.png",
+      "width": 1920,
+      "height": 1080,
+      "source_page_code": "PG20260630044",
+      "title": "Slide 1 · 论文背景与一句话贡献",
+      "order": 1
+    },
+    {
+      "path": "screenshots/pages/PG20260630045.png",
+      "width": 1920,
+      "height": 1080,
+      "source_page_code": "PG20260630045",
+      "title": "Slide 2 · 为什么要摆脱 RNN/CNN",
+      "order": 2
+    },
+    {
+      "path": "screenshots/pages/PG20260630046.png",
+      "width": 1920,
+      "height": 1080,
+      "source_page_code": "PG20260630046",
+      "title": "Slide 3 · Transformer 总体结构",
+      "order": 3
+    },
+    {
+      "path": "screenshots/pages/PG20260630047.png",
+      "width": 1920,
+      "height": 1080,
+      "source_page_code": "PG20260630047",
+      "title": "Slide 4 · Scaled Dot-Product Attention",
+      "order": 4
+    },
+    {
+      "path": "screenshots/pages/PG20260630048.png",
+      "width": 1920,
+      "height": 1080,
+      "source_page_code": "PG20260630048",
+      "title": "Slide 5 · Multi-Head Attention",
+      "order": 5
+    },
+    {
+      "path": "screenshots/pages/PG20260630049.png",
+      "width": 1920,
+      "height": 1080,
+      "source_page_code": "PG20260630049",
+      "title": "Slide 6 · 位置编码与位置前馈网络",
+      "order": 6
+    },
+    {
+      "path": "screenshots/pages/PG20260630050.png",
+      "width": 1920,
+      "height": 1080,
+      "source_page_code": "PG20260630050",
+      "title": "Slide 7 · 为什么 Self-Attention 有效",
+      "order": 7
+    },
+    {
+      "path": "screenshots/pages/PG20260630051.png",
+      "width": 1920,
+      "height": 1080,
+      "source_page_code": "PG20260630051",
+      "title": "Slide 8 · 训练设置与工程细节",
+      "order": 8
+    },
+    {
+      "path": "screenshots/pages/PG20260630052.png",
+      "width": 1920,
+      "height": 1080,
+      "source_page_code": "PG20260630052",
+      "title": "Slide 9 · 实验结果与消融分析",
+      "order": 9
+    },
+    {
+      "path": "screenshots/pages/PG20260630053.png",
+      "width": 1920,
+      "height": 1080,
+      "source_page_code": "PG20260630053",
+      "title": "Slide 10 · 总结、局限与讨论",
+      "order": 10
+    },
+    {
+      "path": "screenshots/pages/PG20260630054.png",
+      "width": 1920,
+      "height": 1080,
+      "source_page_code": "PG20260630054",
+      "title": "封底 · 感谢聆听",
+      "order": 11
+    }
+  ]
+}

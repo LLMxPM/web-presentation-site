@@ -1,0 +1,35 @@
+{
+  "name": "icon-mask",
+  "original_name": "icon-mask.svg",
+  "asset_type": "icon",
+  "content_type": "image/svg+xml",
+  "file_size": 1084,
+  "file_hash": "67fb880f9710ba33c399c6c33aa8a2c9c5e140e84d780c6bf8040fadcce717cc",
+  "description": "风格漂移/戏剧面具 — 喜剧与悲剧双面具简化线条图标",
+  "tags": [
+    "语义图标",
+    "深绿主题"
+  ],
+  "analysis_metadata": {
+    "schema_version": 1,
+    "kind": "icon",
+    "icon": {
+      "format": "svg",
+      "render_mode": "inline_svg",
+      "style": "stroke",
+      "inline_safe": true,
+      "stroke_width_editable": true,
+      "analysis_status": "analyzed",
+      "reasons": [
+        "检测到纯描边 SVG，可安全应用描边宽度。"
+      ]
+    }
+  },
+  "render_metadata": {
+    "schema_version": 1,
+    "kind": "asset_render_hint",
+    "aspect_ratio": "1:1",
+    "aspect_ratio_value": 1.0,
+    "aspect_ratio_source": "agent"
+  }
+}

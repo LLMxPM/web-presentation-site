@@ -1,0 +1,19 @@
+{
+  "source_project_code": "PRJ20260712001",
+  "name": "风格与品牌形象",
+  "description": "讲述web-presentation的风格和平拍资产控制能力",
+  "page_width": 1080,
+  "page_height": 1440,
+  "base_font_size": "28px",
+  "icon_default_stroke_width": 2,
+  "show_pdf_export_button": false,
+  "menu_mode": "preview",
+  "theme_key": "xhsmatchaoat",
+  "theme_config_yaml": "themes:\n  xhsmatchaoat:\n    name: 抹茶燕麦\n    description: 燕麦底色搭配抹茶绿，松弛清新，适合生活方式、家居与健康内容\n    palette:\n      text:\n        primary: '#26382E'\n        secondary: '#5F7065'\n        invert: '#FAF7EC'\n      background:\n        default: '#FAF7EC'\n        invert: '#3F624C'\n      border:\n        default: '#CFD8C8'\n        subtle: '#E5E7D8'\n      link:\n        default: '#36704A'\n        hover: '#28583A'\n        visited: '#74634E'\n      accent:\n      - '#4F775A'\n      - '#88A778'\n      - '#C1B763'\n      - '#D88A63'\n      - '#7FA5A0'\n      - '#9B745B'\n    typography:\n      headingfont: system-ui\n      bodyfont: system-ui\n      codefont: monospace\n    logo: runtime_icon\n    invertLogo: runtime_icon_white\ndefault:\n  theme: xhsmatchaoat\n",
+  "style_spec_markdown": "## 项目定位\n\n- 本项目是 1080x1440 小红书种草、推荐、清单和对比类图文项目。\n- 整套页面应帮助用户快速判断“适不适合我”“怎么选”“推荐哪个”。\n- 页面风格可以更有情绪和记忆点，但必须保持信息清晰、层级稳定。\n\n## 全局版式规则\n\n- 页面四周保留 64px 到 80px 安全边距。\n- 标题、推荐标签、评分/价格/结论区域保持统一样式。\n- 页面优先使用大标题、条目卡片、标签、重点数字和短结论。\n- 同一项目内的卡片、图标、色块、强调样式应保持一致。\n- 不在同一页混用过多不同风格的装饰元素。\n\n## 字号规范\n\n- 封面标题使用 text-6xl 到 text-8xl。\n- 普通页标题使用 text-5xl 到 text-6xl。\n- 条目名称使用 text-3xl 到 text-4xl。\n- 关键价格、评分、排名、结论使用 text-4xl 到 text-6xl。\n- 描述说明使用 text-xl 到 text-2xl。\n- 标签、注释、页码使用 text-base 到 text-xl。\n\n## 页面类型库\n\n- 封面页：主题标题 + 推荐理由 + 适用人群或场景。\n- 总览页：展示推荐清单、分类或选择路径。\n- 单品页：突出一个对象，包含亮点、适用场景、注意事项。\n- 多项清单页：展示 4 到 6 个推荐对象，每项保留最关键判断信息。\n- 对比页：用于 A/B 选择，必须给出明确适合人群或推荐结论。\n- 避坑页：展示不推荐原因、错误选择和替代建议。\n- 总结页：按预算、场景、偏好给出最终选择建议。\n\n## 内容密度\n\n- 单页最多 6 个条目。\n- 每个条目最多 3 个标签。\n- 对比页最多比较 2 到 3 个对象。\n- 必须有明确结论，不只罗列信息。\n- 页面底部可放补充提醒，但不承载主结论。",
+  "build_extra_assets_json": {
+    "asset_names": []
+  },
+  "suggested_reference_asset_names": [],
+  "suggested_components": []
+}

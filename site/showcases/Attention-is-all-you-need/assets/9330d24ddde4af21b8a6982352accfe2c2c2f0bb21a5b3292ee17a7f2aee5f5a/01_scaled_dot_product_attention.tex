@@ -1,0 +1,32 @@
+% Scaled Dot-Product Attention：给定查询 Q、键 K、值 V，先计算相似度，再对 V 加权求和。
+\[
+\operatorname{Attention}(Q,K,V)
+=
+\operatorname{softmax}\left(
+\frac{QK^\top}{\sqrt{d_k}}
+\right)V
+\]
+
+% Decoder masked self-attention：对未来位置加上 mask，保证位置 i 不能依赖 i 之后的 token。
+\[
+\operatorname{MaskedAttention}(Q,K,V)
+=
+\operatorname{softmax}\left(
+\frac{QK^\top + M}{\sqrt{d_k}}
+\right)V
+\]
+
+\[
+M_{ij}=
+\begin{cases}
+0, & j \le i \\
+-\infty, & j > i
+\end{cases}
+\]
+
+% 缩放动机：若 q_i、k_i 独立且均值为 0、方差为 1，则点积方差随 d_k 增大。
+\[
+q \cdot k = \sum_{i=1}^{d_k}q_i k_i,
+\qquad
+\operatorname{Var}(q \cdot k)=d_k
+\]

@@ -1,0 +1,62 @@
+{
+  "props": {
+    "title": {
+      "type": "string",
+      "label": "报告标题",
+      "default": "学术报告标题"
+    },
+    "subtitle": {
+      "type": "string",
+      "label": "副标题",
+      "default": "副标题或研究主题"
+    },
+    "author": {
+      "type": "string",
+      "label": "报告人",
+      "default": "报告人姓名"
+    },
+    "date": {
+      "type": "string",
+      "label": "日期",
+      "default": "2026年6月"
+    },
+    "showLogo": {
+      "type": "boolean",
+      "label": "显示 Logo",
+      "default": true
+    }
+  },
+  "mocks": {},
+  "presets": [
+    {
+      "key": "default",
+      "label": "默认封面",
+      "props": {
+        "title": "组会报告",
+        "subtitle": "基于深度学习的图像识别研究",
+        "author": "张三",
+        "date": "2026年6月8日"
+      }
+    },
+    {
+      "key": "thesis",
+      "label": "论文答辩",
+      "props": {
+        "title": "硕士论文答辩",
+        "subtitle": "新型材料在航空航天领域的应用研究",
+        "author": "李四",
+        "date": "2026年6月"
+      }
+    },
+    {
+      "key": "lecture",
+      "label": "学术讲座",
+      "props": {
+        "title": "学术前沿讲座",
+        "subtitle": "人工智能发展趋势",
+        "author": "王教授",
+        "date": "2026年6月8日"
+      }
+    }
+  ]
+}

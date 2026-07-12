@@ -1,0 +1,18 @@
+{
+  "name": "蓬莱峰天梯",
+  "original_name": "蓬莱峰天梯.png",
+  "asset_type": "image",
+  "content_type": "image/png",
+  "file_size": 473275,
+  "file_hash": "b341057d47338dded84736f21458da95b70b23f40d1bef9b4555fde2af327df8",
+  "description": null,
+  "tags": [],
+  "analysis_metadata": null,
+  "render_metadata": {
+    "schema_version": 1,
+    "kind": "asset_render_hint",
+    "aspect_ratio": "131:98",
+    "aspect_ratio_value": 1.3357,
+    "aspect_ratio_source": "auto"
+  }
+}

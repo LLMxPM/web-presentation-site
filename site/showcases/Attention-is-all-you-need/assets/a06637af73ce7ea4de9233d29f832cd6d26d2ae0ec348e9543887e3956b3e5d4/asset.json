@@ -1,0 +1,18 @@
+{
+  "name": "08_appendix_attention_anaphora_full_head5",
+  "original_name": "08_appendix_attention_anaphora_full_head5.png",
+  "asset_type": "image",
+  "content_type": "image/png",
+  "file_size": 155236,
+  "file_hash": "a06637af73ce7ea4de9233d29f832cd6d26d2ae0ec348e9543887e3956b3e5d4",
+  "description": null,
+  "tags": [],
+  "analysis_metadata": null,
+  "render_metadata": {
+    "schema_version": 1,
+    "kind": "asset_render_hint",
+    "aspect_ratio": "133:90",
+    "aspect_ratio_value": 1.4778,
+    "aspect_ratio_source": "auto"
+  }
+}

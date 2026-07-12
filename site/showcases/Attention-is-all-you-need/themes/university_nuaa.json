@@ -1,0 +1,45 @@
+{
+  "key": "university_nuaa",
+  "name": "南航主题色",
+  "description": "南航主题色",
+  "logo_asset_name": "nuaa_logo_b",
+  "invert_logo_asset_name": "nuaa_logo",
+  "project_icon_asset_name": "nuaa_logo_c",
+  "logo_path": "nuaa_logo_b",
+  "invert_logo_path": "nuaa_logo",
+  "project_icon_name": "nuaa_logo_c",
+  "heading_font_asset_name": null,
+  "body_font_asset_name": null,
+  "code_font_asset_name": null,
+  "heading_font_label": "system-ui",
+  "body_font_label": "system-ui",
+  "code_font_label": "monospace",
+  "palette": {
+    "text": {
+      "primary": "#333333",
+      "secondary": "#666666",
+      "invert": "#FFFFFF"
+    },
+    "background": {
+      "default": "#FFFFFF",
+      "invert": "#1D2088"
+    },
+    "border": {
+      "default": "#D0D0D0",
+      "subtle": "#EEEEEE"
+    },
+    "link": {
+      "default": "#1D2088",
+      "hover": "#FF8C47",
+      "visited": "#3C4DB1"
+    },
+    "accent": [
+      "#1D2088",
+      "#044A93",
+      "#1B2EA3",
+      "#FF8C47",
+      "#FCC740",
+      "#467D32"
+    ]
+  }
+}

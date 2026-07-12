@@ -1,0 +1,18 @@
+{
+  "name": "天柱山云海风光",
+  "original_name": "天柱山云海风光.jpg",
+  "asset_type": "image",
+  "content_type": "image/jpeg",
+  "file_size": 162146,
+  "file_hash": "8ba03a70858c53ee88b40f302a16514610d8994ed9f4737a0b8a72c545a29b4c",
+  "description": null,
+  "tags": [],
+  "analysis_metadata": null,
+  "render_metadata": {
+    "schema_version": 1,
+    "kind": "asset_render_hint",
+    "aspect_ratio": "4:3",
+    "aspect_ratio_value": 1.335,
+    "aspect_ratio_source": "auto"
+  }
+}

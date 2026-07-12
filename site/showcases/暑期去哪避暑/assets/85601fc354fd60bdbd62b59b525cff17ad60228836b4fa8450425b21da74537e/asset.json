@@ -1,0 +1,18 @@
+{
+  "name": "山谷流泉文化园实景",
+  "original_name": "山谷流泉文化园实景.png",
+  "asset_type": "image",
+  "content_type": "image/png",
+  "file_size": 1100708,
+  "file_hash": "85601fc354fd60bdbd62b59b525cff17ad60228836b4fa8450425b21da74537e",
+  "description": null,
+  "tags": [],
+  "analysis_metadata": null,
+  "render_metadata": {
+    "schema_version": 1,
+    "kind": "asset_render_hint",
+    "aspect_ratio": "152:97",
+    "aspect_ratio_value": 1.567,
+    "aspect_ratio_source": "auto"
+  }
+}

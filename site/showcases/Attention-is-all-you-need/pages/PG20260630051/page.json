@@ -1,0 +1,7 @@
+{
+  "source_page_code": "PG20260630051",
+  "title": "Slide 8 · 训练设置与工程细节",
+  "summary": "详述训练数据、硬件、Adam 优化器、warmup 调度、正则化和推理策略。",
+  "speaker_notes": "数据：WMT 2014 EN-DE 约 450 万句对，BPE 共享词表约 37K；EN-FR 约 3600 万句，word-piece 词表约 32K。\n硬件：8 张 NVIDIA P100；base 训练约 100K steps/12 小时；big 训练约 300K steps/3.5 天。\n优化器：Adam，beta_1=0.9，beta_2=0.98，epsilon=1e-9。\n学习率：warmup 4000 steps，先线性升高，再按 step 的平方根倒数衰减。\n正则化：residual dropout、embedding/positional encoding dropout、label smoothing。\n推理：checkpoint averaging、beam search、length penalty。\n讲述重点：论文贡献不是只靠架构，还包括当时很关键的训练 recipe。",
+  "file_type": "vue"
+}

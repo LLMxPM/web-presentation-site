@@ -15,11 +15,11 @@
   * `components/`：首页、案例列表、案例卡片、案例详情等 Vue 组件。
   * `custom.css`、`showcase.css`：站点全局样式与案例展示样式。
 * `site/public/`：站点自有静态资源，执行同步脚本后会复制到 `site/.generated/public/`。
-* `site/showcases/`：案例模板包目录，提交 `.wptemplate.zip` 文件；可配合同名 `.showcase.json` 补充站点展示字段。
+* `site/showcases/`：案例模板源码目录，每个子目录对应一个案例；可在子目录内使用 `showcase.json` 补充站点展示字段。
 * `scripts/`：Node.js ESM 脚本入口。
   * `sync-docs.mjs`：同步源仓文档、解析案例模板包、生成 VitePress 页面与数据。
   * `check-links.mjs`：检查源仓 README 和 docs 下 Markdown 的本地链接。
-  * `shared/`：同步、渲染、ZIP 读取、路径与 Markdown 工具函数。
+  * `shared/`：同步、渲染、案例目录读取与 ZIP 生成、路径及 Markdown 工具函数。
 * `site/.generated/`：由 `pnpm run sync:docs` 生成的 VitePress 源目录，不提交。
 * `site/.vitepress/dist/`、`site/.vitepress/cache/`：构建和缓存产物，不提交。
 * `.github/workflows/pages.yml`：GitHub Pages 发布流水线。
@@ -63,16 +63,16 @@ pnpm run dev
 
 ## 案例模板包约定
 
-* 案例模板包直接放在 `site/showcases/<name>.wptemplate.zip`，需要进入 Git。
-* 案例 URL slug 由 ZIP 文件名去掉 `.wptemplate.zip` 后生成，命名应稳定，避免无意义改名导致链接变化。
-* ZIP 包必须包含脚本校验需要的关键文件：
+* 案例模板解压到 `site/showcases/<name>/`，目录内源码需要进入 Git；下载用 ZIP 由同步脚本生成，不提交。
+* 案例 URL slug 由案例目录名生成，命名应稳定，避免无意义改名导致链接变化。
+* 案例目录必须包含脚本校验需要的关键文件：
   * `manifest.json`
   * `metadata/template.json`
   * `metadata/screenshots.json`
   * `project/project.json`
   * `project/routes.json`
 * 案例展示主数据来自 `project/project.json`，截图顺序优先按 `project/routes.json` 的页面路由匹配。
-* 如需补充展示标题、摘要、分类、排序或精选状态，使用同名 `*.showcase.json`，不要改生成后的数据文件。
+* 如需补充展示标题、摘要、分类、排序或精选状态，使用案例目录内的 `showcase.json`；该文件不会进入下载包。
 
 ## 代码约定
 
@@ -87,7 +87,7 @@ pnpm run dev
 
 ## Git 与发布约定
 
-* 提交源码、配置、脚本、样式、静态资源和 `site/showcases/*.wptemplate.zip`。
+* 提交源码、配置、脚本、样式、静态资源和 `site/showcases/<name>/` 下的案例源文件。
 * 不提交 `node_modules/`、`.source/`、`site/.generated/`、`site/.vitepress/cache/`、`site/.vitepress/dist/`、日志文件等产物。
 * GitHub Pages workflow 在 `master` push、手动触发和每日定时任务时构建发布。
 * CI 会 checkout 当前站点仓库和 `Web-Presentation` 源仓，安装依赖后依次执行 `sync:docs`、`check:links`、`build`，最后上传 `site/.vitepress/dist`。

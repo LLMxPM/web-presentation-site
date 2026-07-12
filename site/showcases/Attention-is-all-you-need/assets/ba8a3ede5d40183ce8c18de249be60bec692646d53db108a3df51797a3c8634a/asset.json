@@ -1,0 +1,18 @@
+{
+  "name": "03_paper_figure_2b_multi_head_attention",
+  "original_name": "03_paper_figure_2b_multi_head_attention.png",
+  "asset_type": "image",
+  "content_type": "image/png",
+  "file_size": 65853,
+  "file_hash": "ba8a3ede5d40183ce8c18de249be60bec692646d53db108a3df51797a3c8634a",
+  "description": null,
+  "tags": [],
+  "analysis_metadata": null,
+  "render_metadata": {
+    "schema_version": 1,
+    "kind": "asset_render_hint",
+    "aspect_ratio": "28:43",
+    "aspect_ratio_value": 0.6513,
+    "aspect_ratio_source": "auto"
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "routes": [
+    {
+      "route_type": "page",
+      "route": "cover",
+      "order": 1,
+      "hidden": false,
+      "group_title": null,
+      "source_page_code": "PG20260712001",
+      "children": []
+    },
+    {
+      "route_type": "page",
+      "route": "pain-points",
+      "order": 2,
+      "hidden": false,
+      "group_title": null,
+      "source_page_code": "PG20260712002",
+      "children": []
+    },
+    {
+      "route_type": "page",
+      "route": "solution",
+      "order": 3,
+      "hidden": false,
+      "group_title": null,
+      "source_page_code": "PG20260712003",
+      "children": []
+    },
+    {
+      "route_type": "page",
+      "route": "comparison",
+      "order": 4,
+      "hidden": false,
+      "group_title": null,
+      "source_page_code": "PG20260712004",
+      "children": []
+    },
+    {
+      "route_type": "page",
+      "route": "summary",
+      "order": 5,
+      "hidden": false,
+      "group_title": null,
+      "source_page_code": "PG20260712005",
+      "children": []
+    }
+  ]
+}

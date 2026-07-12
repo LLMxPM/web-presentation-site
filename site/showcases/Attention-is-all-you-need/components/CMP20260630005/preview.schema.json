@@ -1,0 +1,46 @@
+{
+  "props": {
+    "thankYouText": {
+      "type": "string",
+      "label": "感谢文字",
+      "default": "谢谢！"
+    },
+    "contactInfo": {
+      "type": "string",
+      "label": "联系信息",
+      "default": "欢迎交流讨论"
+    },
+    "showLogo": {
+      "type": "boolean",
+      "label": "显示 Logo",
+      "default": true
+    }
+  },
+  "mocks": {},
+  "presets": [
+    {
+      "key": "default",
+      "label": "默认封底",
+      "props": {
+        "thankYouText": "谢谢！",
+        "contactInfo": "欢迎交流讨论"
+      }
+    },
+    {
+      "key": "qa",
+      "label": "问答环节",
+      "props": {
+        "thankYouText": "Q&A",
+        "contactInfo": "欢迎提问与讨论"
+      }
+    },
+    {
+      "key": "thanks",
+      "label": "感谢聆听",
+      "props": {
+        "thankYouText": "感谢聆听",
+        "contactInfo": "联系方式：example@university.edu.cn"
+      }
+    }
+  ]
+}

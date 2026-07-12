@@ -1,0 +1,18 @@
+{
+  "name": "01_scaled_dot_product_attention",
+  "original_name": "01_scaled_dot_product_attention.tex",
+  "asset_type": "formula",
+  "content_type": "application/octet-stream",
+  "file_size": 705,
+  "file_hash": "9330d24ddde4af21b8a6982352accfe2c2c2f0bb21a5b3292ee17a7f2aee5f5a",
+  "description": null,
+  "tags": [],
+  "analysis_metadata": null,
+  "render_metadata": {
+    "schema_version": 1,
+    "kind": "asset_render_hint",
+    "aspect_ratio": "215:91",
+    "aspect_ratio_value": 2.3627,
+    "aspect_ratio_source": "auto"
+  }
+}

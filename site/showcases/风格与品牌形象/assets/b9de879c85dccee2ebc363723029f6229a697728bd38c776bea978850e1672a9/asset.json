@@ -1,0 +1,35 @@
+{
+  "name": "icon-blocks",
+  "original_name": "icon-blocks.svg",
+  "asset_type": "icon",
+  "content_type": "image/svg+xml",
+  "file_size": 471,
+  "file_hash": "b9de879c85dccee2ebc363723029f6229a697728bd38c776bea978850e1672a9",
+  "description": "组件复用/积木 — 两个方块堆叠组合图标",
+  "tags": [
+    "语义图标",
+    "深绿主题"
+  ],
+  "analysis_metadata": {
+    "schema_version": 1,
+    "kind": "icon",
+    "icon": {
+      "format": "svg",
+      "render_mode": "inline_svg",
+      "style": "mixed",
+      "inline_safe": true,
+      "stroke_width_editable": false,
+      "analysis_status": "unsupported",
+      "reasons": [
+        "检测到 fill / stroke 混合图标，不启用描边宽度调整。"
+      ]
+    }
+  },
+  "render_metadata": {
+    "schema_version": 1,
+    "kind": "asset_render_hint",
+    "aspect_ratio": "1:1",
+    "aspect_ratio_value": 1.0,
+    "aspect_ratio_source": "agent"
+  }
+}

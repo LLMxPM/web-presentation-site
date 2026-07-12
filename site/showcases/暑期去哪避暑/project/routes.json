@@ -1,0 +1,68 @@
+{
+  "routes": [
+    {
+      "route_type": "group",
+      "route": "tianzhu-jiaozi-yue",
+      "order": 1,
+      "hidden": false,
+      "group_title": "天柱骄子月",
+      "source_page_code": null,
+      "children": [
+        {
+          "route_type": "page",
+          "route": "cover",
+          "order": 1,
+          "hidden": false,
+          "group_title": null,
+          "source_page_code": "PG20260629001",
+          "children": []
+        },
+        {
+          "route_type": "page",
+          "route": "section-01",
+          "order": 2,
+          "hidden": false,
+          "group_title": null,
+          "source_page_code": "PG20260629002",
+          "children": []
+        },
+        {
+          "route_type": "page",
+          "route": "section-02",
+          "order": 3,
+          "hidden": false,
+          "group_title": null,
+          "source_page_code": "PG20260629003",
+          "children": []
+        },
+        {
+          "route_type": "page",
+          "route": "section-03",
+          "order": 4,
+          "hidden": false,
+          "group_title": null,
+          "source_page_code": "PG20260629004",
+          "children": []
+        },
+        {
+          "route_type": "page",
+          "route": "section-04",
+          "order": 5,
+          "hidden": false,
+          "group_title": null,
+          "source_page_code": "PG20260629005",
+          "children": []
+        },
+        {
+          "route_type": "page",
+          "route": "section-05",
+          "order": 6,
+          "hidden": false,
+          "group_title": null,
+          "source_page_code": "PG20260629006",
+          "children": []
+        }
+      ]
+    }
+  ]
+}

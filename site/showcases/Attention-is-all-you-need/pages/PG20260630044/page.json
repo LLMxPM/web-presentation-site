@@ -1,0 +1,7 @@
+{
+  "source_page_code": "PG20260630044",
+  "title": "Slide 1 · 论文背景与一句话贡献",
+  "summary": "封面页：Vaswani et al., NIPS 2017，提出完全基于注意力的 Transformer 架构。",
+  "speaker_notes": "论文：Vaswani et al., Attention Is All You Need, NIPS 2017。\n背景：当时主流序列转导模型多依赖 RNN/CNN 编码器-解码器，注意力通常作为附加模块。\n一句话贡献：提出完全基于注意力的 Transformer，用自注意力和前馈网络替代序列对齐的循环与卷积。\n讲述重点：这篇论文不是只提出一个 attention 公式，而是把 attention 提升为完整架构的核心计算单元。",
+  "file_type": "vue"
+}

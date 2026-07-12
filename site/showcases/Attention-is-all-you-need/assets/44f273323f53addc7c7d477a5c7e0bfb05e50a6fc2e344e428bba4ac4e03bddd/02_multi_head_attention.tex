@@ -1,0 +1,29 @@
+% Multi-Head Attention：并行投影到多个子空间，分别做注意力，再拼接并输出投影。
+\[
+\operatorname{MultiHead}(Q,K,V)
+=
+\operatorname{Concat}(\operatorname{head}_1,\ldots,\operatorname{head}_h)W^O
+\]
+
+\[
+\operatorname{head}_i
+=
+\operatorname{Attention}(QW_i^Q,KW_i^K,VW_i^V)
+\]
+
+\[
+W_i^Q \in \mathbb{R}^{d_{\text{model}}\times d_k},
+\quad
+W_i^K \in \mathbb{R}^{d_{\text{model}}\times d_k},
+\quad
+W_i^V \in \mathbb{R}^{d_{\text{model}}\times d_v},
+\quad
+W^O \in \mathbb{R}^{h d_v \times d_{\text{model}}}
+\]
+
+% 论文 base 模型设置。
+\[
+h=8,\qquad
+d_{\text{model}}=512,\qquad
+d_k=d_v=d_{\text{model}}/h=64
+\]

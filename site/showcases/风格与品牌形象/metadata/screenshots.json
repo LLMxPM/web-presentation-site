@@ -1,0 +1,52 @@
+{
+  "cover": {
+    "path": "screenshots/cover.png",
+    "width": 1080,
+    "height": 1440,
+    "source_page_code": "PG20260712001",
+    "title": "封面：企业风格不该靠反复提醒AI来维持",
+    "order": 1
+  },
+  "pages": [
+    {
+      "path": "screenshots/pages/PG20260712001.png",
+      "width": 1080,
+      "height": 1440,
+      "source_page_code": "PG20260712001",
+      "title": "封面：企业风格不该靠反复提醒AI来维持",
+      "order": 1
+    },
+    {
+      "path": "screenshots/pages/PG20260712002.png",
+      "width": 1080,
+      "height": 1440,
+      "source_page_code": "PG20260712002",
+      "title": "痛点：AI做PPT的三大风格翻车现场",
+      "order": 2
+    },
+    {
+      "path": "screenshots/pages/PG20260712003.png",
+      "width": 1080,
+      "height": 1440,
+      "source_page_code": "PG20260712003",
+      "title": "方案：把品牌变成可复用的平台资产",
+      "order": 3
+    },
+    {
+      "path": "screenshots/pages/PG20260712004.png",
+      "width": 1080,
+      "height": 1440,
+      "source_page_code": "PG20260712004",
+      "title": "对比：套模板 vs 品牌约束驱动",
+      "order": 4
+    },
+    {
+      "path": "screenshots/pages/PG20260712005.png",
+      "width": 1080,
+      "height": 1440,
+      "source_page_code": "PG20260712005",
+      "title": "总结：让品牌在约束中自由生长",
+      "order": 5
+    }
+  ]
+}

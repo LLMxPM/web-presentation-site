@@ -1,0 +1,68 @@
+{
+  "props": {
+    "title": {
+      "type": "string",
+      "label": "页头标题",
+      "default": "研究内容"
+    },
+    "showLogo": {
+      "type": "boolean",
+      "label": "显示 Logo",
+      "default": true
+    },
+    "showPageNumber": {
+      "type": "boolean",
+      "label": "显示页码",
+      "default": true
+    },
+    "footerText": {
+      "type": "string",
+      "label": "页脚文本",
+      "default": ""
+    }
+  },
+  "slots": {
+    "default": {
+      "label": "页面内容",
+      "default": [
+        {
+          "type": "html",
+          "value": "<div class='h-full flex flex-col justify-center'><h2 class='text-2xl font-heading font-bold text-primary mb-6'>章节标题</h2><p class='text-base text-secondary leading-relaxed mb-4'>这里是页面正文内容。可以包含段落文字、列表、图表等各种内容。</p><ul class='list-disc list-inside text-secondary space-y-2'><li>要点一：简洁明了的陈述</li><li>要点二：支持论据和数据</li><li>要点三：总结与展望</li></ul></div>"
+        }
+      ]
+    }
+  },
+  "mocks": {},
+  "presets": [
+    {
+      "key": "default",
+      "label": "默认内容页",
+      "props": {
+        "title": "研究内容",
+        "showLogo": true,
+        "showPageNumber": true,
+        "footerText": "张三 · 2026年学术报告"
+      }
+    },
+    {
+      "key": "chapter",
+      "label": "章节页",
+      "props": {
+        "title": "第三章 实验设计",
+        "showLogo": true,
+        "showPageNumber": true,
+        "footerText": ""
+      }
+    },
+    {
+      "key": "plain",
+      "label": "简洁版",
+      "props": {
+        "title": "",
+        "showLogo": false,
+        "showPageNumber": true,
+        "footerText": ""
+      }
+    }
+  ]
+}

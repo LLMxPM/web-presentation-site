@@ -1,0 +1,18 @@
+{
+  "name": "04_training_schedule",
+  "original_name": "04_training_schedule.tex",
+  "asset_type": "formula",
+  "content_type": "application/octet-stream",
+  "file_size": 605,
+  "file_hash": "a152a3aa78664c6f46f499052b57a1b4276c4871f89ff7cd3e977950c6570deb",
+  "description": null,
+  "tags": [],
+  "analysis_metadata": null,
+  "render_metadata": {
+    "schema_version": 1,
+    "kind": "asset_render_hint",
+    "aspect_ratio": "100:21",
+    "aspect_ratio_value": 4.7618,
+    "aspect_ratio_source": "auto"
+  }
+}

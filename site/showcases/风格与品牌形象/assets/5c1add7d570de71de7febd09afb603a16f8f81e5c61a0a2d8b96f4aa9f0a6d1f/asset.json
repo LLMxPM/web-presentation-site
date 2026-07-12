@@ -1,0 +1,18 @@
+{
+  "name": "runtime_icon",
+  "original_name": "runtime_icon.svg",
+  "asset_type": "image",
+  "content_type": "image/svg+xml",
+  "file_size": 3610,
+  "file_hash": "5c1add7d570de71de7febd09afb603a16f8f81e5c61a0a2d8b96f4aa9f0a6d1f",
+  "description": null,
+  "tags": [],
+  "analysis_metadata": null,
+  "render_metadata": {
+    "schema_version": 1,
+    "kind": "asset_render_hint",
+    "aspect_ratio": "132:85",
+    "aspect_ratio_value": 1.5529,
+    "aspect_ratio_source": "auto"
+  }
+}

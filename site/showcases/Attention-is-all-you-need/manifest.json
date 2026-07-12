@@ -1,0 +1,224 @@
+{
+  "package_type": "web-presentation-project-template",
+  "schema_version": 1,
+  "exported_at": "2026-07-04T06:17:52.331489+00:00",
+  "runtime_kit_manifest_version": "1.0.0",
+  "template_path": "metadata/template.json",
+  "screenshots_path": "metadata/screenshots.json",
+  "project_path": "project/project.json",
+  "routes_path": "project/routes.json",
+  "page_count": 11,
+  "component_count": 4,
+  "asset_count": 18,
+  "theme_count": 1,
+  "font_count": 0,
+  "pages": [
+    {
+      "source_page_code": "PG20260630044",
+      "title": "Slide 1 · 论文背景与一句话贡献",
+      "file_type": "vue"
+    },
+    {
+      "source_page_code": "PG20260630045",
+      "title": "Slide 2 · 为什么要摆脱 RNN/CNN",
+      "file_type": "vue"
+    },
+    {
+      "source_page_code": "PG20260630046",
+      "title": "Slide 3 · Transformer 总体结构",
+      "file_type": "vue"
+    },
+    {
+      "source_page_code": "PG20260630047",
+      "title": "Slide 4 · Scaled Dot-Product Attention",
+      "file_type": "vue"
+    },
+    {
+      "source_page_code": "PG20260630048",
+      "title": "Slide 5 · Multi-Head Attention",
+      "file_type": "vue"
+    },
+    {
+      "source_page_code": "PG20260630049",
+      "title": "Slide 6 · 位置编码与位置前馈网络",
+      "file_type": "vue"
+    },
+    {
+      "source_page_code": "PG20260630050",
+      "title": "Slide 7 · 为什么 Self-Attention 有效",
+      "file_type": "vue"
+    },
+    {
+      "source_page_code": "PG20260630051",
+      "title": "Slide 8 · 训练设置与工程细节",
+      "file_type": "vue"
+    },
+    {
+      "source_page_code": "PG20260630052",
+      "title": "Slide 9 · 实验结果与消融分析",
+      "file_type": "vue"
+    },
+    {
+      "source_page_code": "PG20260630053",
+      "title": "Slide 10 · 总结、局限与讨论",
+      "file_type": "vue"
+    },
+    {
+      "source_page_code": "PG20260630054",
+      "title": "封底 · 感谢聆听",
+      "file_type": "vue"
+    }
+  ],
+  "components": [
+    {
+      "source_component_code": "CMP20260630001",
+      "source_version_no": 1,
+      "name": "学术封面页",
+      "import_name": "AcademicCoverPage",
+      "component_fingerprint": "030b1b68ae7ca7fa4ec8c6a8d1f0c90da73f03a43923da53357ff95f1a0e2476",
+      "fingerprint_schema_version": 1
+    },
+    {
+      "source_component_code": "CMP20260630003",
+      "source_version_no": 1,
+      "name": "学术内容页模板",
+      "import_name": "AcademicContentPage",
+      "component_fingerprint": "cd8fbfa8625abf82e364d0d43822ab7a7e6519a71bba6f128c96f7b56445f313",
+      "fingerprint_schema_version": 1
+    },
+    {
+      "source_component_code": "CMP20260630002",
+      "source_version_no": 1,
+      "name": "三线表",
+      "import_name": "ThreeLineTable",
+      "component_fingerprint": "78b9db5e36f209dbf31398d7bdd43e5458fbe960a51eb6feaa4c77974ac61768",
+      "fingerprint_schema_version": 1
+    },
+    {
+      "source_component_code": "CMP20260630005",
+      "source_version_no": 1,
+      "name": "学术封底页",
+      "import_name": "AcademicBackCoverPage",
+      "component_fingerprint": "54ef3c59c509eff0af752dc794e49793df0edc2c287724882cef07361cd4da0d",
+      "fingerprint_schema_version": 1
+    }
+  ],
+  "assets": [
+    {
+      "name": "nuaa_logo_b",
+      "original_name": "nuaa_logo_b.png",
+      "asset_type": "image",
+      "file_hash": "24cabc3b7cc9a61e566555942f8378bb6d9f7c2c8c8731915167faab053ff848"
+    },
+    {
+      "name": "nuaa_logo",
+      "original_name": "nuaa_logo.png",
+      "asset_type": "image",
+      "file_hash": "1a779c2868796c41bd718b8b867abe8009360664097f7d4791a36be248268e3e"
+    },
+    {
+      "name": "nuaa_logo_c",
+      "original_name": "nuaa_logo_c.png",
+      "asset_type": "icon",
+      "file_hash": "5815eee92e3dc20da296033cc8b84a2943e9c230cdbf27649aecc0a407fa8886"
+    },
+    {
+      "name": "01_paper_figure_1_transformer_architecture",
+      "original_name": "01_paper_figure_1_transformer_architecture.png",
+      "asset_type": "image",
+      "file_hash": "56d69ccc192b90c3b93e5e285ff892f74753f970103939b40291945e106e9f79"
+    },
+    {
+      "name": "01_scaled_dot_product_attention",
+      "original_name": "01_scaled_dot_product_attention.tex",
+      "asset_type": "formula",
+      "file_hash": "9330d24ddde4af21b8a6982352accfe2c2c2f0bb21a5b3292ee17a7f2aee5f5a"
+    },
+    {
+      "name": "02_paper_figure_2a_scaled_dot_product_attention",
+      "original_name": "02_paper_figure_2a_scaled_dot_product_attention.png",
+      "asset_type": "image",
+      "file_hash": "6d40a44e2ec3f0cdab207c768a9085b6b908bbefa82c5af6613dc8233bee6a42"
+    },
+    {
+      "name": "02_multi_head_attention",
+      "original_name": "02_multi_head_attention.tex",
+      "asset_type": "formula",
+      "file_hash": "44f273323f53addc7c7d477a5c7e0bfb05e50a6fc2e344e428bba4ac4e03bddd"
+    },
+    {
+      "name": "03_paper_figure_2b_multi_head_attention",
+      "original_name": "03_paper_figure_2b_multi_head_attention.png",
+      "asset_type": "image",
+      "file_hash": "ba8a3ede5d40183ce8c18de249be60bec692646d53db108a3df51797a3c8634a"
+    },
+    {
+      "name": "03_transformer_block_components",
+      "original_name": "03_transformer_block_components.tex",
+      "asset_type": "formula",
+      "file_hash": "3d111da2f71204bb2d6f5667df9df18a22b4775d9cb3d5730378672f0c949f93"
+    },
+    {
+      "name": "05_source_component_positionwise_ffn",
+      "original_name": "05_source_component_positionwise_ffn.png",
+      "asset_type": "image",
+      "file_hash": "b6713b33692fc282e879c6f155eb4901dc16f795bca4adc160a8422123ccaa75"
+    },
+    {
+      "name": "07_appendix_attention_long_distance_dependencies",
+      "original_name": "07_appendix_attention_long_distance_dependencies.png",
+      "asset_type": "image",
+      "file_hash": "a001847fa6c9def41c19fd1b3b35c46c5d26a7946f88376a1b52a1db717bbcb4"
+    },
+    {
+      "name": "04_training_schedule",
+      "original_name": "04_training_schedule.tex",
+      "asset_type": "formula",
+      "file_hash": "a152a3aa78664c6f46f499052b57a1b4276c4871f89ff7cd3e977950c6570deb"
+    },
+    {
+      "name": "10_appendix_attention_sentence_structure_head_a",
+      "original_name": "10_appendix_attention_sentence_structure_head_a.png",
+      "asset_type": "image",
+      "file_hash": "c2f7638704a03618a03c5a66e3d3ec58b80dd0737d30db72c09ac31ec29d03d6"
+    },
+    {
+      "name": "04_source_component_sequence_attention",
+      "original_name": "04_source_component_sequence_attention.png",
+      "asset_type": "image",
+      "file_hash": "938988a43c0758e19cd57c4749b8859589cd0e5b8fe8dfc56e2fb35a915bb673"
+    },
+    {
+      "name": "06_source_component_multi_head_split_variant",
+      "original_name": "06_source_component_multi_head_split_variant.png",
+      "asset_type": "image",
+      "file_hash": "f9e73fa67da314706a08fb9ac9470ed719ecbba60fbc6a283515054bd4e992ff"
+    },
+    {
+      "name": "08_appendix_attention_anaphora_full_head5",
+      "original_name": "08_appendix_attention_anaphora_full_head5.png",
+      "asset_type": "image",
+      "file_hash": "a06637af73ce7ea4de9233d29f832cd6d26d2ae0ec348e9543887e3956b3e5d4"
+    },
+    {
+      "name": "09_appendix_attention_anaphora_its_heads5_6",
+      "original_name": "09_appendix_attention_anaphora_its_heads5_6.png",
+      "asset_type": "image",
+      "file_hash": "46d9820ca66fc8cdde9c40492d7fd5085ef525049b813c01303f7e9436343613"
+    },
+    {
+      "name": "11_appendix_attention_sentence_structure_head_b",
+      "original_name": "11_appendix_attention_sentence_structure_head_b.png",
+      "asset_type": "image",
+      "file_hash": "a7ac1a071376c1145bff025253c108bc3c0867be298a64799f359c570414cc10"
+    }
+  ],
+  "themes": [
+    {
+      "key": "university_nuaa",
+      "name": "南航主题色"
+    }
+  ],
+  "fonts": [],
+  "warnings": []
+}
