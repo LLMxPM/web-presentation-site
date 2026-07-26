@@ -11,7 +11,7 @@ export const projectRoot = path.resolve(path.dirname(currentFile), '..', '..');
 export const siteRoot = path.join(projectRoot, 'site');
 export const generatedRoot = path.join(siteRoot, '.generated');
 export const sourceRepo = process.env.SOURCE_REPO || 'LLMxPM/Web-Presentation';
-export const sourceRef = process.env.SOURCE_REF || 'main';
+export const sourceRef = process.env.SOURCE_REF || 'doc';
 
 /** 将系统路径统一为 URL 和 VitePress 配置使用的 POSIX 路径。 */
 export function toPosix(value) {
@@ -230,9 +230,16 @@ export async function collectReadmeOrders(docs, sourceRoot) {
   return readmeOrders;
 }
 
-/** 按给定 README 链接顺序排序；没有显式出现的文档按路径排序。 */
+/** 按给定 README 链接顺序排序；目录入口 README 固定置顶，其余文档按路径兜底。 */
 function sortDocsByOrder(docs, order) {
   return [...docs].sort((left, right) => {
+    const leftIsReadme = isReadmeMarkdown(left.sourceRelative);
+    const rightIsReadme = isReadmeMarkdown(right.sourceRelative);
+
+    if (leftIsReadme !== rightIsReadme) {
+      return leftIsReadme ? -1 : 1;
+    }
+
     const leftOrder = order?.has(left.sourceRelative) ? order.get(left.sourceRelative) : Number.MAX_SAFE_INTEGER;
     const rightOrder = order?.has(right.sourceRelative) ? order.get(right.sourceRelative) : Number.MAX_SAFE_INTEGER;
 
