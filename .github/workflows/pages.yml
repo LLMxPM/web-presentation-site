@@ -31,6 +31,8 @@ jobs:
     steps:
       - name: Checkout site
         uses: actions/checkout@v6
+        with:
+          lfs: true
 
       - name: Checkout source docs
         uses: actions/checkout@v6
@@ -53,6 +55,9 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+
+      - name: Check large assets
+        run: pnpm run check:assets
 
       - name: Sync docs
         run: pnpm run sync:docs

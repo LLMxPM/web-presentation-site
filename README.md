@@ -8,6 +8,7 @@
 pnpm install
 pnpm run sync:docs
 pnpm run check:links
+pnpm run check:assets
 pnpm run build
 pnpm run preview
 ```
@@ -42,6 +43,25 @@ pnpm run build
 - 可在案例目录根部添加 `showcase.json` 补充站点展示字段；该文件不会写入下载包。
 
 Git 提交时提交 `site/showcases/<name>/` 下的模板源文件、解析脚本和页面样式改动；不要提交构建生成的 `.wptemplate.zip`、`site/.generated/` 或 `site/.vitepress/dist/`。
+
+## 大文件管理
+
+仓库使用 Git LFS 管理视频、音频、压缩包、PDF 和演示文稿，具体扩展名见 `.gitattributes`。开发环境首次拉取前需安装并初始化 Git LFS：
+
+```powershell
+git lfs install
+git lfs pull
+```
+
+`pnpm run check:assets` 会检查已跟踪文件及未忽略的新文件。默认情况下，5 MiB 及以上的文件必须匹配 Git LFS 规则；临时调整阈值可设置 `LARGE_FILE_LIMIT_MB`。新增其他类型的大文件时，应先补充 `.gitattributes`，再执行：
+
+```powershell
+git add --renormalize <文件路径>
+git lfs ls-files
+pnpm run check:assets
+```
+
+Git LFS 只优化后续提交，已经进入历史的二进制对象仍会保留。若需要缩小完整克隆体积，可在团队协调停写和强推窗口后另行执行 `git lfs migrate import`；该操作会重写提交历史，不应在日常开发中直接运行。
 
 ## 环境变量
 
