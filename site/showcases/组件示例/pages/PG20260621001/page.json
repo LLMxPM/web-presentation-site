@@ -1,0 +1,7 @@
+{
+  "source_page_code": "PG20260621001",
+  "title": "安徽省轮廓裁剪示例",
+  "summary": "展示使用安徽省 SVG 蒙版裁剪黄山风景图片的效果，演示 ImageShapeClip 组件的蒙版功能。",
+  "speaker_notes": "这是一个示例页面，展示了如何使用 ImageShapeClip 组件的蒙版功能。页面中心展示了使用安徽省轮廓 SVG 作为蒙版裁剪的黄山风景图片。可以通过调整组件的 scale、offsetX 和 offsetY 参数来微调图片在蒙版中的显示区域。",
+  "file_type": "vue"
+}

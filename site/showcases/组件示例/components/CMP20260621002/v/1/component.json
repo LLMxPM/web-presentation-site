@@ -1,0 +1,16 @@
+{
+  "source_component_code": "CMP20260621002",
+  "source_version_no": 1,
+  "name": "3D透视容器",
+  "import_name": "Perspective3D",
+  "component_type": "内容组件",
+  "summary": "提供一个3D透视容器，通过CSS 3D变换支持配置视角角度（rotateX、rotateY、rotateZ）、透视距离（perspective）和变换原点（transform-origin），可包裹任意插槽内容。适用于演示页中需要3D透视展示的卡片、图片组、内容块等场景。",
+  "file_type": "vue",
+  "dependencies": [],
+  "asset_names": [],
+  "font_asset_names": [],
+  "content_hash": "f8b140a88eb61f04bd9d62c24ea3a340f6c147e357e4a3ddaf99507df30cf218",
+  "preview_schema_hash": "bd74f8f7dc1a8ce5dd2cd1d308866fd6a6d8b354311a15516fa1f097c7d60352",
+  "component_fingerprint": "4118e2129dc8d2ad6ba20258f2b7af428b18fcf99c13b444429c9296bd1f698f",
+  "fingerprint_schema_version": 1
+}

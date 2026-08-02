@@ -24,9 +24,17 @@
   },
   "render_metadata": {
     "schema_version": 1,
-    "kind": "asset_render_hint",
-    "aspect_ratio": "1:1",
-    "aspect_ratio_value": 1.0,
-    "aspect_ratio_source": "auto"
+    "kind": "icon",
+    "icon": {
+      "format": "image",
+      "render_mode": "image",
+      "style": "unknown",
+      "inline_safe": false,
+      "stroke_width_editable": false,
+      "analysis_status": "unsupported",
+      "reasons": [
+        "资产不是 SVG，Runtime 将按图片模式渲染。"
+      ]
+    }
   }
 }

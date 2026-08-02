@@ -1,0 +1,35 @@
+{
+  "name": "icon-sparkle",
+  "original_name": "icon-sparkle.svg",
+  "asset_type": "icon",
+  "content_type": "image/svg+xml",
+  "file_size": 367,
+  "file_hash": "3f1b5ad2b1a9c753cb8dfe4c3952aa91fa151ea4fa226422fefbd75370d93982",
+  "description": "亮点/闪光 — 四角星闪光图标",
+  "tags": [
+    "语义图标",
+    "深绿主题"
+  ],
+  "analysis_metadata": {
+    "schema_version": 1,
+    "kind": "icon",
+    "icon": {
+      "format": "svg",
+      "render_mode": "inline_svg",
+      "style": "mixed",
+      "inline_safe": true,
+      "stroke_width_editable": false,
+      "analysis_status": "unsupported",
+      "reasons": [
+        "检测到 fill / stroke 混合图标，不启用描边宽度调整。"
+      ]
+    }
+  },
+  "render_metadata": {
+    "schema_version": 1,
+    "kind": "asset_render_hint",
+    "aspect_ratio": "1:1",
+    "aspect_ratio_value": 1.0,
+    "aspect_ratio_source": "agent"
+  }
+}

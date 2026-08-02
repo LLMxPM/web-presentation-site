@@ -1,0 +1,17 @@
+flowchart LR
+    data["WMT 2014 数据\nEN-DE 约 4.5M 句对\nEN-FR 约 36M 句对"] --> tokenize["BPE / word-piece\n构建子词词表"]
+    tokenize --> batch["按近似长度分 batch\n约 25K source tokens\n约 25K target tokens"]
+    batch --> train["8x NVIDIA P100\nbase: 100K steps / 12h\nbig: 300K steps / 3.5d"]
+    train --> adam["Adam\nbeta1=0.9, beta2=0.98\nepsilon=1e-9"]
+    adam --> lr["Learning rate schedule\nwarmup 4000 steps\n之后 inverse sqrt decay"]
+    lr --> reg["Regularization\nresidual dropout\nembedding+PE dropout\nlabel smoothing"]
+    reg --> ckpt["Checkpoint averaging"]
+    ckpt --> beam["Beam search\nbeam=4\nlength penalty alpha=0.6"]
+    beam --> result["BLEU / parsing F1"]
+
+    classDef dataStyle fill:#eef6ff,stroke:#2f6f9f,color:#111;
+    classDef process fill:#f7f7f2,stroke:#5f6f52,color:#111;
+    classDef resultStyle fill:#fff0d6,stroke:#a56a00,color:#111;
+    class data,result dataStyle;
+    class tokenize,batch,train,adam,lr,reg,ckpt,beam process;
+    class result resultStyle;

@@ -11,8 +11,8 @@
   "render_metadata": {
     "schema_version": 1,
     "kind": "asset_render_hint",
-    "aspect_ratio": "215:91",
-    "aspect_ratio_value": 2.3627,
+    "aspect_ratio": "129:67",
+    "aspect_ratio_value": 1.9253,
     "aspect_ratio_source": "auto"
   }
 }

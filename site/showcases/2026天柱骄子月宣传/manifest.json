@@ -1,0 +1,109 @@
+{
+  "package_type": "web-presentation-project-template",
+  "schema_version": 2,
+  "exported_at": "2026-08-01T01:06:43.147240+00:00",
+  "runtime_kit_manifest_version": "1.0.0",
+  "template_path": "metadata/template.json",
+  "screenshots_path": "metadata/screenshots.json",
+  "project_path": "project/project.json",
+  "routes_path": "project/routes.json",
+  "page_count": 9,
+  "component_count": 0,
+  "asset_count": 6,
+  "theme_count": 1,
+  "font_count": 0,
+  "pages": [
+    {
+      "source_page_code": "PG20260727004",
+      "title": "封面 · 2026天柱骄子月",
+      "file_type": "vue"
+    },
+    {
+      "source_page_code": "PG20260727005",
+      "title": "01 免票范围",
+      "file_type": "vue"
+    },
+    {
+      "source_page_code": "PG20260727006",
+      "title": "02 免票人群",
+      "file_type": "vue"
+    },
+    {
+      "source_page_code": "PG20260728001",
+      "title": "02 重要须知",
+      "file_type": "vue"
+    },
+    {
+      "source_page_code": "PG20260728002",
+      "title": "03 入园指南",
+      "file_type": "vue"
+    },
+    {
+      "source_page_code": "PG20260728003",
+      "title": "04 交通出行 · 高铁直达",
+      "file_type": "vue"
+    },
+    {
+      "source_page_code": "PG20260728004",
+      "title": "04 交通出行 · 直通车与普速",
+      "file_type": "vue"
+    },
+    {
+      "source_page_code": "PG20260728005",
+      "title": "05 奔赴天柱山 · 云海与文脉",
+      "file_type": "vue"
+    },
+    {
+      "source_page_code": "PG20260728006",
+      "title": "05 奔赴天柱山 · 登峰与清凉",
+      "file_type": "vue"
+    }
+  ],
+  "components": [],
+  "assets": [
+    {
+      "name": "天柱山奇峰云海",
+      "original_name": "天柱山奇峰云海.png",
+      "asset_type": "image",
+      "file_hash": "9c2d42793640ea25975e4c37e48347a3d3441b50e5bf8501f0aac076e6f8f944"
+    },
+    {
+      "name": "山谷流泉文化园实景",
+      "original_name": "山谷流泉文化园实景.png",
+      "asset_type": "image",
+      "file_hash": "85601fc354fd60bdbd62b59b525cff17ad60228836b4fa8450425b21da74537e"
+    },
+    {
+      "name": "天柱山日出云海",
+      "original_name": "天柱山日出云海.png",
+      "asset_type": "image",
+      "file_hash": "6772c62d9fbb6d921f00155628ceaeb113fe3de99f3cae47d2173d4b3f2173b0"
+    },
+    {
+      "name": "潜山站航拍夜景",
+      "original_name": "潜山站航拍夜景.jpg",
+      "asset_type": "image",
+      "file_hash": "b4026f56823183ae96ab04918a9a4469fa8ef157d5dc3089de71230bdbab7f90"
+    },
+    {
+      "name": "天柱山云海风光",
+      "original_name": "天柱山云海风光.jpg",
+      "asset_type": "image",
+      "file_hash": "8ba03a70858c53ee88b40f302a16514610d8994ed9f4737a0b8a72c545a29b4c"
+    },
+    {
+      "name": "蓬莱峰天梯",
+      "original_name": "蓬莱峰天梯.png",
+      "asset_type": "image",
+      "file_hash": "b341057d47338dded84736f21458da95b70b23f40d1bef9b4555fde2af327df8"
+    }
+  ],
+  "themes": [
+    {
+      "key": "lightblue",
+      "name": "白底蓝色"
+    }
+  ],
+  "fonts": [],
+  "warnings": []
+}

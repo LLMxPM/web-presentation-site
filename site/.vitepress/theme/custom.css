@@ -326,6 +326,30 @@
   max-width: 780px;
 }
 
+.home-demo-section {
+  padding: 28px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  background: linear-gradient(180deg, var(--vp-c-bg), var(--vp-c-bg-soft));
+}
+
+.home-demo-player {
+  overflow: hidden;
+  border: 1px solid rgba(15, 118, 110, 0.28);
+  border-radius: 8px;
+  background: #071312;
+  box-shadow: 0 20px 48px rgba(15, 23, 42, 0.16);
+}
+
+.home-demo-player video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  background: #071312;
+}
+
 .vp-doc .home-product-band img,
 .home-product-band img {
   display: block;
@@ -1362,6 +1386,10 @@
 
   .home-product-band {
     margin-top: 20px;
+    padding: 16px;
+  }
+
+  .home-demo-section {
     padding: 16px;
   }
 

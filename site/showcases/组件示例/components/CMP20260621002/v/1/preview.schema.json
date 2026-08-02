@@ -1,0 +1,66 @@
+{
+  "props": {
+    "rotateX": {
+      "type": "number",
+      "label": "绕X轴旋转",
+      "default": 0
+    },
+    "rotateY": {
+      "type": "number",
+      "label": "绕Y轴旋转",
+      "default": 0
+    },
+    "rotateZ": {
+      "type": "number",
+      "label": "绕Z轴旋转",
+      "default": 0
+    },
+    "perspective": {
+      "type": "string",
+      "label": "透视距离",
+      "default": "1000px"
+    },
+    "transformOrigin": {
+      "type": "string",
+      "label": "变换原点",
+      "default": "center center"
+    },
+    "width": {
+      "type": "string",
+      "label": "容器宽度",
+      "default": "100%"
+    },
+    "height": {
+      "type": "string",
+      "label": "容器高度",
+      "default": "auto"
+    }
+  },
+  "slots": {
+    "default": {
+      "label": "3D透视内容"
+    }
+  },
+  "presets": [
+    {
+      "key": "default",
+      "label": "默认视角（无旋转）",
+      "props": {}
+    },
+    {
+      "key": "tilt-left",
+      "label": "左侧倾斜30°",
+      "props": {
+        "rotateY": 30
+      }
+    },
+    {
+      "key": "tilt-up",
+      "label": "上仰倾斜20°",
+      "props": {
+        "rotateX": -20,
+        "rotateY": 15
+      }
+    }
+  ]
+}

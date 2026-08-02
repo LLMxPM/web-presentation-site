@@ -1,0 +1,12 @@
+{
+  "name": "季度销售趋势",
+  "original_name": "季度销售趋势.json",
+  "asset_type": "chart",
+  "content_type": "application/json",
+  "file_size": 2095,
+  "file_hash": "467ecf17a971f82f8fc5804850b5e539fcba3df72207ae3deae4e1686e2de956",
+  "description": "季度销售趋势图表：柱状图展示1-6月销售额，折线图展示环比增长率，双Y轴，浅色背景适配演示页",
+  "tags": [],
+  "analysis_metadata": null,
+  "render_metadata": null
+}

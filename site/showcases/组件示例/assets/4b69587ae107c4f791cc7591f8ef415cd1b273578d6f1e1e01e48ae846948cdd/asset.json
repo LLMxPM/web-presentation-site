@@ -1,0 +1,12 @@
+{
+  "name": "麦克斯韦方程组",
+  "original_name": "maxwell-equations.tex",
+  "asset_type": "formula",
+  "content_type": "text/plain; charset=utf-8",
+  "file_size": 295,
+  "file_hash": "4b69587ae107c4f791cc7591f8ef415cd1b273578d6f1e1e01e48ae846948cdd",
+  "description": "麦克斯韦方程组（Maxwell's equations），包含高斯电场定律、高斯磁场定律、法拉第电磁感应定律和安培-麦克斯韦定律",
+  "tags": [],
+  "analysis_metadata": null,
+  "render_metadata": null
+}

@@ -1,0 +1,18 @@
+{
+  "name": "05_training_and_inference_pipeline",
+  "original_name": "05_training_and_inference_pipeline.mmd",
+  "asset_type": "mermaid",
+  "content_type": "application/octet-stream",
+  "file_size": 1028,
+  "file_hash": "6365a798d078557a90477373626cb5ae021624633a79c0be7cf33749e5c8c410",
+  "description": null,
+  "tags": [],
+  "analysis_metadata": null,
+  "render_metadata": {
+    "schema_version": 1,
+    "kind": "asset_render_hint",
+    "aspect_ratio": "735:34",
+    "aspect_ratio_value": 21.6176,
+    "aspect_ratio_source": "auto"
+  }
+}

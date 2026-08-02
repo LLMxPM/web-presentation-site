@@ -1,0 +1,64 @@
+{
+  "props": {
+    "title": {
+      "type": "string",
+      "label": "标题",
+      "default": "内容标题"
+    },
+    "subtitle": {
+      "type": "string",
+      "label": "副标题",
+      "default": ""
+    },
+    "footer": {
+      "type": "string",
+      "label": "页脚文字",
+      "default": ""
+    },
+    "showLogo": {
+      "type": "boolean",
+      "label": "显示主题Logo",
+      "default": true
+    },
+    "showPageNumber": {
+      "type": "boolean",
+      "label": "显示页码",
+      "default": true
+    }
+  },
+  "slots": {
+    "default": {
+      "label": "页面内容",
+      "default": [
+        {
+          "type": "text",
+          "value": "在此添加您的内容"
+        }
+      ]
+    }
+  },
+  "presets": [
+    {
+      "key": "standard",
+      "label": "标准内容页",
+      "props": {
+        "title": "业务分析",
+        "subtitle": "核心数据与关键洞察",
+        "footer": "XX公司 · 内部资料",
+        "showLogo": true,
+        "showPageNumber": true
+      }
+    },
+    {
+      "key": "minimal",
+      "label": "简洁风格",
+      "props": {
+        "title": "总结与展望",
+        "subtitle": "",
+        "footer": "",
+        "showLogo": false,
+        "showPageNumber": true
+      }
+    }
+  ]
+}

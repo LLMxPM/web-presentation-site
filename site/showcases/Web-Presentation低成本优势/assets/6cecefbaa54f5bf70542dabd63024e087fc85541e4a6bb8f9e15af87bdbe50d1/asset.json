@@ -1,0 +1,18 @@
+{
+  "name": "runtime_icon_white",
+  "original_name": "runtime_icon_white.svg",
+  "asset_type": "image",
+  "content_type": "image/svg+xml",
+  "file_size": 2650,
+  "file_hash": "6cecefbaa54f5bf70542dabd63024e087fc85541e4a6bb8f9e15af87bdbe50d1",
+  "description": null,
+  "tags": [],
+  "analysis_metadata": null,
+  "render_metadata": {
+    "schema_version": 1,
+    "kind": "asset_render_hint",
+    "aspect_ratio": "132:85",
+    "aspect_ratio_value": 1.5529,
+    "aspect_ratio_source": "auto"
+  }
+}

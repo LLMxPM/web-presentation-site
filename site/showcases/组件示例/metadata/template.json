@@ -1,0 +1,14 @@
+{
+  "slug": "prj20260529002",
+  "name": "组件示例",
+  "summary": "展示runtime组件以及基于runtime的自定义组件渲染能力",
+  "description": "展示runtime组件以及基于runtime的自定义组件渲染能力",
+  "author": "平台系统管理员",
+  "page_count": 9,
+  "page_width": 1920,
+  "page_height": 1080,
+  "aspect_ratio": "16:9",
+  "runtime_kit_manifest_version": "1.0.0",
+  "created_at": "2026-08-01T05:00:21.444479+00:00",
+  "updated_at": "2026-08-01T05:00:21.444479+00:00"
+}

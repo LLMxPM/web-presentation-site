@@ -1,0 +1,12 @@
+{
+  "name": "订单处理流程",
+  "original_name": "订单处理流程.mmd",
+  "asset_type": "mermaid",
+  "content_type": "text/plain; charset=utf-8",
+  "file_size": 295,
+  "file_hash": "e2e20212a2d16fd40598880591fa241a427df2f3f7530b2848aca73aebd733d9",
+  "description": "订单处理流程图：从创建订单到完成的完整业务流程，包含库存校验和支付分支",
+  "tags": [],
+  "analysis_metadata": null,
+  "render_metadata": null
+}

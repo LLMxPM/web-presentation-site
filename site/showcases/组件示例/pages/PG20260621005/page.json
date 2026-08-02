@@ -1,0 +1,7 @@
+{
+  "source_page_code": "PG20260621005",
+  "title": "3D透视组件示例",
+  "summary": "展示3D透视组件的不同角度配置效果，包括左侧倾斜、上仰倾斜、复合旋转和强透视效果示例",
+  "speaker_notes": "这是一个3D透视组件的示例页面，展示了Perspective3D组件的不同配置效果。组件支持配置rotateX、rotateY、rotateZ角度，以及perspective透视距离。页面展示了四种典型的透视效果：左侧倾斜30°、上仰倾斜20°、复合旋转和强透视效果。组件适用于卡片立体展示、图片3D倾斜展示等场景。",
+  "file_type": "vue"
+}

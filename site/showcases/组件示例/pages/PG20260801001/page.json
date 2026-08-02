@@ -1,0 +1,7 @@
+{
+  "source_page_code": "PG20260801001",
+  "title": "Draw.io 图表渲染示例",
+  "summary": "使用 PPT 内容页模板展示 AssetDrawio 组件渲染工作空间 Draw.io 图表资源（sample）",
+  "speaker_notes": "本页演示 AssetDrawio 资源组件的用法：通过 name 绑定工作空间 drawio 资源（sample），Runtime 在浏览器端解析 mxGraphModel XML 并自动缩放适配容器。容器宽高通过 class 声明，name 与 content 二选一。",
+  "file_type": "vue"
+}

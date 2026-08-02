@@ -1,0 +1,7 @@
+{
+  "source_page_code": "PG20260731009",
+  "title": "实验结果：更低成本、更高 BLEU",
+  "summary": "WMT 2014 结果 Table 2、关键数字、训练成本对比",
+  "speaker_notes": "WMT 2014 EN-DE：Transformer big 达到 28.4 BLEU，超过当时已报道的最佳模型和 ensemble。WMT 2014 EN-FR：arXiv v7 Table 2 记录 Transformer big 为 41.8 BLEU。训练成本：Transformer base/big 的 FLOPs 明显低于许多对比系统。讲述重点：这页不要只报最高 BLEU；更重要的是强调\"更并行、更低训练成本、质量不降反升\"。",
+  "file_type": "vue"
+}

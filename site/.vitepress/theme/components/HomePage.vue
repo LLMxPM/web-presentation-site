@@ -22,6 +22,25 @@
       </div>
     </section>
 
+    <section class="home-section home-demo-section" aria-labelledby="home-demo-title">
+      <div class="home-section-heading">
+        <p class="home-eyebrow">Platform Demo</p>
+        <h2 id="home-demo-title">看看 Web-Presentation 如何完成演示内容创作</h2>
+      </div>
+      <div class="home-demo-player">
+        <video
+          controls
+          playsinline
+          preload="metadata"
+          :poster="siteUrl('/assets/平台演示-封面.jpg')"
+        >
+          <source :src="siteUrl('/assets/平台演示.mp4')" type="video/mp4">
+          您的浏览器暂不支持视频播放，请
+          <a :href="siteUrl('/assets/平台演示.mp4')">下载平台演示视频</a>后观看。
+        </video>
+      </div>
+    </section>
+
     <section class="home-section" aria-label="核心卖点">
       <div class="home-section-heading">
         <p class="home-eyebrow">Why Web-Presentation</p>

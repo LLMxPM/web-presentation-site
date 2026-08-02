@@ -1,0 +1,7 @@
+{
+  "source_page_code": "PG20260731004",
+  "title": "Scaled Dot-Product Attention",
+  "summary": "QKV 机制、缩放原因、decoder mask、公式与论文 Figure 2(a)",
+  "speaker_notes": "输入为 Query、Key、Value；输出是对 Value 的加权和。权重来自 QK^T 的相似度，经 sqrt(d_k) 缩放后做 softmax。缩放原因：d_k 较大时点积方差变大，softmax 可能进入梯度很小的区域。Decoder 中通过 mask 把非法未来位置设为 -inf，保证自回归。可讲例子：Query 像\"当前 token 想找什么信息\"，Key 像\"每个 token 能被匹配的索引\"，Value 像\"真正要汇总的内容\"。",
+  "file_type": "vue"
+}

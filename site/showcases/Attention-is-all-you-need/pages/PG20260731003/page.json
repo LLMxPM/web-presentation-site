@@ -1,0 +1,7 @@
+{
+  "source_page_code": "PG20260731003",
+  "title": "Transformer 总体结构",
+  "summary": "Encoder-Decoder 框架、N=6 重复块、residual + layer norm、论文 Figure 1",
+  "speaker_notes": "仍然采用 encoder-decoder 框架：encoder 把输入序列映射为连续表征，decoder 自回归生成输出序列。Encoder：N=6 层，每层包含 multi-head self-attention 和 position-wise FFN。Decoder：N=6 层，每层多一个 encoder-decoder attention；decoder self-attention 使用 mask 避免看到未来 token。每个子层外都有 residual connection + layer normalization。讲述重点：把 Transformer 看成两个重复堆叠的 block——attention 全局混合 token 信息，FFN 逐位置非线性变换。",
+  "file_type": "vue"
+}

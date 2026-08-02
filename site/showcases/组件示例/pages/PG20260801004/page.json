@@ -1,0 +1,7 @@
+{
+  "source_page_code": "PG20260801004",
+  "title": "视频资源渲染示例",
+  "summary": "使用 PPT 内容页模板展示 AssetVideo 组件渲染工作空间视频资源（recording-2026-05-26-20-01-39）",
+  "speaker_notes": "本页演示 AssetVideo 资源组件的用法：通过 name 绑定工作空间 video 资源（recording-2026-05-26-20-01-39，MP4 屏幕录制），使用原生播放器渲染，开启播放控件，fit 默认 contain 完整展示画面，可通过 posterName 绑定封面资源。",
+  "file_type": "vue"
+}

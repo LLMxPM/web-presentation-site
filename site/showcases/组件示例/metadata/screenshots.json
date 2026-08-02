@@ -1,0 +1,84 @@
+{
+  "cover": {
+    "path": "screenshots/cover.png",
+    "width": 1920,
+    "height": 1080,
+    "source_page_code": "PG20260530002",
+    "title": "公式渲染示例",
+    "order": 1
+  },
+  "pages": [
+    {
+      "path": "screenshots/pages/PG20260530002.png",
+      "width": 1920,
+      "height": 1080,
+      "source_page_code": "PG20260530002",
+      "title": "公式渲染示例",
+      "order": 1
+    },
+    {
+      "path": "screenshots/pages/PG20260606001.png",
+      "width": 1920,
+      "height": 1080,
+      "source_page_code": "PG20260606001",
+      "title": "三线表示例",
+      "order": 2
+    },
+    {
+      "path": "screenshots/pages/PG20260616001.png",
+      "width": 1920,
+      "height": 1080,
+      "source_page_code": "PG20260616001",
+      "title": "图片透视展示 - 黄山风景",
+      "order": 3
+    },
+    {
+      "path": "screenshots/pages/PG20260621001.png",
+      "width": 1920,
+      "height": 1080,
+      "source_page_code": "PG20260621001",
+      "title": "安徽省轮廓裁剪示例",
+      "order": 4
+    },
+    {
+      "path": "screenshots/pages/PG20260621005.png",
+      "width": 1920,
+      "height": 1080,
+      "source_page_code": "PG20260621005",
+      "title": "3D透视组件示例",
+      "order": 5
+    },
+    {
+      "path": "screenshots/pages/PG20260801001.png",
+      "width": 1920,
+      "height": 1080,
+      "source_page_code": "PG20260801001",
+      "title": "Draw.io 图表渲染示例",
+      "order": 6
+    },
+    {
+      "path": "screenshots/pages/PG20260801002.png",
+      "width": 1920,
+      "height": 1080,
+      "source_page_code": "PG20260801002",
+      "title": "ECharts 图表渲染示例",
+      "order": 7
+    },
+    {
+      "path": "screenshots/pages/PG20260801003.png",
+      "width": 1920,
+      "height": 1080,
+      "source_page_code": "PG20260801003",
+      "title": "Mermaid 流程图渲染示例",
+      "order": 8
+    },
+    {
+      "path": "screenshots/pages/PG20260801004.png",
+      "width": 1920,
+      "height": 1080,
+      "source_page_code": "PG20260801004",
+      "title": "视频资源渲染示例",
+      "order": 9
+    }
+  ]
+}

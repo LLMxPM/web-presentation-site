@@ -1,0 +1,49 @@
+{
+  "routes": [
+    {
+      "route_type": "page",
+      "route": "cover",
+      "order": 1,
+      "hidden": false,
+      "group_title": null,
+      "source_page_code": "PG20260801037",
+      "children": []
+    },
+    {
+      "route_type": "page",
+      "route": "pain-points",
+      "order": 2,
+      "hidden": false,
+      "group_title": null,
+      "source_page_code": "PG20260801038",
+      "children": []
+    },
+    {
+      "route_type": "page",
+      "route": "platform-context",
+      "order": 3,
+      "hidden": false,
+      "group_title": null,
+      "source_page_code": "PG20260801039",
+      "children": []
+    },
+    {
+      "route_type": "page",
+      "route": "real-cost",
+      "order": 4,
+      "hidden": false,
+      "group_title": null,
+      "source_page_code": "PG20260801040",
+      "children": []
+    },
+    {
+      "route_type": "page",
+      "route": "summary",
+      "order": 5,
+      "hidden": false,
+      "group_title": null,
+      "source_page_code": "PG20260801041",
+      "children": []
+    }
+  ]
+}

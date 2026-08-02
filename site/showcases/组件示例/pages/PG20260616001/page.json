@@ -1,0 +1,7 @@
+{
+  "source_page_code": "PG20260616001",
+  "title": "图片透视展示 - 黄山风景",
+  "summary": "使用 ImagePerspectiveShowcase 组件展示黄山风景图片的 3D 透视效果，左右倾斜 25°",
+  "speaker_notes": "本页演示 ImagePerspectiveShowcase 组件的透视展示效果。\n\n组件关键参数：\n- images：图片资源逻辑名数组，支持 3~5 张\n- tiltAngle：左右两侧倾斜角度，默认 25°\n- containerWidth / containerHeight：组件尺寸\n- gap：图片间距\n- borderClass：边框样式\n- fitMode：图片填充方式（contain / cover / fill）\n\n当前演示使用同一张黄山风景图片重复 3 次，实际使用时建议使用 3~5 张不同图片以获得更好的视觉效果。",
+  "file_type": "vue"
+}

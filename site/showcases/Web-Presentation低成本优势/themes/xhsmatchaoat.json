@@ -1,0 +1,45 @@
+{
+  "key": "xhsmatchaoat",
+  "name": "抹茶燕麦",
+  "description": "燕麦底色搭配抹茶绿，松弛清新，适合生活方式、家居与健康内容",
+  "logo_asset_name": "runtime_icon",
+  "invert_logo_asset_name": "runtime_icon_white",
+  "project_icon_asset_name": null,
+  "logo_path": "runtime_icon",
+  "invert_logo_path": "runtime_icon_white",
+  "project_icon_name": null,
+  "heading_font_asset_name": null,
+  "body_font_asset_name": null,
+  "code_font_asset_name": null,
+  "heading_font_label": "system-ui",
+  "body_font_label": "system-ui",
+  "code_font_label": "monospace",
+  "palette": {
+    "text": {
+      "primary": "#26382E",
+      "secondary": "#5F7065",
+      "invert": "#FAF7EC"
+    },
+    "background": {
+      "default": "#FAF7EC",
+      "invert": "#3F624C"
+    },
+    "border": {
+      "default": "#CFD8C8",
+      "subtle": "#E5E7D8"
+    },
+    "link": {
+      "default": "#36704A",
+      "hover": "#28583A",
+      "visited": "#74634E"
+    },
+    "accent": [
+      "#4F775A",
+      "#88A778",
+      "#C1B763",
+      "#D88A63",
+      "#7FA5A0",
+      "#9B745B"
+    ]
+  }
+}

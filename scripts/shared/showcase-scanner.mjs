@@ -18,7 +18,7 @@ const templateScreenshotsPath = 'metadata/screenshots.json';
 const templateProjectPath = 'project/project.json';
 const templateRoutesPath = 'project/routes.json';
 const expectedPackageType = 'web-presentation-project-template';
-const expectedSchemaVersion = '1';
+const supportedSchemaVersions = ['1', '2'];
 
 /** 扫描案例子目录并输出排序后的案例数据；目录名同时作为稳定 URL slug 来源。 */
 export async function scanShowcases() {
@@ -103,7 +103,6 @@ async function readShowcasePackage({ slug, packageFileName, packagePath }) {
 function validateManifest(manifest, packagePath) {
   const stringFields = [
     ['package_type', expectedPackageType],
-    ['schema_version', expectedSchemaVersion],
     ['template_path', templateMetadataPath],
     ['screenshots_path', templateScreenshotsPath],
     ['project_path', templateProjectPath],
@@ -118,6 +117,14 @@ function validateManifest(manifest, packagePath) {
     if (actualValue !== expectedValue) {
       throw new Error(`${relativeSitePath(packagePath)} 的 manifest.json 字段 ${field} 应为 ${expectedValue}，实际为 ${actualValue}。`);
     }
+  }
+
+  const schemaVersion = normalizeScalarText(manifest.schema_version);
+  if (!schemaVersion) {
+    throw new Error(`${relativeSitePath(packagePath)} 的 manifest.json 缺少 schema_version。`);
+  }
+  if (!supportedSchemaVersions.includes(schemaVersion)) {
+    throw new Error(`${relativeSitePath(packagePath)} 的 manifest.json 字段 schema_version 应为 ${supportedSchemaVersions.join(' 或 ')}，实际为 ${schemaVersion}。`);
   }
 
   for (const field of ['page_count', 'component_count', 'asset_count', 'theme_count', 'font_count']) {

@@ -1,0 +1,7 @@
+{
+  "source_page_code": "PG20260731001",
+  "title": "封面：Attention Is All You Need",
+  "summary": "组会论文精读封面：论文出处 + 一句话贡献",
+  "speaker_notes": "封面页。论文：Vaswani et al., Attention Is All You Need, NIPS 2017。一句话贡献：提出完全基于注意力机制的 Transformer，用自注意力和前馈网络替代序列对齐的循环与卷积。讲述重点：这篇论文不是只提出一个 attention 公式，而是把 attention 提升为完整架构的核心计算单元。",
+  "file_type": "vue"
+}

@@ -1,0 +1,52 @@
+{
+  "cover": {
+    "path": "screenshots/cover.png",
+    "width": 1080,
+    "height": 1440,
+    "source_page_code": "PG20260801037",
+    "title": "封面 · AI做演示，不一定要高成本大模型",
+    "order": 1
+  },
+  "pages": [
+    {
+      "path": "screenshots/pages/PG20260801037.png",
+      "width": 1080,
+      "height": 1440,
+      "source_page_code": "PG20260801037",
+      "title": "封面 · AI做演示，不一定要高成本大模型",
+      "order": 1
+    },
+    {
+      "path": "screenshots/pages/PG20260801038.png",
+      "width": 1080,
+      "height": 1440,
+      "source_page_code": "PG20260801038",
+      "title": "痛点 · 为什么你觉得AI做PPT贵",
+      "order": 2
+    },
+    {
+      "path": "screenshots/pages/PG20260801039.png",
+      "width": 1080,
+      "height": 1440,
+      "source_page_code": "PG20260801039",
+      "title": "机制 · 不是模型不够强，是任务没拆清楚",
+      "order": 3
+    },
+    {
+      "path": "screenshots/pages/PG20260801040.png",
+      "width": 1080,
+      "height": 1440,
+      "source_page_code": "PG20260801040",
+      "title": "成本 · 实测10页PPT不到1元",
+      "order": 4
+    },
+    {
+      "path": "screenshots/pages/PG20260801041.png",
+      "width": 1080,
+      "height": 1440,
+      "source_page_code": "PG20260801041",
+      "title": "总结 · 低成本不等于低质量",
+      "order": 5
+    }
+  ]
+}

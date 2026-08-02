@@ -1,0 +1,16 @@
+{
+  "source_component_code": "CMP20260605001",
+  "source_version_no": 2,
+  "name": "三线表",
+  "import_name": "ThreeLineTable",
+  "component_type": "内容组件",
+  "summary": "三线表组件，支持表头、数据行和标题，适用于展示结构化数据",
+  "file_type": "vue",
+  "dependencies": [],
+  "asset_names": [],
+  "font_asset_names": [],
+  "content_hash": "1ad1f055f5403d996ee109f11e1f93747ad870b95d61d975f622c49d44048f3a",
+  "preview_schema_hash": "31ebfdef777fffe0229afac1a52a74450fae8e793687f270cb3f17c1ce153d05",
+  "component_fingerprint": "42150aaa5602c157f9f0546144762cbccf93fbbad03f031cb64eddf2d584b46d",
+  "fingerprint_schema_version": 1
+}

@@ -1,0 +1,85 @@
+{
+  "routes": [
+    {
+      "route_type": "page",
+      "route": "cover",
+      "order": 1,
+      "hidden": false,
+      "group_title": null,
+      "source_page_code": "PG20260727004",
+      "children": []
+    },
+    {
+      "route_type": "page",
+      "route": "free-scope",
+      "order": 2,
+      "hidden": false,
+      "group_title": null,
+      "source_page_code": "PG20260727005",
+      "children": []
+    },
+    {
+      "route_type": "page",
+      "route": "free-eligibility",
+      "order": 3,
+      "hidden": false,
+      "group_title": null,
+      "source_page_code": "PG20260727006",
+      "children": []
+    },
+    {
+      "route_type": "page",
+      "route": "free-rules",
+      "order": 4,
+      "hidden": false,
+      "group_title": null,
+      "source_page_code": "PG20260728001",
+      "children": []
+    },
+    {
+      "route_type": "page",
+      "route": "entry-guide",
+      "order": 5,
+      "hidden": false,
+      "group_title": null,
+      "source_page_code": "PG20260728002",
+      "children": []
+    },
+    {
+      "route_type": "page",
+      "route": "high-speed-rail",
+      "order": 6,
+      "hidden": false,
+      "group_title": null,
+      "source_page_code": "PG20260728003",
+      "children": []
+    },
+    {
+      "route_type": "page",
+      "route": "local-traffic",
+      "order": 7,
+      "hidden": false,
+      "group_title": null,
+      "source_page_code": "PG20260728004",
+      "children": []
+    },
+    {
+      "route_type": "page",
+      "route": "summer-clouds",
+      "order": 8,
+      "hidden": false,
+      "group_title": null,
+      "source_page_code": "PG20260728005",
+      "children": []
+    },
+    {
+      "route_type": "page",
+      "route": "summer-summit",
+      "order": 9,
+      "hidden": false,
+      "group_title": null,
+      "source_page_code": "PG20260728006",
+      "children": []
+    }
+  ]
+}

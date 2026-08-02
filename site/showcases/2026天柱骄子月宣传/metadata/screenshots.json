@@ -1,0 +1,84 @@
+{
+  "cover": {
+    "path": "screenshots/cover.png",
+    "width": 1080,
+    "height": 1440,
+    "source_page_code": "PG20260727004",
+    "title": "封面 · 2026天柱骄子月",
+    "order": 1
+  },
+  "pages": [
+    {
+      "path": "screenshots/pages/PG20260727004.png",
+      "width": 1080,
+      "height": 1440,
+      "source_page_code": "PG20260727004",
+      "title": "封面 · 2026天柱骄子月",
+      "order": 1
+    },
+    {
+      "path": "screenshots/pages/PG20260727005.png",
+      "width": 1080,
+      "height": 1440,
+      "source_page_code": "PG20260727005",
+      "title": "01 免票范围",
+      "order": 2
+    },
+    {
+      "path": "screenshots/pages/PG20260727006.png",
+      "width": 1080,
+      "height": 1440,
+      "source_page_code": "PG20260727006",
+      "title": "02 免票人群",
+      "order": 3
+    },
+    {
+      "path": "screenshots/pages/PG20260728001.png",
+      "width": 1080,
+      "height": 1440,
+      "source_page_code": "PG20260728001",
+      "title": "02 重要须知",
+      "order": 4
+    },
+    {
+      "path": "screenshots/pages/PG20260728002.png",
+      "width": 1080,
+      "height": 1440,
+      "source_page_code": "PG20260728002",
+      "title": "03 入园指南",
+      "order": 5
+    },
+    {
+      "path": "screenshots/pages/PG20260728003.png",
+      "width": 1080,
+      "height": 1440,
+      "source_page_code": "PG20260728003",
+      "title": "04 交通出行 · 高铁直达",
+      "order": 6
+    },
+    {
+      "path": "screenshots/pages/PG20260728004.png",
+      "width": 1080,
+      "height": 1440,
+      "source_page_code": "PG20260728004",
+      "title": "04 交通出行 · 直通车与普速",
+      "order": 7
+    },
+    {
+      "path": "screenshots/pages/PG20260728005.png",
+      "width": 1080,
+      "height": 1440,
+      "source_page_code": "PG20260728005",
+      "title": "05 奔赴天柱山 · 云海与文脉",
+      "order": 8
+    },
+    {
+      "path": "screenshots/pages/PG20260728006.png",
+      "width": 1080,
+      "height": 1440,
+      "source_page_code": "PG20260728006",
+      "title": "05 奔赴天柱山 · 登峰与清凉",
+      "order": 9
+    }
+  ]
+}

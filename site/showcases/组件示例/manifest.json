@@ -1,0 +1,201 @@
+{
+  "package_type": "web-presentation-project-template",
+  "schema_version": 2,
+  "exported_at": "2026-08-01T05:00:21.457214+00:00",
+  "runtime_kit_manifest_version": "1.0.0",
+  "template_path": "metadata/template.json",
+  "screenshots_path": "metadata/screenshots.json",
+  "project_path": "project/project.json",
+  "routes_path": "project/routes.json",
+  "page_count": 9,
+  "component_count": 5,
+  "asset_count": 14,
+  "theme_count": 1,
+  "font_count": 0,
+  "pages": [
+    {
+      "source_page_code": "PG20260530002",
+      "title": "公式渲染示例",
+      "file_type": "vue"
+    },
+    {
+      "source_page_code": "PG20260606001",
+      "title": "三线表示例",
+      "file_type": "vue"
+    },
+    {
+      "source_page_code": "PG20260616001",
+      "title": "图片透视展示 - 黄山风景",
+      "file_type": "vue"
+    },
+    {
+      "source_page_code": "PG20260621001",
+      "title": "安徽省轮廓裁剪示例",
+      "file_type": "vue"
+    },
+    {
+      "source_page_code": "PG20260621005",
+      "title": "3D透视组件示例",
+      "file_type": "vue"
+    },
+    {
+      "source_page_code": "PG20260801001",
+      "title": "Draw.io 图表渲染示例",
+      "file_type": "vue"
+    },
+    {
+      "source_page_code": "PG20260801002",
+      "title": "ECharts 图表渲染示例",
+      "file_type": "vue"
+    },
+    {
+      "source_page_code": "PG20260801003",
+      "title": "Mermaid 流程图渲染示例",
+      "file_type": "vue"
+    },
+    {
+      "source_page_code": "PG20260801004",
+      "title": "视频资源渲染示例",
+      "file_type": "vue"
+    }
+  ],
+  "components": [
+    {
+      "source_component_code": "CMP20260605006",
+      "source_version_no": 2,
+      "name": "PPT内容页模板",
+      "import_name": "ContentSlide",
+      "component_fingerprint": "0b4f600338225e7c92d74ed946421a0225759886090674b2f342b8cf0ea9d2e7",
+      "fingerprint_schema_version": 1
+    },
+    {
+      "source_component_code": "CMP20260605001",
+      "source_version_no": 2,
+      "name": "三线表",
+      "import_name": "ThreeLineTable",
+      "component_fingerprint": "42150aaa5602c157f9f0546144762cbccf93fbbad03f031cb64eddf2d584b46d",
+      "fingerprint_schema_version": 1
+    },
+    {
+      "source_component_code": "CMP20260607004",
+      "source_version_no": 5,
+      "name": "图片透视展示",
+      "import_name": "ImagePerspectiveShowcase",
+      "component_fingerprint": "f5284067953912244f942553c027a4909970edcb4358a6670842a35d0df2d0ef",
+      "fingerprint_schema_version": 1
+    },
+    {
+      "source_component_code": "CMP20260614002",
+      "source_version_no": 2,
+      "name": "图片形状裁切",
+      "import_name": "ImageShapeClip",
+      "component_fingerprint": "6ac8b0cc7a43f62f063ef978cdb9b1f07a22228b32362f8cfe33367569163001",
+      "fingerprint_schema_version": 1
+    },
+    {
+      "source_component_code": "CMP20260621002",
+      "source_version_no": 1,
+      "name": "3D透视容器",
+      "import_name": "Perspective3D",
+      "component_fingerprint": "4118e2129dc8d2ad6ba20258f2b7af428b18fcf99c13b444429c9296bd1f698f",
+      "fingerprint_schema_version": 1
+    }
+  ],
+  "assets": [
+    {
+      "name": "web-presentation",
+      "original_name": "web-presentation.svg",
+      "asset_type": "image",
+      "file_hash": "5c1add7d570de71de7febd09afb603a16f8f81e5c61a0a2d8b96f4aa9f0a6d1f"
+    },
+    {
+      "name": "麦克斯韦方程组",
+      "original_name": "maxwell-equations.tex",
+      "asset_type": "formula",
+      "file_hash": "4b69587ae107c4f791cc7591f8ef415cd1b273578d6f1e1e01e48ae846948cdd"
+    },
+    {
+      "name": "sample",
+      "original_name": "sample.drawio",
+      "asset_type": "drawio",
+      "file_hash": "6c291c0e1979a7d47f7cf118cdd45e1659d13a3709d51de4fc212379ded57e30"
+    },
+    {
+      "name": "季度销售趋势",
+      "original_name": "季度销售趋势.json",
+      "asset_type": "chart",
+      "file_hash": "467ecf17a971f82f8fc5804850b5e539fcba3df72207ae3deae4e1686e2de956"
+    },
+    {
+      "name": "订单处理流程",
+      "original_name": "订单处理流程.mmd",
+      "asset_type": "mermaid",
+      "file_hash": "e2e20212a2d16fd40598880591fa241a427df2f3f7530b2848aca73aebd733d9"
+    },
+    {
+      "name": "recording-2026-05-26-20-01-39",
+      "original_name": "recording-2026-05-26-20-01-39.mp4",
+      "asset_type": "video",
+      "file_hash": "d67b0435a856621e32d2558d9fe9a6611477235aeefb0919e9e26fcd09672352"
+    },
+    {
+      "name": "组件库",
+      "original_name": "组件库.png",
+      "asset_type": "image",
+      "file_hash": "45f8d98822c6b499256f37676d1d7c87237c4150d23a8eb7450f7f343127fcee"
+    },
+    {
+      "name": "组件助手",
+      "original_name": "组件助手.png",
+      "asset_type": "image",
+      "file_hash": "d62059c3863cf03de78c0dae2252a9663da712d979de9e637fe3d8bf38fa058e"
+    },
+    {
+      "name": "资源助手",
+      "original_name": "资源助手.png",
+      "asset_type": "image",
+      "file_hash": "28b3f114d7a0718e9753d038610dc7a5c1d0deed126d82b16531ef63b0aa39b0"
+    },
+    {
+      "name": "资源库",
+      "original_name": "资源库.png",
+      "asset_type": "image",
+      "file_hash": "457da8f3a1603d6695935c9cc23cd088dfb08b41d0bb1c3170ea747705eab223"
+    },
+    {
+      "name": "样式配置2",
+      "original_name": "样式配置2.png",
+      "asset_type": "image",
+      "file_hash": "160e3d71aee0ca8e893a796eb3b691d802c35e59cfca656ec7d890ba22dcbbcf"
+    },
+    {
+      "name": "主题配置",
+      "original_name": "主题配置.png",
+      "asset_type": "image",
+      "file_hash": "c44d2d019cc1302bec0e3db6998b912f00c80e06bf3503bdd54d25c8715a3656"
+    },
+    {
+      "name": "样式配置1",
+      "original_name": "样式配置1.png",
+      "asset_type": "image",
+      "file_hash": "099b36a8400c95cf54ffb6096551b2de495875e75f6f07e0ca129c9de94d7f5e"
+    },
+    {
+      "name": "内容助手",
+      "original_name": "内容助手.png",
+      "asset_type": "image",
+      "file_hash": "025898a74348deec58e3e904aa26805e24fbddff03f4f3b9aba5dbbf9764a5ca"
+    }
+  ],
+  "themes": [
+    {
+      "key": "lightblue",
+      "name": "白底蓝色"
+    }
+  ],
+  "fonts": [],
+  "warnings": [
+    "组件存在动态资源引用，离线包不会自动包含运行时传入的资源：图片透视展示。",
+    "图片透视展示"
+  ]
+}

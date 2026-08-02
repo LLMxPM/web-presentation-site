@@ -8,5 +8,11 @@
   "description": null,
   "tags": [],
   "analysis_metadata": null,
-  "render_metadata": null
+  "render_metadata": {
+    "schema_version": 1,
+    "kind": "asset_render_hint",
+    "aspect_ratio": "139:90",
+    "aspect_ratio_value": 1.5444,
+    "aspect_ratio_source": "auto"
+  }
 }

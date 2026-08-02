@@ -1,0 +1,7 @@
+{
+  "source_page_code": "PG20260731006",
+  "title": "位置编码与逐位置前馈网络",
+  "summary": "正弦位置编码、FFN、权重共享、位置编码示意图、源码组件图",
+  "speaker_notes": "因为没有 RNN/CNN，模型需要显式注入位置；论文使用正弦/余弦位置编码，与 token embedding 相加。正弦位置编码的优势：可能外推到训练中未见过的更长序列；相对位置偏移可由线性变换表示。FFN 对每个位置独立应用同一组参数：Linear -> ReLU -> Linear，把每个 token 的通道维度做非线性变换。Embedding 层与 pre-softmax 线性层共享权重，并对 embedding 乘以 sqrt(d_model)。讲述重点：Attention 做\"token 间通信\"，FFN 做\"每个 token 内部特征变换\"，位置编码负责补回顺序信息。",
+  "file_type": "vue"
+}

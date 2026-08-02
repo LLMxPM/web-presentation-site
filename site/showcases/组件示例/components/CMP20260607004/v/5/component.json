@@ -1,0 +1,16 @@
+{
+  "source_component_code": "CMP20260607004",
+  "source_version_no": 5,
+  "name": "图片透视展示",
+  "import_name": "ImagePerspectiveShowcase",
+  "component_type": "内容组件",
+  "summary": "支持 3~5 张图片的透视倾斜展示组件，左右两侧图片向内倾斜，中间图片水平排列，宽度一致，通过 3D 透视效果营造立体视觉",
+  "file_type": "vue",
+  "dependencies": [],
+  "asset_names": [],
+  "font_asset_names": [],
+  "content_hash": "810a711ef511156274529a78d8a4dac85581c8c0dbd86bea284d0865425b8f55",
+  "preview_schema_hash": "ba804f44e81c7bf14028b67c46cc1e69a85ec85cdd26f0973f56398746ffde5f",
+  "component_fingerprint": "f5284067953912244f942553c027a4909970edcb4358a6670842a35d0df2d0ef",
+  "fingerprint_schema_version": 1
+}

@@ -1,0 +1,182 @@
+{
+  "props": {
+    "imageName": {
+      "type": "string",
+      "label": "图片资源名",
+      "default": "组件库"
+    },
+    "shape": {
+      "type": "select",
+      "label": "裁切形状",
+      "default": "circle",
+      "options": [
+        {
+          "label": "圆形",
+          "value": "circle"
+        },
+        {
+          "label": "椭圆",
+          "value": "ellipse"
+        },
+        {
+          "label": "菱形",
+          "value": "diamond"
+        },
+        {
+          "label": "六边形",
+          "value": "hexagon"
+        },
+        {
+          "label": "心形",
+          "value": "heart"
+        },
+        {
+          "label": "星形",
+          "value": "star"
+        },
+        {
+          "label": "三角形",
+          "value": "triangle"
+        },
+        {
+          "label": "圆角矩形",
+          "value": "rounded-rect"
+        },
+        {
+          "label": "自定义路径",
+          "value": "custom"
+        },
+        {
+          "label": "SVG蒙版图片",
+          "value": "mask"
+        }
+      ]
+    },
+    "customClipPathD": {
+      "type": "textarea",
+      "label": "自定义 SVG Path d",
+      "default": "",
+      "description": "shape=custom 时生效，路径坐标相对于组件 width×height"
+    },
+    "maskImageName": {
+      "type": "string",
+      "label": "蒙版 SVG 资源名",
+      "default": "",
+      "description": "shape=mask 时生效"
+    },
+    "width": {
+      "type": "number",
+      "label": "宽度 (px)",
+      "default": 300
+    },
+    "height": {
+      "type": "number",
+      "label": "高度 (px)",
+      "default": 300
+    },
+    "scale": {
+      "type": "number",
+      "label": "缩放比例",
+      "default": 1,
+      "description": "图片等比缩放倍数"
+    },
+    "offsetX": {
+      "type": "number",
+      "label": "水平偏移 (px)",
+      "default": 0,
+      "description": "正值向右"
+    },
+    "offsetY": {
+      "type": "number",
+      "label": "垂直偏移 (px)",
+      "default": 0,
+      "description": "正值向下"
+    },
+    "borderWidth": {
+      "type": "number",
+      "label": "边框宽度 (px)",
+      "default": 0
+    },
+    "borderColor": {
+      "type": "string",
+      "label": "边框颜色",
+      "default": "#ffffff"
+    }
+  },
+  "mocks": {
+    "loading": {
+      "label": "加载态",
+      "default": false
+    }
+  },
+  "presets": [
+    {
+      "key": "circle-default",
+      "label": "圆形默认",
+      "props": {
+        "shape": "circle",
+        "width": 300,
+        "height": 300,
+        "scale": 1,
+        "offsetX": 0,
+        "offsetY": 0,
+        "borderWidth": 0
+      }
+    },
+    {
+      "key": "circle-zoomed",
+      "label": "圆形放大居中",
+      "props": {
+        "shape": "circle",
+        "width": 300,
+        "height": 300,
+        "scale": 1.3,
+        "offsetX": 0,
+        "offsetY": 0,
+        "borderWidth": 2,
+        "borderColor": "#ffffff"
+      }
+    },
+    {
+      "key": "hexagon",
+      "label": "六边形展示",
+      "props": {
+        "shape": "hexagon",
+        "width": 320,
+        "height": 280,
+        "scale": 1,
+        "offsetX": 0,
+        "offsetY": 0,
+        "borderWidth": 0
+      }
+    },
+    {
+      "key": "heart-framed",
+      "label": "心形带边框",
+      "props": {
+        "shape": "heart",
+        "width": 300,
+        "height": 300,
+        "scale": 1.1,
+        "offsetX": 0,
+        "offsetY": 0,
+        "borderWidth": 2,
+        "borderColor": "#ef4444"
+      }
+    },
+    {
+      "key": "ellipse-wide",
+      "label": "宽椭圆",
+      "props": {
+        "shape": "ellipse",
+        "width": 400,
+        "height": 200,
+        "scale": 1,
+        "offsetX": 0,
+        "offsetY": 0,
+        "borderWidth": 2,
+        "borderColor": "#ffffff"
+      }
+    }
+  ]
+}

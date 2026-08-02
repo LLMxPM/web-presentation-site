@@ -1,0 +1,14 @@
+{
+  "slug": "prj20260801009",
+  "name": "Web-Presentation低成本优势",
+  "summary": "模型：qwen3.8-max；成本按token plan算大概150credits",
+  "description": "模型：qwen3.8-max；成本按token plan算大概150credits",
+  "author": "Demo",
+  "page_count": 5,
+  "page_width": 1080,
+  "page_height": 1440,
+  "aspect_ratio": "3:4",
+  "runtime_kit_manifest_version": "1.0.0",
+  "created_at": "2026-08-02T07:32:42.721273+00:00",
+  "updated_at": "2026-08-02T07:32:42.721273+00:00"
+}

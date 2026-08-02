@@ -1,0 +1,43 @@
+{
+  "source_project_code": "PRJ20260529002",
+  "name": "组件示例",
+  "description": "展示runtime组件以及基于runtime的自定义组件渲染能力",
+  "page_width": 1920,
+  "page_height": 1080,
+  "base_font_size": "20px",
+  "icon_default_stroke_width": 2,
+  "show_pdf_export_button": true,
+  "menu_mode": "preview",
+  "theme_key": "lightblue",
+  "theme_config_yaml": "themes:\n  lightblue:\n    name: 白底蓝色\n    description: 白底蓝色主题，简约经典\n    palette:\n      text:\n        primary: '#0D286A'\n        secondary: '#1D5297'\n        invert: '#ffffff'\n      background:\n        default: '#ffffff'\n        invert: '#0D286A'\n      border:\n        default: '#e5e7eb'\n        subtle: '#d1d5db'\n      link:\n        default: '#3b82f6'\n        hover: '#2563eb'\n        visited: '#7c3aed'\n      accent:\n      - '#0D286A'\n      - '#260E6D'\n      - '#9E8403'\n      - '#9E6B03'\n      - '#A110AB'\n      - '#C5003C'\n    typography:\n      headingfont: system-ui\n      bodyfont: system-ui\n      codefont: monospace\n    logo: web-presentation\n    invertLogo: web-presentation\ndefault:\n  theme: lightblue\n",
+  "style_spec_markdown": "## 演示页排版尺度\n\n- 本项目是固定 16:9 演示页/PPT 画布，不是普通网页桌面页。\n- 页面应按投屏和远距离阅读设计，避免用网页信息流方式堆内容。\n- 主标题优先使用 text-5xl 到 text-7xl。\n- 章节标题、模块标题优先使用 text-3xl 到 text-5xl。\n- 主体阅读文本优先使用 text-xl 到 text-3xl，不使用 text-sm、text-base 承载主要内容。\n- text-xs、text-sm、text-base 只用于页脚、标签、角标、图例、注释或少量辅助信息。\n- 单页只表达一个核心结论；内容过多时优先拆页，而不是缩小字号。\n- 表格和指标区块应减少列数和行数，优先突出关键数字与结论。",
+  "build_extra_assets_json": {
+    "asset_names": [
+      "麦克斯韦方程组"
+    ]
+  },
+  "suggested_reference_asset_names": [
+    "组件库",
+    "组件助手",
+    "资源助手",
+    "资源库",
+    "样式配置2",
+    "主题配置",
+    "样式配置1",
+    "内容助手"
+  ],
+  "suggested_components": [
+    {
+      "source_component_code": "CMP20260605001",
+      "source_version_no": 2,
+      "name": "三线表",
+      "import_name": "ThreeLineTable"
+    },
+    {
+      "source_component_code": "CMP20260605006",
+      "source_version_no": 2,
+      "name": "PPT内容页模板",
+      "import_name": "ContentSlide"
+    }
+  ]
+}

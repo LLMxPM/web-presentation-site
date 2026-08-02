@@ -1,0 +1,18 @@
+{
+  "name": "04_positional_encoding",
+  "original_name": "04_positional_encoding.mmd",
+  "asset_type": "mermaid",
+  "content_type": "application/octet-stream",
+  "file_size": 840,
+  "file_hash": "4df720c64f18a16848336b6871185355ccc422896610b8fc0125427d46c04a05",
+  "description": null,
+  "tags": [],
+  "analysis_metadata": null,
+  "render_metadata": {
+    "schema_version": 1,
+    "kind": "asset_render_hint",
+    "aspect_ratio": "125:93",
+    "aspect_ratio_value": 1.3441,
+    "aspect_ratio_source": "auto"
+  }
+}

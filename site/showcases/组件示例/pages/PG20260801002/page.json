@@ -1,0 +1,7 @@
+{
+  "source_page_code": "PG20260801002",
+  "title": "ECharts 图表渲染示例",
+  "summary": "使用 PPT 内容页模板展示 AssetChart 组件渲染工作空间 ECharts 图表资源（季度销售趋势）",
+  "speaker_notes": "本页演示 AssetChart 资源组件的用法：通过 name 绑定工作空间 chart 资源（季度销售趋势，ECharts option JSON），Runtime 图表渲染器加载 option 并以 canvas 渲染。示例为柱状图（月销售额）+ 折线图（环比增长率）双 Y 轴组合。",
+  "file_type": "vue"
+}

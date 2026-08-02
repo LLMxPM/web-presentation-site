@@ -1,0 +1,112 @@
+{
+  "title": {
+    "text": "季度销售趋势",
+    "left": "center",
+    "textStyle": {
+      "fontSize": 16,
+      "color": "#333"
+    }
+  },
+  "tooltip": {
+    "trigger": "axis",
+    "axisPointer": {
+      "type": "cross",
+      "crossStyle": {
+        "color": "#999"
+      }
+    }
+  },
+  "legend": {
+    "data": ["销售额", "环比增长率"],
+    "top": 30,
+    "textStyle": {
+      "color": "#666"
+    }
+  },
+  "grid": {
+    "left": "3%",
+    "right": "8%",
+    "bottom": "3%",
+    "top": "80px",
+    "containLabel": true
+  },
+  "xAxis": {
+    "type": "category",
+    "data": ["1月", "2月", "3月", "4月", "5月", "6月"],
+    "boundaryGap": true,
+    "axisLabel": {
+      "color": "#666"
+    },
+    "axisLine": {
+      "lineStyle": {
+        "color": "#ccc"
+      }
+    }
+  },
+  "yAxis": [
+    {
+      "type": "value",
+      "name": "销售额 (万元)",
+      "position": "left",
+      "axisLabel": {
+        "color": "#5470C6"
+      },
+      "splitLine": {
+        "lineStyle": {
+          "color": "#f0f0f0",
+          "type": "dashed"
+        }
+      }
+    },
+    {
+      "type": "value",
+      "name": "增长率 (%)",
+      "position": "right",
+      "axisLabel": {
+        "color": "#EE6666"
+      },
+      "splitLine": {
+        "show": false
+      }
+    }
+  ],
+  "series": [
+    {
+      "name": "销售额",
+      "type": "bar",
+      "data": [320, 452, 391, 534, 620, 758],
+      "itemStyle": {
+        "color": "#5470C6",
+        "borderRadius": [4, 4, 0, 0]
+      },
+      "barWidth": "40%",
+      "label": {
+        "show": true,
+        "position": "top",
+        "color": "#5470C6",
+        "fontSize": 11
+      }
+    },
+    {
+      "name": "环比增长率",
+      "type": "line",
+      "yAxisIndex": 1,
+      "data": [12, 18, 9, 21, 16, 22],
+      "itemStyle": {
+        "color": "#EE6666"
+      },
+      "lineStyle": {
+        "width": 2.5
+      },
+      "symbol": "circle",
+      "symbolSize": 8,
+      "label": {
+        "show": true,
+        "position": "top",
+        "color": "#EE6666",
+        "fontSize": 11,
+        "formatter": "{c}%"
+      }
+    }
+  ]
+}

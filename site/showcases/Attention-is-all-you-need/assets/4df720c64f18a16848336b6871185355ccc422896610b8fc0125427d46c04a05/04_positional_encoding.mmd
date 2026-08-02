@@ -1,0 +1,18 @@
+flowchart TB
+    token["Token id"] --> embed["Token Embedding\n维度 d_model"]
+    pos["位置 pos"] --> pe["Sinusoidal Positional Encoding\n偶数维用 sin\n奇数维用 cos"]
+    embed --> scale["乘以 sqrt(d_model)"]
+    scale --> add["逐元素相加"]
+    pe --> add
+    add --> dropout["Dropout"]
+    dropout --> stack["送入 Encoder 或 Decoder 底部"]
+
+    reason["没有 recurrence/convolution\n必须显式注入顺序信息"] --> pe
+    extrapolate["正弦编码可能外推到更长序列\n相对位移可由线性关系表达"] --> pe
+
+    classDef data fill:#eef6ff,stroke:#2f6f9f,color:#111;
+    classDef block fill:#f7f7f2,stroke:#5f6f52,color:#111;
+    classDef note fill:#fff0d6,stroke:#a56a00,color:#111;
+    class token,pos,stack data;
+    class embed,pe,scale,add,dropout block;
+    class reason,extrapolate note;

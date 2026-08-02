@@ -1,7 +1,7 @@
 {
-  "source_project_code": "PRJ20260709002",
-  "name": "Attention is all you need",
-  "description": "学术风格，使用三线表等组件，模型：Deepseek V4 pro；成本：0.95元。",
+  "source_project_code": "PRJ20260731001",
+  "name": "Attention Is All You Need",
+  "description": "Deepseek-v4-flash正式版，1轮对话生成，成本0.2元",
   "page_width": 1920,
   "page_height": 1080,
   "base_font_size": "20px",
@@ -14,45 +14,29 @@
   "build_extra_assets_json": {
     "asset_names": []
   },
-  "suggested_reference_asset_names": [
-    "01_paper_figure_1_transformer_architecture",
-    "02_paper_figure_2a_scaled_dot_product_attention",
-    "03_paper_figure_2b_multi_head_attention",
-    "04_source_component_sequence_attention",
-    "05_source_component_positionwise_ffn",
-    "06_source_component_multi_head_split_variant",
-    "07_appendix_attention_long_distance_dependencies",
-    "08_appendix_attention_anaphora_full_head5",
-    "09_appendix_attention_anaphora_its_heads5_6",
-    "10_appendix_attention_sentence_structure_head_a",
-    "11_appendix_attention_sentence_structure_head_b",
-    "01_scaled_dot_product_attention",
-    "02_multi_head_attention",
-    "03_transformer_block_components",
-    "04_training_schedule"
-  ],
+  "suggested_reference_asset_names": [],
   "suggested_components": [
     {
-      "source_component_code": "CMP20260709001",
-      "source_version_no": 1,
+      "source_component_code": "CMP20260608002",
+      "source_version_no": 5,
       "name": "学术封面页",
       "import_name": "AcademicCoverPage"
     },
     {
-      "source_component_code": "CMP20260709003",
-      "source_version_no": 2,
+      "source_component_code": "CMP20260608005",
+      "source_version_no": 6,
       "name": "三线表",
       "import_name": "ThreeLineTable"
     },
     {
-      "source_component_code": "CMP20260709002",
-      "source_version_no": 1,
+      "source_component_code": "CMP20260608004",
+      "source_version_no": 7,
       "name": "学术内容页模板",
       "import_name": "AcademicContentPage"
     },
     {
-      "source_component_code": "CMP20260709004",
-      "source_version_no": 1,
+      "source_component_code": "CMP20260608003",
+      "source_version_no": 3,
       "name": "学术封底页",
       "import_name": "AcademicBackCoverPage"
     }

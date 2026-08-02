@@ -1,0 +1,18 @@
+{
+  "name": "sample",
+  "original_name": "sample.drawio",
+  "asset_type": "drawio",
+  "content_type": "application/xml",
+  "file_size": 6323,
+  "file_hash": "6c291c0e1979a7d47f7cf118cdd45e1659d13a3709d51de4fc212379ded57e30",
+  "description": null,
+  "tags": [],
+  "analysis_metadata": null,
+  "render_metadata": {
+    "schema_version": 1,
+    "kind": "asset_render_hint",
+    "aspect_ratio": "29:41",
+    "aspect_ratio_value": 0.7074,
+    "aspect_ratio_source": "auto"
+  }
+}

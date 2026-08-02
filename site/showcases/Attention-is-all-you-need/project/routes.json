@@ -2,101 +2,101 @@
   "routes": [
     {
       "route_type": "page",
-      "route": "slide-01",
+      "route": "cover",
       "order": 1,
       "hidden": false,
       "group_title": null,
-      "source_page_code": "PG20260709001",
+      "source_page_code": "PG20260731001",
       "children": []
     },
     {
       "route_type": "page",
-      "route": "slide-02",
+      "route": "motivation",
       "order": 2,
       "hidden": false,
       "group_title": null,
-      "source_page_code": "PG20260709002",
+      "source_page_code": "PG20260731002",
       "children": []
     },
     {
       "route_type": "page",
-      "route": "slide-03",
+      "route": "architecture",
       "order": 3,
       "hidden": false,
       "group_title": null,
-      "source_page_code": "PG20260709003",
+      "source_page_code": "PG20260731003",
       "children": []
     },
     {
       "route_type": "page",
-      "route": "slide-04",
+      "route": "scaled-dot-attention",
       "order": 4,
       "hidden": false,
       "group_title": null,
-      "source_page_code": "PG20260709004",
+      "source_page_code": "PG20260731004",
       "children": []
     },
     {
       "route_type": "page",
-      "route": "slide-05",
+      "route": "multi-head-attention",
       "order": 5,
       "hidden": false,
       "group_title": null,
-      "source_page_code": "PG20260709005",
+      "source_page_code": "PG20260731005",
       "children": []
     },
     {
       "route_type": "page",
-      "route": "slide-06",
+      "route": "positional-encoding-ffn",
       "order": 6,
       "hidden": false,
       "group_title": null,
-      "source_page_code": "PG20260709006",
+      "source_page_code": "PG20260731006",
       "children": []
     },
     {
       "route_type": "page",
-      "route": "slide-07",
+      "route": "why-self-attention",
       "order": 7,
       "hidden": false,
       "group_title": null,
-      "source_page_code": "PG20260709007",
+      "source_page_code": "PG20260731007",
       "children": []
     },
     {
       "route_type": "page",
-      "route": "slide-08",
+      "route": "training-setup",
       "order": 8,
       "hidden": false,
       "group_title": null,
-      "source_page_code": "PG20260709008",
+      "source_page_code": "PG20260731008",
       "children": []
     },
     {
       "route_type": "page",
-      "route": "slide-09",
+      "route": "results",
       "order": 9,
       "hidden": false,
       "group_title": null,
-      "source_page_code": "PG20260709009",
+      "source_page_code": "PG20260731009",
       "children": []
     },
     {
       "route_type": "page",
-      "route": "slide-10",
+      "route": "ablation",
       "order": 10,
       "hidden": false,
       "group_title": null,
-      "source_page_code": "PG20260709010",
+      "source_page_code": "PG20260731010",
       "children": []
     },
     {
       "route_type": "page",
-      "route": "back-cover",
+      "route": "conclusion",
       "order": 11,
       "hidden": false,
       "group_title": null,
-      "source_page_code": "PG20260709011",
+      "source_page_code": "PG20260731011",
       "children": []
     }
   ]

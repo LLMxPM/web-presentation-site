@@ -1,0 +1,7 @@
+{
+  "source_page_code": "PG20260530002",
+  "title": "公式渲染示例",
+  "summary": "使用 PPT 内容页模板展示 AssetFormula 组件渲染工作空间 LaTeX 公式资源（麦克斯韦方程组）",
+  "speaker_notes": "本页演示 AssetFormula 资源组件的用法：通过 name 绑定工作空间 formula 资源（麦克斯韦方程组，LaTeX 文本），Runtime 公式渲染器加载 LaTeX 并以块级公式（display-mode）渲染。四个方程分别对应高斯电场定律、高斯磁场定律、法拉第电磁感应定律和安培-麦克斯韦定律。",
+  "file_type": "vue"
+}

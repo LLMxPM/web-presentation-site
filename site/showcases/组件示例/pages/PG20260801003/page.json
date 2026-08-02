@@ -1,0 +1,7 @@
+{
+  "source_page_code": "PG20260801003",
+  "title": "Mermaid 流程图渲染示例",
+  "summary": "使用 PPT 内容页模板展示 AssetMermaid 组件渲染工作空间 Mermaid 流程资源（订单处理流程）",
+  "speaker_notes": "本页演示 AssetMermaid 资源组件的用法：通过 name 绑定工作空间 mermaid 资源（订单处理流程），Runtime 在浏览器端调用 Mermaid 渲染 flowchart，支持分支判断与失败重试。语法错误时组件会展示失败状态。",
+  "file_type": "vue"
+}

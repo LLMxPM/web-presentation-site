@@ -1,0 +1,115 @@
+{
+  "props": {
+    "images": {
+      "type": "json",
+      "label": "图片资源列表",
+      "default": [
+        "组件助手",
+        "组件库",
+        "资源助手",
+        "资源库",
+        "资源库"
+      ]
+    },
+    "tiltAngle": {
+      "type": "number",
+      "label": "倾斜角度",
+      "default": 25
+    },
+    "containerWidth": {
+      "type": "string",
+      "label": "组件整体宽度",
+      "default": "1200px"
+    },
+    "containerHeight": {
+      "type": "string",
+      "label": "组件整体高度",
+      "default": "420px"
+    },
+    "gap": {
+      "type": "string",
+      "label": "图片间距",
+      "default": "24px"
+    },
+    "borderClass": {
+      "type": "string",
+      "label": "边框样式",
+      "default": "rounded-xl shadow-lg"
+    },
+    "fitMode": {
+      "type": "select",
+      "label": "图片填充方式",
+      "default": "cover",
+      "options": [
+        {
+          "label": "裁切",
+          "value": "cover"
+        },
+        {
+          "label": "拉伸",
+          "value": "fill"
+        },
+        {
+          "label": "完整包含",
+          "value": "contain"
+        }
+      ]
+    }
+  },
+  "mocks": {},
+  "presets": [
+    {
+      "key": "five-images",
+      "label": "五张图片展示",
+      "props": {
+        "images": [
+          "产品展示1",
+          "产品展示2",
+          "产品展示3",
+          "产品展示4",
+          "产品展示5"
+        ],
+        "tiltAngle": 25,
+        "containerWidth": "1200px",
+        "containerHeight": "420px",
+        "borderClass": "rounded-xl shadow-lg",
+        "fitMode": "cover"
+      }
+    },
+    {
+      "key": "three-images",
+      "label": "三张图片展示",
+      "props": {
+        "images": [
+          "产品展示1",
+          "产品展示2",
+          "产品展示3"
+        ],
+        "tiltAngle": 20,
+        "containerWidth": "900px",
+        "containerHeight": "460px",
+        "borderClass": "rounded-2xl shadow-2xl",
+        "fitMode": "cover"
+      }
+    },
+    {
+      "key": "compact",
+      "label": "紧凑布局",
+      "props": {
+        "images": [
+          "产品展示1",
+          "产品展示2",
+          "产品展示3",
+          "产品展示4",
+          "产品展示5"
+        ],
+        "tiltAngle": 30,
+        "containerWidth": "800px",
+        "containerHeight": "360px",
+        "gap": "12px",
+        "borderClass": "rounded-lg",
+        "fitMode": "contain"
+      }
+    }
+  ]
+}

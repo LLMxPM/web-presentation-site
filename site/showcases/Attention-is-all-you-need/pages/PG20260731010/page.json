@@ -1,0 +1,7 @@
+{
+  "source_page_code": "PG20260731010",
+  "title": "消融与泛化实验",
+  "summary": "Table 3 模型变体消融、Table 4 Constituency Parsing 泛化",
+  "speaker_notes": "消融结论：单头性能下降；太多头也可能下降；更大模型通常更好；dropout 对避免过拟合重要；learned positional embedding 与 sinusoidal positional encoding 结果接近。泛化实验：4 层 Transformer 在 WSJ constituency parsing 上也有竞争力（WSJ only 91.3，semi-supervised 92.7）。",
+  "file_type": "vue"
+}

@@ -1,0 +1,16 @@
+{
+  "source_component_code": "CMP20260614002",
+  "source_version_no": 2,
+  "name": "图片形状裁切",
+  "import_name": "ImageShapeClip",
+  "component_type": "内容组件",
+  "summary": "形状直接填满 width×height，图片只通过 scale 等比缩放 + offsetX/Y 偏移控制裁切区域。支持圆形、椭圆、菱形、六边形、心形、星形、三角形、圆角矩形、自定义 SVG path 和 SVG 图片蒙版共 10 种形状，可叠加形状描边边框。",
+  "file_type": "vue",
+  "dependencies": [],
+  "asset_names": [],
+  "font_asset_names": [],
+  "content_hash": "2b85e7d5211ec4a81c8f77f189eac6ccfc36df3fea70c96423a261ee88a7d356",
+  "preview_schema_hash": "14de3d7c5238d53e06cd6171320a991ab47eb2000b455c994a142fae248788f0",
+  "component_fingerprint": "6ac8b0cc7a43f62f063ef978cdb9b1f07a22228b32362f8cfe33367569163001",
+  "fingerprint_schema_version": 1
+}

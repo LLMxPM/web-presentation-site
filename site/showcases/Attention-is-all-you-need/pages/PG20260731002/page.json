@@ -1,0 +1,7 @@
+{
+  "source_page_code": "PG20260731002",
+  "title": "为什么必须摆脱 RNN/CNN",
+  "summary": "背景与动机：RNN/CNN 瓶颈、Transformer 答案、Table 1 复杂度对比",
+  "speaker_notes": "背景：当时主流序列转导模型多依赖 RNN/CNN 编码器-解码器，注意力通常只是附加模块。RNN 按时间步递推，样本内难并行，长序列吞吐受限；CNN 可并行，但远距离位置交互需要堆叠多层或扩大感受野。Transformer 的答案：每层 self-attention 让所有位置直接交互，最大路径长度为常数级。可讲问题：短序列机器翻译中通常 n 小于 d_model，因此 self-attention 的 O(n²d) 可接受；长序列则会成为后续研究的主要瓶颈。",
+  "file_type": "vue"
+}

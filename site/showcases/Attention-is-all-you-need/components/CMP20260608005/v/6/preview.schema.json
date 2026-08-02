@@ -1,0 +1,273 @@
+{
+  "props": {
+    "columns": {
+      "type": "json",
+      "label": "表头列配置",
+      "default": [
+        {
+          "key": "name",
+          "title": "姓名",
+          "width": "120px",
+          "align": "left"
+        },
+        {
+          "key": "age",
+          "title": "年龄",
+          "width": "80px",
+          "align": "center"
+        },
+        {
+          "key": "city",
+          "title": "城市",
+          "width": "120px",
+          "align": "left"
+        },
+        {
+          "key": "score",
+          "title": "分数",
+          "width": "100px",
+          "align": "right"
+        }
+      ]
+    },
+    "rows": {
+      "type": "json",
+      "label": "数据行",
+      "default": [
+        {
+          "name": "张三",
+          "age": 28,
+          "city": "北京",
+          "score": 95
+        },
+        {
+          "name": "李四",
+          "age": 32,
+          "city": "上海",
+          "score": 88
+        },
+        {
+          "name": "王五",
+          "age": 25,
+          "city": "广州",
+          "score": 92
+        },
+        {
+          "name": "赵六",
+          "age": 30,
+          "city": "深圳",
+          "score": 85
+        }
+      ]
+    },
+    "caption": {
+      "type": "string",
+      "label": "表格标题",
+      "default": "员工信息表"
+    },
+    "fontSize": {
+      "type": "select",
+      "label": "字号",
+      "default": "2xl",
+      "description": "控制文字大小，行高自动适配",
+      "options": [
+        {
+          "label": "xs",
+          "value": "xs"
+        },
+        {
+          "label": "sm",
+          "value": "sm"
+        },
+        {
+          "label": "base",
+          "value": "base"
+        },
+        {
+          "label": "lg",
+          "value": "lg"
+        },
+        {
+          "label": "xl",
+          "value": "xl"
+        },
+        {
+          "label": "2xl",
+          "value": "2xl"
+        },
+        {
+          "label": "3xl",
+          "value": "3xl"
+        },
+        {
+          "label": "4xl",
+          "value": "4xl"
+        }
+      ]
+    },
+    "width": {
+      "type": "string",
+      "label": "整体宽度",
+      "default": "100%"
+    },
+    "height": {
+      "type": "string",
+      "label": "整体高度",
+      "default": "",
+      "description": "设置后行高自动均分以填满容器，留空则按内容自然撑高"
+    }
+  },
+  "slots": {},
+  "mocks": {},
+  "presets": [
+    {
+      "key": "employee-table",
+      "label": "员工信息表",
+      "props": {
+        "caption": "员工信息表",
+        "fontSize": "2xl"
+      }
+    },
+    {
+      "key": "sales-report",
+      "label": "销售报表",
+      "props": {
+        "caption": "季度销售报表",
+        "fontSize": "2xl",
+        "columns": [
+          {
+            "key": "product",
+            "title": "产品",
+            "width": "150px",
+            "align": "left"
+          },
+          {
+            "key": "q1",
+            "title": "Q1",
+            "width": "100px",
+            "align": "right"
+          },
+          {
+            "key": "q2",
+            "title": "Q2",
+            "width": "100px",
+            "align": "right"
+          },
+          {
+            "key": "q3",
+            "title": "Q3",
+            "width": "100px",
+            "align": "right"
+          },
+          {
+            "key": "total",
+            "title": "总计",
+            "width": "120px",
+            "align": "right"
+          }
+        ],
+        "rows": [
+          {
+            "product": "产品A",
+            "q1": 1200,
+            "q2": 1500,
+            "q3": 1800,
+            "total": 4500
+          },
+          {
+            "product": "产品B",
+            "q1": 800,
+            "q2": 950,
+            "q3": 1100,
+            "total": 2850
+          },
+          {
+            "product": "产品C",
+            "q1": 2000,
+            "q2": 2200,
+            "q3": 2500,
+            "total": 6700
+          }
+        ]
+      }
+    },
+    {
+      "key": "simple-table",
+      "label": "简洁表格",
+      "props": {
+        "columns": [
+          {
+            "key": "name",
+            "title": "名称"
+          },
+          {
+            "key": "value",
+            "title": "数值"
+          }
+        ],
+        "rows": [
+          {
+            "name": "总用户数",
+            "value": "12,580"
+          },
+          {
+            "name": "活跃用户",
+            "value": "8,430"
+          },
+          {
+            "name": "转化率",
+            "value": "67.2%"
+          }
+        ],
+        "caption": "关键指标",
+        "fontSize": "2xl"
+      }
+    },
+    {
+      "key": "fixed-height",
+      "label": "固定高度自适应",
+      "props": {
+        "caption": "固定高度表格",
+        "fontSize": "2xl",
+        "height": "240px",
+        "columns": [
+          {
+            "key": "metric",
+            "title": "指标",
+            "width": "150px",
+            "align": "left"
+          },
+          {
+            "key": "value",
+            "title": "数值",
+            "width": "120px",
+            "align": "right"
+          },
+          {
+            "key": "status",
+            "title": "状态",
+            "width": "100px",
+            "align": "center"
+          }
+        ],
+        "rows": [
+          {
+            "metric": "月活跃用户",
+            "value": "1,250,000",
+            "status": "↑ 15%"
+          },
+          {
+            "metric": "日均收入",
+            "value": "¥850,000",
+            "status": "↑ 8%"
+          },
+          {
+            "metric": "转化率",
+            "value": "67.2%",
+            "status": "稳定"
+          }
+        ]
+      }
+    }
+  ]
+}
