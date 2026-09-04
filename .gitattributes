@@ -19,6 +19,7 @@
 *.ppt filter=lfs diff=lfs merge=lfs -text
 *.pptx filter=lfs diff=lfs merge=lfs -text
 *.key filter=lfs diff=lfs merge=lfs -text
+# 案例大文件媒体资产与案例截图通过 Git LFS 管理。
 site/showcases/**/assets/**/*.png filter=lfs diff=lfs merge=lfs -text
 site/showcases/**/assets/**/*.jpg filter=lfs diff=lfs merge=lfs -text
 site/showcases/**/assets/**/*.jpeg filter=lfs diff=lfs merge=lfs -text
@@ -27,3 +28,9 @@ site/showcases/**/screenshots/**/*.png filter=lfs diff=lfs merge=lfs -text
 site/showcases/**/screenshots/**/*.jpg filter=lfs diff=lfs merge=lfs -text
 site/showcases/**/screenshots/**/*.jpeg filter=lfs diff=lfs merge=lfs -text
 site/showcases/**/screenshots/**/*.webp filter=lfs diff=lfs merge=lfs -text
+# 案例字体文件通过 Git LFS 管理。
+site/showcases/**/*.ttf filter=lfs diff=lfs merge=lfs -text
+site/showcases/**/*.otf filter=lfs diff=lfs merge=lfs -text
+site/showcases/**/*.woff filter=lfs diff=lfs merge=lfs -text
+site/showcases/**/*.woff2 filter=lfs diff=lfs merge=lfs -text
+site/showcases/**/*.eot filter=lfs diff=lfs merge=lfs -text
