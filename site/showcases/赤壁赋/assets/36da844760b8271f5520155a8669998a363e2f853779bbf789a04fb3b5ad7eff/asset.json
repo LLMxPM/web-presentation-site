@@ -1,0 +1,22 @@
+{
+  "name": "chibi-dawn-8037f106-1",
+  "original_name": "chibi-dawn-8037f106-1.png",
+  "asset_type": "image",
+  "content_type": "image/png",
+  "file_size": 7855569,
+  "file_hash": "36da844760b8271f5520155a8669998a363e2f853779bbf789a04fb3b5ad7eff",
+  "description": "江上清风、山间明月与东方既白的水墨图，用于苏轼达观人生观升华页",
+  "tags": [
+    "赤壁赋",
+    "水墨",
+    "清风明月"
+  ],
+  "analysis_metadata": null,
+  "render_metadata": {
+    "schema_version": 1,
+    "kind": "asset_render_hint",
+    "aspect_ratio": "3:2",
+    "aspect_ratio_value": 1.5,
+    "aspect_ratio_source": "auto"
+  }
+}

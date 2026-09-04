@@ -1,0 +1,112 @@
+{
+  "routes": [
+    {
+      "route_type": "page",
+      "route": "cover",
+      "order": 1,
+      "hidden": false,
+      "group_title": null,
+      "source_page_code": "PG20260818036",
+      "children": []
+    },
+    {
+      "route_type": "page",
+      "route": "goals",
+      "order": 2,
+      "hidden": false,
+      "group_title": null,
+      "source_page_code": "PG20260818033",
+      "children": []
+    },
+    {
+      "route_type": "page",
+      "route": "intro",
+      "order": 3,
+      "hidden": false,
+      "group_title": null,
+      "source_page_code": "PG20260818034",
+      "children": []
+    },
+    {
+      "route_type": "page",
+      "route": "boating-joy",
+      "order": 4,
+      "hidden": false,
+      "group_title": null,
+      "source_page_code": "PG20260818035",
+      "children": []
+    },
+    {
+      "route_type": "page",
+      "route": "three-realms",
+      "order": 5,
+      "hidden": false,
+      "group_title": null,
+      "source_page_code": "PG20260818037",
+      "children": []
+    },
+    {
+      "route_type": "page",
+      "route": "joy-to-sorrow",
+      "order": 6,
+      "hidden": false,
+      "group_title": null,
+      "source_page_code": "PG20260818038",
+      "children": []
+    },
+    {
+      "route_type": "page",
+      "route": "guest-sorrow",
+      "order": 7,
+      "hidden": false,
+      "group_title": null,
+      "source_page_code": "PG20260818039",
+      "children": []
+    },
+    {
+      "route_type": "page",
+      "route": "sushi-answer",
+      "order": 8,
+      "hidden": false,
+      "group_title": null,
+      "source_page_code": "PG20260818040",
+      "children": []
+    },
+    {
+      "route_type": "page",
+      "route": "outlook",
+      "order": 9,
+      "hidden": false,
+      "group_title": null,
+      "source_page_code": "PG20260818041",
+      "children": []
+    },
+    {
+      "route_type": "page",
+      "route": "art-features",
+      "order": 10,
+      "hidden": false,
+      "group_title": null,
+      "source_page_code": "PG20260818042",
+      "children": []
+    },
+    {
+      "route_type": "page",
+      "route": "summary",
+      "order": 11,
+      "hidden": false,
+      "group_title": null,
+      "source_page_code": "PG20260818043",
+      "children": []
+    },
+    {
+      "route_type": "page",
+      "route": "ending",
+      "order": 12,
+      "hidden": false,
+      "group_title": null,
+      "source_page_code": "PG20260818044",
+      "children": []
+    }
+  ]
+}

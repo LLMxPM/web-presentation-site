@@ -1,0 +1,22 @@
+{
+  "name": "chibi-scene-ffe83866-1",
+  "original_name": "chibi-scene-ffe83866-1.png",
+  "asset_type": "image",
+  "content_type": "image/png",
+  "file_size": 7872270,
+  "file_hash": "154706c02f9bc3531806302723b8cfa46edf12e0b723fd61fa830067b27cedf1",
+  "description": "清风徐来、月出东山、白露横江的月夜江景水墨图，用于第一段赏景",
+  "tags": [
+    "赤壁赋",
+    "水墨",
+    "月夜江景"
+  ],
+  "analysis_metadata": null,
+  "render_metadata": {
+    "schema_version": 1,
+    "kind": "asset_render_hint",
+    "aspect_ratio": "3:2",
+    "aspect_ratio_value": 1.5,
+    "aspect_ratio_source": "auto"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "chibi-xiao-a824a38e-1",
+  "original_name": "chibi-xiao-a824a38e-1.png",
+  "asset_type": "image",
+  "content_type": "image/png",
+  "file_size": 7586483,
+  "file_hash": "e06fdb16f5d917f77511fe4ac8fdee3c00a3a85ef96539538ea4df2db996e11c",
+  "description": "客吹洞箫水墨图，用于由乐转悲的箫声赏析",
+  "tags": [
+    "赤壁赋",
+    "水墨",
+    "洞箫"
+  ],
+  "analysis_metadata": null,
+  "render_metadata": {
+    "schema_version": 1,
+    "kind": "asset_render_hint",
+    "aspect_ratio": "3:2",
+    "aspect_ratio_value": 1.5,
+    "aspect_ratio_source": "auto"
+  }
+}

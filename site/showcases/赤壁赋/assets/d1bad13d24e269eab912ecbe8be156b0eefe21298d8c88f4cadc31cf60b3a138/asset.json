@@ -1,0 +1,22 @@
+{
+  "name": "chibi-sushi-ef1c1ab7-1",
+  "original_name": "chibi-sushi-ef1c1ab7-1.png",
+  "asset_type": "image",
+  "content_type": "image/png",
+  "file_size": 8010159,
+  "file_hash": "d1bad13d24e269eab912ecbe8be156b0eefe21298d8c88f4cadc31cf60b3a138",
+  "description": "苏轼临江望月水墨人物像，用于结尾页",
+  "tags": [
+    "赤壁赋",
+    "水墨",
+    "苏轼"
+  ],
+  "analysis_metadata": null,
+  "render_metadata": {
+    "schema_version": 1,
+    "kind": "asset_render_hint",
+    "aspect_ratio": "2:3",
+    "aspect_ratio_value": 0.6667,
+    "aspect_ratio_source": "auto"
+  }
+}

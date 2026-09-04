@@ -1,0 +1,19 @@
+{
+  "source_project_code": "PRJ20260818008",
+  "name": "《赤壁赋》教学课件",
+  "description": "高中语文《赤壁赋》深入鉴赏授课课件：围绕“乐—悲—乐”感情线索，赏析景情理交融的艺术特色，探讨苏轼的人生观与宇宙观。",
+  "page_width": 1920,
+  "page_height": 1080,
+  "base_font_size": "20px",
+  "icon_default_stroke_width": 2,
+  "show_pdf_export_button": true,
+  "menu_mode": "preview",
+  "theme_key": "chibi-moon-ink",
+  "theme_config_yaml": "themes:\n  chibi-moon-ink:\n    name: 赤壁月夜 · 水墨古风\n    description: 适用于《赤壁赋》等古典文学教学课件：宣纸米白与黛蓝夜色双底色，黛青为主强调、月金呼应月光、朱砂红用于印章与点睛，整体克制雅致。\n    palette:\n      text:\n        primary: '#2E2A26'\n        secondary: '#6E685E'\n        invert: '#F5F0E2'\n      background:\n        default: '#F7F3E9'\n        invert: '#17253C'\n      border:\n        default: '#D8CFBA'\n        subtle: '#E8E1D0'\n      link:\n        default: '#2E5A88'\n        hover: '#1E4066'\n        visited: '#635D8E'\n      accent:\n      - '#2E5A88'\n      - '#C99B3F'\n      - '#C0452B'\n      - '#43786D'\n      - '#635D8E'\n      - '#7C8291'\n    typography:\n      headingfont: platform-sans\n      bodyfont: platform-sans\n      codefont: platform-mono\ndefault:\n  theme: chibi-moon-ink\n",
+  "style_spec_markdown": "> 本规范用于《赤壁赋》教学课件：中式古典水墨风格，宣纸浅色底与黛蓝月夜深色底交替使用。\n> 当前画布：1920 x 1080 px；基础字号：20px。\n\n## 整体视觉方向\n\n- 古典水墨风：宣纸米白背景（background）配黛墨文字，黛青（accent1）为主强调、月金（accent2）呼应月光与夜色页、朱砂红（accent3）用于序号与点睛，青黛（accent4）少量辅助。\n- 深色页使用黛蓝夜色背景（background-invert）+ 反色月白文字（invert）+ 月金强调，适合封面、悲情转折与升华段落；浅色页用于讲解与分析主体。\n- 原文引用使用较大字号与独立引用区，可配细线、竖排文字装饰，保持留白与呼吸感。\n\n## 画布、留白与布局\n\n- 页面四周建议保留 64px 到 80px 安全边距；模块间距使用 16px、24px、32px、48px 基线。\n- 每页一个视觉焦点；并列主内容一般不超过三列。\n- 图片素材多为 3:2 横版或 2:3 竖版，图片槽位比例需匹配，封面背景可用 cover，内容展示优先 contain。\n\n## 排版与信息层级\n\n- 信息层级按“页面标题 → 核心结论 → 模块标题 → 正文 → 辅助信息”组织，控制在三到四级。\n- 页面标题建议 44px–56px，模块标题 26px–34px，正文 18px–22px，原文引文 22px–32px。\n- 内容过多时精简、重组或拆分页面，不通过无限缩小字号容纳内容。\n\n## 色彩与表面\n\n- 优先使用主题语义颜色，不在源码中硬编码主题之外的品牌色；装饰性渐变与暗角保持克制并配合深色页使用。\n- 卡片优先使用浅色表面、细边框和适度圆角；深色页上的卡片可用半透明深色表面与细金线边框。\n\n## 组件与资源复用\n\n- 资源优先使用工作空间已生成的赤壁水墨图片资源；图标与字体使用 Runtime 公开契约。\n\n## 质量检查\n\n- 页面是否能快速看出教学环节与核心结论？原文引用是否准确、层级清晰？\n- 深浅底色交替是否自然？装饰是否服务于古典氛围而非堆砌？",
+  "build_extra_assets_json": {
+    "asset_names": []
+  },
+  "suggested_reference_asset_names": [],
+  "suggested_components": []
+}

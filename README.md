@@ -1,6 +1,13 @@
 # Web-Presentation-site
 
-`Web-Presentation-site` 是 `Web-Presentation` 的独立项目主页与文档站。站点使用 VitePress 构建，默认从同级目录 `../Web-Presentation` 自动同步项目文档。
+`Web-Presentation-site` 是 [web-presentation](https://github.com/LLMxPM/web-presentation) 的独立项目主页、案例展示中心与文档站。
+
+- 线上主站：[https://presentation.inputloom.com/](https://presentation.inputloom.com/)
+- GitHub Pages 镜像：[https://llmxpm.github.io/web-presentation-site/](https://llmxpm.github.io/web-presentation-site/)
+- 主平台仓库：[web-presentation](https://github.com/LLMxPM/web-presentation)
+- 外部 Agent 接入仓库：[web-presentation-agent-kit](https://github.com/LLMxPM/web-presentation-agent-kit)
+
+站点使用 VitePress 构建，通过自动同步脚本从同级主仓（`../web-presentation`）读取 Markdown 文档与静态资源，并结合 `site/showcases/` 中的案例源码自动生成案例展示页与下载包。
 
 ## 本地使用
 

@@ -1,0 +1,22 @@
+{
+  "name": "chibi-cover-b8800ec0-1",
+  "original_name": "chibi-cover-b8800ec0-1.png",
+  "asset_type": "image",
+  "content_type": "image/png",
+  "file_size": 7578846,
+  "file_hash": "59af40af6af9a2cdcd892056dc9cb21115c7154b88b72c70689c4ea3b6343df1",
+  "description": "赤壁月夜泛舟水墨图，用于课件封面背景",
+  "tags": [
+    "赤壁赋",
+    "水墨",
+    "封面"
+  ],
+  "analysis_metadata": null,
+  "render_metadata": {
+    "schema_version": 1,
+    "kind": "asset_render_hint",
+    "aspect_ratio": "3:2",
+    "aspect_ratio_value": 1.5,
+    "aspect_ratio_source": "auto"
+  }
+}

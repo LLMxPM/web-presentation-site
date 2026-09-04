@@ -1,0 +1,108 @@
+{
+  "cover": {
+    "path": "screenshots/cover.png",
+    "width": 1920,
+    "height": 1080,
+    "source_page_code": "PG20260818036",
+    "title": "封面 · 赤壁赋",
+    "order": 1
+  },
+  "pages": [
+    {
+      "path": "screenshots/pages/PG20260818033.png",
+      "width": 1920,
+      "height": 1080,
+      "source_page_code": "PG20260818033",
+      "title": "教学目标与重难点",
+      "order": 1
+    },
+    {
+      "path": "screenshots/pages/PG20260818034.png",
+      "width": 1920,
+      "height": 1080,
+      "source_page_code": "PG20260818034",
+      "title": "导入 · 温故知新与感情线索",
+      "order": 2
+    },
+    {
+      "path": "screenshots/pages/PG20260818035.png",
+      "width": 1920,
+      "height": 1080,
+      "source_page_code": "PG20260818035",
+      "title": "第一段 · 泛舟之乐",
+      "order": 3
+    },
+    {
+      "path": "screenshots/pages/PG20260818036.png",
+      "width": 1920,
+      "height": 1080,
+      "source_page_code": "PG20260818036",
+      "title": "封面 · 赤壁赋",
+      "order": 4
+    },
+    {
+      "path": "screenshots/pages/PG20260818037.png",
+      "width": 1920,
+      "height": 1080,
+      "source_page_code": "PG20260818037",
+      "title": "景由情生 · 脚到眼到心到",
+      "order": 5
+    },
+    {
+      "path": "screenshots/pages/PG20260818038.png",
+      "width": 1920,
+      "height": 1080,
+      "source_page_code": "PG20260818038",
+      "title": "由乐转悲 · 两层悲意",
+      "order": 6
+    },
+    {
+      "path": "screenshots/pages/PG20260818039.png",
+      "width": 1920,
+      "height": 1080,
+      "source_page_code": "PG20260818039",
+      "title": "第三段 · 客悲从何来",
+      "order": 7
+    },
+    {
+      "path": "screenshots/pages/PG20260818040.png",
+      "width": 1920,
+      "height": 1080,
+      "source_page_code": "PG20260818040",
+      "title": "第四段 · 苏子之答水月之喻",
+      "order": 8
+    },
+    {
+      "path": "screenshots/pages/PG20260818041.png",
+      "width": 1920,
+      "height": 1080,
+      "source_page_code": "PG20260818041",
+      "title": "超然物外 · 达观人生",
+      "order": 9
+    },
+    {
+      "path": "screenshots/pages/PG20260818042.png",
+      "width": 1920,
+      "height": 1080,
+      "source_page_code": "PG20260818042",
+      "title": "艺术特色 · 景情理交融",
+      "order": 10
+    },
+    {
+      "path": "screenshots/pages/PG20260818043.png",
+      "width": 1920,
+      "height": 1080,
+      "source_page_code": "PG20260818043",
+      "title": "课堂小结与作业",
+      "order": 11
+    },
+    {
+      "path": "screenshots/pages/PG20260818044.png",
+      "width": 1920,
+      "height": 1080,
+      "source_page_code": "PG20260818044",
+      "title": "结语 · 谢谢",
+      "order": 12
+    }
+  ]
+}

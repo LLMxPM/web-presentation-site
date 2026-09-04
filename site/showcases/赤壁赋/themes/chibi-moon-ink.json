@@ -1,0 +1,45 @@
+{
+  "key": "chibi-moon-ink",
+  "name": "赤壁月夜 · 水墨古风",
+  "description": "适用于《赤壁赋》等古典文学教学课件：宣纸米白与黛蓝夜色双底色，黛青为主强调、月金呼应月光、朱砂红用于印章与点睛，整体克制雅致。",
+  "logo_asset_name": null,
+  "invert_logo_asset_name": null,
+  "project_icon_asset_name": null,
+  "logo_path": null,
+  "invert_logo_path": null,
+  "project_icon_name": null,
+  "heading_font_asset_name": null,
+  "body_font_asset_name": null,
+  "code_font_asset_name": null,
+  "heading_font_label": "platform-sans",
+  "body_font_label": "platform-sans",
+  "code_font_label": "platform-mono",
+  "palette": {
+    "text": {
+      "primary": "#2E2A26",
+      "secondary": "#6E685E",
+      "invert": "#F5F0E2"
+    },
+    "background": {
+      "default": "#F7F3E9",
+      "invert": "#17253C"
+    },
+    "border": {
+      "default": "#D8CFBA",
+      "subtle": "#E8E1D0"
+    },
+    "link": {
+      "default": "#2E5A88",
+      "hover": "#1E4066",
+      "visited": "#635D8E"
+    },
+    "accent": [
+      "#2E5A88",
+      "#C99B3F",
+      "#C0452B",
+      "#43786D",
+      "#635D8E",
+      "#7C8291"
+    ]
+  }
+}

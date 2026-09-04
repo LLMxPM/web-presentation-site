@@ -1,0 +1,22 @@
+{
+  "name": "chibi-caocao-b15d5bcd-1",
+  "original_name": "chibi-caocao-b15d5bcd-1.png",
+  "asset_type": "image",
+  "content_type": "image/png",
+  "file_size": 8117759,
+  "file_hash": "aa1776799b6da1dc0d2db6ecefc5ee020495d301f2c8f2686c4095049ade43f3",
+  "description": "月明星稀、曹操横槊赋诗的历史战场景水墨图，用于第三段客悲分析",
+  "tags": [
+    "赤壁赋",
+    "水墨",
+    "曹操"
+  ],
+  "analysis_metadata": null,
+  "render_metadata": {
+    "schema_version": 1,
+    "kind": "asset_render_hint",
+    "aspect_ratio": "3:2",
+    "aspect_ratio_value": 1.5,
+    "aspect_ratio_source": "auto"
+  }
+}
