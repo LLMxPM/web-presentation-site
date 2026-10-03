@@ -312,19 +312,23 @@ function buildSectionSidebar(docs, basePrefix, sectionTitle, readmeOrders) {
 /** 生成导航与侧边栏配置模块，供 VitePress config 直接导入。 */
 async function writeVitePressData(docs, readmeOrders) {
   const firstUserDoc = docs.find((doc) => doc.sourceRelative.startsWith('docs/user/'));
+  const firstDeploymentDoc = docs.find((doc) => doc.sourceRelative.startsWith('docs/deployment/'));
   const firstDeveloperDoc = docs.find((doc) => doc.sourceRelative.startsWith('docs/developer/'));
   const data = {
     nav: [
       { text: '首页', link: '/' },
       { text: '案例展示', link: '/showcases.html' },
       { text: '用户文档', link: firstUserDoc?.route || '/docs/' },
+      { text: '部署文档', link: firstDeploymentDoc?.route || '/docs/' },
       { text: '开发文档', link: firstDeveloperDoc?.route || '/docs/' },
     ],
     sidebar: {
       '/docs/user/': buildSectionSidebar(docs, 'docs/user/', '用户文档', readmeOrders),
+      '/docs/deployment/': buildSectionSidebar(docs, 'docs/deployment/', '部署文档', readmeOrders),
       '/docs/developer/': buildSectionSidebar(docs, 'docs/developer/', '开发文档', readmeOrders),
       '/docs/': [
         ...buildSectionSidebar(docs, 'docs/user/', '用户文档', readmeOrders),
+        ...buildSectionSidebar(docs, 'docs/deployment/', '部署文档', readmeOrders),
         ...buildSectionSidebar(docs, 'docs/developer/', '开发文档', readmeOrders),
       ],
     },
