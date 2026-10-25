@@ -22,7 +22,8 @@
   * `shared/`：同步、渲染、案例目录读取与 ZIP 生成、路径及 Markdown 工具函数。
 * `site/.generated/`：由 `pnpm run sync:docs` 生成的 VitePress 源目录，不提交。
 * `site/.vitepress/dist/`、`site/.vitepress/cache/`：构建和缓存产物，不提交。
-* `.github/workflows/pages.yml`：GitHub Pages 发布流水线。
+* `.github/workflows/pages.yml`：GitHub Pages 发布流水线，使用子路径 base。
+* `.github/workflows/tencent.yml`：腾讯云 CVM 发布流水线，使用根路径 base 并通过 rsync 同步产物。
 
 ## 技术栈
 

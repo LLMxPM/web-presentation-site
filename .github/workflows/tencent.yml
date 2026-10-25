@@ -1,0 +1,106 @@
+# 文件功能：构建站点并通过 rsync 同步到腾讯云 CVM，与 pages.yml 并行运行。
+# 与 pages.yml 的差异：使用根路径 base，且产物直接推送到服务器，不经过 Pages。
+name: tencent
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+  schedule:
+    # 每天 03:00（Asia/Shanghai）跟随源仓文档更新重建，与 pages.yml 保持同一节奏。
+    - cron: '0 19 * * *'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: tencent
+  # 部署任务不做取消，避免 rsync 中途被打断留下半同步目录，新任务排队覆盖即可。
+  cancel-in-progress: false
+
+env:
+  SOURCE_REPO: ${{ vars.SOURCE_REPO || 'LLMxPM/Web-Presentation' }}
+  SOURCE_REF: ${{ vars.SOURCE_REF || 'doc' }}
+  SOURCE_REPO_PATH: .source/Web-Presentation
+  # 独立子域根路径部署，base 必须是 /，否则静态资源会 404。
+  SITE_BASE: /
+  ICP_BEIAN: ${{ vars.ICP_BEIAN }}
+  ICP_BEIAN_HREF: ${{ vars.ICP_BEIAN_HREF }}
+  TENCENT_PORT: ${{ vars.TENCENT_PORT || '22' }}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout site
+        uses: actions/checkout@v6
+        with:
+          lfs: true
+
+      - name: Checkout source docs
+        uses: actions/checkout@v6
+        with:
+          repository: ${{ env.SOURCE_REPO }}
+          ref: ${{ env.SOURCE_REF }}
+          path: ${{ env.SOURCE_REPO_PATH }}
+          submodules: recursive
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v6
+        with:
+          version: 10.30.3
+
+      - name: Setup Node
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Sync docs
+        run: pnpm run sync:docs
+
+      - name: Build site
+        run: pnpm run build
+
+      - name: Configure SSH
+        env:
+          SSH_KEY: ${{ secrets.TENCENT_SSH_KEY }}
+          TENCENT_HOST: ${{ secrets.TENCENT_HOST }}
+        run: |
+          mkdir -p ~/.ssh
+          printf '%s\n' "$SSH_KEY" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -p "$TENCENT_PORT" -H "$TENCENT_HOST" >> ~/.ssh/known_hosts
+
+      # 跨境链路偶发抖动，失败后重试三次；rsync 幂等，重复执行安全。
+      - name: Sync dist to Tencent CVM
+        env:
+          TENCENT_HOST: ${{ secrets.TENCENT_HOST }}
+          TENCENT_USER: ${{ secrets.TENCENT_USER }}
+          TENCENT_PATH: ${{ secrets.TENCENT_PATH }}
+        run: |
+          for attempt in 1 2 3; do
+            if rsync -rltz --checksum --delete --partial --human-readable \
+              --chmod=D755,F644 \
+              -e "ssh -p ${TENCENT_PORT} -o ConnectTimeout=20 -o BatchMode=yes" \
+              site/.vitepress/dist/ \
+              "${TENCENT_USER}@${TENCENT_HOST}:${TENCENT_PATH}/"; then
+              echo "第 ${attempt} 次同步成功"
+              exit 0
+            fi
+            echo "第 ${attempt} 次同步失败，15 秒后重试"
+            sleep 15
+          done
+          echo "连续三次同步失败，请检查网络、密钥和服务器状态"
+          exit 1
+
+      # 配置了 vars.TENCENT_SITE_URL 时做一次线上探活，未配置则跳过。
+      - name: Smoke test
+        if: vars.TENCENT_SITE_URL != ''
+        run: |
+          curl -fsS --max-time 20 -o /dev/null -w "站点返回 %{http_code}\n" "${{ vars.TENCENT_SITE_URL }}"

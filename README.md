@@ -3,9 +3,9 @@
 `Web-Presentation-site` 是 [web-presentation](https://github.com/LLMxPM/web-presentation) 的独立项目主页、案例展示中心与文档站。
 
 - 线上主站：[https://presentation.inputloom.com/](https://presentation.inputloom.com/)
-- GitHub Pages 镜像：[https://llmxpm.github.io/web-presentation-site/](https://llmxpm.github.io/web-presentation-site/)
+- GitHub Pages 镜像：[https://wp.llmxpm.com/](https://wp.llmxpm.com/)
 - 主平台仓库：[web-presentation](https://github.com/LLMxPM/web-presentation)
-- 外部 Agent 接入仓库：[web-presentation-agent-kit](https://github.com/LLMxPM/web-presentation-agent-kit)
+- 外部 Agent 接入仓库：[web-presentation-cli](https://github.com/LLMxPM/web-presentation-cli)
 
 站点使用 VitePress 构建，通过自动同步脚本从同级主仓（`../web-presentation`）读取 Markdown 文档与静态资源，并结合 `site/showcases/` 中的案例源码自动生成案例展示页与下载包。
 
@@ -77,8 +77,9 @@ Git LFS 只优化后续提交，已经进入历史的二进制对象仍会保留
 | `SOURCE_REPO_PATH` | `../Web-Presentation` | 本地或 CI 中的源项目路径 |
 | `SOURCE_REPO` | `LLMxPM/Web-Presentation` | GitHub Actions 拉取的源仓库 |
 | `SOURCE_REF` | `main` | GitHub Actions 拉取的源分支 |
-| `SITE_BASE` | `/web-presentation-site/` | GitHub Pages 站点 base |
+| `SITE_BASE` | `/web-presentation-site/` | 站点 base；GitHub Pages 用子路径，腾讯云根路径部署时设为 `/` |
 
 ## 发布
 
 GitHub Pages 通过 `.github/workflows/pages.yml` 发布。workflow 在 `master` push、手动触发和每天定时任务时执行：checkout 站点仓库和源文档仓库，安装依赖，运行 `pnpm run sync:docs` 解析案例目录、生成下载包并同步文档，再运行 `pnpm run build` 生成 `site/.vitepress/dist` 并上传到 Pages。
+

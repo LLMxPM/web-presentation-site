@@ -1421,3 +1421,27 @@
     flex-basis: 150px;
   }
 }
+
+/* 站点页脚：版权与备案号排在同一行，窄屏自动换行。 */
+.site-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 4px 16px;
+  padding: 20px 24px 28px;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 20px;
+  color: var(--vp-c-text-3);
+}
+
+.site-footer-beian {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.site-footer-beian:hover {
+  color: var(--vp-c-brand-1);
+}

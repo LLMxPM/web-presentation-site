@@ -12,6 +12,14 @@ function normalizeBase(base: string): string {
 
 const siteBase = normalizeBase(process.env.SITE_BASE || '/web-presentation-site/');
 
+/**
+ * 读取备案配置：
+ * - 未设置 ICP_BEIAN 时注入空字符串，页脚备案区域整体不渲染，等价于关闭开关；
+ * - ICP_BEIAN_HREF 缺省指向工信部备案查询站。
+ */
+const beianNumber = (process.env.ICP_BEIAN || '').trim();
+const beianHref = (process.env.ICP_BEIAN_HREF || 'https://beian.miit.gov.cn/').trim();
+
 export default defineConfig({
   lang: 'zh-CN',
   title: 'Web-Presentation',
@@ -22,6 +30,12 @@ export default defineConfig({
   ignoreDeadLinks: true,
   lastUpdated: true,
   cleanUrls: false,
+  vite: {
+    define: {
+      __SITE_BEIAN_NUMBER__: JSON.stringify(beianNumber),
+      __SITE_BEIAN_HREF__: JSON.stringify(beianHref),
+    },
+  },
   markdown: {
     languageAlias: {
       env: 'dotenv',
@@ -50,8 +64,7 @@ export default defineConfig({
       },
       text: '在 GitHub 上编辑此页',
     },
-    footer: {
-      copyright: '© 2026 LLMxPM · Web-Presentation',
-    },
+    // 页脚由 theme/components/SiteFooter.vue 统一渲染（版权 + 备案号同一行）。
+    // 这里不再配置 footer，避免默认 VPFooter 与自定义页脚重复。
   },
 });

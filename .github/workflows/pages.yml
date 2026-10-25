@@ -24,6 +24,7 @@ env:
   SOURCE_REF: ${{ vars.SOURCE_REF || 'doc' }}
   SOURCE_REPO_PATH: .source/Web-Presentation
   SITE_BASE: ${{ vars.SITE_BASE || '/web-presentation-site/' }}
+  # GitHub Pages 为境外托管，不展示备案号；备案变量只在 tencent.yml 中注入。
 
 jobs:
   build:
