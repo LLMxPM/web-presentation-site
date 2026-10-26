@@ -11,7 +11,7 @@ export const projectRoot = path.resolve(path.dirname(currentFile), '..', '..');
 export const siteRoot = path.join(projectRoot, 'site');
 export const generatedRoot = path.join(siteRoot, '.generated');
 export const sourceRepo = process.env.SOURCE_REPO || 'LLMxPM/Web-Presentation';
-export const sourceRef = process.env.SOURCE_REF || 'doc';
+export const sourceRef = process.env.SOURCE_REF || 'main';
 
 /** 将系统路径统一为 URL 和 VitePress 配置使用的 POSIX 路径。 */
 export function toPosix(value) {

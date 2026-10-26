@@ -21,7 +21,7 @@ concurrency:
 
 env:
   SOURCE_REPO: ${{ vars.SOURCE_REPO || 'LLMxPM/Web-Presentation' }}
-  SOURCE_REF: ${{ vars.SOURCE_REF || 'doc' }}
+  SOURCE_REF: ${{ vars.SOURCE_REF || 'main' }}
   SOURCE_REPO_PATH: .source/Web-Presentation
   # 独立子域根路径部署，base 必须是 /，否则静态资源会 404。
   SITE_BASE: /
