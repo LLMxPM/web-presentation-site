@@ -106,8 +106,8 @@
         <ShowcaseCard v-for="showcase in featuredShowcases" :key="showcase.slug" :showcase="showcase" />
       </div>
       <div v-else class="showcase-empty">
-        <h3>还没有可展示的项目模板包</h3>
-        <p>将解压后的模板目录放入 <code>site/showcases/</code> 后，同步脚本会自动生成案例卡片、封面和下载包。</p>
+        <h3>还没有可展示的案例</h3>
+        <p>运行 <code>pnpm run manage:showcases</code> 打开本地管理页，导入模板包后即可生成案例卡片。</p>
       </div>
     </section>
 

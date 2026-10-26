@@ -1,5 +1,7 @@
 /**
  * 文件功能：渲染 Web-Presentation-site 的页面入口、案例详情页和组件数据模块。
+ *
+ * 案例数据完全来自 `site/showcases/<slug>/showcase.json`，构建期不再解析模板源码。
  */
 import { sourceRef, sourceRepo } from './site-utils.mjs';
 
@@ -40,33 +42,30 @@ export interface ShowcaseDetail {
   summary: string;
   category: string;
   tags: string[];
+  featured: boolean;
   pageCount: number;
   pageWidth: number | null;
   pageHeight: number | null;
   aspectRatio: string;
   baseFontSize: string;
+  themeKey: string;
   themeNames: string[];
-  previewUrl: string;
-  featured: boolean;
+  assetTypes: string[];
+  hasComponents: boolean;
+  backgroundTone: string;
+  menuMode: string;
   styleSpecMarkdown: string;
+  sourceProjectCode: string;
   createdAt: string;
   updatedAt: string;
   detailPath: string;
   coverPath: string;
+  coverAvailable: boolean;
   packagePath: string;
   packageFileName: string;
-  slideCount: number;
-  slides: ShowcaseSlide[];
-}
-
-export interface ShowcaseSlide {
-  fileName: string;
-  title: string;
-  order: number;
-  width: number | null;
-  height: number | null;
-  sourcePageCode: string;
-  imagePath: string;
+  packageAvailable: boolean;
+  previewAvailable: boolean;
+  previewPath: string;
 }
 
 export interface SourceMeta {
@@ -80,7 +79,7 @@ export const showcases: ShowcaseDetail[] = ${JSON.stringify(showcases.map(serial
 export const sourceMeta: SourceMeta = ${JSON.stringify({
     sourceRepo,
     sourceRef,
-    showcaseDirectory: 'site/showcases/<案例目录>/',
+    showcaseDirectory: 'site/showcases/<slug>/showcase.json',
   }, null, 2)};
 `;
 }
@@ -96,20 +95,25 @@ export interface ShowcaseSummary {
   summary: string;
   category: string;
   tags: string[];
+  featured: boolean;
   pageCount: number;
   pageWidth: number | null;
   pageHeight: number | null;
   aspectRatio: string;
   baseFontSize: string;
   themeNames: string[];
-  previewUrl: string;
-  featured: boolean;
+  assetTypes: string[];
+  hasComponents: boolean;
+  backgroundTone: string;
   createdAt: string;
   updatedAt: string;
   detailPath: string;
   coverPath: string;
+  coverAvailable: boolean;
   packageFileName: string;
-  slideCount: number;
+  packageAvailable: boolean;
+  previewAvailable: boolean;
+  previewPath: string;
 }
 
 export interface SourceMeta {
@@ -123,7 +127,7 @@ export const showcaseSummaries: ShowcaseSummary[] = ${JSON.stringify(showcases.m
 export const sourceMeta: SourceMeta = ${JSON.stringify({
     sourceRepo,
     sourceRef,
-    showcaseDirectory: 'site/showcases/<案例目录>/',
+    showcaseDirectory: 'site/showcases/<slug>/showcase.json',
   }, null, 2)};
 `;
 }
@@ -149,31 +153,30 @@ function serializeShowcaseDetail(showcase) {
     summary: showcase.summary,
     category: showcase.category,
     tags: showcase.tags,
+    featured: showcase.featured,
     pageCount: showcase.pageCount,
     pageWidth: showcase.pageWidth,
     pageHeight: showcase.pageHeight,
     aspectRatio: showcase.aspectRatio,
     baseFontSize: showcase.baseFontSize,
+    themeKey: showcase.themeKey,
     themeNames: showcase.themeNames,
-    previewUrl: showcase.previewUrl,
-    featured: showcase.featured,
+    assetTypes: showcase.assetTypes,
+    hasComponents: showcase.hasComponents,
+    backgroundTone: showcase.backgroundTone,
+    menuMode: showcase.menuMode,
     styleSpecMarkdown: showcase.styleSpecMarkdown,
+    sourceProjectCode: showcase.sourceProjectCode,
     createdAt: showcase.createdAt,
     updatedAt: showcase.updatedAt,
-    detailPath: buildShowcaseDetailPath(showcase),
-    coverPath: buildPublicAssetPath(showcase, showcase.coverFileName),
-    packagePath: buildPublicAssetPath(showcase, showcase.packageFileName),
-    packageFileName: showcase.packageFileName,
-    slideCount: showcase.slides.length,
-    slides: showcase.slides.map((slide) => ({
-      fileName: slide.fileName,
-      title: slide.title,
-      order: slide.order,
-      width: slide.width,
-      height: slide.height,
-      sourcePageCode: slide.sourcePageCode,
-      imagePath: buildPublicAssetPath(showcase, slide.fileName),
-    })),
+    detailPath: showcase.detailPath,
+    coverPath: showcase.coverPath,
+    coverAvailable: showcase.coverAvailable,
+    packagePath: showcase.packagePath,
+    packageFileName: showcase.packageFile,
+    packageAvailable: showcase.packageAvailable,
+    previewAvailable: showcase.previewAvailable,
+    previewPath: showcase.previewPath,
   };
 }
 
@@ -185,20 +188,25 @@ function serializeShowcaseSummary(showcase) {
     summary: showcase.summary,
     category: showcase.category,
     tags: showcase.tags,
+    featured: showcase.featured,
     pageCount: showcase.pageCount,
     pageWidth: showcase.pageWidth,
     pageHeight: showcase.pageHeight,
     aspectRatio: showcase.aspectRatio,
     baseFontSize: showcase.baseFontSize,
     themeNames: showcase.themeNames,
-    previewUrl: showcase.previewUrl,
-    featured: showcase.featured,
+    assetTypes: showcase.assetTypes,
+    hasComponents: showcase.hasComponents,
+    backgroundTone: showcase.backgroundTone,
     createdAt: showcase.createdAt,
     updatedAt: showcase.updatedAt,
-    detailPath: buildShowcaseDetailPath(showcase),
-    coverPath: buildPublicAssetPath(showcase, showcase.coverFileName),
-    packageFileName: showcase.packageFileName,
-    slideCount: showcase.slides.length,
+    detailPath: showcase.detailPath,
+    coverPath: showcase.coverPath,
+    coverAvailable: showcase.coverAvailable,
+    packageFileName: showcase.packageFile,
+    packageAvailable: showcase.packageAvailable,
+    previewAvailable: showcase.previewAvailable,
+    previewPath: showcase.previewPath,
   };
 }
 
@@ -215,19 +223,4 @@ function escapeHtml(value) {
 /** 转义 HTML 属性值。 */
 function escapeAttribute(value) {
   return escapeHtml(value).replace(/`/g, '&#96;');
-}
-
-/** 构建案例详情页根路径，运行时由 withBase 补站点 base。 */
-function buildShowcaseDetailPath(showcase) {
-  return `/showcases/${encodePathSegment(showcase.slug)}.html`;
-}
-
-/** 构建 public 目录中的案例资源路径，运行时由 withBase 补站点 base。 */
-function buildPublicAssetPath(showcase, fileName) {
-  return `/showcases/${encodePathSegment(showcase.slug)}/${encodePathSegment(fileName)}`;
-}
-
-/** 编码单个 URL path segment。 */
-function encodePathSegment(value) {
-  return encodeURIComponent(value).replace(/%2F/gi, '/');
 }

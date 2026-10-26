@@ -10,7 +10,7 @@ import {
   renderShowcasesData,
   renderShowcasesPage,
 } from './shared/page-renderers.mjs';
-import { scanShowcases } from './shared/showcase-scanner.mjs';
+import { loadShowcasesForBuild } from './shared/showcase-store.mjs';
 import {
   collectReadmeOrders,
   collectMarkdownLinks,
@@ -347,6 +347,14 @@ export const generatedSidebar: DefaultTheme.Sidebar = ${JSON.stringify(data.side
   await fs.writeFile(path.join(generatedRoot, 'vitepress-data.ts'), moduleContent, 'utf8');
 }
 
+/** 输出构建期发现的案例问题；资源缺失只降级展示，不中断整站发布。 */
+function reportShowcaseProblems(problems) {
+  for (const problem of problems) {
+    const prefix = problem.level === 'error' ? '错误' : '提示';
+    console.warn(`[案例] ${prefix} ${problem.slug}：${problem.message}`);
+  }
+}
+
 /** 主流程：清空生成目录，重新同步资源、文档和站点配置数据。 */
 async function main() {
   const sourceRoot = resolveSourceRoot();
@@ -355,7 +363,8 @@ async function main() {
   await fs.mkdir(generatedRoot, { recursive: true });
   await syncAssets(sourceRoot);
   await syncSitePublicAssets();
-  const showcases = await scanShowcases();
+  const { showcases, problems } = await loadShowcasesForBuild();
+  reportShowcaseProblems(problems);
   await writeShowcasesData(showcases);
   await writeMissingAssetPlaceholders(sourceRoot);
   const { docs, readmeOrders } = await syncMarkdownFiles(sourceRoot);
@@ -365,7 +374,9 @@ async function main() {
   await writeShowcaseDetailPages(showcases);
   await writeVitePressData(docs, readmeOrders);
 
-  console.log(`已同步 ${docs.length} 篇文档、${showcases.length} 个案例：${toPosix(path.relative(siteRoot, generatedRoot))}`);
+  const fallbackCount = showcases.filter((item) => item.coverAvailable === false).length;
+  const fallbackNote = fallbackCount > 0 ? `，${fallbackCount} 个案例缺少主图` : '';
+  console.log(`已同步 ${docs.length} 篇文档、${showcases.length} 个案例${fallbackNote}：${toPosix(path.relative(siteRoot, generatedRoot))}`);
 }
 
 main().catch((error) => {

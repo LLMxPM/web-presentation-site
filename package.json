@@ -9,6 +9,7 @@
     "build": "pnpm run sync:docs && vitepress build site",
     "preview": "vitepress preview site --host 0.0.0.0",
     "sync:docs": "node scripts/sync-docs.mjs",
+    "manage:showcases": "node scripts/manage-showcases.mjs",
     "check:links": "node scripts/check-links.mjs",
     "check:assets": "node scripts/check-large-files.mjs"
   },

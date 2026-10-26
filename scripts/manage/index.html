@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>案例管理 · Web-Presentation</title>
+<link rel="stylesheet" href="/app.css">
+</head>
+<body>
+<div class="topbar">
+  <div class="brand">
+    <span class="brand-mark">案例管理</span>
+    <span class="brand-hint" id="env-hint">仅本机可访问</span>
+  </div>
+  <div class="topbar-actions">
+    <span class="stat" id="stat-count"></span>
+    <button type="button" class="btn" id="btn-sync">重新同步站点</button>
+    <a class="btn btn-ghost" href="http://127.0.0.1:5173/showcases.html" target="_blank" rel="noreferrer">打开案例页</a>
+  </div>
+</div>
+
+<main class="layout">
+  <section class="panel list-panel" aria-label="案例列表">
+    <div class="panel-head">
+      <h2>案例</h2>
+      <input type="search" id="search" placeholder="搜索标题或标签" autocomplete="off">
+    </div>
+    <p class="hint" id="list-hint">拖动卡片可调整展示顺序。</p>
+    <div id="case-list" class="case-list"></div>
+    <div id="problem-list" class="problems"></div>
+  </section>
+
+  <section class="panel editor-panel" aria-label="展示设置">
+    <div class="panel-head">
+      <h2 id="editor-title">选择左侧案例</h2>
+      <span class="dirty-flag" id="dirty-flag" hidden>未保存</span>
+    </div>
+    <div id="editor-empty" class="empty">尚未选择案例。左侧点击任意卡片开始编辑。</div>
+    <form id="editor-form" class="editor-form" hidden>
+      <label class="field">
+        <span>标题</span>
+        <input type="text" name="title" maxlength="80">
+      </label>
+      <label class="field">
+        <span>摘要</span>
+        <textarea name="summary" rows="3" maxlength="300"></textarea>
+      </label>
+      <label class="field">
+        <span>分类</span>
+        <input type="text" name="category" id="category-input" list="category-options" placeholder="输入分类，或从已有分类中选择" autocomplete="off">
+        <p class="hint">分类是自由文本，直接输入即可，已有分类会作为建议出现。</p>
+      </label>
+
+      <div class="field">
+        <span>标签</span>
+        <div id="tag-groups" class="tag-groups"></div>
+        <div class="tag-new">
+          <input type="text" id="tag-input" placeholder="新增标签后回车" maxlength="16">
+          <button type="button" class="btn btn-mini" id="btn-add-tag">加入词表</button>
+        </div>
+        <p class="hint">标签只用于列表筛选，主题信息仍作为独立资料展示。</p>
+      </div>
+
+      <div class="field field-inline">
+        <label class="check"><input type="checkbox" name="featured"> 首页精选</label>
+        <label class="check"><input type="checkbox" name="hidden"> 暂不展示</label>
+      </div>
+
+      <div class="field">
+        <span>主图</span>
+        <div class="cover-row">
+          <img id="cover-preview" alt="当前主图">
+          <div>
+            <input type="file" id="cover-input" accept="image/png,image/jpeg,image/webp">
+            <p class="hint" id="cover-meta"></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <span>构建产物</span>
+        <div class="preview-row">
+          <div id="preview-status" class="preview-status"></div>
+          <div class="preview-actions">
+            <input type="file" id="build-input" accept=".zip">
+            <a class="btn btn-mini btn-ghost" id="preview-open" target="_blank" rel="noreferrer" hidden>打开预览</a>
+          </div>
+        </div>
+        <p class="hint">仅接受本地资源快照产物（index.html 中资源为相对路径）。</p>
+      </div>
+
+      <div class="field readonly-grid" id="readonly-grid"></div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary">保存设置</button>
+        <button type="button" class="btn btn-ghost" id="btn-delete">移入回收站</button>
+      </div>
+      <div id="save-result" class="save-result" hidden></div>
+    </form>
+  </section>
+
+  <section class="panel import-panel" aria-label="导入">
+    <div class="panel-head">
+      <h2>导入模板包</h2>
+    </div>
+    <p class="hint">上传从主仓库导出的 .wptemplate.zip，解析结果确认后再写入。</p>
+    <input type="file" id="template-input" accept=".zip">
+    <div id="template-stage" class="stage" hidden></div>
+
+    <div class="panel-head panel-head-sub">
+      <h2>目录约定</h2>
+    </div>
+    <dl class="path-list" id="path-list"></dl>
+  </section>
+</main>
+
+<datalist id="category-options"></datalist>
+<div id="toast" class="toast" hidden></div>
+<script src="/app.js"></script>
+</body>
+</html>

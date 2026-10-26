@@ -1,4 +1,4 @@
-<!-- 文件功能：渲染单个案例详情页，包括配置摘要、样式规范、截图轮播和下载入口。 -->
+<!-- 文件功能：渲染单个案例详情页，包括封面、项目资料、实时预览与下载入口。 -->
 <template>
   <main class="site-page showcase-detail-page" :aria-label="showcase ? `${showcase.title} 详情` : '案例详情'">
     <a class="showcase-back-link" :href="siteUrl('/showcases.html')" aria-label="返回案例列表">
@@ -12,29 +12,38 @@
           <p class="home-eyebrow">{{ showcase.category }}</p>
           <h1>{{ showcase.title }}</h1>
           <p class="showcase-detail-summary">{{ formatDetailSummary(showcase.summary) }}</p>
-          <div v-if="visibleTags.length > 0" class="showcase-tags showcase-detail-tags" aria-label="案例标签">
-            <span v-for="tag in visibleTags" :key="tag">{{ tag }}</span>
+          <div v-if="showcase.tags.length > 0" class="showcase-tags showcase-detail-tags" aria-label="案例标签">
+            <a
+              v-for="tag in showcase.tags"
+              :key="tag"
+              :href="tagFilterUrl(tag)"
+              class="showcase-tag-link"
+            >
+              {{ tag }}
+            </a>
           </div>
           <div class="showcase-actions">
-            <label
+            <button
               v-if="showcase.styleSpecMarkdown"
+              type="button"
               class="showcase-action"
-              :for="styleSpecToggleId"
-              role="button"
+              @click="openStyleSpec"
             >
               样式规范
-            </label>
+            </button>
             <a
-              v-if="showcase.previewUrl"
-              class="showcase-action"
-              :href="showcase.previewUrl"
+              v-if="showcase.previewAvailable"
+              class="showcase-action showcase-action-primary"
+              :href="siteUrl(showcase.previewPath)"
               target="_blank"
               rel="noreferrer"
             >
               在线预览
             </a>
             <a
-              class="showcase-action showcase-action-primary"
+              v-if="showcase.packageAvailable"
+              class="showcase-action"
+              :class="{ 'showcase-action-primary': !showcase.previewAvailable }"
               :href="siteUrl(showcase.packagePath)"
               :download="showcase.packageFileName"
             >
@@ -44,7 +53,8 @@
         </div>
 
         <aside class="showcase-detail-cover-panel" aria-label="案例封面">
-          <img :src="siteUrl(showcase.coverPath)" :alt="`${showcase.title} 封面`">
+          <img v-if="showcase.coverAvailable" :src="siteUrl(showcase.coverPath)" :alt="`${showcase.title} 封面`">
+          <div v-else class="showcase-cover-empty">暂无主图</div>
         </aside>
       </section>
 
@@ -59,112 +69,55 @@
         </div>
       </section>
 
-      <div v-if="showcase.styleSpecMarkdown" class="showcase-style-modal">
-        <input :id="styleSpecToggleId" type="checkbox" class="showcase-modal-toggle">
-        <div
-          class="showcase-modal"
-          role="dialog"
-          aria-modal="true"
-          :aria-labelledby="styleSpecTitleId"
-        >
-          <label
-            class="showcase-modal-backdrop"
-            :for="styleSpecToggleId"
-            aria-label="关闭样式规范"
-          ></label>
-          <section class="showcase-modal-panel">
-            <div class="showcase-modal-header">
-              <h2 :id="styleSpecTitleId">样式规范</h2>
-              <div class="showcase-modal-actions">
-                <button
-                  type="button"
-                  class="showcase-modal-copy"
-                  aria-live="polite"
-                  @click="copyStyleSpec"
-                >
-                  {{ styleSpecCopyText }}
-                </button>
-                <label class="showcase-modal-close" :for="styleSpecToggleId" role="button">关闭</label>
-              </div>
-            </div>
-            <pre class="showcase-style-spec"><code>{{ showcase.styleSpecMarkdown }}</code></pre>
-          </section>
-        </div>
-      </div>
-
-      <section class="showcase-carousel" aria-label="页面截图轮播">
-        <div class="showcase-carousel-heading">
+      <section v-if="showcase.previewAvailable" class="showcase-preview" aria-label="实时预览">
+        <div class="showcase-preview-heading">
           <div>
-            <p class="home-eyebrow">Slides</p>
-            <h2>页面截图</h2>
+            <p class="home-eyebrow">Live preview</p>
+            <h2>真实构建产物</h2>
           </div>
-          <div class="showcase-carousel-actions">
-            <span>{{ showcase.slides.length }} 张</span>
-            <button
-              v-if="activeSlide"
-              type="button"
+          <div class="showcase-preview-actions">
+            <button type="button" class="showcase-action" @click="reloadPreview">刷新</button>
+            <button type="button" class="showcase-action" @click="toggleFullscreen">全屏</button>
+            <a
               class="showcase-action"
-              @click="openImageViewer"
+              :href="siteUrl(showcase.previewPath)"
+              target="_blank"
+              rel="noreferrer"
             >
-              放大查看
-            </button>
+              新窗口打开
+            </a>
           </div>
         </div>
-        <div v-if="activeSlide" class="showcase-carousel-wrap" :style="slideRatioStyle(activeSlide)">
-          <div class="showcase-carousel-main">
-            <figure class="showcase-slide showcase-slide-active" :style="slideRatioStyle(activeSlide)">
-              <img :src="siteUrl(activeSlide.imagePath)" :alt="activeSlide.title">
-              <figcaption>{{ activeSlide.order }} / {{ showcase.slides.length }} · {{ activeSlide.title }}</figcaption>
-            </figure>
-          </div>
-          <div class="showcase-carousel-thumbs" aria-label="截图选择">
-            <button
-              v-for="(slide, index) in showcase.slides"
-              :key="slide.fileName"
-              type="button"
-              class="showcase-thumb"
-              :class="{ 'showcase-thumb-active': index === activeSlideIndex }"
-              :aria-label="`查看 ${slide.title}`"
-              :style="slideRatioStyle(slide)"
-              @click="selectSlide(index)"
-            >
-              <img :src="siteUrl(slide.imagePath)" alt="">
-              <span>{{ slide.order }}. {{ slide.title }}</span>
-            </button>
-          </div>
+        <div ref="previewStage" class="showcase-preview-stage" :style="previewStageStyle">
+          <iframe
+            ref="previewFrame"
+            class="showcase-preview-frame"
+            :src="siteUrl(showcase.previewPath)"
+            :title="`${showcase.title} 在线预览`"
+            loading="lazy"
+            :class="{ 'is-ready': previewReady }"
+            :style="previewFrameStyle"
+          ></iframe>
         </div>
-        <div v-else class="showcase-empty">
-          <h3>没有页面截图</h3>
-          <p>模板包中未找到可展示的页面截图。</p>
-        </div>
+        <p class="showcase-preview-hint">
+          预览按 {{ showcase.pageWidth || 1920 }} × {{ showcase.pageHeight || 1080 }} 原尺寸渲染后等比缩放，交互与线上运行一致。
+        </p>
       </section>
 
-      <div
-        v-if="isPresentationOpen && activeSlide"
-        ref="presentationDialog"
-        class="showcase-presentation"
-        role="dialog"
-        aria-modal="true"
-        aria-label="放大查看"
-        tabindex="-1"
-        @keydown.esc="closeImageViewer"
-        @keydown.left.prevent="showPreviousSlide"
-        @keydown.right.prevent="showNextSlide"
-      >
-        <div class="showcase-presentation-header">
-          <div>
-            <strong>{{ activeSlide.order }} / {{ showcase.slides.length }}</strong>
-            <span>{{ activeSlide.title }}</span>
+      <div v-if="isStyleSpecOpen && showcase.styleSpecMarkdown" class="showcase-modal" role="dialog" aria-modal="true">
+        <div class="showcase-modal-backdrop" role="presentation" @click="closeStyleSpec"></div>
+        <section class="showcase-modal-panel">
+          <div class="showcase-modal-header">
+            <h2>样式规范</h2>
+            <div class="showcase-modal-actions">
+              <button type="button" class="showcase-modal-copy" aria-live="polite" @click="copyStyleSpec">
+                {{ styleSpecCopyText }}
+              </button>
+              <button type="button" class="showcase-modal-close" @click="closeStyleSpec">关闭</button>
+            </div>
           </div>
-          <button type="button" class="showcase-presentation-button" @click="closeImageViewer">关闭</button>
-        </div>
-        <div class="showcase-presentation-stage">
-          <img :src="siteUrl(activeSlide.imagePath)" :alt="activeSlide.title">
-        </div>
-        <div class="showcase-presentation-controls" aria-label="放映控制">
-          <button type="button" class="showcase-presentation-button" @click="showPreviousSlide">上一页</button>
-          <button type="button" class="showcase-presentation-button" @click="showNextSlide">下一页</button>
-        </div>
+          <pre class="showcase-style-spec"><code>{{ showcase.styleSpecMarkdown }}</code></pre>
+        </section>
       </div>
     </section>
 
@@ -176,39 +129,48 @@
 </template>
 
 <script setup lang="ts">
-import { computed, nextTick, onUnmounted, ref, watch } from 'vue';
+import { computed, nextTick, onMounted, onUnmounted, ref, watch } from 'vue';
 import { withBase } from 'vitepress';
 import { showcases } from '../../../.generated/showcases-data';
-import type { ShowcaseDetail, ShowcaseSlide } from '../../../.generated/showcases-data';
+import type { ShowcaseDetail } from '../../../.generated/showcases-data';
 
 const props = defineProps<{
   slug: string;
 }>();
 
-const activeSlideIndex = ref(0);
-const isPresentationOpen = ref(false);
-const presentationDialog = ref<HTMLElement | null>(null);
+const isStyleSpecOpen = ref(false);
 const styleSpecCopyState = ref<'idle' | 'copied' | 'failed'>('idle');
+const previewStage = ref<HTMLElement | null>(null);
+const previewFrame = ref<HTMLIFrameElement | null>(null);
+const previewScale = ref(1);
+const previewReady = ref(false);
 let styleSpecCopyTimer: ReturnType<typeof window.setTimeout> | undefined;
+let previewObserver: ResizeObserver | undefined;
 
 /** 根据路由占位页传入的 slug 查找案例详情数据。 */
 const showcase = computed<ShowcaseDetail | undefined>(() => (
   showcases.find((item) => item.slug === props.slug)
 ));
 
-/** 当前展示的截图，切换案例时会自动回到第一张。 */
-const activeSlide = computed<ShowcaseSlide | undefined>(() => (
-  showcase.value?.slides[activeSlideIndex.value]
-));
+/** 预览舞台按项目画幅锁定比例，避免高度随视口跳动。 */
+const previewStageStyle = computed<Record<string, string>>(() => {
+  const width = normalizePositiveNumber(showcase.value?.pageWidth) || 1920;
+  const height = normalizePositiveNumber(showcase.value?.pageHeight) || 1080;
+  return {
+    '--showcase-preview-ratio': `${width} / ${height}`,
+    '--showcase-preview-width': `${width}px`,
+  };
+});
 
-/** 去掉与主题名相同的标签，避免详情顶部重复展示。 */
-const visibleTags = computed(() => {
-  if (!showcase.value) {
-    return [];
-  }
-
-  const themeNames = new Set(showcase.value.themeNames);
-  return showcase.value.tags.filter((tag) => !themeNames.has(tag));
+/** iframe 保持原始像素尺寸，通过 transform 等比缩小，保证排版与线上一致。 */
+const previewFrameStyle = computed<Record<string, string>>(() => {
+  const width = normalizePositiveNumber(showcase.value?.pageWidth) || 1920;
+  const height = normalizePositiveNumber(showcase.value?.pageHeight) || 1080;
+  return {
+    width: `${width}px`,
+    height: `${height}px`,
+    transform: `scale(${previewScale.value})`,
+  };
 });
 
 /** 详情页顶部展示的关键配置标签。 */
@@ -217,64 +179,117 @@ const configTags = computed(() => {
     return [];
   }
 
-  return [
+  const items = [
     { label: '页数', value: showcase.value.pageCount ? `${showcase.value.pageCount} 页` : '未标注' },
-    { label: '尺寸', value: formatSize(showcase.value) },
+    { label: '画幅', value: formatSize(showcase.value) },
     { label: '基准字号', value: showcase.value.baseFontSize || '未标注' },
     { label: '主题', value: formatThemes(showcase.value) },
     { label: '更新时间', value: formatDate(showcase.value.updatedAt) },
   ];
+
+  if (showcase.value.hasComponents) {
+    items.push({ label: '组件', value: '含自定义组件' });
+  }
+  if (showcase.value.backgroundTone) {
+    items.push({ label: '底色', value: showcase.value.backgroundTone === 'light' ? '浅色为主' : '深色为主' });
+  }
+
+  return items;
 });
 
-const styleSpecTitleId = computed(() => `${props.slug}-style-spec-title`);
-const styleSpecToggleId = computed(() => `${props.slug}-style-spec-toggle`);
 const styleSpecCopyText = computed(() => {
   if (styleSpecCopyState.value === 'copied') {
     return '已复制';
   }
-
   if (styleSpecCopyState.value === 'failed') {
     return '复制失败';
   }
-
   return '复制';
 });
 
-watch(() => props.slug, () => {
-  activeSlideIndex.value = 0;
-  isPresentationOpen.value = false;
+watch(() => props.slug, async () => {
   resetStyleSpecCopyState();
+  isStyleSpecOpen.value = false;
+  await nextTick();
+  observePreviewStage();
 });
 
-onUnmounted(resetStyleSpecCopyState);
+onMounted(() => {
+  observePreviewStage();
+  window.addEventListener('resize', observePreviewStage);
+  window.addEventListener('keydown', handleWindowKeydown);
+});
 
-/** 切换当前截图；越界输入会被忽略，避免模板数据异常导致报错。 */
-function selectSlide(index: number): void {
-  if (!showcase.value || index < 0 || index >= showcase.value.slides.length) {
-    return;
+onUnmounted(() => {
+  resetStyleSpecCopyState();
+  previewObserver?.disconnect();
+  previewObserver = undefined;
+  window.removeEventListener('resize', observePreviewStage);
+  window.removeEventListener('keydown', handleWindowKeydown);
+});
+
+/** 弹窗打开时按 Esc 关闭，保持与常规对话框一致的键盘习惯。 */
+function handleWindowKeydown(event: KeyboardEvent): void {
+  if (event.key === 'Escape' && isStyleSpecOpen.value) {
+    closeStyleSpec();
   }
-
-  activeSlideIndex.value = index;
 }
 
-/** 打开沉浸式放大查看视图，用于查看当前截图细节。 */
-async function openImageViewer(): Promise<void> {
-  if (!activeSlide.value) {
+/** 监听预览舞台尺寸，换算等比缩放系数。 */
+function observePreviewStage(): void {
+  if (typeof window === 'undefined') {
     return;
   }
 
-  isPresentationOpen.value = true;
+  previewObserver?.disconnect();
+  const stage = previewStage.value;
+  if (!stage) {
+    previewScale.value = 1;
+    return;
+  }
+
+  const pageWidth = normalizePositiveNumber(showcase.value?.pageWidth) || 1920;
+  const update = (): void => {
+    previewScale.value = Math.min(1, stage.clientWidth / pageWidth);
+  };
+
+  update();
+  previewReady.value = true;
+  previewObserver = new ResizeObserver(update);
+  previewObserver.observe(stage);
+}
+
+/** 打开样式规范弹窗。 */
+async function openStyleSpec(): Promise<void> {
+  isStyleSpecOpen.value = true;
   await nextTick();
-  presentationDialog.value?.focus();
 }
 
-/** 关闭放大查看视图。 */
-async function closeImageViewer(): Promise<void> {
-  if (document.fullscreenElement === presentationDialog.value) {
-    await document.exitFullscreen().catch(() => undefined);
+/** 关闭样式规范弹窗。 */
+function closeStyleSpec(): void {
+  isStyleSpecOpen.value = false;
+}
+
+/** 重新加载 iframe，便于查看最新构建产物。 */
+function reloadPreview(): void {
+  if (!previewFrame.value) {
+    return;
+  }
+  previewFrame.value.src = previewFrame.value.src;
+}
+
+/** 在浏览器全屏模式下查看预览。 */
+async function toggleFullscreen(): Promise<void> {
+  const stage = previewStage.value;
+  if (!stage) {
+    return;
   }
 
-  isPresentationOpen.value = false;
+  if (document.fullscreenElement === stage) {
+    await document.exitFullscreen().catch(() => undefined);
+    return;
+  }
+  await stage.requestFullscreen?.().catch(() => undefined);
 }
 
 /** 复制样式规范原文，优先使用 Clipboard API，失败时回退到临时文本域。 */
@@ -290,14 +305,13 @@ async function copyStyleSpec(): Promise<void> {
     } else {
       copyTextWithTextarea(text);
     }
-
     setStyleSpecCopyState('copied');
   } catch {
     setStyleSpecCopyState('failed');
   }
 }
 
-/** 在旧浏览器中通过隐藏文本域完成复制，避免 Clipboard API 缺失时功能不可用。 */
+/** 在旧浏览器中通过隐藏文本域完成复制。 */
 function copyTextWithTextarea(text: string): void {
   const textarea = document.createElement('textarea');
   textarea.value = text;
@@ -322,34 +336,16 @@ function setStyleSpecCopyState(state: 'copied' | 'failed'): void {
   styleSpecCopyTimer = window.setTimeout(resetStyleSpecCopyState, 1800);
 }
 
-/** 重置复制按钮文案，供路由切换和反馈超时复用。 */
+/** 重置复制按钮文案。 */
 function resetStyleSpecCopyState(): void {
   styleSpecCopyState.value = 'idle';
   window.clearTimeout(styleSpecCopyTimer);
   styleSpecCopyTimer = undefined;
 }
 
-/** 放映时切换到上一页，到第一张后循环到最后一张。 */
-function showPreviousSlide(): void {
-  if (!showcase.value || showcase.value.slides.length === 0) {
-    return;
-  }
-
-  activeSlideIndex.value = (activeSlideIndex.value - 1 + showcase.value.slides.length) % showcase.value.slides.length;
-}
-
-/** 放映时切换到下一页，到最后一张后循环到第一张。 */
-function showNextSlide(): void {
-  if (!showcase.value || showcase.value.slides.length === 0) {
-    return;
-  }
-
-  activeSlideIndex.value = (activeSlideIndex.value + 1) % showcase.value.slides.length;
-}
-
-/** 格式化案例简介，缺失时给出详情页可读的兜底文案。 */
+/** 格式化案例简介，缺失时给出可读兜底文案。 */
 function formatDetailSummary(value: string): string {
-  return value || '该案例由 Web-Presentation 项目模板包生成，包含可复用页面、主题配置、截图资源和下载产物。';
+  return value || '该案例由 Web-Presentation 项目生成，包含完整项目配置、可复用模板包与构建产物。';
 }
 
 /** 格式化项目页面尺寸和宽高比。 */
@@ -366,7 +362,7 @@ function formatThemes(item: ShowcaseDetail): string {
   return item.themeNames.length > 0 ? item.themeNames.join('、') : '未标注';
 }
 
-/** 将 ISO 时间转换为适合配置面板展示的中文日期。 */
+/** 将 ISO 时间转换为中文日期。 */
 function formatDate(value: string): string {
   const date = new Date(value);
   if (Number.isNaN(date.getTime())) {
@@ -380,28 +376,14 @@ function formatDate(value: string): string {
   });
 }
 
-/** 生成截图宽高比 CSS 变量，优先使用截图尺寸，缺省时回退项目尺寸。 */
-function slideRatioStyle(slide: ShowcaseSlide): Record<string, string> {
-  const width = normalizePositiveNumber(slide.width) || normalizePositiveNumber(showcase.value?.pageWidth);
-  const height = normalizePositiveNumber(slide.height) || normalizePositiveNumber(showcase.value?.pageHeight);
-
-  if (!width || !height) {
-    return {};
-  }
-
-  return {
-    '--showcase-slide-ratio': `${formatCssNumber(width)} / ${formatCssNumber(height)}`,
-  };
+/** 生成带标签筛选参数的列表链接，便于从详情页回到同标签列表。 */
+function tagFilterUrl(tag: string): string {
+  return withBase(`/showcases.html?tags=${encodeURIComponent(tag)}`);
 }
 
-/** 将输入规范化为正数，用于宽高比计算。 */
+/** 将输入规范化为正数。 */
 function normalizePositiveNumber(value: number | null | undefined): number | null {
   return Number.isFinite(value) && Number(value) > 0 ? Number(value) : null;
-}
-
-/** 格式化 CSS 数值，避免生成无意义的小数尾巴。 */
-function formatCssNumber(value: number): string {
-  return Number.isInteger(value) ? String(value) : String(Number(value.toFixed(4)));
 }
 
 /** 将站内 public 路径转换为带 VitePress base 的可访问 URL。 */

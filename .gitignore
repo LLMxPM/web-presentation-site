@@ -7,4 +7,10 @@ site/.vitepress/.temp/
 site/.vitepress/cache/
 site/.vitepress/dist/
 
+# 案例管理服务的暂存、回收站与目录替换备份，均为本地产物。
+site/.manage-staging/
+site/.manage-trash/
+site/showcases/*.replaced-*/
+site/public/*/*.replaced-*/
+
 *.log

@@ -2,7 +2,7 @@
 
 ## 项目概述
 
-`Web-Presentation-site` 是 `Web-Presentation` 的独立项目主页与文档站，使用 VitePress 构建。站点本身维护展示页面、案例模板包解析逻辑和发布配置；主要文档内容默认从同级目录 `../Web-Presentation` 同步生成。
+`Web-Presentation-site` 是 `Web-Presentation` 的独立项目主页与文档站，使用 VitePress 构建。站点本身维护展示页面、案例数据与发布配置；主要文档内容默认从同级目录 `../Web-Presentation` 同步生成。案例的模板解析发生在导入阶段（本地管理页），构建阶段只读取 `showcase.json`。
 
 协作、说明文档和代码注释优先使用中文。
 
@@ -15,11 +15,17 @@
   * `components/`：首页、案例列表、案例卡片、案例详情等 Vue 组件。
   * `custom.css`、`showcase.css`：站点全局样式与案例展示样式。
 * `site/public/`：站点自有静态资源，执行同步脚本后会复制到 `site/.generated/public/`。
-* `site/showcases/`：案例模板源码目录，每个子目录对应一个案例；可在子目录内使用 `showcase.json` 补充站点展示字段。
+  * `showcases/<slug>/`：案例主图 `cover.<ext>` 与下载包 `template.wptemplate.zip`。
+  * `previews/<slug>/`：构建产物，`index.html` 加 `assets/`，详情页以 iframe 内嵌。
+* `site/showcases/`：案例模板源码目录，每个子目录对应一个案例。
+  * `showcase.json`：构建期唯一数据源，包含展示字段与导入期解析结果。
+  * `taxonomy.json`：标签词表，位于案例根目录，不随案例发布。
 * `scripts/`：Node.js ESM 脚本入口。
-  * `sync-docs.mjs`：同步源仓文档、解析案例模板包、生成 VitePress 页面与数据。
+  * `sync-docs.mjs`：同步源仓文档、读取案例数据、生成 VitePress 页面与数据。
+  * `manage-showcases.mjs`：本地案例管理服务，仅监听 `127.0.0.1`。
+  * `manage/`：管理页前端静态文件（HTML/CSS/JS）。
   * `check-links.mjs`：检查源仓 README 和 docs 下 Markdown 的本地链接。
-  * `shared/`：同步、渲染、案例目录读取与 ZIP 生成、路径及 Markdown 工具函数。
+  * `shared/`：同步、渲染、案例数据读写、模板元数据解析、ZIP 解包与导入、路径及 Markdown 工具函数。
 * `site/.generated/`：由 `pnpm run sync:docs` 生成的 VitePress 源目录，不提交。
 * `site/.vitepress/dist/`、`site/.vitepress/cache/`：构建和缓存产物，不提交。
 * `.github/workflows/pages.yml`：GitHub Pages 发布流水线，使用子路径 base。
@@ -44,6 +50,7 @@ pnpm run check:links
 pnpm run build
 pnpm run preview
 pnpm run dev
+pnpm run manage:showcases
 ```
 
 说明：
@@ -51,8 +58,9 @@ pnpm run dev
 * `pnpm run dev` 和 `pnpm run build` 都会先执行 `sync:docs`。
 * `sync:docs` 默认读取 `../Web-Presentation`，也可以通过 `SOURCE_REPO_PATH` 指定源项目路径。
 * 项目通常已经启动，不要反复启动开发服务；需要确认时先检查现有终端或端口状态。
-* 修改同步脚本、VitePress 配置、主题组件或案例包后，优先运行 `pnpm run build` 验证。
+* 修改同步脚本、VitePress 配置、主题组件或案例数据后，优先运行 `pnpm run build` 验证。
 * 修改源文档链接规则或同步逻辑时，补充运行 `pnpm run check:links`。
+* `manage:showcases` 启动本地管理服务，默认端口 `4173`，可用 `MANAGE_PORT` 覆盖；它不参与线上构建。
 
 ## 文档与生成链路约定
 
@@ -62,18 +70,21 @@ pnpm run dev
 * 缺失的源仓文档或资源会由同步脚本生成临时占位，用于避免站点发布后出现 404；根因仍应在源仓补齐。
 * 站点自有静态资源放在 `site/public/`，不要直接放入生成目录。
 
-## 案例模板包约定
+## 案例数据约定
 
-* 案例模板解压到 `site/showcases/<name>/`，目录内源码需要进入 Git；下载用 ZIP 由同步脚本生成，不提交。
-* 案例 URL slug 由案例目录名生成，命名应稳定，避免无意义改名导致链接变化。
-* 案例目录必须包含脚本校验需要的关键文件：
+* 案例 URL slug 由目录名生成，命名应稳定；`showcase.json` 中的 `slug` 必须与目录名一致，首次创建后不再修改。
+* 构建阶段只读取 `site/showcases/*/showcase.json`，不再扫描模板源码、重新压缩 ZIP 或提取截图。
+* 导入阶段（`scripts/shared/showcase-import.mjs`）负责校验并解析模板，必要文件：
   * `manifest.json`
   * `metadata/template.json`
   * `metadata/screenshots.json`
   * `project/project.json`
   * `project/routes.json`
-* 案例展示主数据来自 `project/project.json`，截图顺序优先按 `project/routes.json` 的页面路由匹配。
-* 如需补充展示标题、摘要、分类、排序或精选状态，使用案例目录内的 `showcase.json`；该文件不会进入下载包。
+* 解析结果写入 `showcase.json` 的 `meta` 字段；重新导入模板只刷新解析字段，保留人工维护的标题、摘要、分类、标签、精选与排序。
+* 下载包保存的是导入时的原始 ZIP，构建期不再重新压缩；改动模板源码后需重新导入，否则下载内容不会更新。
+* 主图只保留一张，命名 `cover.<ext>`；构建产物入口固定为 `previews/<slug>/index.html`。
+* 分类是自由文本，直接写可读中文名称，不维护固定枚举；标签使用 `site/showcases/taxonomy.json` 的分组词表，管理页只提供点选，避免同义标签发散。
+* 缺失主图、模板包或预览入口时，构建期输出提示并降级对应入口，不中断整站发布。
 
 ## 代码约定
 
@@ -88,8 +99,9 @@ pnpm run dev
 
 ## Git 与发布约定
 
-* 提交源码、配置、脚本、样式、静态资源和 `site/showcases/<name>/` 下的案例源文件。
-* 不提交 `node_modules/`、`.source/`、`site/.generated/`、`site/.vitepress/cache/`、`site/.vitepress/dist/`、日志文件等产物。
+* 提交源码、配置、脚本、样式、静态资源、`site/showcases/<slug>/` 下的模板源码与 `showcase.json`，以及 `site/public/showcases`、`site/public/previews` 下的分发产物。
+* 不提交 `node_modules/`、`.source/`、`site/.generated/`、`site/.vitepress/cache/`、`site/.vitepress/dist/`、`site/.manage-staging/`、`site/.manage-trash/`、日志文件等产物。
+* 案例主图、模板 ZIP、构建产物通过 Git LFS 管理；新增大于 5 MiB 的文件前先补 `.gitattributes` 再 `git add --renormalize`。
 * GitHub Pages workflow 在 `master` push、手动触发和每日定时任务时构建发布。
 * CI 会 checkout 当前站点仓库和 `Web-Presentation` 源仓，安装依赖后依次执行 `sync:docs`、`check:links`、`build`，最后上传 `site/.vitepress/dist`。
 * workflow 中 `check:links` 当前允许失败；本地修复链接问题时仍应尽量让它通过。

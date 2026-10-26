@@ -867,14 +867,6 @@
   margin-top: 18px;
 }
 
-.showcase-carousel-heading h2 {
-  margin: 0;
-  color: var(--vp-c-text-1);
-  font-size: 20px;
-  line-height: 1.35;
-  letter-spacing: 0;
-}
-
 .showcase-config-tags span {
   display: inline-flex;
   align-items: center;
@@ -896,22 +888,6 @@
   font-weight: 800;
 }
 
-.showcase-carousel {
-  margin-top: 34px;
-}
-
-.showcase-style-modal {
-  position: relative;
-}
-
-.showcase-modal-toggle {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  opacity: 0;
-  pointer-events: none;
-}
-
 .showcase-modal {
   position: fixed;
   inset: 0;
@@ -924,10 +900,6 @@
 }
 
 .showcase-modal-open {
-  display: flex;
-}
-
-.showcase-modal-toggle:checked + .showcase-modal {
   display: flex;
 }
 
@@ -1035,142 +1007,6 @@
   background: transparent;
   font-family: var(--vp-font-family-mono);
   white-space: inherit;
-}
-
-.showcase-carousel-heading {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  align-items: end;
-  margin-bottom: 16px;
-}
-
-.showcase-carousel-heading span {
-  color: var(--vp-c-text-3);
-  font-size: 14px;
-  font-weight: 800;
-}
-
-.showcase-carousel-wrap {
-  --showcase-carousel-padding: 18px;
-  --showcase-carousel-gap: 16px;
-  --showcase-thumb-width: 260px;
-  position: relative;
-  display: block;
-  box-sizing: border-box;
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
-  padding: var(--showcase-carousel-padding)
-    calc(var(--showcase-carousel-padding) + var(--showcase-thumb-width) + var(--showcase-carousel-gap))
-    var(--showcase-carousel-padding)
-    var(--showcase-carousel-padding);
-  background: var(--vp-c-bg-soft);
-}
-
-.showcase-carousel-main {
-  min-width: 0;
-  border-radius: 8px;
-}
-
-.showcase-slide-toggle {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  opacity: 0;
-  pointer-events: none;
-}
-
-.showcase-slide {
-  display: none;
-  margin: 0;
-}
-
-.showcase-slide-toggle:checked + .showcase-slide {
-  display: block;
-}
-
-.showcase-slide-active {
-  display: block;
-}
-
-.vp-doc .showcase-slide img,
-.showcase-slide img {
-  display: block;
-  width: 100%;
-  max-width: 100%;
-  aspect-ratio: var(--showcase-slide-ratio, 16 / 9);
-  object-fit: contain;
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
-  background: var(--vp-c-bg);
-}
-
-.showcase-slide figcaption {
-  margin-top: 10px;
-  color: var(--vp-c-text-2);
-  font-size: 14px;
-  font-weight: 700;
-  line-height: 1.5;
-}
-
-.showcase-carousel-thumbs {
-  position: absolute;
-  top: var(--showcase-carousel-padding);
-  right: var(--showcase-carousel-padding);
-  bottom: var(--showcase-carousel-padding);
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: var(--showcase-thumb-width);
-  min-height: 0;
-  overflow-y: auto;
-  padding-right: 4px;
-}
-
-.showcase-thumb {
-  display: grid;
-  grid-template-columns: 96px minmax(0, 1fr);
-  gap: 10px;
-  align-items: center;
-  padding: 8px;
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 6px;
-  color: var(--vp-c-text-1);
-  text-decoration: none;
-  background: var(--vp-c-bg);
-  cursor: pointer;
-  font-family: inherit;
-  text-align: left;
-}
-
-.showcase-thumb:hover,
-.showcase-thumb:focus,
-.showcase-thumb-active {
-  border-color: var(--vp-c-brand-2);
-  color: var(--vp-c-brand-1);
-}
-
-.showcase-thumb-active {
-  background: var(--vp-c-brand-soft);
-}
-
-.vp-doc .showcase-thumb img,
-.showcase-thumb img {
-  display: block;
-  width: 100%;
-  max-width: 100%;
-  aspect-ratio: var(--showcase-slide-ratio, 16 / 9);
-  object-fit: contain;
-  border-radius: 4px;
-  background: var(--vp-c-bg-soft);
-}
-
-.showcase-thumb span {
-  color: inherit;
-  font-size: 13px;
-  font-weight: 800;
-  line-height: 1.35;
-  overflow-wrap: anywhere;
 }
 
 @media (max-width: 960px) {
@@ -1300,26 +1136,6 @@
     font-size: 32px;
   }
 
-  .showcase-carousel-wrap {
-    padding: 18px;
-  }
-
-  .showcase-carousel-thumbs {
-    position: static;
-    flex-direction: row;
-    width: auto;
-    max-height: none;
-    margin-top: 14px;
-    overflow-x: auto;
-    overflow-y: hidden;
-    padding-right: 0;
-    padding-bottom: 4px;
-  }
-
-  .showcase-thumb {
-    flex: 0 0 180px;
-    grid-template-columns: 1fr;
-  }
 }
 
 @media (max-width: 520px) {
@@ -1412,14 +1228,6 @@
     grid-template-columns: 1fr;
   }
 
-  .showcase-carousel-wrap {
-    --showcase-carousel-padding: 12px;
-    padding: 12px;
-  }
-
-  .showcase-thumb {
-    flex-basis: 150px;
-  }
 }
 
 /* 站点页脚：版权与备案号排在同一行，窄屏自动换行。 */

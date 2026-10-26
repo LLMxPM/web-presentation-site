@@ -34,3 +34,24 @@ site/showcases/**/*.otf filter=lfs diff=lfs merge=lfs -text
 site/showcases/**/*.woff filter=lfs diff=lfs merge=lfs -text
 site/showcases/**/*.woff2 filter=lfs diff=lfs merge=lfs -text
 site/showcases/**/*.eot filter=lfs diff=lfs merge=lfs -text
+
+# 站点对外分发的案例主图、模板包与构建产物预览通过 Git LFS 管理。
+# js/css/svg/html 等文本产物不进 LFS：预览是按哈希命名的代码文件，走 LFS 只会消耗
+# 存储与月流量配额，且未安装 Git LFS 的环境会拿到指针文本、预览直接失效。
+site/public/showcases/**/*.png filter=lfs diff=lfs merge=lfs -text
+site/public/showcases/**/*.jpg filter=lfs diff=lfs merge=lfs -text
+site/public/showcases/**/*.jpeg filter=lfs diff=lfs merge=lfs -text
+site/public/showcases/**/*.webp filter=lfs diff=lfs merge=lfs -text
+site/public/previews/**/*.png filter=lfs diff=lfs merge=lfs -text
+site/public/previews/**/*.jpg filter=lfs diff=lfs merge=lfs -text
+site/public/previews/**/*.jpeg filter=lfs diff=lfs merge=lfs -text
+site/public/previews/**/*.webp filter=lfs diff=lfs merge=lfs -text
+site/public/previews/**/*.gif filter=lfs diff=lfs merge=lfs -text
+site/public/previews/**/*.ttf filter=lfs diff=lfs merge=lfs -text
+site/public/previews/**/*.otf filter=lfs diff=lfs merge=lfs -text
+site/public/previews/**/*.woff filter=lfs diff=lfs merge=lfs -text
+site/public/previews/**/*.woff2 filter=lfs diff=lfs merge=lfs -text
+site/public/previews/**/*.mp4 filter=lfs diff=lfs merge=lfs -text
+site/public/previews/**/*.webm filter=lfs diff=lfs merge=lfs -text
+site/public/previews/**/*.mp3 filter=lfs diff=lfs merge=lfs -text
+
