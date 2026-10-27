@@ -1,4 +1,5 @@
 <!doctype html>
+<!-- 文件功能：本地案例管理页的结构，左侧案例列表 + 右侧编辑详情 + 导入/确认弹窗。 -->
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
@@ -7,115 +8,280 @@
 <link rel="stylesheet" href="/app.css">
 </head>
 <body>
-<div class="topbar">
+<header class="appbar">
   <div class="brand">
-    <span class="brand-mark">案例管理</span>
-    <span class="brand-hint" id="env-hint">仅本机可访问</span>
+    <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+    <div class="brand-text">
+      <h1>案例管理</h1>
+      <p id="env-hint">本地服务 · 仅 127.0.0.1 可访问</p>
+    </div>
   </div>
-  <div class="topbar-actions">
-    <span class="stat" id="stat-count"></span>
-    <button type="button" class="btn" id="btn-sync">重新同步站点</button>
-    <a class="btn btn-ghost" href="http://127.0.0.1:5173/showcases.html" target="_blank" rel="noreferrer">打开案例页</a>
+  <div class="appbar-actions">
+    <p class="stat" id="stat-count">正在读取案例…</p>
+    <button type="button" class="btn" id="btn-sync">
+      <svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M13.2 7.6A5.2 5.2 0 1 0 11.6 11.9"/><path d="M13.2 3.4v4.2H9"/></svg>
+      <span>同步站点</span>
+    </button>
+    <a class="btn btn-ghost" href="http://127.0.0.1:5173/showcases.html" target="_blank" rel="noreferrer">
+      <span>查看案例页</span><span class="ext" aria-hidden="true">↗</span>
+    </a>
+    <button type="button" class="btn btn-primary" id="btn-import">
+      <svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3.4v9.2M3.4 8h9.2"/></svg>
+      <span>导入模板</span>
+    </button>
   </div>
+</header>
+
+<div class="workspace">
+  <aside class="sidebar" aria-label="案例列表">
+    <div class="sidebar-top">
+      <div class="search">
+        <svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="4.2"/><path d="M10.2 10.2 13.6 13.6"/></svg>
+        <input type="search" id="search" placeholder="搜索标题、分类或标签" autocomplete="off" spellcheck="false">
+      </div>
+      <div class="filters" id="filters" role="group" aria-label="筛选"></div>
+    </div>
+    <div class="list-scroll">
+      <div class="case-list" id="case-list"></div>
+      <p class="list-note" id="list-hint"></p>
+    </div>
+    <div class="sidebar-foot">
+      <details class="paths">
+        <summary>目录约定</summary>
+        <dl id="path-list"></dl>
+      </details>
+    </div>
+  </aside>
+
+  <main class="main" id="main">
+    <div class="main-inner">
+      <section class="banner" id="problem-banner" hidden>
+        <span class="banner-dot" aria-hidden="true"></span>
+        <div class="banner-body">
+          <strong id="banner-title"></strong>
+          <div class="banner-list" id="problem-list"></div>
+        </div>
+        <button type="button" class="icon-btn" id="banner-close" aria-label="收起提示">×</button>
+      </section>
+
+      <section class="empty-state" id="empty-state">
+        <div class="empty-card">
+          <div class="empty-art" aria-hidden="true"><i></i><i></i><i></i></div>
+          <h2 id="empty-title">还没有案例</h2>
+          <p id="empty-desc">从主仓库导出模板包上传，解析结果核对无误后再写入目录。</p>
+          <ol class="empty-steps" id="empty-steps">
+            <li><span>1</span>导出 <code>.wptemplate.zip</code></li>
+            <li><span>2</span>导入并核对解析结果</li>
+            <li><span>3</span>补充主图与构建产物</li>
+          </ol>
+          <button type="button" class="btn btn-primary" id="empty-cta">
+            <svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3.4v9.2M3.4 8h9.2"/></svg>
+            <span>导入第一个模板包</span>
+          </button>
+        </div>
+      </section>
+
+      <article class="detail" id="detail" hidden>
+        <header class="detail-head">
+          <div class="detail-id">
+            <div class="detail-cover" id="detail-cover">
+              <img id="detail-cover-img" alt="">
+              <span class="cover-fallback" id="detail-cover-fallback">无主图</span>
+            </div>
+            <div class="detail-text">
+              <h2 id="detail-title">案例标题</h2>
+              <p class="detail-sub">
+                <code id="detail-slug"></code>
+                <button type="button" class="link-btn" id="btn-copy-slug">复制</button>
+                <span class="sep" aria-hidden="true">·</span>
+                <span id="detail-updated"></span>
+              </p>
+              <div class="chips" id="detail-chips"></div>
+            </div>
+          </div>
+          <div class="detail-actions">
+            <span class="dirty" id="dirty-flag" hidden>未保存</span>
+            <button type="button" class="btn btn-sm" id="btn-reset" disabled>撤销</button>
+            <button type="submit" form="editor-form" class="btn btn-primary btn-sm" id="btn-save" disabled>保存设置</button>
+          </div>
+        </header>
+
+        <form id="editor-form" class="editor-form" autocomplete="off" novalidate>
+          <section class="card">
+            <div class="card-head">
+              <div>
+                <h3>基本信息</h3>
+                <p>用于案例列表与详情页顶部的展示文案。</p>
+              </div>
+            </div>
+            <div class="card-body">
+              <label class="field">
+                <span class="field-label">标题</span>
+                <input type="text" name="title" maxlength="80" placeholder="例如：赤壁赋 · 国风课堂演示">
+              </label>
+              <label class="field">
+                <span class="field-label">摘要</span>
+                <textarea name="summary" rows="3" maxlength="300" placeholder="一句话说明这份演示讲什么、适合谁用。"></textarea>
+                <span class="field-counter" id="summary-counter">0 / 300</span>
+              </label>
+              <div class="field">
+                <span class="field-label">分类</span>
+                <div class="category-picker" id="category-chips" role="group" aria-label="分类"></div>
+                <div class="tag-new">
+                  <input type="text" id="category-new" maxlength="20" placeholder="新增分类，回车加入词表" spellcheck="false">
+                  <button type="button" class="btn btn-sm" id="btn-add-category">加入词表</button>
+                </div>
+                <span class="field-hint">词表维护在 <code>site/showcases/taxonomy.json</code>，只能从词表里选，避免同义分类发散。</span>
+              </div>
+            </div>
+            <div class="card-foot switches">
+              <label class="switch-row">
+                <input type="checkbox" name="featured">
+                <span class="switch-track" aria-hidden="true"></span>
+                <span class="switch-text"><strong>首页精选</strong><em>在首页精选区额外露出</em></span>
+              </label>
+              <label class="switch-row">
+                <input type="checkbox" name="hidden">
+                <span class="switch-track" aria-hidden="true"></span>
+                <span class="switch-text"><strong>暂不展示</strong><em>保留数据，公开站点隐藏</em></span>
+              </label>
+            </div>
+          </section>
+
+          <section class="card">
+            <div class="card-head">
+              <div>
+                <h3>标签</h3>
+                <p>仅用于案例列表筛选，词表维护在 <code>site/showcases/taxonomy.json</code>。</p>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="tag-groups" id="tag-groups"></div>
+              <div class="tag-new">
+                <input type="text" id="tag-input" maxlength="16" placeholder="新增标签，回车加入词表" spellcheck="false">
+                <button type="button" class="btn btn-sm" id="btn-add-tag">加入词表</button>
+              </div>
+            </div>
+          </section>
+
+          <section class="card">
+            <div class="card-head">
+              <div>
+                <h3>展示资源</h3>
+                <p>缺失时公开页会降级对应入口，但不会中断整站发布。</p>
+              </div>
+            </div>
+            <div class="card-body assets">
+              <div class="asset">
+                <div class="asset-head">
+                  <span class="asset-name">主图</span>
+                  <span class="asset-meta" id="cover-meta">尚未设置</span>
+                </div>
+                <div class="cover-box" id="cover-drop">
+                  <img id="cover-preview" alt="当前主图">
+                  <div class="cover-empty" id="cover-empty">
+                    <strong>拖入图片</strong>
+                    <em>PNG / JPEG / WebP</em>
+                  </div>
+                  <label class="cover-overlay" for="cover-input">更换主图</label>
+                </div>
+                <input type="file" id="cover-input" class="sr-only" accept="image/png,image/jpeg,image/webp">
+                <p class="asset-hint">建议 16:9 横图，宽度 1600px 以内，单张不超过 20MB。</p>
+              </div>
+
+              <div class="asset">
+                <div class="asset-head">
+                  <span class="asset-name">构建产物</span>
+                  <span class="asset-meta" id="preview-meta">未导入</span>
+                </div>
+                <div class="build-box" id="build-drop">
+                  <div class="build-main">
+                    <p class="build-status" id="preview-status">尚未导入构建产物</p>
+                    <p class="build-entry" id="preview-entry" hidden></p>
+                  </div>
+                  <div class="build-foot">
+                    <div class="build-actions">
+                      <label class="btn btn-sm" for="build-input" id="build-label">选择 ZIP</label>
+                      <a class="btn btn-sm btn-ghost" id="preview-open" target="_blank" rel="noreferrer" hidden>打开预览</a>
+                    </div>
+                    <p class="build-hint">也可以把 ZIP 直接拖到这块区域</p>
+                  </div>
+                </div>
+                <input type="file" id="build-input" class="sr-only" accept=".zip">
+                <p class="asset-hint">仅接受本地资源快照（index.html 中资源为相对路径）。</p>
+              </div>
+            </div>
+          </section>
+
+          <details class="card card-collapsible">
+            <summary class="card-head">
+              <div>
+                <h3>解析信息</h3>
+                <p>由模板包解析写入，只读。</p>
+              </div>
+              <span class="chev" aria-hidden="true"></span>
+            </summary>
+            <div class="card-body">
+              <dl class="meta-grid" id="readonly-grid"></dl>
+            </div>
+          </details>
+        </form>
+
+        <div class="danger-zone">
+          <div>
+            <strong>移入回收站</strong>
+            <p>案例目录与分发资源会移动到 <code>site/.manage-trash</code>，需要时可手动恢复。</p>
+          </div>
+          <button type="button" class="btn btn-sm btn-danger-ghost" id="btn-delete">移入回收站</button>
+        </div>
+      </article>
+    </div>
+  </main>
 </div>
 
-<main class="layout">
-  <section class="panel list-panel" aria-label="案例列表">
-    <div class="panel-head">
-      <h2>案例</h2>
-      <input type="search" id="search" placeholder="搜索标题或标签" autocomplete="off">
-    </div>
-    <p class="hint" id="list-hint">拖动卡片可调整展示顺序。</p>
-    <div id="case-list" class="case-list"></div>
-    <div id="problem-list" class="problems"></div>
-  </section>
-
-  <section class="panel editor-panel" aria-label="展示设置">
-    <div class="panel-head">
-      <h2 id="editor-title">选择左侧案例</h2>
-      <span class="dirty-flag" id="dirty-flag" hidden>未保存</span>
-    </div>
-    <div id="editor-empty" class="empty">尚未选择案例。左侧点击任意卡片开始编辑。</div>
-    <form id="editor-form" class="editor-form" hidden>
-      <label class="field">
-        <span>标题</span>
-        <input type="text" name="title" maxlength="80">
-      </label>
-      <label class="field">
-        <span>摘要</span>
-        <textarea name="summary" rows="3" maxlength="300"></textarea>
-      </label>
-      <label class="field">
-        <span>分类</span>
-        <input type="text" name="category" id="category-input" list="category-options" placeholder="输入分类，或从已有分类中选择" autocomplete="off">
-        <p class="hint">分类是自由文本，直接输入即可，已有分类会作为建议出现。</p>
-      </label>
-
-      <div class="field">
-        <span>标签</span>
-        <div id="tag-groups" class="tag-groups"></div>
-        <div class="tag-new">
-          <input type="text" id="tag-input" placeholder="新增标签后回车" maxlength="16">
-          <button type="button" class="btn btn-mini" id="btn-add-tag">加入词表</button>
-        </div>
-        <p class="hint">标签只用于列表筛选，主题信息仍作为独立资料展示。</p>
-      </div>
-
-      <div class="field field-inline">
-        <label class="check"><input type="checkbox" name="featured"> 首页精选</label>
-        <label class="check"><input type="checkbox" name="hidden"> 暂不展示</label>
-      </div>
-
-      <div class="field">
-        <span>主图</span>
-        <div class="cover-row">
-          <img id="cover-preview" alt="当前主图">
-          <div>
-            <input type="file" id="cover-input" accept="image/png,image/jpeg,image/webp">
-            <p class="hint" id="cover-meta"></p>
-          </div>
-        </div>
-      </div>
-
-      <div class="field">
-        <span>构建产物</span>
-        <div class="preview-row">
-          <div id="preview-status" class="preview-status"></div>
-          <div class="preview-actions">
-            <input type="file" id="build-input" accept=".zip">
-            <a class="btn btn-mini btn-ghost" id="preview-open" target="_blank" rel="noreferrer" hidden>打开预览</a>
-          </div>
-        </div>
-        <p class="hint">仅接受本地资源快照产物（index.html 中资源为相对路径）。</p>
-      </div>
-
-      <div class="field readonly-grid" id="readonly-grid"></div>
-
-      <div class="form-actions">
-        <button type="submit" class="btn btn-primary">保存设置</button>
-        <button type="button" class="btn btn-ghost" id="btn-delete">移入回收站</button>
-      </div>
-      <div id="save-result" class="save-result" hidden></div>
-    </form>
-  </section>
-
-  <section class="panel import-panel" aria-label="导入">
-    <div class="panel-head">
+<dialog id="import-dialog" class="dialog">
+  <div class="dialog-head">
+    <div>
       <h2>导入模板包</h2>
+      <p>解析结果确认后才写入 <code>site/showcases</code>，失败不会破坏已有案例。</p>
     </div>
-    <p class="hint">上传从主仓库导出的 .wptemplate.zip，解析结果确认后再写入。</p>
-    <input type="file" id="template-input" accept=".zip">
+    <button type="button" class="icon-btn" id="import-close" aria-label="关闭">×</button>
+  </div>
+  <div class="dialog-body">
+    <div class="dropzone" id="template-drop" tabindex="0" role="button">
+      <svg class="dz-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V5.5M12 5.5 8 9.5M12 5.5l4 4"/><path d="M4.5 15v3A1.5 1.5 0 0 0 6 19.5h12a1.5 1.5 0 0 0 1.5-1.5v-3"/></svg>
+      <strong>拖入或点击选择 .wptemplate.zip</strong>
+      <em>先解析文件清单，确认无误再写入目录</em>
+    </div>
+    <input type="file" id="template-input" class="sr-only" accept=".zip">
     <div id="template-stage" class="stage" hidden></div>
+  </div>
+</dialog>
 
-    <div class="panel-head panel-head-sub">
-      <h2>目录约定</h2>
-    </div>
-    <dl class="path-list" id="path-list"></dl>
-  </section>
-</main>
+<dialog id="confirm-dialog" class="dialog dialog-sm">
+  <div class="dialog-head">
+    <div><h2 id="confirm-title">确认操作</h2></div>
+  </div>
+  <div class="dialog-body">
+    <p class="confirm-text" id="confirm-text"></p>
+  </div>
+  <div class="dialog-foot">
+    <button type="button" class="btn btn-sm" id="confirm-cancel">取消</button>
+    <button type="button" class="btn btn-primary btn-sm" id="confirm-ok">确定</button>
+  </div>
+</dialog>
 
-<datalist id="category-options"></datalist>
-<div id="toast" class="toast" hidden></div>
+<dialog id="log-dialog" class="dialog">
+  <div class="dialog-head">
+    <div><h2>同步输出</h2><p>脚本的标准输出，便于排查失败原因。</p></div>
+    <button type="button" class="icon-btn" id="log-close" aria-label="关闭">×</button>
+  </div>
+  <div class="dialog-body">
+    <pre class="log" id="log-output"></pre>
+  </div>
+</dialog>
+
+<div class="toast-stack" id="toast-stack" aria-live="polite"></div>
 <script src="/app.js"></script>
 </body>
 </html>

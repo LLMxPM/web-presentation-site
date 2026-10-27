@@ -7,7 +7,7 @@
 - 主平台仓库：[web-presentation](https://github.com/LLMxPM/web-presentation)
 - 外部 Agent 接入仓库：[web-presentation-cli](https://github.com/LLMxPM/web-presentation-cli)
 
-站点使用 VitePress 构建。Markdown 文档由同步脚本从同级主仓（`../web-presentation`）读取；案例展示数据来自 `site/showcases/<slug>/showcase.json`，在导入阶段一次性解析完成，构建阶段不再扫描模板源码，也不再重新压缩下载包。
+站点使用 VitePress 构建。Markdown 文档由同步脚本从同级主仓（`../web-presentation`）读取；案例展示数据来自 `site/showcases/<slug>/showcase.json`，在导入阶段一次性解析完成，构建阶段不再扫描模板工程，也不再重新压缩下载包。解压出来的模板工程只在暂存目录里用一次，导入完成后即删除。
 
 ## 本地使用
 
@@ -32,13 +32,13 @@ pnpm run dev
 
 | 位置 | 内容 | 是否提交 |
 | :--- | :--- | :--- |
-| `site/showcases/<slug>/` | 模板源码、`showcase.json` | 提交 |
+| `site/showcases/<slug>/` | `showcase.json`（导入时的元数据快照） | 提交 |
 | `site/public/showcases/<slug>/` | `cover.<ext>`、`template.wptemplate.zip` | 提交（Git LFS） |
 | `site/public/previews/<slug>/` | 构建产物：`index.html` + `assets/` | 提交（Git LFS） |
 
 `showcase.json` 是构建期唯一数据源，包含：
 
-- 人工维护字段：`title`、`summary`、`category`（自由文本）、`tags`、`featured`、`sortOrder`、`hidden`
+- 人工维护字段：`title`、`summary`、`category`（取自分类词表）、`tags`、`featured`、`sortOrder`、`hidden`
 - 导入期解析字段：`meta`（页数、画布尺寸、画幅、主题、资源类型、底色等）、`styleSpecMarkdown`、`template.sourceProjectCode`
 - 资源引用：`cover.file`、`template.file`、`preview.available` / `preview.entry`
 
@@ -52,11 +52,13 @@ pnpm run manage:showcases
 
 打开 `http://127.0.0.1:4173/`。服务只监听回环地址，不挂到公开站点，也不参与线上构建。
 
-页面分三块：
+页面是「左侧案例列表 + 右侧详情」的工作台：
 
-1. **案例列表**：封面、标题、分类、标签、是否可预览、体积；支持搜索和拖动排序。
-2. **展示设置**：标题、摘要、分类（自由文本，已有分类作为输入建议）、多选标签、精选、隐藏、主图替换、构建产物导入。
-3. **导入区**：上传模板 ZIP，暂存解析后展示文件名、体积和解析结果，确认后才写入正式目录。
+1. **案例列表**：封面、标题、分类、页数与体积；支持搜索、按精选 / 隐藏 / 待补全筛选，以及拖动排序。
+2. **展示设置**：标题、摘要、分类（从词表点选）、多选标签、精选、隐藏、主图替换、构建产物导入；有未保存修改时会拦截案例切换与页面关闭。
+3. **导入模板**：顶栏「导入模板」打开弹窗，上传 ZIP 后先展示文件清单与解析结果，确认后才写入正式目录；目标 slug 已存在时会提示覆盖。
+
+分类与标签的词表维护在 `site/showcases/taxonomy.json`：分类是 `categories` 平铺列表（单选，兜底「未分类」），标签是 `tagGroups` 分组列表（多选），管理页只提供点选和新增，避免同义词发散。
 
 导入流程采用「暂存 → 校验 → 整体替换」：解析内容先落在 `site/.manage-staging/`，只有确认提交时才覆盖目标目录。删除操作会把目录移入 `site/.manage-trash/`，可手工恢复。
 
@@ -67,9 +69,9 @@ pnpm run manage:showcases
 1. 校验 `manifest.json`、`metadata/template.json`、`metadata/screenshots.json`、`project/project.json`、`project/routes.json`。
 2. 解析标题、摘要、页数、尺寸、主题、资源类型，预填表单。
 3. 从 `metadata/screenshots.json` 的 `cover`（缺失时取第一张页面截图）生成唯一主图。
-4. 模板源码解压到 `site/showcases/<slug>/`，原始 ZIP 保存为 `template.wptemplate.zip`，写入 `showcase.json`。
+4. 解析结果写入 `site/showcases/<slug>/showcase.json`，原始 ZIP 保存为 `template.wptemplate.zip`；解压出的模板工程只留在暂存目录，提交后删除。
 
-> 下载包保存的是导入时的原始 ZIP，构建阶段不会再重新压缩。改动 `site/showcases/<slug>/` 里的模板源码后，需要重新导入一次才会更新下载内容；只改标题、分类、标签这类展示字段则不用重新导入。
+> 下载包保存的是导入时的原始 ZIP，构建阶段不会再重新压缩。要更换模板内容或重新生成主图，需要重新导入一次；只改标题、摘要、分类、标签这类展示字段，在管理页保存即可。
 
 构建产物导入：
 

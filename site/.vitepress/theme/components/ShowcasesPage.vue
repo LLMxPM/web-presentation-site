@@ -104,7 +104,7 @@ const statCards = computed(() => {
   ];
 });
 
-/** 统计当前数据中真实出现的分类，分类是自由文本，直接按文本分组。 */
+/** 按案例数据里真实出现的分类分组；词表只约束录入，公开页不展示没有案例的分类。 */
 const categoryOptions = computed(() => {
   const map = new Map<string, number>();
   for (const item of showcaseSummaries) {

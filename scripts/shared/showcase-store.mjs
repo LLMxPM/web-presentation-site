@@ -18,8 +18,11 @@ export const defaultCoverFileName = 'cover.png';
 export const previewEntryFileName = 'index.html';
 export const currentSchemaVersion = 1;
 
-/** 分类是自由文本，只保留一个兜底值，不再维护固定枚举。 */
+/** 分类是站点展示口径，默认值用于兜底，不在词表里时也能正常构建。 */
 export const defaultCategory = '未分类';
+
+/** 内置分类词表兜底；taxonomy.json 缺少 categories 字段时用它完成迁移。 */
+const fallbackCategories = ['语文课堂', '技术分享', '产品介绍', '品牌运营'];
 
 /** 内置标签词表兜底；taxonomy.json 缺失时仍能构建站点。 */
 const fallbackTagGroups = [
@@ -28,14 +31,25 @@ const fallbackTagGroups = [
   { name: '内容', tags: ['语文', '技术', '产品', '品牌', '运营', '数据'] },
 ];
 
-/** 读取标签词表；分类已改为自由文本，因此词表只保留分组标签。 */
+/**
+ * 读取词表：分类是一层平铺列表，标签仍按分组维护。
+ *
+ * `categories` 字段缺失时回落到内置分类，兼容本次改造之前写下的 taxonomy.json；
+ * 字段存在但为空数组时保持为空，尊重人工清空词表的意图。
+ */
 export async function readTaxonomy() {
   if (!(await pathExists(taxonomyPath))) {
-    return { tagGroups: structuredClone(fallbackTagGroups) };
+    return {
+      categories: [...fallbackCategories],
+      tagGroups: structuredClone(fallbackTagGroups),
+    };
   }
 
   const raw = await fs.readFile(taxonomyPath, 'utf8');
   const value = JSON.parse(raw);
+  const categories = Array.isArray(value?.categories)
+    ? uniqueTexts(value.categories.map(normalizeText))
+    : [...fallbackCategories];
   const tagGroups = Array.isArray(value?.tagGroups)
     ? value.tagGroups
       .map((group) => ({
@@ -49,12 +63,20 @@ export async function readTaxonomy() {
     tagGroups.push(...structuredClone(fallbackTagGroups));
   }
 
-  return { tagGroups };
+  return { categories, tagGroups };
 }
 
 /** 写回词表，保持稳定字段顺序，便于 Git 对比。 */
 export async function writeTaxonomy(taxonomy) {
-  const payload = { tagGroups: Array.isArray(taxonomy?.tagGroups) ? taxonomy.tagGroups : [] };
+  const categories = uniqueTexts((Array.isArray(taxonomy?.categories) ? taxonomy.categories : []).map(normalizeText));
+  const tagGroups = (Array.isArray(taxonomy?.tagGroups) ? taxonomy.tagGroups : [])
+    .map((group) => ({
+      name: normalizeText(group?.name) || '标签',
+      tags: uniqueTexts((Array.isArray(group?.tags) ? group.tags : []).map(normalizeText)),
+    }))
+    .filter((group) => group.tags.length > 0);
+
+  const payload = { categories, tagGroups };
   await fs.mkdir(showcaseRoot, { recursive: true });
   await fs.writeFile(taxonomyPath, `${JSON.stringify(payload, null, 2)}\n`, 'utf8');
 }

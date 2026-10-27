@@ -17,9 +17,9 @@
 * `site/public/`：站点自有静态资源，执行同步脚本后会复制到 `site/.generated/public/`。
   * `showcases/<slug>/`：案例主图 `cover.<ext>` 与下载包 `template.wptemplate.zip`。
   * `previews/<slug>/`：构建产物，`index.html` 加 `assets/`，详情页以 iframe 内嵌。
-* `site/showcases/`：案例模板源码目录，每个子目录对应一个案例。
+* `site/showcases/`：案例记录目录，每个子目录对应一个案例，只保留 `showcase.json`。
   * `showcase.json`：构建期唯一数据源，包含展示字段与导入期解析结果。
-  * `taxonomy.json`：标签词表，位于案例根目录，不随案例发布。
+  * `taxonomy.json`：分类与标签词表，位于案例根目录，不随案例发布。
 * `scripts/`：Node.js ESM 脚本入口。
   * `sync-docs.mjs`：同步源仓文档、读取案例数据、生成 VitePress 页面与数据。
   * `manage-showcases.mjs`：本地案例管理服务，仅监听 `127.0.0.1`。
@@ -73,17 +73,19 @@ pnpm run manage:showcases
 ## 案例数据约定
 
 * 案例 URL slug 由目录名生成，命名应稳定；`showcase.json` 中的 `slug` 必须与目录名一致，首次创建后不再修改。
-* 构建阶段只读取 `site/showcases/*/showcase.json`，不再扫描模板源码、重新压缩 ZIP 或提取截图。
+* 构建阶段只读取 `site/showcases/*/showcase.json`，不扫描模板工程、不重新压缩 ZIP，也不重新提取截图。
+* 解压出来的模板工程只存在于暂存目录 `site/.manage-staging/`，用于解析元数据与提取主图；提交后即删除，不写入仓库。
 * 导入阶段（`scripts/shared/showcase-import.mjs`）负责校验并解析模板，必要文件：
   * `manifest.json`
   * `metadata/template.json`
   * `metadata/screenshots.json`
   * `project/project.json`
   * `project/routes.json`
-* 解析结果写入 `showcase.json` 的 `meta` 字段；重新导入模板只刷新解析字段，保留人工维护的标题、摘要、分类、标签、精选与排序。
-* 下载包保存的是导入时的原始 ZIP，构建期不再重新压缩；改动模板源码后需重新导入，否则下载内容不会更新。
+* 解析结果写入 `showcase.json` 的 `meta` 字段；重新导入会重写整条记录：标题、摘要、分类以导入表单为准，标签、精选、隐藏与排序沿用旧记录。
+* 下载包保存的是导入时的原始 ZIP，构建期不再重新压缩；要换模板内容需重新导入，导入会同时替换下载包、主图与 `showcase.json`。
 * 主图只保留一张，命名 `cover.<ext>`；构建产物入口固定为 `previews/<slug>/index.html`。
-* 分类是自由文本，直接写可读中文名称，不维护固定枚举；标签使用 `site/showcases/taxonomy.json` 的分组词表，管理页只提供点选，避免同义标签发散。
+* 分类与标签都使用 `site/showcases/taxonomy.json` 的词表：分类是 `categories` 平铺列表（单选，兜底值为「未分类」），标签是 `tagGroups` 分组列表（多选）；管理页只提供点选与新增，避免同义分类或标签发散。
+* 词表只约束录入口径，不校验历史数据：`showcase.json` 里出现词表外的分类或标签时，管理页会把它作为额外选项展示，构建期照常输出。
 * 缺失主图、模板包或预览入口时，构建期输出提示并降级对应入口，不中断整站发布。
 
 ## 代码约定
@@ -99,7 +101,7 @@ pnpm run manage:showcases
 
 ## Git 与发布约定
 
-* 提交源码、配置、脚本、样式、静态资源、`site/showcases/<slug>/` 下的模板源码与 `showcase.json`，以及 `site/public/showcases`、`site/public/previews` 下的分发产物。
+* 提交源码、配置、脚本、样式、静态资源、`site/showcases/<slug>/showcase.json`，以及 `site/public/showcases`、`site/public/previews` 下的分发产物。
 * 不提交 `node_modules/`、`.source/`、`site/.generated/`、`site/.vitepress/cache/`、`site/.vitepress/dist/`、`site/.manage-staging/`、`site/.manage-trash/`、日志文件等产物。
 * 案例主图、模板 ZIP、构建产物通过 Git LFS 管理；新增大于 5 MiB 的文件前先补 `.gitattributes` 再 `git add --renormalize`。
 * GitHub Pages workflow 在 `master` push、手动触发和每日定时任务时构建发布。

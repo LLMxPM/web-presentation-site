@@ -132,8 +132,11 @@ async function handleApi(url, request, response) {
 
   if (route === 'POST /api/taxonomy') {
     const payload = await readJsonBody(request);
+    const current = await readTaxonomy();
+    // 允许只提交其中一部分：缺失的字段沿用现有词表，避免旧页面把分类或标签写空。
     await writeTaxonomy({
-      tagGroups: Array.isArray(payload.tagGroups) ? payload.tagGroups : [],
+      categories: Array.isArray(payload.categories) ? payload.categories : current.categories,
+      tagGroups: Array.isArray(payload.tagGroups) ? payload.tagGroups : current.tagGroups,
     });
     sendJson(response, 200, { taxonomy: await readTaxonomy() });
     return;

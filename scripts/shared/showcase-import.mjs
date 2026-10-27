@@ -93,17 +93,17 @@ export async function stageTemplateImport({ zipBuffer, fileName }) {
       totalBytes: written.reduce((total, item) => total + item.size, 0),
     };
   } catch (error) {
-    await fs.rm(stagingDirectory, { recursive: true, force: true });
+    await cleanupStaging(stagingDirectory);
     throw error;
   }
 }
 
 /**
- * 提交模板导入：先落分发资源，再整体替换模板源码目录，最后写 showcase.json。
+ * 提交模板导入：先落分发资源，再重建案例记录目录，最后写 showcase.json。
  *
- * 顺序是刻意安排的：主图与下载包先写 public 目录，这一步失败时源码目录与
- * showcase.json 都保持原样；`showcase.json` 必须写在目录替换之后，因为旧记录
- * 就放在被替换的目录里。
+ * 解压出来的模板工程只在暂存目录里用于解析元数据与提取主图，不写入仓库；
+ * `site/showcases/<slug>/` 最终只保留 showcase.json 这一个文件。
+ * 顺序上先写 public 目录：这一步失败时案例记录保持原样。
  */
 export async function commitTemplateImport({ token, slug, fields }) {
   const stagingDirectory = path.join(stagingRoot, token);
@@ -160,19 +160,20 @@ export async function commitTemplateImport({ token, slug, fields }) {
     updatedAt: now,
   };
 
-  await replaceDirectory(extractedDirectory, targetDirectory);
+  // 重建案例目录：旧版本导入的目录里可能还留着解压后的模板工程，一并清掉。
+  await fs.rm(targetDirectory, { recursive: true, force: true });
 
   try {
     await writeShowcaseRecord(normalizedSlug, record);
   } catch (error) {
-    // 目录已被替换但记录未写入时，用旧记录回填，避免案例从站点直接消失。
+    // 目录已重建但记录未写入时，用旧记录回填，避免案例从站点直接消失。
     if (previous) {
       await writeShowcaseRecord(normalizedSlug, previous).catch(() => undefined);
     }
     throw error;
   }
 
-  await fs.rm(stagingDirectory, { recursive: true, force: true });
+  await cleanupStaging(stagingDirectory);
 
   return { slug: normalizedSlug, record };
 }
@@ -219,7 +220,7 @@ export async function stageBuildImport({ zipBuffer }) {
       warnings: warnings.map((item) => item.message),
     };
   } catch (error) {
-    await fs.rm(stagingDirectory, { recursive: true, force: true });
+    await cleanupStaging(stagingDirectory);
     throw error;
   }
 }
@@ -240,7 +241,7 @@ export async function commitBuildImport({ token, slug }) {
 
   const targetDirectory = path.join(previewRoot, slug);
   await replaceDirectory(extractedDirectory, targetDirectory);
-  await fs.rm(stagingDirectory, { recursive: true, force: true });
+  await cleanupStaging(stagingDirectory);
 
   const now = new Date().toISOString();
   const nextRecord = {
@@ -427,6 +428,11 @@ async function readJsonObject(directory, relativePath) {
     throw new Error(`${relativePath} 必须是 JSON 对象。`);
   }
   return value;
+}
+
+/** 清理暂存目录：残留只是临时垃圾，失败不应影响已经提交的数据。 */
+async function cleanupStaging(directory) {
+  await fs.rm(directory, { recursive: true, force: true }).catch(() => undefined);
 }
 
 /** 用目录整体替换目标目录；先备旧目录，失败时回滚。 */
