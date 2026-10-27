@@ -1,4 +1,4 @@
-<!-- 文件功能：渲染单个案例详情页，包括封面、项目资料、实时预览与下载入口。 -->
+<!-- 文件功能：渲染单个案例详情页，包括封面、项目资料、实时预览以及下载、导出引导入口。 -->
 <template>
   <main class="site-page showcase-detail-page" :aria-label="showcase ? `${showcase.title} 详情` : '案例详情'">
     <a class="showcase-back-link" :href="siteUrl('/showcases.html')" aria-label="返回案例列表">
@@ -9,28 +9,9 @@
     <section v-if="showcase" class="showcase-detail-content">
       <section class="showcase-detail-hero" aria-label="案例概览">
         <div class="showcase-detail-copy">
-          <p class="home-eyebrow">{{ showcase.category }}</p>
           <h1>{{ showcase.title }}</h1>
           <p class="showcase-detail-summary">{{ formatDetailSummary(showcase.summary) }}</p>
-          <div v-if="showcase.tags.length > 0" class="showcase-tags showcase-detail-tags" aria-label="案例标签">
-            <a
-              v-for="tag in showcase.tags"
-              :key="tag"
-              :href="tagFilterUrl(tag)"
-              class="showcase-tag-link"
-            >
-              {{ tag }}
-            </a>
-          </div>
           <div class="showcase-actions">
-            <button
-              v-if="showcase.styleSpecMarkdown"
-              type="button"
-              class="showcase-action"
-              @click="openStyleSpec"
-            >
-              样式规范
-            </button>
             <a
               v-if="showcase.previewAvailable"
               class="showcase-action showcase-action-primary"
@@ -49,6 +30,22 @@
             >
               下载模板
             </a>
+            <button
+              v-if="showcase.previewAvailable"
+              type="button"
+              class="showcase-action"
+              @click="openExportGuide"
+            >
+              导出 PPTX
+            </button>
+            <button
+              v-if="showcase.styleSpecMarkdown"
+              type="button"
+              class="showcase-action"
+              @click="openStyleSpec"
+            >
+              样式规范
+            </button>
           </div>
         </div>
 
@@ -58,26 +55,50 @@
         </aside>
       </section>
 
-      <section class="showcase-config-panel" aria-label="配置详情">
+      <section class="showcase-config-panel" aria-label="项目资料">
         <div class="showcase-section-heading">
           <p class="home-eyebrow">Profile</p>
+          <h2>项目资料</h2>
         </div>
-        <div class="showcase-config-tags">
-          <span v-for="tag in configTags" :key="tag.label">
-            <strong>{{ tag.label }}</strong>{{ tag.value }}
-          </span>
-        </div>
+        <dl class="showcase-profile">
+          <div class="showcase-profile-item">
+            <dt>分类</dt>
+            <dd>
+              <a v-if="showcase.category" class="showcase-profile-chip" :href="categoryFilterUrl(showcase.category)">
+                {{ showcase.category }}
+              </a>
+              <span v-else class="showcase-profile-muted">未分类</span>
+            </dd>
+          </div>
+          <div class="showcase-profile-item">
+            <dt>标签</dt>
+            <dd>
+              <a
+                v-for="tag in showcase.tags"
+                :key="tag"
+                class="showcase-profile-chip"
+                :href="tagFilterUrl(tag)"
+              >
+                {{ tag }}
+              </a>
+              <span v-if="showcase.tags.length === 0" class="showcase-profile-muted">未标注</span>
+            </dd>
+          </div>
+          <div v-for="item in configItems" :key="item.label" class="showcase-profile-item">
+            <dt>{{ item.label }}</dt>
+            <dd>{{ item.value }}</dd>
+          </div>
+        </dl>
       </section>
 
-      <section v-if="showcase.previewAvailable" class="showcase-preview" aria-label="实时预览">
+      <section v-if="showcase.previewAvailable" id="showcase-preview" ref="previewSection" class="showcase-preview" aria-label="项目预览">
         <div class="showcase-preview-heading">
           <div>
             <p class="home-eyebrow">Live preview</p>
-            <h2>真实构建产物</h2>
+            <h2>项目预览</h2>
           </div>
           <div class="showcase-preview-actions">
             <button type="button" class="showcase-action" @click="reloadPreview">刷新</button>
-            <button type="button" class="showcase-action" @click="toggleFullscreen">全屏</button>
             <a
               class="showcase-action"
               :href="siteUrl(showcase.previewPath)"
@@ -88,7 +109,12 @@
             </a>
           </div>
         </div>
-        <div ref="previewStage" class="showcase-preview-stage" :style="previewStageStyle">
+        <div
+          ref="previewStage"
+          class="showcase-preview-stage"
+          :class="{ 'is-highlight': previewHighlighted }"
+          :style="previewStageStyle"
+        >
           <iframe
             ref="previewFrame"
             class="showcase-preview-frame"
@@ -99,10 +125,78 @@
             :style="previewFrameStyle"
           ></iframe>
         </div>
-        <p class="showcase-preview-hint">
-          预览按 {{ showcase.pageWidth || 1920 }} × {{ showcase.pageHeight || 1080 }} 原尺寸渲染后等比缩放，交互与线上运行一致。
-        </p>
       </section>
+
+      <div
+        v-if="isExportGuideOpen && showcase.previewAvailable"
+        class="showcase-modal showcase-export-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="showcase-export-title"
+      >
+        <div class="showcase-modal-backdrop" role="presentation" @click="closeExportGuide"></div>
+        <section class="showcase-modal-panel showcase-export-panel">
+          <div class="showcase-modal-header">
+            <div>
+              <p class="home-eyebrow">Export</p>
+              <h2 id="showcase-export-title">导出 PPTX</h2>
+            </div>
+            <div class="showcase-modal-actions">
+              <button type="button" class="showcase-modal-close" @click="closeExportGuide">关闭</button>
+            </div>
+          </div>
+          <div class="showcase-export-body">
+            <div class="showcase-export-copy">
+              <p class="showcase-export-lead">
+                PPTX 由预览页的运行时现场导出，本站只负责展示。按下面三步就能拿到可编辑的 PPTX 文件。
+              </p>
+              <ol class="showcase-export-steps">
+                <li>
+                  <span class="showcase-export-step-index">1</span>
+                  <div>
+                    <strong>打开在线预览</strong>
+                    <p>点下方按钮，在新窗口打开这个案例的运行页面。</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="showcase-export-step-index">2</span>
+                  <div>
+                    <strong>点右上角「导出」</strong>
+                    <p>预览页右上角竖排工具条里，带下箭头的文件图标就是导出。</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="showcase-export-step-index">3</span>
+                  <div>
+                    <strong>格式选「HTML转PPTX」</strong>
+                    <p>范围选「所有页面」，点「开始导出」即可下载可编辑 PPTX。</p>
+                  </div>
+                </li>
+              </ol>
+              <div class="showcase-export-actions">
+                <a
+                  class="showcase-action showcase-action-primary"
+                  :href="siteUrl(showcase.previewPath)"
+                  target="_blank"
+                  rel="noreferrer"
+                  @click="closeExportGuide"
+                >
+                  打开预览页导出
+                </a>
+                <button type="button" class="showcase-action" @click="scrollToPreview">在下方预览里操作</button>
+              </div>
+            </div>
+            <figure class="showcase-export-figure">
+              <img
+                :src="siteUrl('/assets/export-guide.png')"
+                alt="预览页右上角工具栏示意，第三个「导出」按钮已用箭头标出"
+                loading="lazy"
+              >
+              <figcaption>预览页右上角：带下箭头的文件图标就是「导出」</figcaption>
+            </figure>
+          </div>
+        </section>
+      </div>
 
       <div v-if="isStyleSpecOpen && showcase.styleSpecMarkdown" class="showcase-modal" role="dialog" aria-modal="true">
         <div class="showcase-modal-backdrop" role="presentation" @click="closeStyleSpec"></div>
@@ -139,12 +233,16 @@ const props = defineProps<{
 }>();
 
 const isStyleSpecOpen = ref(false);
+const isExportGuideOpen = ref(false);
 const styleSpecCopyState = ref<'idle' | 'copied' | 'failed'>('idle');
 const previewStage = ref<HTMLElement | null>(null);
+const previewSection = ref<HTMLElement | null>(null);
 const previewFrame = ref<HTMLIFrameElement | null>(null);
 const previewScale = ref(1);
 const previewReady = ref(false);
+const previewHighlighted = ref(false);
 let styleSpecCopyTimer: ReturnType<typeof window.setTimeout> | undefined;
+let previewHighlightTimer: ReturnType<typeof window.setTimeout> | undefined;
 let previewObserver: ResizeObserver | undefined;
 
 /** 根据路由占位页传入的 slug 查找案例详情数据。 */
@@ -173,28 +271,18 @@ const previewFrameStyle = computed<Record<string, string>>(() => {
   };
 });
 
-/** 详情页顶部展示的关键配置标签。 */
-const configTags = computed(() => {
+/** 项目资料里的版式指标；分类与标签在模板中单独渲染为可筛选的胶囊。 */
+const configItems = computed(() => {
   if (!showcase.value) {
     return [];
   }
 
-  const items = [
+  return [
     { label: '页数', value: showcase.value.pageCount ? `${showcase.value.pageCount} 页` : '未标注' },
     { label: '画幅', value: formatSize(showcase.value) },
     { label: '基准字号', value: showcase.value.baseFontSize || '未标注' },
     { label: '主题', value: formatThemes(showcase.value) },
-    { label: '更新时间', value: formatDate(showcase.value.updatedAt) },
   ];
-
-  if (showcase.value.hasComponents) {
-    items.push({ label: '组件', value: '含自定义组件' });
-  }
-  if (showcase.value.backgroundTone) {
-    items.push({ label: '底色', value: showcase.value.backgroundTone === 'light' ? '浅色为主' : '深色为主' });
-  }
-
-  return items;
 });
 
 const styleSpecCopyText = computed(() => {
@@ -210,6 +298,8 @@ const styleSpecCopyText = computed(() => {
 watch(() => props.slug, async () => {
   resetStyleSpecCopyState();
   isStyleSpecOpen.value = false;
+  isExportGuideOpen.value = false;
+  clearPreviewHighlight();
   await nextTick();
   observePreviewStage();
 });
@@ -222,6 +312,7 @@ onMounted(() => {
 
 onUnmounted(() => {
   resetStyleSpecCopyState();
+  clearPreviewHighlight();
   previewObserver?.disconnect();
   previewObserver = undefined;
   window.removeEventListener('resize', observePreviewStage);
@@ -230,7 +321,14 @@ onUnmounted(() => {
 
 /** 弹窗打开时按 Esc 关闭，保持与常规对话框一致的键盘习惯。 */
 function handleWindowKeydown(event: KeyboardEvent): void {
-  if (event.key === 'Escape' && isStyleSpecOpen.value) {
+  if (event.key !== 'Escape') {
+    return;
+  }
+  if (isExportGuideOpen.value) {
+    closeExportGuide();
+    return;
+  }
+  if (isStyleSpecOpen.value) {
     closeStyleSpec();
   }
 }
@@ -270,26 +368,45 @@ function closeStyleSpec(): void {
   isStyleSpecOpen.value = false;
 }
 
+/** 打开导出引导弹窗，说明 PPTX 需要在预览页里导出。 */
+function openExportGuide(): void {
+  isExportGuideOpen.value = true;
+}
+
+/** 关闭导出引导弹窗。 */
+function closeExportGuide(): void {
+  isExportGuideOpen.value = false;
+}
+
+/** 关闭弹窗并滚动到实时预览，同时短暂高亮预览区域作为指引。 */
+async function scrollToPreview(): Promise<void> {
+  closeExportGuide();
+  await nextTick();
+
+  const section = previewSection.value;
+  if (!section) {
+    return;
+  }
+
+  section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  previewHighlighted.value = true;
+  window.clearTimeout(previewHighlightTimer);
+  previewHighlightTimer = window.setTimeout(clearPreviewHighlight, 2000);
+}
+
+/** 取消预览高亮态。 */
+function clearPreviewHighlight(): void {
+  previewHighlighted.value = false;
+  window.clearTimeout(previewHighlightTimer);
+  previewHighlightTimer = undefined;
+}
+
 /** 重新加载 iframe，便于查看最新构建产物。 */
 function reloadPreview(): void {
   if (!previewFrame.value) {
     return;
   }
   previewFrame.value.src = previewFrame.value.src;
-}
-
-/** 在浏览器全屏模式下查看预览。 */
-async function toggleFullscreen(): Promise<void> {
-  const stage = previewStage.value;
-  if (!stage) {
-    return;
-  }
-
-  if (document.fullscreenElement === stage) {
-    await document.exitFullscreen().catch(() => undefined);
-    return;
-  }
-  await stage.requestFullscreen?.().catch(() => undefined);
 }
 
 /** 复制样式规范原文，优先使用 Clipboard API，失败时回退到临时文本域。 */
@@ -351,7 +468,7 @@ function formatDetailSummary(value: string): string {
 /** 格式化项目页面尺寸和宽高比。 */
 function formatSize(item: ShowcaseDetail): string {
   if (item.pageWidth && item.pageHeight) {
-    const sizeText = `${item.pageWidth} x ${item.pageHeight}`;
+    const sizeText = `${item.pageWidth} × ${item.pageHeight}`;
     return item.aspectRatio ? `${sizeText} / ${item.aspectRatio}` : sizeText;
   }
   return '未标注';
@@ -362,18 +479,9 @@ function formatThemes(item: ShowcaseDetail): string {
   return item.themeNames.length > 0 ? item.themeNames.join('、') : '未标注';
 }
 
-/** 将 ISO 时间转换为中文日期。 */
-function formatDate(value: string): string {
-  const date = new Date(value);
-  if (Number.isNaN(date.getTime())) {
-    return '未标注';
-  }
-
-  return date.toLocaleDateString('zh-CN', {
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-  });
+/** 生成分类筛选链接，便于从详情页回到同类案例。 */
+function categoryFilterUrl(category: string): string {
+  return withBase(`/showcases.html?category=${encodeURIComponent(category)}`);
 }
 
 /** 生成带标签筛选参数的列表链接，便于从详情页回到同标签列表。 */

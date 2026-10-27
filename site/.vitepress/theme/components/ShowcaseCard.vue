@@ -1,4 +1,4 @@
-<!-- 文件功能：渲染首页和案例展示页复用的案例卡片。 -->
+<!-- 文件功能：渲染首页和案例展示页复用的案例卡片，封面叠标签、底部带直接预览入口。 -->
 <template>
   <article class="showcase-card" :class="{ 'showcase-card-featured': showcase.featured }">
     <a class="showcase-card-link" :href="siteUrl(showcase.detailPath)">
@@ -6,7 +6,9 @@
         <img v-if="showcase.coverAvailable" :src="siteUrl(showcase.coverPath)" :alt="`${showcase.title} 封面`" loading="lazy">
         <span v-else class="showcase-cover-empty">暂无主图</span>
         <span class="showcase-cover-badge">{{ formatRatio(showcase) }}</span>
-        <span v-if="showcase.previewAvailable" class="showcase-cover-live">可预览</span>
+        <span v-if="showcase.tags.length > 0" class="showcase-cover-tags" aria-label="案例标签">
+          <span v-for="tag in showcase.tags.slice(0, 3)" :key="tag">{{ tag }}</span>
+        </span>
       </span>
       <span class="showcase-card-body">
         <span class="showcase-card-title-row">
@@ -28,11 +30,26 @@
             <small>主题</small>
           </span>
         </span>
-        <span v-if="showcase.tags.length > 0" class="showcase-tags">
-          <span v-for="tag in showcase.tags.slice(0, 3)" :key="tag">{{ tag }}</span>
-        </span>
       </span>
     </a>
+    <div class="showcase-card-actions">
+      <a
+        v-if="showcase.previewAvailable"
+        class="showcase-card-action showcase-card-action-primary"
+        :href="siteUrl(showcase.previewPath)"
+        target="_blank"
+        rel="noreferrer"
+      >
+        在线预览
+      </a>
+      <a
+        class="showcase-card-action"
+        :class="{ 'showcase-card-action-primary': !showcase.previewAvailable }"
+        :href="siteUrl(showcase.detailPath)"
+      >
+        查看详情
+      </a>
+    </div>
   </article>
 </template>
 

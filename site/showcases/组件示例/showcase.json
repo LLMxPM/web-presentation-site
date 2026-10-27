@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "slug": "组件示例",
+  "title": "组件示例",
+  "summary": "展示runtime组件以及基于runtime的自定义组件渲染能力",
+  "category": "宣传",
+  "tags": [],
+  "featured": false,
+  "sortOrder": null,
+  "hidden": false,
+  "cover": {
+    "file": "cover.png",
+    "width": 1920,
+    "height": 1080
+  },
+  "template": {
+    "file": "template.wptemplate.zip",
+    "size": 12276953,
+    "sourceProjectCode": "PRJ20260529002",
+    "importedAt": "2026-10-27T04:46:43.449Z"
+  },
+  "preview": {
+    "available": true,
+    "entry": "index.html",
+    "importedAt": "2026-10-27T04:56:19.349Z"
+  },
+  "meta": {
+    "pageCount": 9,
+    "pageWidth": 1920,
+    "pageHeight": 1080,
+    "aspectRatio": "16:9",
+    "baseFontSize": "20px",
+    "themeKey": "lightblue",
+    "themeNames": [
+      "白底蓝色"
+    ],
+    "assetTypes": [
+      "image",
+      "formula",
+      "drawio",
+      "chart",
+      "mermaid",
+      "video"
+    ],
+    "hasComponents": true,
+    "backgroundTone": "light",
+    "menuMode": "preview"
+  },
+  "styleSpecMarkdown": "## 演示页排版尺度\n\n- 本项目是固定 16:9 演示页/PPT 画布，不是普通网页桌面页。\n- 页面应按投屏和远距离阅读设计，避免用网页信息流方式堆内容。\n- 主标题优先使用 text-5xl 到 text-7xl。\n- 章节标题、模块标题优先使用 text-3xl 到 text-5xl。\n- 主体阅读文本优先使用 text-xl 到 text-3xl，不使用 text-sm、text-base 承载主要内容。\n- text-xs、text-sm、text-base 只用于页脚、标签、角标、图例、注释或少量辅助信息。\n- 单页只表达一个核心结论；内容过多时优先拆页，而不是缩小字号。\n- 表格和指标区块应减少列数和行数，优先突出关键数字与结论。",
+  "model": "",
+  "cost": "",
+  "createdAt": "2026-10-27T04:46:43.449Z",
+  "updatedAt": "2026-10-27T04:56:19.349Z"
+}

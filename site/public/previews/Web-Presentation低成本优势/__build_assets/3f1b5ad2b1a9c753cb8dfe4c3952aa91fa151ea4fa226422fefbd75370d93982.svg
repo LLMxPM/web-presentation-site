@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <!-- 四角星主体 -->
+  <path d="M24 6 L26 22 L42 24 L26 26 L24 42 L22 26 L6 24 L22 22 Z" stroke="#3F624C" stroke-width="2" stroke-linejoin="round"/>
+  <!-- 顶部小星光点缀 -->
+  <path d="M38 8 L39 10 L41 11 L39 12 L38 14 L37 12 L35 11 L37 10 Z" fill="#3F624C" opacity="0.5"/>
+</svg>

@@ -534,15 +534,23 @@
 
 .home-developer-section {
   display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1.1fr);
-  gap: 24px;
-  align-items: start;
+  grid-template-columns: 1fr;
+  gap: 18px;
   max-width: var(--site-home-content-width);
   margin: var(--site-home-section-gap) auto 0;
-  padding: 24px;
+  padding: 28px 32px;
   border: 1px solid var(--vp-c-divider);
   border-radius: 8px;
   background: var(--vp-c-bg-soft);
+}
+
+/* 标题在左、接入方式标签在右，两列基线对齐。 */
+.home-developer-head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 24px;
+  align-items: flex-end;
+  justify-content: space-between;
 }
 
 .home-developer-copy h2 {
@@ -553,23 +561,61 @@
   letter-spacing: 0;
 }
 
-.home-source-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 18px;
+.home-developer-head .home-runtime-strip {
+  margin-top: 0;
 }
 
-.home-source-meta span {
-  min-width: 0;
-  padding: 7px 10px;
+/* 部署命令通栏展示，复制按钮贴在右侧。 */
+.home-deploy-box {
+  position: relative;
+}
+
+.vp-doc .home-deploy-code,
+.home-deploy-code {
+  margin: 0;
+  padding: 16px 18px;
+  overflow-x: auto;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 10px;
+  color: var(--vp-c-text-1);
+  font-size: 12.5px;
+  line-height: 1.75;
+  white-space: pre;
+  background: var(--vp-c-bg);
+}
+
+.vp-doc .home-deploy-code code,
+.home-deploy-code code {
+  padding: 0;
+  color: inherit;
+  font-family: var(--vp-font-family-mono);
+  font-size: inherit;
+  background: transparent;
+}
+
+.home-deploy-copy {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 30px;
+  padding: 0 12px;
   border: 1px solid var(--vp-c-divider);
   border-radius: 999px;
-  color: var(--vp-c-text-3);
-  font-size: 13px;
-  font-weight: 700;
+  color: var(--vp-c-brand-1);
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 800;
   background: var(--vp-c-bg);
-  overflow-wrap: anywhere;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.home-deploy-copy:hover {
+  border-color: var(--vp-c-brand-1);
+  background: var(--vp-c-brand-soft);
 }
 
 .home-developer-links {
@@ -580,32 +626,191 @@
 
 .home-developer-links a {
   display: flex;
-  min-width: 0;
-  min-height: 120px;
-  flex-direction: column;
+  gap: 12px;
+  align-items: center;
   justify-content: space-between;
-  padding: 16px;
+  min-width: 0;
+  padding: 15px 18px;
   border: 1px solid var(--vp-c-divider);
   border-radius: 8px;
   color: inherit;
   text-decoration: none;
   background: var(--vp-c-bg);
+  transition: border-color 0.2s ease, transform 0.2s ease;
 }
 
 .home-developer-links a:hover {
   border-color: var(--vp-c-brand-2);
+  transform: translateY(-1px);
+}
+
+.home-developer-link-copy {
+  display: block;
+  min-width: 0;
 }
 
 .home-developer-links strong {
+  display: block;
   color: var(--vp-c-text-1);
-  font-size: 16px;
+  font-size: 15px;
   line-height: 1.35;
 }
 
 .home-developer-links span {
   display: block;
-  margin-top: 16px;
+  margin-top: 5px;
   font-size: 13px;
+}
+
+.home-developer-link-arrow {
+  flex: 0 0 auto;
+  color: var(--vp-c-brand-1);
+  font-size: 16px;
+  font-weight: 800;
+}
+
+/* 核心能力区标题下的适用场景标签。 */
+.home-scenario-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.home-scenario-chips span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 0 10px;
+  border-radius: 999px;
+  color: var(--vp-c-text-2);
+  font-size: 12.5px;
+  font-weight: 700;
+  line-height: 1.4;
+  background: var(--vp-c-bg-soft);
+}
+
+.home-scenario-chips .home-scenario-label {
+  min-height: 0;
+  padding: 0 4px 0 0;
+  color: var(--vp-c-text-3);
+  background: transparent;
+}
+
+/* 架构图：整行展示，点击打开大图。 */
+.home-arch-figure {
+  margin: 0;
+}
+
+.home-arch-frame {
+  display: block;
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  background: #f7faff;
+  cursor: zoom-in;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.home-arch-frame:hover {
+  border-color: var(--vp-c-brand-2);
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.12);
+}
+
+.vp-doc .home-arch-frame img,
+.home-arch-frame img {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: #f7faff;
+}
+
+.home-arch-figure figcaption {
+  margin-top: 10px;
+  color: var(--vp-c-text-3);
+  font-size: 13px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.home-arch-figure figcaption a {
+  color: var(--vp-c-brand-1);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.home-arch-figure figcaption a:hover {
+  text-decoration: underline;
+}
+
+/* 架构图大图灯箱。 */
+.home-arch-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 32px;
+}
+
+.home-arch-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(8, 15, 26, 0.84);
+  backdrop-filter: blur(4px);
+  cursor: zoom-out;
+}
+
+.home-arch-modal img {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: min(1560px, 94vw);
+  max-height: 86vh;
+  border: 0;
+  border-radius: 10px;
+  background: #f7faff;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+}
+
+.home-arch-modal-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 34px;
+  padding: 0 14px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 999px;
+  color: #fff;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 800;
+  background: rgba(15, 23, 42, 0.62);
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.home-arch-modal-close:hover {
+  border-color: rgba(255, 255, 255, 0.6);
+  background: rgba(15, 23, 42, 0.86);
 }
 
 .home-showcase-grid,
@@ -726,26 +931,6 @@
   overflow-wrap: anywhere;
 }
 
-.showcase-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 7px;
-  margin-top: 14px;
-}
-
-.showcase-tags span {
-  padding: 4px 9px;
-  border-radius: 999px;
-  background: rgba(15, 23, 42, 0.06);
-  color: var(--vp-c-text-2);
-  font-size: 12px;
-  font-weight: 700;
-}
-
-.dark .showcase-tags span {
-  background: rgba(255, 255, 255, 0.08);
-}
-
 .showcase-actions {
   display: flex;
   flex-wrap: wrap;
@@ -753,6 +938,8 @@
   margin-top: 16px;
 }
 
+/* 次级按钮统一成品牌色文字 + 描边：a 与 button 两个标签都要压住 VitePress 的链接默认样式。 */
+.vp-doc .showcase-action,
 .showcase-action {
   display: inline-flex;
   align-items: center;
@@ -763,7 +950,7 @@
   padding: 0 13px;
   border: 1px solid var(--vp-c-divider);
   border-radius: 6px;
-  color: var(--vp-c-text-1);
+  color: var(--vp-c-brand-1);
   font-size: 14px;
   font-weight: 800;
   line-height: 1.35;
@@ -773,11 +960,14 @@
   background: var(--vp-c-bg);
   cursor: pointer;
   font-family: inherit;
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
 }
 
-.showcase-action:hover {
-  border-color: var(--vp-c-brand-2);
+.vp-doc .showcase-action:not(.showcase-action-primary):hover,
+.showcase-action:not(.showcase-action-primary):hover {
+  border-color: var(--vp-c-brand-1);
   color: var(--vp-c-brand-1);
+  background: var(--vp-c-brand-soft);
 }
 
 .showcase-action-primary {
@@ -858,34 +1048,6 @@
   margin: 0;
   color: var(--vp-c-text-2);
   line-height: 1.8;
-}
-
-.showcase-config-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 9px;
-  margin-top: 18px;
-}
-
-.showcase-config-tags span {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  min-height: 34px;
-  padding: 0 11px;
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 999px;
-  color: var(--vp-c-text-1);
-  font-size: 13px;
-  font-weight: 700;
-  line-height: 1.35;
-  background: var(--vp-c-bg-soft);
-  overflow-wrap: anywhere;
-}
-
-.showcase-config-tags strong {
-  color: var(--vp-c-text-3);
-  font-weight: 800;
 }
 
 .showcase-modal {
@@ -1032,8 +1194,7 @@
   }
 
   .home-value-grid,
-  .home-scenario-grid,
-  .home-developer-links {
+  .home-scenario-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -1099,6 +1260,10 @@
   .home-value-grid,
   .home-capability-grid,
   .home-developer-links {
+    grid-template-columns: 1fr;
+  }
+
+  .home-developer-section {
     grid-template-columns: 1fr;
   }
 
@@ -1213,14 +1378,17 @@
     grid-template-columns: 1fr;
   }
 
-  .showcase-card-title-row,
+  .showcase-card-title-row {
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
   .showcase-actions {
     flex-direction: column;
     align-items: stretch;
   }
 
-  .showcase-card-title-row span,
-  .showcase-action {
+  .showcase-actions .showcase-action {
     width: 100%;
   }
 

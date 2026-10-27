@@ -4,9 +4,13 @@
   "title": "Attention Is All You Need",
   "summary": "Deepseek-v4-flash正式版，1轮对话生成，成本0.2元",
   "category": "组会",
-  "tags": [],
-  "featured": false,
-  "sortOrder": null,
+  "tags": [
+    "汇报",
+    "科技",
+    "学术"
+  ],
+  "featured": true,
+  "sortOrder": 30,
   "hidden": false,
   "cover": {
     "file": "cover.png",
@@ -48,5 +52,5 @@
   "model": "",
   "cost": "",
   "createdAt": "2026-10-27T00:21:31.912Z",
-  "updatedAt": "2026-10-27T00:22:50.752Z"
+  "updatedAt": "2026-10-27T04:44:30.749Z"
 }
