@@ -77,7 +77,8 @@ jobs:
           chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan -p "$TENCENT_PORT" -H "$TENCENT_HOST" >> ~/.ssh/known_hosts
 
-      # 跨境链路偶发抖动，失败后重试三次；rsync 幂等，重复执行安全。
+      # 保留 checksum，避免 CI 重建后 mtime 变化导致重复传输；远端哈希在服务器本地计算。
+      # 中断文件保留在远端临时目录供重试续传，全部传完后再统一替换并清理旧文件。
       - name: Sync dist to Tencent CVM
         env:
           TENCENT_HOST: ${{ secrets.TENCENT_HOST }}
@@ -85,9 +86,14 @@ jobs:
           TENCENT_PATH: ${{ secrets.TENCENT_PATH }}
         run: |
           for attempt in 1 2 3; do
-            if rsync -rltz --checksum --delete --partial --human-readable \
+            if rsync -rltz --checksum --human-readable \
+              --partial-dir=.rsync-partial \
+              --delay-updates \
+              --delete-delay \
+              --timeout=120 \
+              --info=stats2,progress2 \
               --chmod=D755,F644 \
-              -e "ssh -p ${TENCENT_PORT} -o ConnectTimeout=20 -o BatchMode=yes" \
+              -e "ssh -p ${TENCENT_PORT} -o ConnectTimeout=20 -o ServerAliveInterval=15 -o ServerAliveCountMax=4 -o BatchMode=yes" \
               site/.vitepress/dist/ \
               "${TENCENT_USER}@${TENCENT_HOST}:${TENCENT_PATH}/"; then
               echo "第 ${attempt} 次同步成功"
